@@ -26,6 +26,7 @@ Route::view('templates', 'guest.templates')->name('guest.templates');
 Route::view('contact', 'guest.contact')->name('guest.contact');
 
 require __DIR__ . '/user.php';
+require __DIR__ . '/admin.php';
 
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
