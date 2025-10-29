@@ -34,13 +34,14 @@
                  {{-- <x-layouts.app.header /> --}}
                 <!-- Main Content -->
                 <main class="flex-1 p-6 lg:p-10">
-                    <div class="w-full max-w-7xl mx-auto">
+                    <x-toast />
                         {{ $slot }}
 
-                    </div>
+                    
                 </main>
             </div>
         </div>
+        @stack('scripts')
     </body>
 
 </html>
