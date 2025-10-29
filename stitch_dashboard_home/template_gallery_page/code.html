@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>POW - Template Gallery</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#7f13ec",
+            "background-light": "#f7f6f8",
+            "background-dark": "#191022",
+            "foreground-light": "#ffffff",
+            "foreground-dark": "#1f142b",
+            "text-light": "#141118",
+            "text-dark": "#f7f6f8",
+            "text-muted-light": "#756189",
+            "text-muted-dark": "#a092b3",
+          },
+          fontFamily: {
+            "display": ["Manrope", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.5rem",
+            "lg": "1rem",
+            "xl": "1.5rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<div class="flex flex-1 justify-center">
+<div class="layout-content-container flex flex-col w-full max-w-6xl flex-1 px-4 md:px-10 lg:px-0">
+<!-- TopNavBar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-primary/10 py-4">
+<div class="flex items-center gap-4 text-text-light dark:text-text-dark">
+<div class="w-6 h-6 text-primary">
+<svg fill="currentColor" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M24 4C25.7818 14.2173 33.7827 22.2182 44 24C33.7827 25.7818 25.7818 33.7827 24 44C22.2182 33.7827 14.2173 25.7818 4 24C14.2173 22.2182 22.2182 14.2173 24 4Z"></path>
+</svg>
+</div>
+<h2 class="text-xl font-black tracking-tighter">POW</h2>
+</div>
+<div class="flex gap-2">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary/10 text-primary text-sm font-bold leading-normal tracking-wide hover:bg-primary/20 transition-colors">
+<span class="truncate">Login</span>
+</button>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-wide hover:bg-primary/90 transition-colors">
+<span class="truncate">Sign Up</span>
+</button>
+</div>
+</header>
+<main class="py-12 md:py-20">
+<!-- PageHeading -->
+<div class="flex flex-col items-center gap-4 text-center mb-10 md:mb-12">
+<h1 class="text-text-light dark:text-text-dark text-4xl md:text-5xl font-black leading-tight tracking-tighter">Find Your Perfect Portfolio</h1>
+<p class="text-text-muted-light dark:text-text-muted-dark text-base md:text-lg font-normal leading-normal max-w-2xl">Browse our curated collection of professionally designed templates and start building your portfolio in minutes.</p>
+</div>
+<!-- Chips -->
+<div class="flex justify-center mb-10 md:mb-12">
+<div class="flex gap-2 p-1.5 bg-background-light dark:bg-foreground-dark rounded-full border border-primary/10 overflow-x-auto">
+<button class="flex h-10 shrink-0 cursor-pointer items-center justify-center gap-x-2 rounded-full px-4 bg-primary text-white">
+<p class="text-sm font-semibold leading-normal">All</p>
+</button>
+<button class="flex h-10 shrink-0 cursor-pointer items-center justify-center gap-x-2 rounded-full px-4 text-text-muted-light dark:text-text-muted-dark hover:bg-primary/10 hover:text-text-light dark:hover:text-text-dark transition-colors">
+<p class="text-sm font-semibold leading-normal">Personal</p>
+</button>
+<button class="flex h-10 shrink-0 cursor-pointer items-center justify-center gap-x-2 rounded-full px-4 text-text-muted-light dark:text-text-muted-dark hover:bg-primary/10 hover:text-text-light dark:hover:text-text-dark transition-colors">
+<p class="text-sm font-semibold leading-normal">Business</p>
+</button>
+<button class="flex h-10 shrink-0 cursor-pointer items-center justify-center gap-x-2 rounded-full px-4 text-text-muted-light dark:text-text-muted-dark hover:bg-primary/10 hover:text-text-light dark:hover:text-text-dark transition-colors">
+<p class="text-sm font-semibold leading-normal">Creative</p>
+</button>
+<button class="flex h-10 shrink-0 cursor-pointer items-center justify-center gap-x-2 rounded-full px-4 text-text-muted-light dark:text-text-muted-dark hover:bg-primary/10 hover:text-text-light dark:hover:text-text-dark transition-colors">
+<p class="text-sm font-semibold leading-normal">Minimal</p>
+</button>
+<button class="flex h-10 shrink-0 cursor-pointer items-center justify-center gap-x-2 rounded-full px-4 text-text-muted-light dark:text-text-muted-dark hover:bg-primary/10 hover:text-text-light dark:hover:text-text-dark transition-colors">
+<p class="text-sm font-semibold leading-normal">Bold</p>
+</button>
+<button class="flex h-10 shrink-0 cursor-pointer items-center justify-center gap-x-2 rounded-full px-4 text-text-muted-light dark:text-text-muted-dark hover:bg-primary/10 hover:text-text-light dark:hover:text-text-dark transition-colors">
+<p class="text-sm font-semibold leading-normal">Agency</p>
+</button>
+</div>
+</div>
+<!-- ImageGrid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="group flex flex-col gap-4">
+<div class="relative w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-xl overflow-hidden shadow-sm transition-all duration-300 group-hover:shadow-xl group-hover:-translate-y-1">
+<div class="w-full h-full bg-cover bg-center" data-alt="A clean grid-based template for visual artists" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCLAQr2wWClt8RgmnDoJWJoq7eRr0BhwuMKg2iP42A8vEmTxW4uUvDt5dknIxH7L4ZW8ZXe9ilp85D_2pdEf_nhLgIbyuyFcj6qOM8kwbH02ZDxuVN1G5hjhw_8nmgNMFlgKKlhRtfayegr-bdH4onRpPrYx9C8wRW_NII9yz7TbRDi59t7RTTo7VyQTcEjTS9qPEpHhtCAhYWcokFbGUENIlx4fV7dP6TLb-GSRRbqk-R81zJmQGXuzzFCi1Apbgqg73NUqHuFY6M");'></div>
+<div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3 p-4">
+<button class="flex-1 flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-white/90 text-text-light text-sm font-bold leading-normal backdrop-blur-sm hover:bg-white transition-colors">
+<span class="truncate">Preview</span>
+</button>
+<button class="flex-1 flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal hover:bg-primary/90 transition-colors">
+<span class="truncate">Use Template</span>
+</button>
+</div>
+</div>
+<div>
+<p class="text-text-light dark:text-text-dark text-lg font-bold leading-normal">The Curator</p>
+<p class="text-text-muted-light dark:text-text-muted-dark text-sm font-normal leading-normal">A clean grid-based template for visual artists.</p>
+</div>
+</div>
+<div class="group flex flex-col gap-4">
+<div class="relative w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-xl overflow-hidden shadow-sm transition-all duration-300 group-hover:shadow-xl group-hover:-translate-y-1">
+<div class="w-full h-full bg-cover bg-center" data-alt="A sharp, professional template for business portfolios" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDI6wXTpJKhWXI6vv_INpjRL63tBdeHri2tOwuFE-WgdMWxnyzwU4XP_97TcF2H4nimBiq10AX_Sn7lVBfdUa10vBFZUx9UFBrN9B_KhQfH_0Uzry6BcyG7CMdQ3KWL3qg1MV_4hxozUlafXU5XyPHAQ9RiZz9P0vf11Wn-bj5tRFCqP6hozLZtzZIfG6z17x3mkgF7-L1-a58Aa3kbCXnqcoCKH0e8rlhcdxxMk9dTubkWSpvYnzSQTFo-b3cyFsz8gu7YIytAdxw");'></div>
+<div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3 p-4">
+<button class="flex-1 flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-white/90 text-text-light text-sm font-bold leading-normal backdrop-blur-sm hover:bg-white transition-colors">
+<span class="truncate">Preview</span>
+</button>
+<button class="flex-1 flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal hover:bg-primary/90 transition-colors">
+<span class="truncate">Use Template</span>
+</button>
+</div>
+</div>
+<div>
+<p class="text-text-light dark:text-text-dark text-lg font-bold leading-normal">Apex</p>
+<p class="text-text-muted-light dark:text-text-muted-dark text-sm font-normal leading-normal">A sharp, professional template for business portfolios.</p>
+</div>
+</div>
+<div class="group flex flex-col gap-4">
+<div class="relative w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-xl overflow-hidden shadow-sm transition-all duration-300 group-hover:shadow-xl group-hover:-translate-y-1">
+<div class="w-full h-full bg-cover bg-center" data-alt="A minimalist design focusing on typography and space" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCKpwu-WlNzntIsccHdbn-l3sdjn6O9sDXzYjiE8Kkn0yOpoA4Zur5VZgY1rZiOIZTvrdPYSvsTGDyF5rFcYyjVE-WL1_upYnJ8kRChYMKyGpGV0xGUJhEE5auXOM7bsaFe-h-ZA8fy5w3mUnK906b1szDshnOwZIiJE10zNTB3GXbrPn642DceUelBjVQqudkltKmQY-M59qzO5MDx7MOvX0YQDVyae0BTlgManYvcMAcoGe6GQet_eNCylTey5qVF2AUs1zfhXvY");'></div>
+<div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3 p-4">
+<button class="flex-1 flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-white/90 text-text-light text-sm font-bold leading-normal backdrop-blur-sm hover:bg-white transition-colors">
+<span class="truncate">Preview</span>
+</button>
+<button class="flex-1 flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal hover:bg-primary/90 transition-colors">
+<span class="truncate">Use Template</span>
+</button>
+</div>
+</div>
+<div>
+<p class="text-text-light dark:text-text-dark text-lg font-bold leading-normal">Minimalist</p>
+<p class="text-text-muted-light dark:text-text-muted-dark text-sm font-normal leading-normal">A minimalist design focusing on typography and space.</p>
+</div>
+</div>
+<div class="group flex flex-col gap-4">
+<div class="relative w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-xl overflow-hidden shadow-sm transition-all duration-300 group-hover:shadow-xl group-hover:-translate-y-1">
+<div class="w-full h-full bg-cover bg-center" data-alt="A narrative-driven layout for photographers and writers" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDyB5NNvXzbNpSe8ZSWmJ4_ljERyNBBI6ZMLnIfcJL44TrXJ_tlGg-39NdnqemaRmRhcHNiRRmtiROm5hScNdNhyN6B6n-wKcqi-Ct3mxrQNxxJuf7BUryEMH1kCTEbKhdEyYT298NEd2XHIDQlOqOhtXlYrraL8CciRRlZeXleO_nLT7kt_FMdKcIWzefxJ0KffbkBjWFKKnp6GUsuDhyDsxgKi5QVJgNcdNT2-PiXsdqAOT7UnMXSSKpPm58gFAz4Maufmkc1hYY");'></div>
+<div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3 p-4">
+<button class="flex-1 flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-white/90 text-text-light text-sm font-bold leading-normal backdrop-blur-sm hover:bg-white transition-colors">
+<span class="truncate">Preview</span>
+</button>
+<button class="flex-1 flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal hover:bg-primary/90 transition-colors">
+<span class="truncate">Use Template</span>
+</button>
+</div>
+</div>
+<div>
+<p class="text-text-light dark:text-text-dark text-lg font-bold leading-normal">Storyteller</p>
+<p class="text-text-muted-light dark:text-text-muted-dark text-sm font-normal leading-normal">A narrative-driven layout for photographers and writers.</p>
+</div>
+</div>
+<div class="group flex flex-col gap-4">
+<div class="relative w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-xl overflow-hidden shadow-sm transition-all duration-300 group-hover:shadow-xl group-hover:-translate-y-1">
+<div class="w-full h-full bg-cover bg-center" data-alt="A corporate-style template for agencies and consultants" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuARDYx2x1ltJvF7bWxt4mvrZ30GT9UAhKjrde-3vnuXgsOpACJAM5r4A5E5u3V8fcAYkTA4Nweq3VdeHk5UkvtzJU4y1jRTEk2ZPNiZ4qhPQ1TOAjGeNml4FXAB2YhV668S570ov9B45ScUeJoJltXjbNLWx6YZZANTLjc8QQdx0WncuiRZfT9xkujTJ2WTr2YRq2SY0hxCGkmDWkjzvvQQ7tGu66KPxZWF3Z7jBdjzDmUTgWbdHHmfB70NlscyFQ5jG5OaRuOTT04");'></div>
+<div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3 p-4">
+<button class="flex-1 flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-white/90 text-text-light text-sm font-bold leading-normal backdrop-blur-sm hover:bg-white transition-colors">
+<span class="truncate">Preview</span>
+</button>
+<button class="flex-1 flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal hover:bg-primary/90 transition-colors">
+<span class="truncate">Use Template</span>
+</button>
+</div>
+</div>
+<div>
+<p class="text-text-light dark:text-text-dark text-lg font-bold leading-normal">The Professional</p>
+<p class="text-text-muted-light dark:text-text-muted-dark text-sm font-normal leading-normal">A corporate-style template for agencies and consultants.</p>
+</div>
+</div>
+<div class="group flex flex-col gap-4">
+<div class="relative w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-xl overflow-hidden shadow-sm transition-all duration-300 group-hover:shadow-xl group-hover:-translate-y-1">
+<div class="w-full h-full bg-cover bg-center" data-alt="A vibrant and bold template for creative professionals" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDDDgGY0sKrGMEsoiXL2ANpIWSxpWU5eLn-ESGC8PWip-rwLPthrfQfzSm-vcp7Y2blH0wvfYjILgrmQG0h6U4p7tNFy8LM-hnPikczSQBVHf-84V1FE9T6RiMtBLQsortEY4PphHSPzjfhibNwfXuuXqcfTNyrP-8r9UcUIxXnAezz3B2L4MR2OtQmMnZlvICZF-JPYudwFo9_kMGBZEI3D9f91yx0sKS5B0FLvNVnEN_xRs4YeTmg8hdq3d-CP56fdIwgWpotPRM");'></div>
+<div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3 p-4">
+<button class="flex-1 flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-white/90 text-text-light text-sm font-bold leading-normal backdrop-blur-sm hover:bg-white transition-colors">
+<span class="truncate">Preview</span>
+</button>
+<button class="flex-1 flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal hover:bg-primary/90 transition-colors">
+<span class="truncate">Use Template</span>
+</button>
+</div>
+</div>
+<div>
+<p class="text-text-light dark:text-text-dark text-lg font-bold leading-normal">Bold Impact</p>
+<p class="text-text-muted-light dark:text-text-muted-dark text-sm font-normal leading-normal">A vibrant and bold template for creative professionals.</p>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="flex items-center justify-center p-4 mt-12 md:mt-16">
+<a class="flex size-10 items-center justify-center text-text-muted-light dark:text-text-muted-dark hover:text-text-light dark:hover:text-text-dark transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">chevron_left</span>
+</a>
+<a class="text-sm font-bold leading-normal tracking-[0.015em] flex size-10 items-center justify-center rounded-full bg-primary text-white" href="#">1</a>
+<a class="text-sm font-medium leading-normal flex size-10 items-center justify-center rounded-full text-text-light dark:text-text-dark hover:bg-primary/10 transition-colors" href="#">2</a>
+<a class="text-sm font-medium leading-normal flex size-10 items-center justify-center rounded-full text-text-light dark:text-text-dark hover:bg-primary/10 transition-colors" href="#">3</a>
+<a class="text-sm font-medium leading-normal flex size-10 items-center justify-center rounded-full text-text-light dark:text-text-dark hover:bg-primary/10 transition-colors" href="#">4</a>
+<span class="text-sm font-medium leading-normal flex size-10 items-center justify-center rounded-full text-text-muted-light dark:text-text-muted-dark" href="#">...</span>
+<a class="flex size-10 items-center justify-center text-text-muted-light dark:text-text-muted-dark hover:text-text-light dark:hover:text-text-dark transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">chevron_right</span>
+</a>
+</div>
+</main>
+</div>
+</div>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>POW - Features</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#4A90E2",
+              "secondary": "#F5A623",
+              "background-light": "#F8F9FA",
+              "background-dark": "#1a1c1d",
+              "text-light": "#212529",
+              "text-dark": "#e8eaed",
+              "text-muted-light": "#495057",
+              "text-muted-dark": "#adb5bd"
+            },
+            fontFamily: {
+              "display": ["Manrope", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark antialiased">
+<div class="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<!-- TopNavBar -->
+<header class="sticky top-0 z-50 w-full border-b border-gray-200/50 dark:border-gray-800/50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-16">
+<div class="flex items-center gap-4 text-text-light dark:text-text-dark">
+<div class="size-6 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M24 4C25.7818 14.2173 33.7827 22.2182 44 24C33.7827 25.7818 25.7818 33.7827 24 44C22.2182 33.7827 14.2173 25.7818 4 24C14.2173 22.2182 22.2182 14.2173 24 4Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-xl font-bold tracking-tight">POW</h2>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-sm font-medium text-text-muted-light dark:text-text-muted-dark hover:text-primary dark:hover:text-primary transition-colors" href="#">Home</a>
+<a class="text-sm font-medium text-primary" href="#">Features</a>
+<a class="text-sm font-medium text-text-muted-light dark:text-text-muted-dark hover:text-primary dark:hover:text-primary transition-colors" href="#">Pricing</a>
+<a class="text-sm font-medium text-text-muted-light dark:text-text-muted-dark hover:text-primary dark:hover:text-primary transition-colors" href="#">Blog</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors">
+<span class="truncate">Sign Up</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-1">
+<!-- HeroSection -->
+<section class="py-20 md:py-32">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+<h1 class="text-4xl font-extrabold tracking-tighter sm:text-5xl md:text-6xl text-gray-900 dark:text-white">
+                        All the tools you need to build a stunning portfolio
+                    </h1>
+<p class="mt-4 max-w-2xl mx-auto text-lg text-text-muted-light dark:text-text-muted-dark">
+                        POW is a SaaS platform for creating, customizing, and sharing personal or business portfolios with ease.
+                    </p>
+<div class="mt-8 flex justify-center">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors">
+<span class="truncate">Get Started for Free</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Feature Sections -->
+<div class="space-y-24 md:space-y-32 py-16">
+<!-- Smart Portfolio Builder -->
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid md:grid-cols-2 gap-12 items-center">
+<div class="flex flex-col gap-4">
+<span class="inline-flex items-center rounded-full bg-secondary/10 px-3 py-1 text-sm font-medium text-secondary">AI-POWERED</span>
+<h2 class="text-3xl md:text-4xl font-bold tracking-tight text-gray-900 dark:text-white">Smart Portfolio Builder</h2>
+<p class="text-lg text-text-muted-light dark:text-text-muted-dark">
+                                Our AI-assisted builder and beautiful templates help you create a professional portfolio in minutes, not hours. Just answer a few questions, and watch your portfolio come to life.
+                            </p>
+</div>
+<div class="bg-white dark:bg-gray-800/50 p-6 rounded-xl shadow-lg ring-1 ring-gray-200 dark:ring-gray-800">
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg" data-alt="A mockup of the POW portfolio builder interface showing templates and an AI assistant chat window." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAlmp_zT1T8bZEt4myqbxpz5tBWCd0Qlc15roCVpg-WN_fvYtkdKNFfZHxtY-JDnYGp2qDqoI612QwS_az4RNbVKd75R2WlOZbVzUWJXvPHNQ4XnxdmBY4c-cfcPy2flktPn9jYdfhGUlnDQsgcDCAMNcXDBSkpo8UzY8vvg2kq_bQNsBbMqmKAikbefrqo6WuJ1dWI3mqBbzz3JEP1aA4kRYP2yloRS6G1yI5p-zBVRNpSsDltzRuGFUmBqbupvq_wsBAMuH5ohM0");'></div>
+</div>
+</div>
+</section>
+<!-- Portfolio Customization -->
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid md:grid-cols-2 gap-12 items-center">
+<div class="bg-white dark:bg-gray-800/50 p-6 rounded-xl shadow-lg ring-1 ring-gray-200 dark:ring-gray-800 md:order-last">
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg" data-alt="A split screen showing a portfolio before and after customization, with different colors, fonts, and layouts." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB0SMrIoMd_y0ZG8lu6Fphs6MUnPP5i6Cxk_KjIWutgnBjq-9zuPRnBuZuSnMXoTnnb7CPw3KKFs2JxpUe6BsTNQrD75-YwqB5t0nueMBc9Li0AuJJH1JFrSlC5SceON9Dn3xvXn6NrlSSIBV5qI0hvmglFuPg39fSfbCoGWCzN3y3N1QEDHHp3RQZwisuU0fXY_pQOTCXK2ixqq4Hr_vYrMKhOmEA0NJPc7mfnfHFJBdjs--_lTXbnBEoDT0wGEhwTXLFUXWBuvA8");'></div>
+</div>
+<div class="flex flex-col gap-4">
+<span class="inline-flex items-center rounded-full bg-secondary/10 px-3 py-1 text-sm font-medium text-secondary">YOUR BRAND</span>
+<h2 class="text-3xl md:text-4xl font-bold tracking-tight text-gray-900 dark:text-white">Total Customization</h2>
+<p class="text-lg text-text-muted-light dark:text-text-muted-dark">
+                                Take full control of your brand with custom colors, fonts, and layouts. Our flexible editor lets you fine-tune every detail to perfectly match your unique style and professional identity.
+                            </p>
+</div>
+</div>
+</section>
+<!-- Analytics Dashboard -->
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid md:grid-cols-2 gap-12 items-center">
+<div class="flex flex-col gap-4">
+<span class="inline-flex items-center rounded-full bg-secondary/10 px-3 py-1 text-sm font-medium text-secondary">DATA-DRIVEN</span>
+<h2 class="text-3xl md:text-4xl font-bold tracking-tight text-gray-900 dark:text-white">Insightful Analytics</h2>
+<p class="text-lg text-text-muted-light dark:text-text-muted-dark">
+                                Understand your audience with a powerful dashboard that tracks views, engagement, and visitor demographics. Make informed decisions to improve your portfolio's impact.
+                            </p>
+</div>
+<div class="bg-white dark:bg-gray-800/50 p-6 rounded-xl shadow-lg ring-1 ring-gray-200 dark:ring-gray-800">
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg" data-alt="A clean mockup of the analytics dashboard, displaying charts for visitor traffic, engagement rates, and geographic location." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCnXDu80ImP6PpR0IYs9jrKKfJ8166oRrCYryGvwpwiFyyBu5kFoSKfQbOxfkxNVeqDwct51Av-0SsAAX6yz5LJmqWNPerPXfS3hgc75Ci-KeNCetldCKA5AYseG2jlAVktVpt7iYzMMGQTZXJH2tPQvVVV3RpvZ7A3l5g5AHn9qb0otudKttocm9Y4KediLlVoGuYeesVF2BTTZ1aaSZkAbJbH_nUEhBY33XIHMZM8KvfmKER8YHCQ6faST4FZLLMiNmuQXPGwFyY");'></div>
+</div>
+</div>
+</section>
+<!-- Export Tools -->
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid md:grid-cols-2 gap-12 items-center">
+<div class="bg-white dark:bg-gray-800/50 p-6 rounded-xl shadow-lg ring-1 ring-gray-200 dark:ring-gray-800 md:order-last">
+<div class="grid grid-cols-2 gap-6 place-items-center aspect-video content-center">
+<div class="flex flex-col items-center gap-2 p-4 rounded-lg bg-background-light dark:bg-background-dark">
+<span class="material-symbols-outlined text-4xl text-primary">picture_as_pdf</span>
+<span class="font-semibold text-text-light dark:text-text-dark">Export as PDF</span>
+</div>
+<div class="flex flex-col items-center gap-2 p-4 rounded-lg bg-background-light dark:bg-background-dark">
+<span class="material-symbols-outlined text-4xl text-primary">image</span>
+<span class="font-semibold text-text-light dark:text-text-dark">Export as PNG</span>
+</div>
+<div class="flex flex-col items-center gap-2 p-4 rounded-lg bg-background-light dark:bg-background-dark">
+<span class="material-symbols-outlined text-4xl text-primary">share</span>
+<span class="font-semibold text-text-light dark:text-text-dark">Share Link</span>
+</div>
+<div class="flex flex-col items-center gap-2 p-4 rounded-lg bg-background-light dark:bg-background-dark">
+<span class="material-symbols-outlined text-4xl text-primary">print</span>
+<span class="font-semibold text-text-light dark:text-text-dark">Print Version</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<span class="inline-flex items-center rounded-full bg-secondary/10 px-3 py-1 text-sm font-medium text-secondary">PORTABLE</span>
+<h2 class="text-3xl md:text-4xl font-bold tracking-tight text-gray-900 dark:text-white">Flexible Export Tools</h2>
+<p class="text-lg text-text-muted-light dark:text-text-muted-dark">
+                                Easily export your portfolio to PDF or other formats for offline sharing, professional presentations, or printing. Your work, available wherever you need it.
+                             </p>
+</div>
+</div>
+</section>
+<!-- Messaging System -->
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid md:grid-cols-2 gap-12 items-center">
+<div class="flex flex-col gap-4">
+<span class="inline-flex items-center rounded-full bg-secondary/10 px-3 py-1 text-sm font-medium text-secondary">CONNECTED</span>
+<h2 class="text-3xl md:text-4xl font-bold tracking-tight text-gray-900 dark:text-white">Integrated Messaging</h2>
+<p class="text-lg text-text-muted-light dark:text-text-muted-dark">
+                                Communicate directly with clients, recruiters, and visitors through our simple and intuitive messaging system. Never miss an opportunity.
+                            </p>
+</div>
+<div class="bg-white dark:bg-gray-800/50 p-6 rounded-xl shadow-lg ring-1 ring-gray-200 dark:ring-gray-800">
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg" data-alt="A mockup of the simple and clean POW messaging inbox interface." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAvGtxJwcf-mspYLfnIR03IBF_MyTLuybWLK7gAq6TNUhMClaaQUryIaXPT0CRbR9NCXaic0loKPClbEM4GWQ6XV4p4KrIjHY24DPqARxz-325YiKyfhXUC7Txs1Jz82Pevc7ju-tPl4iu6nbIPFC0cgOmT24tlr52svMG_iVG4NoAWbj6AM5-2zlZ6ERLsw9uxUVf0BJn0OqQ9vH2UkjVhemtP3_eNUyc3tVxTz8y24WL9dDTrSNR1pC5_8lJ8k5RcE6cyglrNFNY");'></div>
+</div>
+</div>
+</section>
+</div>
+<!-- CTASection -->
+<section class="bg-gray-100 dark:bg-gray-900/50 py-20 md:py-24 mt-16">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+<h2 class="text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
+                        Ready to build your stunning portfolio?
+                    </h2>
+<p class="mt-4 text-lg leading-6 text-text-muted-light dark:text-text-muted-dark max-w-2xl mx-auto">
+                        Join thousands of creators and professionals who trust POW to showcase their best work. Start your free 14-day trial today, no credit card required.
+                    </p>
+<div class="mt-8">
+<button class="flex mx-auto min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors">
+<span class="truncate">Start Your Free Trial</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-background-light dark:bg-background-dark border-t border-gray-200/50 dark:border-gray-800/50">
+<div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+<nav aria-label="Footer" class="flex flex-wrap justify-center -mx-5 -my-2">
+<div class="px-5 py-2">
+<a class="text-base text-text-muted-light dark:text-text-muted-dark hover:text-text-light dark:hover:text-text-dark transition-colors" href="#">About</a>
+</div>
+<div class="px-5 py-2">
+<a class="text-base text-text-muted-light dark:text-text-muted-dark hover:text-text-light dark:hover:text-text-dark transition-colors" href="#">Features</a>
+</div>
+<div class="px-5 py-2">
+<a class="text-base text-text-muted-light dark:text-text-muted-dark hover:text-text-light dark:hover:text-text-dark transition-colors" href="#">Pricing</a>
+</div>
+<div class="px-5 py-2">
+<a class="text-base text-text-muted-light dark:text-text-muted-dark hover:text-text-light dark:hover:text-text-dark transition-colors" href="#">Blog</a>
+</div>
+<div class="px-5 py-2">
+<a class="text-base text-text-muted-light dark:text-text-muted-dark hover:text-text-light dark:hover:text-text-dark transition-colors" href="#">Contact</a>
+</div>
+<div class="px-5 py-2">
+<a class="text-base text-text-muted-light dark:text-text-muted-dark hover:text-text-light dark:hover:text-text-dark transition-colors" href="#">Terms of Service</a>
+</div>
+<div class="px-5 py-2">
+<a class="text-base text-text-muted-light dark:text-text-muted-dark hover:text-text-light dark:hover:text-text-dark transition-colors" href="#">Privacy Policy</a>
+</div>
+</nav>
+<div class="mt-8 flex justify-center space-x-6">
+<a class="text-text-muted-light dark:text-text-muted-dark hover:text-text-light dark:hover:text-text-dark" href="#">
+<span class="sr-only">Twitter</span>
+<svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewbox="0 0 24 24"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.71v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path></svg>
+</a>
+<a class="text-text-muted-light dark:text-text-muted-dark hover:text-text-light dark:hover:text-text-dark" href="#">
+<span class="sr-only">LinkedIn</span>
+<svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewbox="0 0 24 24"><path clip-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" fill-rule="evenodd"></path></svg>
+</a>
+<a class="text-text-muted-light dark:text-text-muted-dark hover:text-text-light dark:hover:text-text-dark" href="#">
+<span class="sr-only">Instagram</span>
+<svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewbox="0 0 24 24"><path clip-rule="evenodd" d="M12 2C8.74 2 8.333.017 7.053.052 5.775.085 4.905.333 4.14.63c-.784.305-1.48.77-2.175 1.465C1.27 2.808.803 3.505.5 4.285.2 5.065-.033 5.933-.065 7.215c-.033 1.283-.05 1.688-.05 4.785s.017 3.502.05 4.785c.032 1.282.268 2.15.565 2.912.308.782.778 1.478 1.475 2.175.698.698 1.392 1.168 2.175 1.475.765.298 1.63.53 2.912.565 1.283.033 1.688.05 4.785.05s3.502-.017 4.785-.05c1.282-.033 2.15-.268 2.912-.565.783-.305 1.478-.778 2.175-1.475.698-.698 1.168-1.392 1.475-2.175.298-.765.53-1.63.565-2.912.033-1.283.05-1.688.05-4.785s-.017-3.502-.05-4.785c-.033-1.282-.268-2.15-.565-2.912-.305-.782-.778-1.478-1.475-2.175C20.495 1.27 19.8 .803 19.018.5.215 5.933.033 5.065.033 7.215.033 1.688-.017 1.283-.05 7.053 15.667 2 15.26 2 12 2zm0 1.44c3.24 0 3.584.012 4.85.07 1.17.055 1.805.248 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.058 1.266.07 1.61.07 4.85s-.012 3.584-.07 4.85c-.055 1.17-.248 1.805-.413 2.227-.217.562-.477.96-.896 1.382-.42.419-.819.679-1.381.896-.422.164-1.057.36-2.227.413-1.266.058-1.61.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.055-1.805-.248-2.227-.413-.562-.217-.96-.477-1.382-.896-.419-.42-.679-.819-.896-1.381-.164-.422-.36-1.057-.413-2.227-.058-1.266-.07-1.61-.07-4.85s.012-3.584.07-4.85c.055-1.17.248-1.805.413-2.227.217-.562.477-.96.896-1.382.42-.419.819-.679 1.381-.896.422-.164 1.057-.36 2.227-.413 1.266-.058 1.61-.07 4.85-.07zm0 3.882c-1.996 0-3.618 1.622-3.618 3.618s1.622 3.618 3.618 3.618 3.618-1.622 3.618-3.618-1.622-3.618-3.618-3.618zm0 5.793c-1.2 0-2.175-.975-2.175-2.175s.975-2.175 2.175-2.175 2.175.975 2.175 2.175-.975 2.175-2.175 2.175zm4.848-7.397c-.742 0-1.342-.6-1.342-1.342s.6-1.342 1.342-1.342 1.342.6 1.342 1.342-.6 1.342-1.342 1.342z" fill-rule="evenodd"></path></svg>
+</a>
+</div>
+<p class="mt-8 text-center text-base text-text-muted-light dark:text-text-muted-dark">© 2024 POW, Inc. All rights reserved.</p>
+</div>
+</footer>
+</div>
+</div>
+</body></html>

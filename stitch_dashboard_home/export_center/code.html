@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>POW - Export Center</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#7f13ec",
+              "background-light": "#f7f6f8",
+              "background-dark": "#191022",
+            },
+            fontFamily: {
+              "display": ["Manrope", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+      }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-200">
+<div class="flex min-h-screen">
+<!-- Side Navigation -->
+<aside class="w-64 bg-white dark:bg-background-dark dark:border-r dark:border-white/10 flex-shrink-0">
+<div class="flex h-full flex-col justify-between p-4">
+<div class="flex flex-col gap-4">
+<div class="flex gap-3 items-center">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User profile picture for Alex Doe" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAJkFuDqwi7nIdAb2ch85hlWOAVR1Wygoo4W70HaSAZ0jcNfJ0X1LlNTSd4FtQt1NvcHZMzIS1WIh_MFOxjsvEaaGa1ANjT_prAJKWLZOwdXBQaVU_tikq9_JA0NYYm6MSdH5yqcu3Tp5DAvIawSygq_2K-eHLY_Z_PHvb5AePA7aE3iON16Zx1l-CAO6UqXalaVnfRd0C_YwFs1y-nRnGAOHyuV6_u5Toi7NGbnADxkPH7uhHaeoMCLRgP16bBdkeWdPT2CL445PM");'></div>
+<div class="flex flex-col">
+<h1 class="text-[#141118] dark:text-white text-base font-medium leading-normal">Alex Doe</h1>
+<p class="text-[#756189] dark:text-gray-400 text-sm font-normal leading-normal">alex.doe@pow.com</p>
+</div>
+</div>
+<nav class="flex flex-col gap-2 mt-4">
+<a class="flex items-center gap-3 px-3 py-2 text-[#141118] dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/10 rounded-lg" href="#">
+<span class="material-symbols-outlined text-2xl">dashboard</span>
+<p class="text-sm font-medium leading-normal">Dashboard</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-[#141118] dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/10 rounded-lg" href="#">
+<span class="material-symbols-outlined text-2xl">folder</span>
+<p class="text-sm font-medium leading-normal">My Portfolios</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-[#141118] dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/10 rounded-lg" href="#">
+<span class="material-symbols-outlined text-2xl">grid_view</span>
+<p class="text-sm font-medium leading-normal">Templates</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-[#141118] dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/10 rounded-lg" href="#">
+<span class="material-symbols-outlined text-2xl">settings</span>
+<p class="text-sm font-medium leading-normal">Settings</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-xl bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary" href="#">
+<span class="material-symbols-outlined text-2xl">download</span>
+<p class="text-sm font-medium leading-normal">Export Center</p>
+</a>
+</nav>
+</div>
+<div class="flex flex-col gap-4">
+<button class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors">
+<span class="truncate">Create New</span>
+</button>
+<div class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 text-[#141118] dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/10 rounded-lg" href="#">
+<span class="material-symbols-outlined text-2xl">help</span>
+<p class="text-sm font-medium leading-normal">Help Center</p>
+</a>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 p-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Left Column: Settings -->
+<div class="lg:col-span-1 flex flex-col gap-6">
+<!-- Page Heading -->
+<div class="flex flex-col gap-2">
+<p class="text-[#141118] dark:text-white text-4xl font-black leading-tight tracking-[-0.033em]">Export Your Portfolio</p>
+<p class="text-[#756189] dark:text-gray-400 text-base font-normal leading-normal">Customize and generate a shareable version of your portfolio.</p>
+</div>
+<div class="flex flex-col gap-6">
+<!-- Section: Select Format -->
+<div>
+<h3 class="text-[#141118] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] pb-2">Select Format</h3>
+<div class="flex p-1 rounded-xl bg-gray-200 dark:bg-white/10">
+<label class="flex cursor-pointer h-10 grow items-center justify-center overflow-hidden rounded-lg px-2 has-[:checked]:bg-white dark:has-[:checked]:bg-gray-800 has-[:checked]:shadow-[0_1px_3px_rgba(0,0,0,0.1)] has-[:checked]:text-[#141118] dark:has-[:checked]:text-white text-[#756189] dark:text-gray-400 text-sm font-medium leading-normal transition-all">
+<span class="truncate">PDF</span>
+<input checked="" class="sr-only" name="export-format" type="radio" value="PDF"/>
+</label>
+<label class="flex cursor-pointer h-10 grow items-center justify-center overflow-hidden rounded-lg px-2 has-[:checked]:bg-white dark:has-[:checked]:bg-gray-800 has-[:checked]:shadow-[0_1px_3px_rgba(0,0,0,0.1)] has-[:checked]:text-[#141118] dark:has-[:checked]:text-white text-[#756189] dark:text-gray-400 text-sm font-medium leading-normal transition-all">
+<span class="truncate">PNG</span>
+<input class="sr-only" name="export-format" type="radio" value="PNG"/>
+</label>
+<label class="flex cursor-pointer h-10 grow items-center justify-center overflow-hidden rounded-lg px-2 has-[:checked]:bg-white dark:has-[:checked]:bg-gray-800 has-[:checked]:shadow-[0_1px_3px_rgba(0,0,0,0.1)] has-[:checked]:text-[#141118] dark:has-[:checked]:text-white text-[#756189] dark:text-gray-400 text-sm font-medium leading-normal transition-all">
+<span class="truncate">JPEG</span>
+<input class="sr-only" name="export-format" type="radio" value="JPEG"/>
+</label>
+</div>
+</div>
+<!-- Accordions for settings -->
+<div class="flex flex-col gap-3">
+<details class="flex flex-col rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-background-dark px-4 group" open="">
+<summary class="flex cursor-pointer items-center justify-between gap-6 py-3 list-none">
+<p class="text-[#141118] dark:text-white text-sm font-medium leading-normal">Include Sections</p>
+<span class="material-symbols-outlined text-[#141118] dark:text-white group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="pb-4 flex flex-col gap-3">
+<label class="flex items-center gap-3 cursor-pointer">
+<input checked="" class="h-5 w-5 rounded border-gray-300 text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-[#141118] dark:text-gray-300 text-sm">About Me</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer">
+<input checked="" class="h-5 w-5 rounded border-gray-300 text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-[#141118] dark:text-gray-300 text-sm">Project Gallery</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer">
+<input checked="" class="h-5 w-5 rounded border-gray-300 text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-[#141118] dark:text-gray-300 text-sm">Testimonials</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer">
+<input class="h-5 w-5 rounded border-gray-300 text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-[#141118] dark:text-gray-300 text-sm">Contact Information</span>
+</label>
+</div>
+</details>
+<details class="flex flex-col rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-background-dark px-4 group">
+<summary class="flex cursor-pointer items-center justify-between gap-6 py-3 list-none">
+<p class="text-[#141118] dark:text-white text-sm font-medium leading-normal">Branding</p>
+<span class="material-symbols-outlined text-[#141118] dark:text-white group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="pb-4 flex flex-col gap-4">
+<label class="flex items-center justify-between cursor-pointer">
+<span class="text-[#141118] dark:text-gray-300 text-sm">Add personal logo</span>
+<input class="sr-only peer" type="checkbox"/>
+<div class="relative w-11 h-6 bg-gray-200 dark:bg-white/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-0.5 after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+<label class="flex items-center justify-between cursor-pointer">
+<span class="text-[#141118] dark:text-gray-300 text-sm">Apply "POW" watermark</span>
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="relative w-11 h-6 bg-gray-200 dark:bg-white/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-0.5 after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</details>
+<details class="flex flex-col rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-background-dark px-4 group">
+<summary class="flex cursor-pointer items-center justify-between gap-6 py-3 list-none">
+<p class="text-[#141118] dark:text-white text-sm font-medium leading-normal">Page Settings</p>
+<span class="material-symbols-outlined text-[#141118] dark:text-white group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="pb-4">
+<p class="text-sm font-medium text-[#141118] dark:text-white mb-2">Orientation</p>
+<div class="flex p-1 rounded-xl bg-gray-200 dark:bg-white/10">
+<label class="flex cursor-pointer h-10 grow items-center justify-center overflow-hidden rounded-lg px-2 has-[:checked]:bg-white dark:has-[:checked]:bg-gray-800 has-[:checked]:shadow-[0_1px_3px_rgba(0,0,0,0.1)] has-[:checked]:text-[#141118] dark:has-[:checked]:text-white text-[#756189] dark:text-gray-400 text-sm font-medium leading-normal transition-all">
+<span class="truncate">Portrait</span>
+<input checked="" class="sr-only" name="orientation" type="radio" value="portrait"/>
+</label>
+<label class="flex cursor-pointer h-10 grow items-center justify-center overflow-hidden rounded-lg px-2 has-[:checked]:bg-white dark:has-[:checked]:bg-gray-800 has-[:checked]:shadow-[0_1px_3px_rgba(0,0,0,0.1)] has-[:checked]:text-[#141118] dark:has-[:checked]:text-white text-[#756189] dark:text-gray-400 text-sm font-medium leading-normal transition-all">
+<span class="truncate">Landscape</span>
+<input class="sr-only" name="orientation" type="radio" value="landscape"/>
+</label>
+</div>
+</div>
+</details>
+</div>
+</div>
+<!-- Action Bar -->
+<div class="mt-auto pt-6 flex flex-col sm:flex-row gap-3">
+<button class="flex-1 flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined mr-2">download</span>
+<span class="truncate">Download File</span>
+</button>
+<button class="flex-1 flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-4 bg-gray-200 dark:bg-white/10 text-[#141118] dark:text-white text-sm font-bold leading-normal hover:bg-gray-300 dark:hover:bg-white/20 transition-colors">
+<span class="material-symbols-outlined mr-2">link</span>
+<span class="truncate">Copy Share Link</span>
+</button>
+</div>
+</div>
+<!-- Right Column: Preview -->
+<div class="lg:col-span-2 bg-white dark:bg-background-dark rounded-xl shadow-sm border border-gray-200 dark:border-white/10 flex items-center justify-center p-8">
+<div class="w-full h-full max-w-2xl aspect-[8.5/11] bg-gray-100 dark:bg-white/5 rounded-lg flex flex-col items-center justify-center text-center p-6 border-2 border-dashed border-gray-300 dark:border-white/20">
+<div class="bg-primary/10 dark:bg-primary/20 p-4 rounded-full mb-4">
+<span class="material-symbols-outlined text-4xl text-primary">visibility</span>
+</div>
+<h4 class="text-lg font-bold text-[#141118] dark:text-white">Live Preview</h4>
+<p class="text-sm text-[#756189] dark:text-gray-400">Your export preview will update here as you change the settings.</p>
+</div>
+</div>
+</main>
+</div>
+</body></html>

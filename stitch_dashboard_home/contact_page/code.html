@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Contact Us - POW</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#4F46E5", // Adjusted to user request
+            "background-light": "#F9FAFB", // Adjusted to user request
+            "background-dark": "#111827", // Adjusted to user request
+          },
+          fontFamily: {
+            "display": ["Manrope", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.5rem",
+            "lg": "1rem",
+            "xl": "1.5rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#111827] dark:text-gray-200">
+<div class="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<!-- TopNavBar -->
+<header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm">
+<div class="container mx-auto px-4">
+<div class="flex items-center justify-between whitespace-nowrap border-b border-solid border-gray-200 dark:border-gray-800 py-4">
+<div class="flex items-center gap-4 text-[#111827] dark:text-white">
+<div class="size-6 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M24 4C25.7818 14.2173 33.7827 22.2182 44 24C33.7827 25.7818 25.7818 33.7827 24 44C22.2182 33.7827 14.2173 25.7818 4 24C14.2173 22.2182 22.2182 14.2173 24 4Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-xl font-bold leading-tight tracking-[-0.015em]">POW</h2>
+</div>
+<nav class="hidden md:flex flex-1 justify-center gap-8">
+<div class="flex items-center gap-9">
+<a class="text-sm font-medium leading-normal text-gray-800 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors" href="#">Home</a>
+<a class="text-sm font-medium leading-normal text-gray-800 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors" href="#">Features</a>
+<a class="text-sm font-medium leading-normal text-gray-800 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors" href="#">Pricing</a>
+<a class="text-sm font-medium leading-normal text-primary dark:text-primary font-semibold" href="#">Contact</a>
+</div>
+</nav>
+<div class="flex items-center">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-5 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors">
+<span class="truncate">Sign Up</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<main class="flex flex-1 justify-center py-16 sm:py-24">
+<div class="container mx-auto px-4">
+<div class="flex flex-col max-w-5xl mx-auto">
+<!-- Page Heading -->
+<div class="flex flex-col gap-3 text-center mb-12">
+<h1 class="text-4xl sm:text-5xl font-black leading-tight tracking-[-0.033em] text-[#111827] dark:text-white">Get in Touch</h1>
+<p class="text-base sm:text-lg font-normal leading-normal text-[#6B7280] dark:text-gray-400 max-w-2xl mx-auto">
+                We'd love to hear from you. Whether you have a question, feedback, or need support, our team is ready to help.
+              </p>
+</div>
+<!-- Main Content Area -->
+<div class="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
+<!-- Contact Form -->
+<div class="lg:col-span-3 bg-white dark:bg-gray-900/50 p-8 rounded-xl border border-gray-200 dark:border-gray-800">
+<h2 class="text-[#111827] dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em] pb-6">Send us a message</h2>
+<form class="flex flex-col gap-6">
+<!-- Full Name -->
+<label class="flex flex-col flex-1">
+<p class="text-[#111827] dark:text-gray-200 text-sm font-medium leading-normal pb-2">Full Name</p>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#111827] dark:text-gray-200 focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-gray-300 dark:border-gray-700 bg-background-light dark:bg-background-dark h-12 placeholder:text-[#6B7280] p-[15px] text-base font-normal leading-normal transition-all" placeholder="Enter your full name" type="text" value=""/>
+</label>
+<!-- Email Address -->
+<label class="flex flex-col flex-1">
+<p class="text-[#111827] dark:text-gray-200 text-sm font-medium leading-normal pb-2">Email Address</p>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#111827] dark:text-gray-200 focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-gray-300 dark:border-gray-700 bg-background-light dark:bg-background-dark h-12 placeholder:text-[#6B7280] p-[15px] text-base font-normal leading-normal transition-all" placeholder="you@company.com" type="email" value=""/>
+</label>
+<!-- Message -->
+<label class="flex flex-col flex-1">
+<p class="text-[#111827] dark:text-gray-200 text-sm font-medium leading-normal pb-2">Message</p>
+<textarea class="form-textarea flex w-full min-w-0 flex-1 resize-y overflow-hidden rounded-lg text-[#111827] dark:text-gray-200 focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-gray-300 dark:border-gray-700 bg-background-light dark:bg-background-dark placeholder:text-[#6B7280] p-[15px] text-base font-normal leading-normal min-h-[120px] transition-all" placeholder="Enter your message here..."></textarea>
+</label>
+<!-- Submit Button -->
+<button class="flex min-w-[84px] w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-4 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary/50 dark:focus:ring-offset-background-dark">
+<span class="truncate">Send Message</span>
+</button>
+</form>
+</div>
+<!-- Contact Info & CTA -->
+<div class="lg:col-span-2 flex flex-col gap-8">
+<h3 class="text-[#111827] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] lg:mt-2">Other ways to connect</h3>
+<div class="flex flex-col gap-6">
+<div class="flex items-start gap-4">
+<div class="flex-shrink-0 size-10 flex items-center justify-center rounded-full bg-primary/10 text-primary dark:bg-primary/20 dark:text-primary/80">
+<span class="material-symbols-outlined text-xl">mail</span>
+</div>
+<div>
+<h4 class="text-base font-semibold text-[#111827] dark:text-white">Email Us</h4>
+<p class="text-sm text-[#6B7280] dark:text-gray-400">Our support team will get back to you within 24 hours.</p>
+<a class="text-sm font-medium text-primary hover:underline mt-1 inline-block" href="mailto:support@pow.com">support@pow.com</a>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="flex-shrink-0 size-10 flex items-center justify-center rounded-full bg-primary/10 text-primary dark:bg-primary/20 dark:text-primary/80">
+<span class="material-symbols-outlined text-xl">location_on</span>
+</div>
+<div>
+<h4 class="text-base font-semibold text-[#111827] dark:text-white">Our Office</h4>
+<p class="text-sm text-[#6B7280] dark:text-gray-400">123 Portfolio Lane, Suite 100<br/>Creative City, CA 90210</p>
+</div>
+</div>
+</div>
+<div class="mt-4 border-t border-gray-200 dark:border-gray-800 pt-8">
+<h3 class="text-[#111827] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Looking for a quick answer?</h3>
+<p class="text-sm text-[#6B7280] dark:text-gray-400 mt-2 mb-4">Check out our frequently asked questions to find answers to common inquiries instantly.</p>
+<a class="inline-flex items-center gap-2 text-sm font-bold text-primary hover:underline" href="#">
+<span>Visit our FAQs</span>
+<span class="material-symbols-outlined text-base">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-white dark:bg-gray-900/50 border-t border-gray-200 dark:border-gray-800">
+<div class="container mx-auto px-4 py-12">
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
+<div class="col-span-2 lg:col-span-2">
+<div class="flex items-center gap-3">
+<div class="size-6 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M24 4C25.7818 14.2173 33.7827 22.2182 44 24C33.7827 25.7818 25.7818 33.7827 24 44C22.2182 33.7827 14.2173 25.7818 4 24C14.2173 22.2182 22.2182 14.2173 24 4Z" fill="currentColor"></path></svg>
+</div>
+<h2 class="text-xl font-bold leading-tight tracking-[-0.015em] text-[#111827] dark:text-white">POW</h2>
+</div>
+<p class="mt-4 text-sm text-gray-600 dark:text-gray-400 max-w-xs">Create, customize, and share your stunning personal or business portfolio effortlessly.</p>
+</div>
+<div class="col-span-1">
+<h3 class="font-semibold text-sm text-gray-900 dark:text-white">Product</h3>
+<ul class="mt-4 space-y-3">
+<li><a class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary transition-colors" href="#">Features</a></li>
+<li><a class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary transition-colors" href="#">Pricing</a></li>
+<li><a class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary transition-colors" href="#">Templates</a></li>
+</ul>
+</div>
+<div class="col-span-1">
+<h3 class="font-semibold text-sm text-gray-900 dark:text-white">Company</h3>
+<ul class="mt-4 space-y-3">
+<li><a class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary transition-colors" href="#">About Us</a></li>
+<li><a class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary transition-colors" href="#">Careers</a></li>
+<li><a class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary transition-colors" href="#">Contact</a></li>
+</ul>
+</div>
+<div class="col-span-2 lg:col-span-2">
+<h3 class="font-semibold text-sm text-gray-900 dark:text-white">Stay up to date</h3>
+<p class="mt-4 text-sm text-gray-600 dark:text-gray-400">Join our newsletter to get the latest updates.</p>
+<div class="mt-4 flex gap-2">
+<input class="form-input flex-1 rounded-lg text-sm text-[#111827] dark:text-gray-200 focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-gray-300 dark:border-gray-700 bg-background-light dark:bg-background-dark placeholder:text-[#6B7280]" placeholder="Enter your email" type="email"/>
+<button class="flex-shrink-0 rounded-lg bg-primary px-4 py-2 text-sm font-bold text-white hover:bg-primary/90 transition-colors">Subscribe</button>
+</div>
+</div>
+</div>
+<div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800 flex flex-col sm:flex-row justify-between items-center text-sm text-gray-500 dark:text-gray-400">
+<p>© 2024 POW, Inc. All rights reserved.</p>
+<div class="flex gap-4 mt-4 sm:mt-0">
+<a class="hover:text-primary" href="#">Terms of Service</a>
+<a class="hover:text-primary" href="#">Privacy Policy</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+</div>
+</body></html>

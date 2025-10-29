@@ -1,0 +1,258 @@
+ <x-layouts.guest>
+ 
+    <section class="py-16 sm:py-24">
+        <div class="mx-auto flex max-w-7xl flex-col items-center gap-8 px-6">
+            <div class="flex flex-col gap-4 text-center">
+                <h1
+                    class="text-[#141118] dark:text-white text-4xl sm:text-5xl md:text-6xl font-black leading-tight tracking-[-0.033em]">
+                    Pricing that scales with you</h1>
+                <p
+                    class="text-[#756189] dark:text-gray-400 text-lg sm:text-xl font-normal leading-normal max-w-2xl mx-auto">
+                    Start for free and upgrade as you grow. Cancel anytime.</p>
+            </div>
+            <div class="flex w-full max-w-xs justify-center py-3">
+                <div
+                    class="flex h-10 flex-1 items-center justify-center rounded-lg bg-[#e0dbe6] dark:bg-background-dark/80 p-1">
+                    <label
+                        class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-md px-2 has-[:checked]:bg-white dark:has-[:checked]:bg-gray-700 has-[:checked]:shadow-[0_0_4px_rgba(0,0,0,0.1)] has-[:checked]:text-[#141118] dark:has-[:checked]:text-white text-[#756189] dark:text-gray-400 text-sm font-medium leading-normal">
+                        <span class="truncate">Monthly</span>
+                        <input class="invisible w-0" name="billing-cycle" type="radio" value="Monthly" />
+                    </label>
+                    <label
+                        class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-md px-2 has-[:checked]:bg-white dark:has-[:checked]:bg-gray-700 has-[:checked]:shadow-[0_0_4px_rgba(0,0,0,0.1)] has-[:checked]:text-[#141118] dark:has-[:checked]:text-white text-[#756189] dark:text-gray-400 text-sm font-medium leading-normal">
+                        <span class="truncate">Yearly (Save 20%)</span>
+                        <input checked="" class="invisible w-0" name="billing-cycle" type="radio"
+                            value="Yearly" />
+                    </label>
+                </div>
+            </div>
+            <div class="w-full grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-8 pt-8">
+                <div
+                    class="flex flex-1 flex-col gap-6 rounded-xl border border-solid border-[#e0dbe6] dark:border-gray-800 bg-white dark:bg-background-dark/50 p-6 transform hover:-translate-y-1 transition-transform duration-300">
+                    <div class="flex flex-col gap-2">
+                        <h2 class="text-[#141118] dark:text-white text-lg font-bold leading-tight">Free</h2>
+                        <p class="flex items-baseline gap-1 text-[#141118] dark:text-white">
+                            <span class="text-4xl font-black leading-tight tracking-[-0.033em]">$0</span>
+                            <span class="text-base font-bold leading-tight">/month</span>
+                        </p>
+                    </div>
+                    <button
+                        class="flex w-full min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#f2f0f4] dark:bg-gray-800 text-[#141118] dark:text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-gray-200 dark:hover:bg-gray-700">
+                        <span class="truncate">Start for Free</span>
+                    </button>
+                    <div class="flex flex-col gap-3">
+                        <div class="flex items-center gap-3 text-sm text-[#141118] dark:text-gray-300">
+                            <span class="material-symbols-outlined text-primary text-xl">check</span>
+                            <span>1 Portfolio</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-sm text-[#141118] dark:text-gray-300">
+                            <span class="material-symbols-outlined text-primary text-xl">check</span>
+                            <span>Basic Templates</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-sm text-[#141118] dark:text-gray-300">
+                            <span class="material-symbols-outlined text-primary text-xl">check</span>
+                            <span>Limited Export Options</span>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="flex flex-1 flex-col gap-6 rounded-xl border-2 border-solid border-primary dark:border-primary bg-white dark:bg-background-dark/50 p-6 relative transform hover:-translate-y-1 transition-transform duration-300">
+                    <div class="flex flex-col gap-2">
+                        <div class="flex items-center justify-between">
+                            <h2 class="text-[#141118] dark:text-white text-lg font-bold leading-tight">Pro</h2>
+                            <p
+                                class="text-white text-xs font-medium leading-normal tracking-[0.015em] rounded-full bg-primary px-3 py-[3px] text-center">
+                                Most Popular</p>
+                        </div>
+                        <p class="flex items-baseline gap-1 text-[#141118] dark:text-white">
+                            <span class="text-4xl font-black leading-tight tracking-[-0.033em]">$12</span>
+                            <span class="text-base font-bold leading-tight">/month</span>
+                        </p>
+                    </div>
+                    <button
+                        class="flex w-full min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/90">
+                        <span class="truncate">Upgrade to Pro</span>
+                    </button>
+                    <div class="flex flex-col gap-3">
+                        <div class="flex items-center gap-3 text-sm text-[#141118] dark:text-gray-300">
+                            <span class="material-symbols-outlined text-primary text-xl">check</span>
+                            <span>Unlimited Portfolios</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-sm text-[#141118] dark:text-gray-300">
+                            <span class="material-symbols-outlined text-primary text-xl">check</span>
+                            <span>Full Template Access</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-sm text-[#141118] dark:text-gray-300">
+                            <span class="material-symbols-outlined text-primary text-xl">check</span>
+                            <span>Portfolio Analytics</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-sm text-[#141118] dark:text-gray-300">
+                            <span class="material-symbols-outlined text-primary text-xl">check</span>
+                            <span>Custom Domains</span>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="flex flex-1 flex-col gap-6 rounded-xl border border-solid border-[#e0dbe6] dark:border-gray-800 bg-white dark:bg-background-dark/50 p-6 transform hover:-translate-y-1 transition-transform duration-300">
+                    <div class="flex flex-col gap-2">
+                        <h2 class="text-[#141118] dark:text-white text-lg font-bold leading-tight">Business</h2>
+                        <p class="flex items-baseline gap-1 text-[#141118] dark:text-white">
+                            <span class="text-4xl font-black leading-tight tracking-[-0.033em]">$30</span>
+                            <span class="text-base font-bold leading-tight">/month</span>
+                        </p>
+                    </div>
+                    <button
+                        class="flex w-full min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#f2f0f4] dark:bg-gray-800 text-[#141118] dark:text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-gray-200 dark:hover:bg-gray-700">
+                        <span class="truncate">Contact Sales</span>
+                    </button>
+                    <div class="flex flex-col gap-3">
+                        <div class="flex items-center gap-3 text-sm text-[#141118] dark:text-gray-300">
+                            <span class="material-symbols-outlined text-primary text-xl">check</span>
+                            <span>Everything in Pro</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-sm text-[#141118] dark:text-gray-300">
+                            <span class="material-symbols-outlined text-primary text-xl">check</span>
+                            <span>Team Accounts</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-sm text-[#141118] dark:text-gray-300">
+                            <span class="material-symbols-outlined text-primary text-xl">check</span>
+                            <span>Advanced Branding Control</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-sm text-[#141118] dark:text-gray-300">
+                            <span class="material-symbols-outlined text-primary text-xl">check</span>
+                            <span>Collaboration Insights</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-16 sm:py-24">
+        <div class="mx-auto flex max-w-7xl flex-col items-center gap-12 px-6">
+            <h2
+                class="text-[#756189] dark:text-gray-400 text-sm font-bold uppercase leading-normal tracking-[0.05em] text-center">
+                Compare all features</h2>
+            <div class="w-full overflow-x-auto">
+                <table class="w-full min-w-[600px] text-left text-sm">
+                    <thead class="border-b border-gray-200 dark:border-gray-800">
+                        <tr>
+                            <th class="w-2/5 p-4 font-bold text-[#141118] dark:text-white">Features</th>
+                            <th class="w-1/5 p-4 text-center font-bold text-[#141118] dark:text-white">Free</th>
+                            <th class="w-1/5 p-4 text-center font-bold text-[#141118] dark:text-white">Pro</th>
+                            <th class="w-1/5 p-4 text-center font-bold text-[#141118] dark:text-white">Business</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="font-bold bg-gray-50 dark:bg-gray-800/30">
+                            <td class="p-4 text-[#141118] dark:text-white" colspan="4">Creation</td>
+                        </tr>
+                        <tr class="border-b border-gray-200 dark:border-gray-800">
+                            <td class="p-4 text-gray-600 dark:text-gray-400">Number of Portfolios</td>
+                            <td class="p-4 text-center text-[#141118] dark:text-gray-300">1</td>
+                            <td class="p-4 text-center text-[#141118] dark:text-gray-300">Unlimited</td>
+                            <td class="p-4 text-center text-[#141118] dark:text-gray-300">Unlimited</td>
+                        </tr>
+                        <tr class="border-b border-gray-200 dark:border-gray-800">
+                            <td class="p-4 text-gray-600 dark:text-gray-400">Template Access</td>
+                            <td class="p-4 text-center text-[#141118] dark:text-gray-300">Basic</td>
+                            <td class="p-4 text-center text-[#141118] dark:text-gray-300">Full</td>
+                            <td class="p-4 text-center text-[#141118] dark:text-gray-300">Full</td>
+                        </tr>
+                        <tr class="border-b border-gray-200 dark:border-gray-800">
+                            <td class="p-4 text-gray-600 dark:text-gray-400">Export Options</td>
+                            <td class="p-4 text-center text-gray-400 dark:text-gray-500">—</td>
+                            <td class="p-4 text-center text-primary"><span
+                                    class="material-symbols-outlined">check</span></td>
+                            <td class="p-4 text-center text-primary"><span
+                                    class="material-symbols-outlined">check</span></td>
+                        </tr>
+                        <tr class="font-bold bg-gray-50 dark:bg-gray-800/30">
+                            <td class="p-4 text-[#141118] dark:text-white" colspan="4">Analytics</td>
+                        </tr>
+                        <tr class="border-b border-gray-200 dark:border-gray-800">
+                            <td class="p-4 text-gray-600 dark:text-gray-400">Portfolio Analytics</td>
+                            <td class="p-4 text-center text-gray-400 dark:text-gray-500">—</td>
+                            <td class="p-4 text-center text-primary"><span
+                                    class="material-symbols-outlined">check</span></td>
+                            <td class="p-4 text-center text-primary"><span
+                                    class="material-symbols-outlined">check</span></td>
+                        </tr>
+                        <tr class="font-bold bg-gray-50 dark:bg-gray-800/30">
+                            <td class="p-4 text-[#141118] dark:text-white" colspan="4">Collaboration</td>
+                        </tr>
+                        <tr class="border-b border-gray-200 dark:border-gray-800">
+                            <td class="p-4 text-gray-600 dark:text-gray-400">Team Members</td>
+                            <td class="p-4 text-center text-gray-400 dark:text-gray-500">—</td>
+                            <td class="p-4 text-center text-gray-400 dark:text-gray-500">—</td>
+                            <td class="p-4 text-center text-[#141118] dark:text-gray-300">Up to 10</td>
+                        </tr>
+                        <tr class="border-b border-gray-200 dark:border-gray-800">
+                            <td class="p-4 text-gray-600 dark:text-gray-400">Custom Branding</td>
+                            <td class="p-4 text-center text-gray-400 dark:text-gray-500">—</td>
+                            <td class="p-4 text-center text-gray-400 dark:text-gray-500">—</td>
+                            <td class="p-4 text-center text-primary"><span
+                                    class="material-symbols-outlined">check</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    <section class="py-16 sm:py-24">
+        <div class="mx-auto flex max-w-4xl flex-col items-center gap-12 px-6">
+            <div class="text-center">
+                <h2
+                    class="text-[#141118] dark:text-white text-3xl sm:text-4xl font-black leading-tight tracking-[-0.033em]">
+                    Frequently Asked Questions</h2>
+                <p class="text-[#756189] dark:text-gray-400 mt-2">Everything you need to know about our plans.</p>
+            </div>
+            <div class="w-full flex flex-col divide-y divide-gray-200 dark:divide-gray-800">
+                <details class="group py-4">
+                    <summary
+                        class="flex cursor-pointer items-center justify-between font-bold text-[#141118] dark:text-white">
+                        Can I cancel my subscription?
+                        <span
+                            class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180">expand_more</span>
+                    </summary>
+                    <p class="mt-2 text-[#756189] dark:text-gray-400">Yes, you can cancel your subscription at any
+                        time. Your plan will remain active until the end of the current billing cycle, and you will not
+                        be charged again.</p>
+                </details>
+                <details class="group py-4">
+                    <summary
+                        class="flex cursor-pointer items-center justify-between font-bold text-[#141118] dark:text-white">
+                        What happens if I downgrade?
+                        <span
+                            class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180">expand_more</span>
+                    </summary>
+                    <p class="mt-2 text-[#756189] dark:text-gray-400">When you downgrade, you will retain access to
+                        your current plan's features until the end of your billing period. After that, your account will
+                        be moved to the new, lower-tier plan, and some features may become unavailable.</p>
+                </details>
+                <details class="group py-4">
+                    <summary
+                        class="flex cursor-pointer items-center justify-between font-bold text-[#141118] dark:text-white">
+                        Do you offer a non-profit discount?
+                        <span
+                            class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180">expand_more</span>
+                    </summary>
+                    <p class="mt-2 text-[#756189] dark:text-gray-400">We are happy to support non-profit organizations.
+                        Please contact our sales team with your organization's details to learn more about our special
+                        pricing for non-profits.</p>
+                </details>
+                <details class="group py-4">
+                    <summary
+                        class="flex cursor-pointer items-center justify-between font-bold text-[#141118] dark:text-white">
+                        Is there a trial for the Pro plan?
+                        <span
+                            class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180">expand_more</span>
+                    </summary>
+                    <p class="mt-2 text-[#756189] dark:text-gray-400">You can start with our Free plan to get a feel
+                        for the platform. When you're ready, you can upgrade to the Pro plan. We offer a 14-day
+                        money-back guarantee if you're not satisfied.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+ </x-layouts.guest>
