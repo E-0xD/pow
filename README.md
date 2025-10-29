@@ -4,21 +4,9 @@
   </a>
 </p>
 
-<p align="center">
-  <a href="https://github.com/yourusername/pow/actions">
-    <img src="https://github.com/yourusername/pow/workflows/tests/badge.svg" alt="Build Status">
-  </a>
-  <a href="https://packagist.org/packages/yourusername/pow">
-    <img src="https://img.shields.io/packagist/v/yourusername/pow" alt="Latest Version">
-  </a>
-  <a href="https://packagist.org/packages/yourusername/pow">
-    <img src="https://img.shields.io/packagist/l/yourusername/pow" alt="License">
-  </a>
-</p>
-
 ---
 
-## 🪶 About POW
+## About POW
 
 **POW (Proof of Work)** is a modern SaaS platform that helps creators, freelancers, and professionals showcase who they are and what they can do, all in one link.
 
@@ -34,19 +22,19 @@ You get a beautiful, shareable **proof of work**, all without writing code.
 
 ---
 
-## ✨ Features
+##  Features
 
-- 🪞 **Portfolio Builder:** Create and customize your personal brand page.  
-- 🧠 **Skill & Link Management:** Add your skills, socials, and experiences in one place.  
-- 📸 **Project Showcase:** Upload visuals, videos, or links to your work.  
-- 🔍 **Profile Analytics:** See who’s viewing and engaging with your profile.  
-- 🏷️ **Custom Subdomains:** yourname.pow.app  
-- 💳 **Subscription System:** Accept global payments for Pro features.  
-- ☁️ **Responsive Design:** Works beautifully on mobile, tablet, and desktop.  
+- **Portfolio Builder:** Create and customize your personal brand page.  
+- **Skill & Link Management:** Add your skills, socials, and experiences in one place.  
+- **Project Showcase:** Upload visuals, videos, or links to your work.  
+- **Profile Analytics:** See who’s viewing and engaging with your profile.  
+- **Custom Subdomains:** yourname.pow.app  
+- **Subscription System:** Accept global payments for Pro features.  
+- **Responsive Design:** Works beautifully on mobile, tablet, and desktop.  
 
 ---
 
-## ⚙️ Tech Stack
+## Tech Stack
 
 - **Backend:** Laravel 12 (PHP 8.3)  
 - **Frontend:** Tailwind CSS (HTML-first, responsive, mobile-first)  
@@ -57,7 +45,7 @@ You get a beautiful, shareable **proof of work**, all without writing code.
 
 ---
 
-## 🚀 Installation
+## Installation
 
 ```bash
 # Clone the repository
