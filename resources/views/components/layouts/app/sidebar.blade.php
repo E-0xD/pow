@@ -16,7 +16,7 @@
                      <p class="text-sm font-medium leading-normal">My Portfolios</p>
                  </a>
                  <nav class="flex flex-col gap-2">
-                    <a class="flex items-center gap-3 px-3 py-2" href="#">
+                     <a class="flex items-center gap-3 px-3 py-2" href="#">
                          <span class="material-symbols-outlined text-primary">check_circle</span>
                          <p class="text-slate-700 dark:text-slate-300 text-sm font-medium leading-normal">Choose Template</p>
                      </a>
@@ -50,11 +50,15 @@
                      <span class="material-symbols-outlined text-2xl">settings</span>
                      <p class="text-sm font-medium leading-normal">Settings</p>
                  </a>
-                 <a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 text-[#1F2937] dark:text-gray-300"
-                     href="#">
-                     <span class="material-symbols-outlined text-2xl">logout</span>
-                     <p class="text-sm font-medium leading-normal">Log out</p>
-                 </a>
+                 <form action="{{ route('logout') }}" method="post">
+                     @csrf
+                     <button
+                         class="flex w-full items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 text-[#1F2937] dark:text-gray-300"
+                         type="submit">
+                         <span class="material-symbols-outlined text-2xl">logout</span>
+                         <p class="text-sm font-medium leading-normal">Log out</p>
+                     </button>
+                 </form>
              </div>
              <div class="flex gap-3 items-center border-t border-[#E5E7EB] dark:border-white/10 pt-4">
                  <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
