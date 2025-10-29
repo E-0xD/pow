@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>POW - Checkout</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#7f13ec",
+                        "background-light": "#f7f6f8",
+                        "background-dark": "#191022",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#140d1b] dark:text-white/90">
+<!-- Confirmation Modal (hidden by default) -->
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 hidden" id="confirmation-modal">
+<div class="flex w-full max-w-sm flex-col items-center gap-6 rounded-xl bg-background-light dark:bg-background-dark p-8 shadow-2xl">
+<div class="flex h-16 w-16 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/50">
+<span class="material-symbols-outlined text-4xl text-green-500 dark:text-green-400">check_circle</span>
+</div>
+<div class="flex flex-col items-center gap-2 text-center">
+<h3 class="text-2xl font-bold text-[#140d1b] dark:text-white">Payment Successful!</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400">Your transaction has been confirmed. You can now access all the features of your new plan.</p>
+</div>
+<button class="h-12 w-full rounded-lg bg-primary text-base font-bold text-white transition-transform hover:scale-[1.02] active:scale-[0.98]">Go to Dashboard</button>
+</div>
+</div>
+<!-- Main Content -->
+<div class="relative flex min-h-screen w-full flex-col group/design-root">
+<div class="layout-container flex h-full grow flex-col">
+<div class="flex flex-1 justify-center p-4 sm:p-5">
+<div class="layout-content-container flex w-full max-w-md flex-1 flex-col">
+<!-- Header -->
+<header class="flex items-center justify-between whitespace-nowrap p-4">
+<button class="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-primary/10 text-primary dark:bg-primary/20 dark:text-white">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div class="flex items-center gap-2 text-[#140d1b] dark:text-white">
+<div class="h-6 w-6 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M24 4C25.7818 14.2173 33.7827 22.2182 44 24C33.7827 25.7818 25.7818 33.7827 24 44C22.2182 33.7827 14.2173 25.7818 4 24C14.2173 22.2182 22.2182 14.2173 24 4Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-2xl font-bold leading-tight tracking-[-0.015em]">POW</h2>
+</div>
+<div class="w-10"></div>
+</header>
+<div class="flex flex-wrap justify-between gap-3 p-4">
+<p class="text-[#140d1b] dark:text-white text-4xl font-black leading-tight tracking-[-0.033em] min-w-72">Checkout</p>
+</div>
+<!-- Payment Method Section -->
+<div class="pb-3">
+<div class="flex border-b border-[#dbcfe7] dark:border-white/20 px-4 justify-between">
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-primary text-[#140d1b] dark:text-white pb-[13px] pt-4 flex-1" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">Card</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-[#734c9a] dark:text-white/60 pb-[13px] pt-4 flex-1" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">Crypto</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-[#734c9a] dark:text-white/60 pb-[13px] pt-4 flex-1" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">Nigerian Methods</p>
+</a>
+</div>
+</div>
+<!-- Card Form -->
+<div class="flex flex-col gap-3 p-4">
+<label class="flex flex-col w-full">
+<p class="text-[#140d1b] dark:text-white/90 text-base font-medium leading-normal pb-2">Card Number</p>
+<div class="relative flex items-center">
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#140d1b] dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-[#dbcfe7] dark:border-white/20 bg-background-light dark:bg-background-dark/80 focus:border-primary/80 h-14 placeholder:text-[#734c9a] dark:placeholder:text-white/40 p-[15px] pl-12 text-base font-normal leading-normal" placeholder="0000 0000 0000 0000" value=""/>
+<span class="material-symbols-outlined absolute left-4 text-gray-400 dark:text-gray-500">credit_card</span>
+</div>
+</label>
+<div class="flex flex-col sm:flex-row gap-4">
+<label class="flex flex-col min-w-20 flex-1">
+<p class="text-[#140d1b] dark:text-white/90 text-base font-medium leading-normal pb-2">Expiry Date</p>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#140d1b] dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-[#dbcfe7] dark:border-white/20 bg-background-light dark:bg-background-dark/80 focus:border-primary/80 h-14 placeholder:text-[#734c9a] dark:placeholder:text-white/40 p-[15px] text-base font-normal leading-normal" placeholder="MM / YY" value=""/>
+</label>
+<label class="flex flex-col min-w-20 flex-1">
+<p class="text-[#140d1b] dark:text-white/90 text-base font-medium leading-normal pb-2">CVC</p>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#140d1b] dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-[#dbcfe7] dark:border-white/20 bg-background-light dark:bg-background-dark/80 focus:border-primary/80 h-14 placeholder:text-[#734c9a] dark:placeholder:text-white/40 p-[15px] text-base font-normal leading-normal" placeholder="123" value=""/>
+</label>
+</div>
+<label class="flex flex-col w-full">
+<p class="text-[#140d1b] dark:text-white/90 text-base font-medium leading-normal pb-2">Name on Card</p>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#140d1b] dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-[#dbcfe7] dark:border-white/20 bg-background-light dark:bg-background-dark/80 focus:border-primary/80 h-14 placeholder:text-[#734c9a] dark:placeholder:text-white/40 p-[15px] text-base font-normal leading-normal" placeholder="Enter name on card" value=""/>
+</label>
+</div>
+<!-- Order Summary Card -->
+<div class="m-4 mt-6 rounded-xl bg-white dark:bg-white/5 p-6 shadow-[0_10px_30px_-5px_rgba(127,19,236,0.1)] dark:shadow-none border border-transparent dark:border-white/10">
+<h3 class="text-xl font-bold text-[#140d1b] dark:text-white mb-4">Order Summary</h3>
+<div class="flex flex-col gap-3 text-sm text-gray-600 dark:text-gray-300">
+<div class="flex justify-between">
+<span>Plan</span>
+<span class="font-semibold text-[#140d1b] dark:text-white">Pro Annual Plan</span>
+</div>
+<div class="flex justify-between">
+<span>Email</span>
+<span class="font-semibold text-[#140d1b] dark:text-white">user@example.com</span>
+</div>
+<hr class="my-2 border-dashed border-gray-200 dark:border-white/20"/>
+<div class="flex justify-between">
+<span>Subtotal</span>
+<span>$120.00</span>
+</div>
+<div class="flex justify-between">
+<span>Tax (10%)</span>
+<span>$12.00</span>
+</div>
+<div class="flex justify-between text-base font-bold text-[#140d1b] dark:text-white">
+<span>Total</span>
+<span>$132.00</span>
+</div>
+<div class="mt-2 flex items-center justify-between text-xs text-gray-500 dark:text-gray-400">
+<span>Invoice ID:</span>
+<span>INV-2024-84B21</span>
+</div>
+</div>
+<div class="mt-6 flex gap-2">
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-sm text-[#140d1b] dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-[#dbcfe7] dark:border-white/20 bg-background-light dark:bg-background-dark/80 focus:border-primary/80 h-11 placeholder:text-[#734c9a] dark:placeholder:text-white/40 px-3" placeholder="Promo Code"/>
+<button class="flex h-11 cursor-pointer items-center justify-center rounded-lg bg-primary/10 dark:bg-primary/20 px-4 text-sm font-bold text-primary dark:text-white transition-colors hover:bg-primary/20 dark:hover:bg-primary/30">Apply</button>
+</div>
+</div>
+<!-- Pay Button & Security Footer -->
+<div class="sticky bottom-0 bg-background-light dark:bg-background-dark/80 backdrop-blur-sm p-4 mt-auto">
+<button class="h-14 w-full rounded-xl bg-primary bg-gradient-to-r from-primary to-[#a855f7] text-lg font-bold text-white shadow-lg shadow-primary/30 transition-transform hover:scale-[1.02] active:scale-[0.98]">
+                            Pay $132.00
+                        </button>
+<div class="mt-4 flex items-center justify-center gap-2 text-xs text-gray-500 dark:text-gray-400">
+<span class="material-symbols-outlined text-base">lock</span>
+<span>Secure payment by Stripe</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

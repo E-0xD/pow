@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>POW - Referral Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#7f13ec",
+                        "background-light": "#f7f6f8",
+                        "background-dark": "#191022",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#141118] dark:text-gray-200">
+<div class="relative flex min-h-screen w-full">
+<!-- SideNavBar -->
+<aside class="flex-shrink-0 w-64 bg-white dark:bg-[#191022] border-r border-[#e0dbe6] dark:border-gray-700/50">
+<div class="flex flex-col h-full justify-between p-4">
+<div class="flex flex-col gap-4">
+<div class="p-2 mb-4">
+<h1 class="text-2xl font-bold text-primary">POW.</h1>
+</div>
+<div class="flex gap-3 items-center">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User avatar of Alex Doe" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCiNjD9VUOf5mSaWGnOjSLT7SlFI5Hl9HUGg96H1i8fVdR9t4CNWakdSnhQCnU4FVyuNQVJHHXZA0oiWMJhB8z-LDEUMsvAMjuPo7Rxub1mIljZu7lhmMZmcA7luGeurVh6DtNv6FO1JQDFSdGwMnk-cQJhEdvxxqDKcChN1AfNmv-YDHQOV5fd954L0nbZKCtOcDZx5mjhBGvM9ey9Ni1XNz50_ZYbVGHFfjAsgkhNS3LswO8KLWI4upaHHXz_y5kyBc493klFE5k");'></div>
+<div class="flex flex-col">
+<h2 class="text-[#141118] dark:text-white text-base font-medium leading-normal">Alex Doe</h2>
+<p class="text-[#756189] dark:text-gray-400 text-sm font-normal leading-normal">Team Member</p>
+</div>
+</div>
+<nav class="flex flex-col gap-2 mt-4">
+<a class="flex items-center gap-3 px-3 py-2 text-[#756189] dark:text-gray-400 hover:text-primary dark:hover:text-white rounded-lg" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<p class="text-sm font-medium leading-normal">Dashboard</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-[#756189] dark:text-gray-400 hover:text-primary dark:hover:text-white rounded-lg" href="#">
+<span class="material-symbols-outlined">cases</span>
+<p class="text-sm font-medium leading-normal">Portfolios</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 text-primary dark:bg-primary/20 dark:text-white" href="#">
+<span class="material-symbols-outlined">group_add</span>
+<p class="text-sm font-medium leading-normal">Referrals</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-[#756189] dark:text-gray-400 hover:text-primary dark:hover:text-white rounded-lg" href="#">
+<span class="material-symbols-outlined">settings</span>
+<p class="text-sm font-medium leading-normal">Settings</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-[#756189] dark:text-gray-400 hover:text-primary dark:hover:text-white rounded-lg" href="#">
+<span class="material-symbols-outlined">help_outline</span>
+<p class="text-sm font-medium leading-normal">Help</p>
+</a>
+</nav>
+</div>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/90">
+<span class="material-symbols-outlined mr-2">logout</span>
+<span class="truncate">Logout</span>
+</button>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 p-6 lg:p-10">
+<div class="mx-auto max-w-7xl">
+<!-- PageHeading -->
+<div class="flex flex-wrap justify-between items-center gap-4 mb-8">
+<h1 class="text-[#141118] dark:text-white text-4xl font-black leading-tight tracking-[-0.033em]">Referral Dashboard</h1>
+</div>
+<!-- Stats -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-10">
+<div class="flex flex-col gap-2 rounded-xl p-6 border border-[#e0dbe6] dark:border-gray-700/50 bg-white dark:bg-background-dark">
+<p class="text-[#141118] dark:text-gray-300 text-base font-medium leading-normal">Total Referrals</p>
+<p class="text-[#141118] dark:text-white tracking-light text-3xl font-bold leading-tight">142</p>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 border border-[#e0dbe6] dark:border-gray-700/50 bg-white dark:bg-background-dark">
+<p class="text-[#141118] dark:text-gray-300 text-base font-medium leading-normal">Referrals This Month</p>
+<p class="text-[#141118] dark:text-white tracking-light text-3xl font-bold leading-tight">18</p>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 border border-[#e0dbe6] dark:border-gray-700/50 bg-white dark:bg-background-dark">
+<p class="text-[#141118] dark:text-gray-300 text-base font-medium leading-normal">Total Commission</p>
+<p class="text-green-600 dark:text-green-400 tracking-light text-3xl font-bold leading-tight">$2,840</p>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 border border-[#e0dbe6] dark:border-gray-700/50 bg-white dark:bg-background-dark">
+<p class="text-[#141118] dark:text-gray-300 text-base font-medium leading-normal">Commission This Month</p>
+<p class="text-green-600 dark:text-green-400 tracking-light text-3xl font-bold leading-tight">$360</p>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 border border-[#e0dbe6] dark:border-gray-700/50 bg-white dark:bg-background-dark">
+<p class="text-[#141118] dark:text-gray-300 text-base font-medium leading-normal">Current Balance</p>
+<p class="text-[#141118] dark:text-white tracking-light text-3xl font-bold leading-tight">$450</p>
+</div>
+</div>
+<!-- Referral & Payout Sections -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-10">
+<div class="lg:col-span-2 bg-white dark:bg-background-dark border border-[#e0dbe6] dark:border-gray-700/50 rounded-xl p-6">
+<h2 class="text-[#141118] dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em] mb-4">Your Referral Link</h2>
+<div class="flex flex-col sm:flex-row items-stretch gap-4">
+<div class="flex w-full flex-1 items-stretch rounded-xl">
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#141118] dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-[#e0dbe6] dark:border-gray-700 bg-background-light dark:bg-black/20 h-14 placeholder:text-[#756189] p-[15px] text-base font-normal leading-normal" readonly="" value="https://pow.app/ref/alexdoe24"/>
+</div>
+<button class="flex min-w-[140px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-14 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined mr-2">content_copy</span>
+<span class="truncate">Copy Link</span>
+</button>
+</div>
+</div>
+<div class="bg-white dark:bg-background-dark border border-[#e0dbe6] dark:border-gray-700/50 rounded-xl p-6 flex flex-col justify-between">
+<div>
+<h2 class="text-[#141118] dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em] mb-2">Payouts</h2>
+<p class="text-[#756189] dark:text-gray-400 text-sm mb-4">Payouts are processed at the end of each month.</p>
+</div>
+<button class="group relative flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-xl h-14 px-4 bg-primary/10 dark:bg-primary/20 text-primary dark:text-white text-sm font-bold leading-normal tracking-[0.015em] disabled:cursor-not-allowed disabled:opacity-50" disabled="">
+<span class="truncate">Request Payout</span>
+<div class="absolute invisible group-hover:visible bottom-full mb-2 w-max px-3 py-1.5 bg-gray-800 text-white text-xs rounded-md shadow-lg transition-opacity duration-200">
+                                Available at the end of the month
+                                <div class="absolute left-1/2 -translate-x-1/2 top-full w-0 h-0 border-x-4 border-x-transparent border-t-4 border-t-gray-800"></div>
+</div>
+</button>
+</div>
+</div>
+<!-- Performance & Activity -->
+<div class="grid grid-cols-1 lg:grid-cols-5 gap-6">
+<!-- Performance Chart -->
+<div class="lg:col-span-3 bg-white dark:bg-background-dark border border-[#e0dbe6] dark:border-gray-700/50 rounded-xl p-6">
+<h2 class="text-[#141118] dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em] mb-4">Referral Performance</h2>
+<div class="w-full h-72 flex items-center justify-center">
+<img class="w-full h-full object-contain" data-alt="A bar chart showing monthly referral growth over the last 12 months, with purple bars representing the number of referrals each month." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWd7khWsJlfUUO4--j-XNNd-SzGTMQHMOVU5Mn9YONj1S4csf7hC3vJ6pTGDBSoBL8NazzJ4RUCz5eIotyGJAO_LyXyRNrCBqUNFUk47yUN4ryJKS42nW28-JvYb0Zyr6pKoHxIJ1vjHNLuw0xF2t6OyFDYaQfpGZn4XsMbkFZwe7WtJxWo6g305sEThmeBPukmb9XeMPuFzA59E33yySns3kr0SSeVdpD9g_Y_5EONZ41sAgr3QT7EghBZT_PnWBI0uohLPBqBEQ"/>
+</div>
+</div>
+<!-- Recent Activity Table -->
+<div class="lg:col-span-2 bg-white dark:bg-background-dark border border-[#e0dbe6] dark:border-gray-700/50 rounded-xl p-6">
+<h2 class="text-[#141118] dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em] mb-4">Recent Activity</h2>
+<div class="overflow-x-auto">
+<table class="w-full text-left text-sm">
+<thead class="text-[#756189] dark:text-gray-400 border-b border-[#e0dbe6] dark:border-gray-700">
+<tr>
+<th class="py-2 px-2 font-medium">Date</th>
+<th class="py-2 px-2 font-medium">User</th>
+<th class="py-2 px-2 font-medium text-right">Commission</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#e0dbe6] dark:divide-gray-700/50">
+<tr>
+<td class="py-3 px-2">Oct 24, 2023</td>
+<td class="py-3 px-2">Jane Cooper</td>
+<td class="py-3 px-2 font-medium text-right text-green-600 dark:text-green-400">$20.00</td>
+</tr>
+<tr>
+<td class="py-3 px-2">Oct 21, 2023</td>
+<td class="py-3 px-2">Wade Warren</td>
+<td class="py-3 px-2 font-medium text-right text-green-600 dark:text-green-400">$20.00</td>
+</tr>
+<tr>
+<td class="py-3 px-2">Oct 15, 2023</td>
+<td class="py-3 px-2">Cameron Williamson</td>
+<td class="py-3 px-2 font-medium text-right text-green-600 dark:text-green-400">$40.00</td>
+</tr>
+<tr>
+<td class="py-3 px-2">Oct 09, 2023</td>
+<td class="py-3 px-2">Brooklyn Simmons</td>
+<td class="py-3 px-2 font-medium text-right text-green-600 dark:text-green-400">$20.00</td>
+</tr>
+<tr>
+<td class="py-3 px-2">Oct 02, 2023</td>
+<td class="py-3 px-2">Esther Howard</td>
+<td class="py-3 px-2 font-medium text-right text-green-600 dark:text-green-400">$20.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

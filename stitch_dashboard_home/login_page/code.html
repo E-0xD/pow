@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Login - POW</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#4F46E5",
+              "background-light": "#F9FAFB",
+              "background-dark": "#111827",
+              "text-light": "#111827",
+              "text-dark": "#F9FAFB",
+              "subtext-light": "#6B7280",
+              "subtext-dark": "#9CA3AF"
+            },
+            fontFamily: {
+              "display": ["Manrope", "sans-serif"]
+            },
+            borderRadius: {
+                "DEFAULT": "0.5rem", 
+                "lg": "1rem", 
+                "xl": "1.5rem", 
+                "full": "9999px"
+            },
+          },
+        },
+      }
+    </script>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark">
+<div class="relative flex min-h-screen w-full flex-col items-center justify-center bg-background-light dark:bg-background-dark p-4 sm:p-6 lg:p-8">
+<div class="w-full max-w-md">
+<div class="flex flex-col items-center rounded-xl bg-white dark:bg-zinc-900 shadow-md border border-gray-200 dark:border-zinc-800 p-8 sm:p-10">
+<h1 class="text-[#111827] dark:text-white tracking-light text-[32px] font-bold leading-tight text-center pb-2 pt-4">POW</h1>
+<h3 class="text-[#111827] dark:text-white tracking-light text-2xl font-bold leading-tight text-center pb-8 pt-2">Sign in to your account</h3>
+<div class="w-full">
+<button class="flex w-full min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 bg-white dark:bg-zinc-800 text-[#111827] dark:text-white gap-3 text-base font-bold leading-normal tracking-[0.015em] border border-gray-300 dark:border-zinc-700 hover:bg-gray-50 dark:hover:bg-zinc-700 transition-colors">
+<svg class="h-6 w-6" data-alt="Google logo" fill="none" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_3033_558)"><path d="M22.5801 12.3751C22.5801 11.5351 22.5001 10.7251 22.3701 9.9451H12.2401V14.5051H18.1501C17.9001 15.9351 17.1101 17.1151 15.9001 17.8951V20.5051H19.6501C21.5701 18.7351 22.5801 15.8651 22.5801 12.3751Z" fill="#4285F4"></path><path d="M12.24 23.0001C15.47 23.0001 18.21 21.9301 20.13 20.0701L16.4 17.4701C15.31 18.2201 13.89 18.6701 12.24 18.6701C9.28001 18.6701 6.78001 16.7101 5.82001 14.0701H2.07001V16.7401C3.96001 20.4401 7.8 23.0001 12.24 23.0001Z" fill="#34A853"></path><path d="M5.82001 14.07C5.60001 13.43 5.46001 12.75 5.46001 12C5.46001 11.25 5.60001 10.57 5.82001 9.93V7.26H2.07001C1.22001 8.94 0.750008 10.89 0.750008 12C0.750008 13.11 1.22001 15.06 2.07001 16.74L5.82001 14.07Z" fill="#FBBC05"></path><path d="M12.2401 5.32999C13.9701 5.32999 15.2401 5.98999 16.0301 6.74999L19.4601 3.32C17.4301 1.45 15.0101 0.48999 12.2401 0.48999C7.79011 0.48999 3.96011 3.05999 2.07011 6.75L5.82011 9.42C6.78011 6.78 9.28011 5.32999 12.2401 5.32999Z" fill="#EA4335"></path></g><defs><clippath id="clip0_3033_558"><rect fill="white" height="24" width="24"></rect></clippath></defs></svg>
+<span class="truncate">Continue with Google</span>
+</button>
+</div>
+<div class="flex w-full items-center gap-4 py-6">
+<div class="h-px flex-1 bg-gray-200 dark:bg-zinc-700"></div>
+<p class="text-subtext-light dark:text-subtext-dark text-sm font-normal leading-normal">or</p>
+<div class="h-px flex-1 bg-gray-200 dark:bg-zinc-700"></div>
+</div>
+<form class="flex w-full flex-col gap-5">
+<div class="flex w-full flex-col">
+<label class="flex flex-col flex-1">
+<p class="text-text-light dark:text-text-dark text-base font-medium leading-normal pb-2">Email Address</p>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-text-light dark:text-text-dark focus:outline-none focus:ring-2 focus:ring-primary border border-gray-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 h-14 placeholder:text-subtext-light dark:placeholder:text-subtext-dark p-[15px] text-base font-normal leading-normal transition-shadow" placeholder="you@example.com" type="email" value=""/>
+</label>
+</div>
+<div class="flex w-full flex-col">
+<label class="flex flex-col flex-1">
+<div class="flex justify-between items-baseline pb-2">
+<p class="text-text-light dark:text-text-dark text-base font-medium leading-normal">Password</p>
+<a class="text-primary text-sm font-semibold hover:underline" href="#">Forgot Password?</a>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-text-light dark:text-text-dark focus:outline-none focus:ring-2 focus:ring-primary border border-gray-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 h-14 placeholder:text-subtext-light dark:placeholder:text-subtext-dark p-[15px] text-base font-normal leading-normal transition-shadow" placeholder="Enter your password" type="password" value=""/>
+</label>
+</div>
+<button class="flex w-full min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 mt-4 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors">
+<span class="truncate">Sign In</span>
+</button>
+</form>
+<p class="text-subtext-light dark:text-subtext-dark text-sm font-normal leading-normal pt-8 text-center">
+                    Don't have an account? <a class="font-bold text-primary hover:underline" href="#">Sign Up</a>
+</p>
+</div>
+</div>
+</div>
+</body></html>

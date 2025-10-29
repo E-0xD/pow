@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>POW - Admin - Manage Portfolios</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#7f13ec",
+                        "background-light": "#f7f6f8",
+                        "background-dark": "#191022",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="flex h-screen w-full">
+<!-- SideNavBar Component -->
+<aside class="w-64 flex-shrink-0 bg-white dark:bg-background-dark/50 border-r border-gray-200 dark:border-white/10">
+<div class="flex h-full flex-col justify-between p-4">
+<div class="flex flex-col gap-4">
+<div class="flex gap-3 items-center p-2">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="Admin user avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBLrw6PNNROYKizEfCmsxcFkWrqTPX_-A24QASpYZXcFThwPaIaZQkN2mWq_nvnGECZocCXEND2nuzzBFpDatsxU1zoWaR-TzXE1JILoQW-VXaLbqiM15iDEyQ5Rn7yC_YbexnOD9p48j51axvonaKeuyswoj0HE5pyORlirbyQR8_A3BDyoW3HA9tsnvI63wujZCU7KFgk8kclY9iXgG2xY-5sUVRMNZJovu6VO5aiNm3lqmg7MsdZXRr16N6MG6n8TfQlsdGkX-U");'></div>
+<div class="flex flex-col">
+<h1 class="text-gray-900 dark:text-white text-sm font-semibold leading-normal">Admin</h1>
+<p class="text-gray-500 dark:text-gray-400 text-xs font-normal leading-normal">admin@pow.io</p>
+</div>
+</div>
+<nav class="flex flex-col gap-2 mt-4">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-white/10" href="#">
+<span class="material-symbols-outlined !text-2xl">dashboard</span>
+<p class="text-sm font-medium leading-normal">Dashboard</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 text-primary dark:bg-primary/20 dark:text-white" href="#">
+<span class="material-symbols-outlined !text-2xl" style="font-variation-settings: 'FILL' 1;">folder_managed</span>
+<p class="text-sm font-medium leading-normal">Manage Portfolios</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-white/10" href="#">
+<span class="material-symbols-outlined !text-2xl">group</span>
+<p class="text-sm font-medium leading-normal">Manage Users</p>
+</a>
+</nav>
+</div>
+<div class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-white/10" href="#">
+<span class="material-symbols-outlined !text-2xl">settings</span>
+<p class="text-sm font-medium leading-normal">Settings</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-white/10" href="#">
+<span class="material-symbols-outlined !text-2xl">logout</span>
+<p class="text-sm font-medium leading-normal">Log Out</p>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col h-screen overflow-y-auto">
+<div class="p-8">
+<!-- PageHeading Component -->
+<div class="flex flex-wrap justify-between items-center gap-4">
+<div class="flex flex-col gap-1">
+<h1 class="text-gray-900 dark:text-white text-3xl font-bold tracking-tight">Manage Portfolios</h1>
+<p class="text-gray-500 dark:text-gray-400 text-base font-normal leading-normal">View, search, and manage all user portfolios on the platform.</p>
+</div>
+<button class="flex items-center justify-center gap-2 overflow-hidden rounded-lg h-11 px-5 bg-primary text-white text-sm font-bold leading-normal tracking-wide shadow-sm hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary/50">
+<span class="material-symbols-outlined !text-xl">add</span>
+<span class="truncate">Add New Portfolio</span>
+</button>
+</div>
+<!-- Controls: SearchBar and Chips -->
+<div class="mt-8 flex flex-col md:flex-row md:items-center gap-4">
+<div class="flex-1">
+<label class="flex flex-col w-full">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-11">
+<div class="text-gray-500 dark:text-gray-400 flex bg-white dark:bg-background-dark/50 items-center justify-center pl-4 rounded-l-lg border border-gray-200 dark:border-white/10 border-r-0">
+<span class="material-symbols-outlined !text-2xl">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-r-lg text-gray-900 dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-gray-200 dark:border-white/10 bg-white dark:bg-background-dark/50 h-full placeholder:text-gray-400 dark:placeholder:text-gray-500 px-4 pl-2 text-sm font-normal leading-normal" placeholder="Find portfolios by name or owner" value=""/>
+</div>
+</label>
+</div>
+<div class="flex gap-2">
+<button class="flex h-11 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-white dark:bg-background-dark/50 border border-gray-200 dark:border-white/10 px-4">
+<p class="text-gray-700 dark:text-gray-300 text-sm font-medium leading-normal">Status: All</p>
+<span class="material-symbols-outlined !text-xl text-gray-500 dark:text-gray-400">expand_more</span>
+</button>
+<button class="flex h-11 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-white dark:bg-background-dark/50 border border-gray-200 dark:border-white/10 px-4">
+<p class="text-gray-700 dark:text-gray-300 text-sm font-medium leading-normal">Template: All</p>
+<span class="material-symbols-outlined !text-xl text-gray-500 dark:text-gray-400">expand_more</span>
+</button>
+</div>
+</div>
+<!-- Table Component -->
+<div class="mt-6">
+<div class="overflow-hidden rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-background-dark/50">
+<div class="overflow-x-auto">
+<table class="min-w-full divide-y divide-gray-200 dark:divide-white/10">
+<thead class="bg-gray-50 dark:bg-white/5">
+<tr>
+<th class="py-3.5 pl-4 pr-3 text-left" scope="col">
+<input class="h-4 w-4 rounded border-gray-300 dark:border-gray-600 dark:bg-background-dark/50 text-primary focus:ring-primary/50" type="checkbox"/>
+</th>
+<th class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-white" scope="col">Portfolio Name</th>
+<th class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-white" scope="col">Owner</th>
+<th class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-white" scope="col">Template Used</th>
+<th class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-white" scope="col">Date Created</th>
+<th class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-white" scope="col">Status</th>
+<th class="relative py-3.5 pl-3 pr-4" scope="col">
+<span class="sr-only">Actions</span>
+</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-200 dark:divide-white/10 bg-white dark:bg-background-dark/50">
+<tr>
+<td class="py-4 pl-4 pr-3 text-sm">
+<input class="h-4 w-4 rounded border-gray-300 dark:border-gray-600 dark:bg-background-dark/50 text-primary focus:ring-primary/50" type="checkbox"/>
+</td>
+<td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-900 dark:text-white">Project Alpha Showcase</td>
+<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">Sarah Connor</td>
+<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">Creative Pro</td>
+<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">Oct 26, 2023</td>
+<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">
+<span class="inline-flex items-center rounded-full bg-green-100 dark:bg-green-500/20 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:text-green-400">Published</span>
+</td>
+<td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium">
+<button class="p-1 rounded-full text-gray-400 hover:text-gray-600 dark:hover:text-gray-200"><span class="material-symbols-outlined !text-xl">more_vert</span></button>
+</td>
+</tr>
+<tr>
+<td class="py-4 pl-4 pr-3 text-sm">
+<input class="h-4 w-4 rounded border-gray-300 dark:border-gray-600 dark:bg-background-dark/50 text-primary focus:ring-primary/50" type="checkbox"/>
+</td>
+<td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-900 dark:text-white">Minimalist Design Collection</td>
+<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">John Smith</td>
+<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">SimpleFolio</td>
+<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">Oct 25, 2023</td>
+<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">
+<span class="inline-flex items-center rounded-full bg-green-100 dark:bg-green-500/20 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:text-green-400">Published</span>
+</td>
+<td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium">
+<button class="p-1 rounded-full text-gray-400 hover:text-gray-600 dark:hover:text-gray-200"><span class="material-symbols-outlined !text-xl">more_vert</span></button>
+</td>
+</tr>
+<tr>
+<td class="py-4 pl-4 pr-3 text-sm">
+<input class="h-4 w-4 rounded border-gray-300 dark:border-gray-600 dark:bg-background-dark/50 text-primary focus:ring-primary/50" type="checkbox"/>
+</td>
+<td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-900 dark:text-white">Photography Journal</td>
+<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">Emily Jones</td>
+<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">Gallery View</td>
+<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">Oct 24, 2023</td>
+<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">
+<span class="inline-flex items-center rounded-full bg-gray-100 dark:bg-gray-500/20 px-2.5 py-0.5 text-xs font-medium text-gray-800 dark:text-gray-400">Draft</span>
+</td>
+<td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium">
+<button class="p-1 rounded-full text-gray-400 hover:text-gray-600 dark:hover:text-gray-200"><span class="material-symbols-outlined !text-xl">more_vert</span></button>
+</td>
+</tr>
+<tr>
+<td class="py-4 pl-4 pr-3 text-sm">
+<input class="h-4 w-4 rounded border-gray-300 dark:border-gray-600 dark:bg-background-dark/50 text-primary focus:ring-primary/50" type="checkbox"/>
+</td>
+<td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-900 dark:text-white">UX Case Studies</td>
+<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">Michael Bay</td>
+<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">Creative Pro</td>
+<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">Oct 23, 2023</td>
+<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">
+<span class="inline-flex items-center rounded-full bg-orange-100 dark:bg-orange-500/20 px-2.5 py-0.5 text-xs font-medium text-orange-800 dark:text-orange-400">Archived</span>
+</td>
+<td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium">
+<button class="p-1 rounded-full text-gray-400 hover:text-gray-600 dark:hover:text-gray-200"><span class="material-symbols-outlined !text-xl">more_vert</span></button>
+</td>
+</tr>
+<tr>
+<td class="py-4 pl-4 pr-3 text-sm">
+<input class="h-4 w-4 rounded border-gray-300 dark:border-gray-600 dark:bg-background-dark/50 text-primary focus:ring-primary/50" type="checkbox"/>
+</td>
+<td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-900 dark:text-white">Web Development Projects</td>
+<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">David Chen</td>
+<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">SimpleFolio</td>
+<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">Oct 22, 2023</td>
+<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">
+<span class="inline-flex items-center rounded-full bg-green-100 dark:bg-green-500/20 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:text-green-400">Published</span>
+</td>
+<td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium">
+<button class="p-1 rounded-full text-gray-400 hover:text-gray-600 dark:hover:text-gray-200"><span class="material-symbols-outlined !text-xl">more_vert</span></button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="mt-6 flex items-center justify-between">
+<p class="text-sm text-gray-500 dark:text-gray-400">
+                     Showing <span class="font-medium">1</span> to <span class="font-medium">5</span> of <span class="font-medium">42</span> results
+                 </p>
+<div class="flex items-center gap-2">
+<button class="flex items-center justify-center h-9 w-9 rounded-lg border border-gray-200 dark:border-white/10 bg-white dark:bg-background-dark/50 text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-white/5">
+<span class="material-symbols-outlined !text-xl">chevron_left</span>
+</button>
+<button class="flex items-center justify-center h-9 w-9 rounded-lg border border-gray-200 dark:border-white/10 bg-white dark:bg-background-dark/50 text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-white/5">
+<span class="material-symbols-outlined !text-xl">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

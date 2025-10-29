@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <title>Admin - Manage Portfolio Templates</title>
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+            rel="stylesheet"
+        />
+        <script>
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        colors: {
+                            primary: "#4A90E2",
+                            "background-light": "#F9FAFB",
+                            "background-dark": "#111827",
+                            "text-light": "#1F2937",
+                            "text-dark": "#F9FAFB",
+                            "subtle-light": "#6B7280",
+                            "subtle-dark": "#9CA3AF",
+                            "border-light": "#E5E7EB",
+                            "border-dark": "#374151",
+                            accent: "#50E3C2",
+                            danger: "#EF4444",
+                        },
+                        fontFamily: {
+                            display: ["Manrope", "sans-serif"],
+                        },
+                        borderRadius: {
+                            DEFAULT: "0.75rem",
+                            lg: "1rem",
+                            xl: "1.5rem",
+                            full: "9999px",
+                        },
+                    },
+                },
+            };
+        </script>
+        <style>
+            .material-symbols-outlined {
+                font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0,
+                    "opsz" 24;
+            }
+        </style>
+    </head>
+    <body
+        class="font-display bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark"
+    >
+        <div class="relative flex min-h-screen w-full flex-row">
+            <!-- SideNavBar -->
+            <aside
+                class="flex h-screen w-64 flex-col justify-between border-r border-border-light bg-white p-4 dark:border-border-dark dark:bg-gray-900/50"
+            >
+                <div class="flex flex-col gap-8">
+                    <div class="flex items-center gap-3 px-3">
+                        <div
+                            class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
+                            data-alt="POW Admin Logo"
+                            style="
+                                background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDLnLaNMCNdFHucgjLsj_ew2J-4IFw1pFOem1apwrDYaaLTYIXmBpGPc6uox2IvnbiJOIzmjmHy0hOt4IhkkmNBXL_DJyQX0mI2orkCt3X69MY9d_sB4rYPm-VdKUqtSGCaog6wDqbB-1qfomdjG66DM7Ze-ZwFJhl4SEI_WmIdhfPwn3MasysXChAXUxDwcS3WN0G4FFZ-ZviE40-R1ozkq70DnyAcesL9oF0WuExZfxo7TqJb_5lnxs2E04NAEhZw-9kaTJ9OrLg');
+                            "
+                        ></div>
+                        <div class="flex flex-col">
+                            <h1
+                                class="text-base font-bold text-text-light dark:text-text-dark"
+                            >
+                                POW Admin
+                            </h1>
+                            <p
+                                class="text-sm font-normal text-subtle-light dark:text-subtle-dark"
+                            >
+                                Portfolio Platform
+                            </p>
+                        </div>
+                    </div>
+                    <nav class="flex flex-col gap-2">
+                        <a
+                            class="flex items-center gap-3 rounded-md px-3 py-2 text-subtle-light hover:bg-gray-100 dark:text-subtle-dark dark:hover:bg-gray-800"
+                            href="#"
+                        >
+                            <span class="material-symbols-outlined text-2xl"
+                                >dashboard</span
+                            >
+                            <p class="text-sm font-medium">Dashboard</p>
+                        </a>
+                        <a
+                            class="flex items-center gap-3 rounded-md px-3 py-2 text-subtle-light hover:bg-gray-100 dark:text-subtle-dark dark:hover:bg-gray-800"
+                            href="#"
+                        >
+                            <span class="material-symbols-outlined text-2xl"
+                                >group</span
+                            >
+                            <p class="text-sm font-medium">Users</p>
+                        </a>
+                        <a
+                            class="flex items-center gap-3 rounded-md px-3 py-2 text-subtle-light hover:bg-gray-100 dark:text-subtle-dark dark:hover:bg-gray-800"
+                            href="#"
+                        >
+                            <span class="material-symbols-outlined text-2xl"
+                                >folder_managed</span
+                            >
+                            <p class="text-sm font-medium">Portfolios</p>
+                        </a>
+                        <a
+                            class="flex items-center gap-3 rounded-md px-3 py-2 text-white bg-primary"
+                            href="#"
+                        >
+                            <span class="material-symbols-outlined text-2xl"
+                                >space_dashboard</span
+                            >
+                            <p class="text-sm font-medium">Templates</p>
+                        </a>
+                        <a
+                            class="flex items-center gap-3 rounded-md px-3 py-2 text-subtle-light hover:bg-gray-100 dark:text-subtle-dark dark:hover:bg-gray-800"
+                            href="#"
+                        >
+                            <span class="material-symbols-outlined text-2xl"
+                                >settings</span
+                            >
+                            <p class="text-sm font-medium">Settings</p>
+                        </a>
+                    </nav>
+                </div>
+                <div class="flex flex-col gap-1">
+                    <a
+                        class="flex items-center gap-3 rounded-md px-3 py-2 text-subtle-light hover:bg-gray-100 dark:text-subtle-dark dark:hover:bg-gray-800"
+                        href="#"
+                    >
+                        <span class="material-symbols-outlined text-2xl"
+                            >help_outline</span
+                        >
+                        <p class="text-sm font-medium">Support</p>
+                    </a>
+                    <a
+                        class="flex items-center gap-3 rounded-md px-3 py-2 text-subtle-light hover:bg-gray-100 dark:text-subtle-dark dark:hover:bg-gray-800"
+                        href="#"
+                    >
+                        <span class="material-symbols-outlined text-2xl"
+                            >logout</span
+                        >
+                        <p class="text-sm font-medium">Log Out</p>
+                    </a>
+                </div>
+            </aside>
+            <!-- Main Content -->
+            <main class="flex-1 p-8">
+                <div class="mx-auto flex max-w-7xl flex-col gap-6">
+                    <!-- PageHeading -->
+                    <div
+                        class="flex flex-wrap items-center justify-between gap-4"
+                    >
+                        <h1
+                            class="text-4xl font-black tracking-tighter text-text-light dark:text-text-dark"
+                        >
+                            Portfolio Templates
+                        </h1>
+                        <button
+                            class="flex h-12 min-w-[84px] cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg bg-primary px-5 text-white shadow-lg shadow-primary/30 transition-all hover:bg-primary/90"
+                        >
+                            <span class="material-symbols-outlined">add</span>
+                            <span class="truncate text-sm font-bold"
+                                >Add New Template</span
+                            >
+                        </button>
+                    </div>
+                    <!-- Search and Filters -->
+                    <div class="flex flex-wrap items-center gap-4">
+                        <!-- SearchBar -->
+                        <div class="flex-1">
+                            <label class="flex h-12 min-w-64 flex-col">
+                                <div
+                                    class="flex h-full w-full flex-1 items-stretch rounded-lg"
+                                >
+                                    <div
+                                        class="flex items-center justify-center rounded-l-lg border border-r-0 border-border-light bg-white pl-4 text-subtle-light dark:border-border-dark dark:bg-gray-800 dark:text-subtle-dark"
+                                    >
+                                        <span
+                                            class="material-symbols-outlined text-2xl"
+                                            >search</span
+                                        >
+                                    </div>
+                                    <input
+                                        class="form-input h-full min-w-0 flex-1 resize-none overflow-hidden rounded-r-lg border border-l-0 border-border-light bg-white px-4 text-base font-normal leading-normal text-text-light placeholder:text-subtle-light focus:border-primary focus:ring-0 dark:border-border-dark dark:bg-gray-800 dark:text-text-dark dark:placeholder:text-subtle-dark"
+                                        placeholder="Search templates by name..."
+                                        value=""
+                                    />
+                                </div>
+                            </label>
+                        </div>
+                        <!-- Chips/Filters -->
+                        <div class="flex gap-2">
+                            <button
+                                class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-primary/10 px-4 text-primary dark:bg-primary/20"
+                            >
+                                <p class="text-sm font-medium leading-normal">
+                                    All
+                                </p>
+                            </button>
+                            <button
+                                class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg border border-border-light bg-white px-4 hover:bg-gray-50 dark:border-border-dark dark:bg-gray-800 dark:hover:bg-gray-700"
+                            >
+                                <p
+                                    class="text-sm font-medium leading-normal text-subtle-light dark:text-subtle-dark"
+                                >
+                                    Published
+                                </p>
+                            </button>
+                            <button
+                                class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg border border-border-light bg-white px-4 hover:bg-gray-50 dark:border-border-dark dark:bg-gray-800 dark:hover:bg-gray-700"
+                            >
+                                <p
+                                    class="text-sm font-medium leading-normal text-subtle-light dark:text-subtle-dark"
+                                >
+                                    Draft
+                                </p>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- ImageGrid -->
+                    <div
+                        class="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-6"
+                    >
+                        <div
+                            class="group relative flex flex-col overflow-hidden rounded-lg border border-border-light bg-white shadow-sm transition-all hover:shadow-lg dark:border-border-dark dark:bg-gray-800"
+                        >
+                            <div
+                                class="aspect-video w-full bg-cover bg-center bg-no-repeat"
+                                data-alt="Minimalist Grid Template Thumbnail"
+                                style="
+                                    background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCMOPrAZQMwqtF_Egabe6NyytFIm76hRbXgm_TbGE8A7NfFdbsKqdUtdeesObdrefz7CQHVczCtfx3cpT_PBhJwqyylwLZh7Wz564ocx84H7qfwyqEHnJ-y_8Uhm6__jjxp90EiQlFOB2joxD7QgfgPxYcgF3Tib0tS4AOWMzZbj_Z0q9U1-3M0Zt3d755AaauT7CXEB1lP3YY7Mt1HvPVLsNO-HhquQxM5_Ay4iaY1UJzBGESh4_2fxS0HeI_9AEsdqujXYGY-TxE');
+                                "
+                            ></div>
+                            <div
+                                class="flex flex-1 items-start justify-between gap-4 p-4"
+                            >
+                                <div class="flex flex-col">
+                                    <p
+                                        class="font-bold text-text-light dark:text-text-dark"
+                                    >
+                                        Minimalist Grid
+                                    </p>
+                                    <span
+                                        class="text-xs font-semibold text-green-500"
+                                        >Published</span
+                                    >
+                                </div>
+                                <div class="flex items-center gap-1">
+                                    <button
+                                        class="flex size-8 items-center justify-center rounded-full text-subtle-light transition-colors hover:bg-gray-100 hover:text-text-light dark:text-subtle-dark dark:hover:bg-gray-700 dark:hover:text-text-dark"
+                                    >
+                                        <span
+                                            class="material-symbols-outlined text-xl"
+                                            >edit</span
+                                        >
+                                    </button>
+                                    <button
+                                        class="flex size-8 items-center justify-center rounded-full text-subtle-light transition-colors hover:bg-red-50 hover:text-danger dark:text-subtle-dark dark:hover:bg-red-500/10 dark:hover:text-danger"
+                                    >
+                                        <span
+                                            class="material-symbols-outlined text-xl"
+                                            >delete</span
+                                        >
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="group relative flex flex-col overflow-hidden rounded-lg border border-border-light bg-white shadow-sm transition-all hover:shadow-lg dark:border-border-dark dark:bg-gray-800"
+                        >
+                            <div
+                                class="aspect-video w-full bg-cover bg-center bg-no-repeat"
+                                data-alt="Modern Showcase Template Thumbnail"
+                                style="
+                                    background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDsZ_Ns6oL84KNtvsmo9mNSbwbcdRu-8HKirxrqqQiS6ANSRZ3edruyl9daj_8Yq-LADH951CVhSQSA2I7v7exHa2DAFlnpAVPZwUtjiC8sTS93oi2AGx9B8AnrtJmbWhx_3oy5qCvyWfUm7tNHUszN1uMI4KvuOcVNCdla2IdllgRKbjezESbA1YC6yljcpVZoNxo4eLKvouNmrM9n9pYGCDOfgkoOjQ7dX8lM1iJVsncJbCL9ITvOqkdGDJifS6Pnd3ynDSW0RGs');
+                                "
+                            ></div>
+                            <div
+                                class="flex flex-1 items-start justify-between gap-4 p-4"
+                            >
+                                <div class="flex flex-col">
+                                    <p
+                                        class="font-bold text-text-light dark:text-text-dark"
+                                    >
+                                        Modern Showcase
+                                    </p>
+                                    <span
+                                        class="text-xs font-semibold text-amber-500"
+                                        >Draft</span
+                                    >
+                                </div>
+                                <div class="flex items-center gap-1">
+                                    <button
+                                        class="flex size-8 items-center justify-center rounded-full text-subtle-light transition-colors hover:bg-gray-100 hover:text-text-light dark:text-subtle-dark dark:hover:bg-gray-700 dark:hover:text-text-dark"
+                                    >
+                                        <span
+                                            class="material-symbols-outlined text-xl"
+                                            >edit</span
+                                        >
+                                    </button>
+                                    <button
+                                        class="flex size-8 items-center justify-center rounded-full text-subtle-light transition-colors hover:bg-red-50 hover:text-danger dark:text-subtle-dark dark:hover:bg-red-500/10 dark:hover:text-danger"
+                                    >
+                                        <span
+                                            class="material-symbols-outlined text-xl"
+                                            >delete</span
+                                        >
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="group relative flex flex-col overflow-hidden rounded-lg border border-border-light bg-white shadow-sm transition-all hover:shadow-lg dark:border-border-dark dark:bg-gray-800"
+                        >
+                            <div
+                                class="aspect-video w-full bg-cover bg-center bg-no-repeat"
+                                data-alt="Creative Folio Template Thumbnail"
+                                style="
+                                    background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDClq6hW6URqT64xF5p022eumWx6Pb157rjWV2stz7iQS4eRShrpT2JH8Aky5Tqq55HLTqgjqw0e2dmV6hxASSsG_r3sFDOdibdocylaCIE2yqaX2WApEhbKaVlWrUUIAu9BlCI4J7JNCliOhvpaDWPrpXVHXE74YsmsMJHbpxto_ag31MnOHBEUnPqPFSkjJ9BKCOO0myXpvv8E1MJwiI31BSEEJrwbU3-JiG3W7Qqx6P25AVhm6JK_76py5xI1pSnM97sBFC2kfs');
+                                "
+                            ></div>
+                            <div
+                                class="flex flex-1 items-start justify-between gap-4 p-4"
+                            >
+                                <div class="flex flex-col">
+                                    <p
+                                        class="font-bold text-text-light dark:text-text-dark"
+                                    >
+                                        Creative Folio
+                                    </p>
+                                    <span
+                                        class="text-xs font-semibold text-green-500"
+                                        >Published</span
+                                    >
+                                </div>
+                                <div class="flex items-center gap-1">
+                                    <button
+                                        class="flex size-8 items-center justify-center rounded-full text-subtle-light transition-colors hover:bg-gray-100 hover:text-text-light dark:text-subtle-dark dark:hover:bg-gray-700 dark:hover:text-text-dark"
+                                    >
+                                        <span
+                                            class="material-symbols-outlined text-xl"
+                                            >edit</span
+                                        >
+                                    </button>
+                                    <button
+                                        class="flex size-8 items-center justify-center rounded-full text-subtle-light transition-colors hover:bg-red-50 hover:text-danger dark:text-subtle-dark dark:hover:bg-red-500/10 dark:hover:text-danger"
+                                    >
+                                        <span
+                                            class="material-symbols-outlined text-xl"
+                                            >delete</span
+                                        >
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="group relative flex flex-col overflow-hidden rounded-lg border border-border-light bg-white shadow-sm transition-all hover:shadow-lg dark:border-border-dark dark:bg-gray-800"
+                        >
+                            <div
+                                class="aspect-video w-full bg-cover bg-center bg-no-repeat"
+                                data-alt="Professional Case Study Template Thumbnail"
+                                style="
+                                    background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuABjIZqu6fTyp_Hcdbjzxhc5qH2dDFWlMfWVZ_dbfVNvJl8DTEF4IUe8Mx-CczpNh17Vhrckupv2_t8eyGGiErPbqC4SoeAfSWZbKZeIoFvag5ak36gVGiDgp7VaLrU0GgGTD1eqSPZRh0Orz0P_C3aXwpRJPwFK78iL5rwGgZfw6LOBrLq5fOSR6xFJJ62-GW4ejpl2__7d9ree2R2nQAQUo7bVQoLLNL6bYXKHdGn2y6SZT7yQQO6sopC0357GOBpk74pVyOmVlI');
+                                "
+                            ></div>
+                            <div
+                                class="flex flex-1 items-start justify-between gap-4 p-4"
+                            >
+                                <div class="flex flex-col">
+                                    <p
+                                        class="font-bold text-text-light dark:text-text-dark"
+                                    >
+                                        Pro Case Study
+                                    </p>
+                                    <span
+                                        class="text-xs font-semibold text-green-500"
+                                        >Published</span
+                                    >
+                                </div>
+                                <div class="flex items-center gap-1">
+                                    <button
+                                        class="flex size-8 items-center justify-center rounded-full text-subtle-light transition-colors hover:bg-gray-100 hover:text-text-light dark:text-subtle-dark dark:hover:bg-gray-700 dark:hover:text-text-dark"
+                                    >
+                                        <span
+                                            class="material-symbols-outlined text-xl"
+                                            >edit</span
+                                        >
+                                    </button>
+                                    <button
+                                        class="flex size-8 items-center justify-center rounded-full text-subtle-light transition-colors hover:bg-red-50 hover:text-danger dark:text-subtle-dark dark:hover:bg-red-500/10 dark:hover:text-danger"
+                                    >
+                                        <span
+                                            class="material-symbols-outlined text-xl"
+                                            >delete</span
+                                        >
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="group relative flex flex-col overflow-hidden rounded-lg border border-border-light bg-white shadow-sm transition-all hover:shadow-lg dark:border-border-dark dark:bg-gray-800"
+                        >
+                            <div
+                                class="aspect-video w-full bg-cover bg-center bg-no-repeat"
+                                data-alt="Gallery View Template Thumbnail"
+                                style="
+                                    background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBOTW1QokUGiob7gyAoHB_NvOuQoHmhQEoDcwP25lA9wWXn72Pl8ICA34heAksylSW2e-OvShIvKN0o6tdvqO2TKELtYcel1q_GCHchy-Lp9s9ntpi5K4huX0ZaKP4E17d6bLJ88dExUunKw_HFdUo-8Zd6aHr5NF2-5xCkKl6oBu6QRp6i4haA94ERkZZDIr3tLrmArRNteeXKSSnGvQVKtbcip8R2MmQWM2UMIVFgz4ONwLALA6IgT7DLc9W0WDtijTB4IsWPqQw');
+                                "
+                            ></div>
+                            <div
+                                class="flex flex-1 items-start justify-between gap-4 p-4"
+                            >
+                                <div class="flex flex-col">
+                                    <p
+                                        class="font-bold text-text-light dark:text-text-dark"
+                                    >
+                                        Gallery View
+                                    </p>
+                                    <span
+                                        class="text-xs font-semibold text-amber-500"
+                                        >Draft</span
+                                    >
+                                </div>
+                                <div class="flex items-center gap-1">
+                                    <button
+                                        class="flex size-8 items-center justify-center rounded-full text-subtle-light transition-colors hover:bg-gray-100 hover:text-text-light dark:text-subtle-dark dark:hover:bg-gray-700 dark:hover:text-text-dark"
+                                    >
+                                        <span
+                                            class="material-symbols-outlined text-xl"
+                                            >edit</span
+                                        >
+                                    </button>
+                                    <button
+                                        class="flex size-8 items-center justify-center rounded-full text-subtle-light transition-colors hover:bg-red-50 hover:text-danger dark:text-subtle-dark dark:hover:bg-red-500/10 dark:hover:text-danger"
+                                    >
+                                        <span
+                                            class="material-symbols-outlined text-xl"
+                                            >delete</span
+                                        >
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="group relative flex flex-col overflow-hidden rounded-lg border border-border-light bg-white shadow-sm transition-all hover:shadow-lg dark:border-border-dark dark:bg-gray-800"
+                        >
+                            <div
+                                class="aspect-video w-full bg-cover bg-center bg-no-repeat"
+                                data-alt="Simple Landing Template Thumbnail"
+                                style="
+                                    background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCVV3ygvBXd-UmwzQV3oRENaJTdIYUHqJ-Fw3zsqC5yLOpwBwdQH5efksLrTjbQbWz-dtI305eGEPie1Wc0cAmuEuNkOu7_MCIf6McYqEM7HXB-SU0_74NbQ-X8-i6RR7mKjJ5i9qJXoZAMgU9i0oSruc1_e92pvDTW-5GGIPDFqwENNRP6UQ1NNqcB_AG4M6Ij-3cuESBtzMX4tqEhcs6dr5bQ8zVY6fP75ZqR9Weo21Q584wORpBDB8k9RHl4BNopz4Mro38Iyfk');
+                                "
+                            ></div>
+                            <div
+                                class="flex flex-1 items-start justify-between gap-4 p-4"
+                            >
+                                <div class="flex flex-col">
+                                    <p
+                                        class="font-bold text-text-light dark:text-text-dark"
+                                    >
+                                        Simple Landing
+                                    </p>
+                                    <span
+                                        class="text-xs font-semibold text-green-500"
+                                        >Published</span
+                                    >
+                                </div>
+                                <div class="flex items-center gap-1">
+                                    <button
+                                        class="flex size-8 items-center justify-center rounded-full text-subtle-light transition-colors hover:bg-gray-100 hover:text-text-light dark:text-subtle-dark dark:hover:bg-gray-700 dark:hover:text-text-dark"
+                                    >
+                                        <span
+                                            class="material-symbols-outlined text-xl"
+                                            >edit</span
+                                        >
+                                    </button>
+                                    <button
+                                        class="flex size-8 items-center justify-center rounded-full text-subtle-light transition-colors hover:bg-red-50 hover:text-danger dark:text-subtle-dark dark:hover:bg-red-500/10 dark:hover:text-danger"
+                                    >
+                                        <span
+                                            class="material-symbols-outlined text-xl"
+                                            >delete</span
+                                        >
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </body>
+</html>

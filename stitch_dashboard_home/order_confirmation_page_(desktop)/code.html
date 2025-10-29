@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Payment Successful - POW</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#7f13ec",
+              "background-light": "#f7f6f8",
+              "background-dark": "#191022",
+            },
+            fontFamily: {
+              "display": ["Manrope", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      body {
+        font-family: 'Manrope', sans-serif;
+      }
+      .gradient-bg {
+        background-image: linear-gradient(to right, #4F46E5, #7C3AED);
+      }
+    </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-200">
+<div class="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<!-- TopNavBar -->
+<header class="flex items-center justify-between whitespace-nowrap px-4 sm:px-6 md:px-10 py-4 bg-white dark:bg-slate-900/40 border-b border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-4 text-slate-900 dark:text-white">
+<div class="w-6 h-6 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M24 4C25.7818 14.2173 33.7827 22.2182 44 24C33.7827 25.7818 25.7818 33.7827 24 44C22.2182 33.7827 14.2173 25.7818 4 24C14.2173 22.2182 22.2182 14.2173 24 4Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">POW</h2>
+</div>
+<div class="flex flex-1 justify-end items-center gap-4">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 gradient-bg text-white text-sm font-bold leading-normal tracking-[0.015em] transition-opacity hover:opacity-90">
+<span class="truncate">Go to Dashboard</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User avatar image" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuANwmp3gdWRuYQEb1T8SnZmNtKV1PsyeAw3SRNaVjiSRyEcKWDtmFTfTg3rZdLzz1dvxjXE8WI3brgxRvRGO_sUVgvi_ozvOUA_dxhHkqfdsS__QUnVBa8rXfoJZB2Tpfaw2CdaqfUlrzyCPHF1KDHr3B-4OA_1WIPQ_14JkWBHgtzupp1sXARHH85dyDwqPaUUzY5h6AIOP6ubuJ6YRmWCk8haCAmNMu-ijQWGb_1TMSnmSDSgfTOY_tQot6ZvaeGHfXhymvycpfQ");'></div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex flex-1 justify-center py-8 sm:py-12 px-4">
+<div class="layout-content-container flex flex-col w-full max-w-3xl flex-1 gap-8">
+<!-- Main Confirmation Card -->
+<div class="w-full bg-white dark:bg-slate-900/60 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800">
+<div class="p-6 sm:p-10 flex flex-col items-center">
+<!-- Images -->
+<div class="w-full max-w-[200px] sm:max-w-[240px] aspect-square mb-4">
+<div class="w-full h-full bg-center bg-no-repeat bg-contain" data-alt="A celebratory graphic with a large green checkmark indicating success" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDB0SQRBPmM6TJmKCPso5YHpmkEw4c1Is7LVib4CbiklZunf4m0QkkfbrRxTPeKy9Et7iQrmbanhy0Qu4kHIpfzQ1qP3twTeCmBi__ZuWWLd8wSV97Nccq_R1XCLyPva0ILxQwOTn74SJM7kDWzkdnFp85b_Y3TjxiKq_YxWa_ei6czanTvSQAMbIMNrou8dmIJnxexZ-1F2r5Lk-TvPW1TSJsLJc_9pftSzF5gfNuerq7oNeU9w3ANBWnK-pQ2_wSCMv53hfcrnpM");'></div>
+</div>
+<!-- HeadlineText -->
+<h1 class="text-[#1A202C] dark:text-white tracking-tight text-3xl sm:text-4xl font-bold leading-tight text-center pb-2">Payment Successful!</h1>
+<!-- BodyText -->
+<p class="text-slate-600 dark:text-slate-400 text-base font-normal leading-relaxed pb-6 text-center max-w-lg">
+                                Thank you for your purchase. Your subscription is now active. A receipt has been sent to your email.
+                            </p>
+<!-- DescriptionList -->
+<div class="w-full border-t border-slate-200 dark:border-slate-700 pt-6">
+<div class="space-y-3">
+<div class="flex justify-between gap-x-6">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal">Plan</p>
+<p class="text-[#1A202C] dark:text-white text-sm font-medium leading-normal text-right">Pro Plan - Annual</p>
+</div>
+<div class="flex justify-between gap-x-6">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal">Payment Method</p>
+<p class="text-[#1A202C] dark:text-white text-sm font-medium leading-normal text-right">Visa ending in 1234</p>
+</div>
+<div class="flex justify-between gap-x-6">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal">Amount Paid</p>
+<p class="text-[#1A202C] dark:text-white text-sm font-medium leading-normal text-right">$120.00 USD</p>
+</div>
+<div class="flex justify-between gap-x-6">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal">Invoice Number</p>
+<p class="text-[#1A202C] dark:text-white text-sm font-medium leading-normal text-right">INV-2023-00123</p>
+</div>
+<div class="flex justify-between gap-x-6">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal">Subscription Period</p>
+<p class="text-[#1A202C] dark:text-white text-sm font-medium leading-normal text-right">Oct 26, 2023 - Oct 25, 2024</p>
+</div>
+</div>
+</div>
+<!-- Action Button Group -->
+<div class="w-full border-t border-slate-200 dark:border-slate-700 mt-6 pt-6 flex flex-col sm:flex-row items-center gap-3">
+<button class="w-full sm:w-auto flex-1 flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-11 px-6 gradient-bg text-white text-sm font-bold leading-normal tracking-[0.015em] transition-opacity hover:opacity-90">
+<span class="truncate">Go to Dashboard</span>
+</button>
+<button class="w-full sm:w-auto flex items-center justify-center gap-2 rounded-lg h-11 px-6 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-sm font-bold hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+<span class="material-symbols-outlined text-base">visibility</span>
+<span>View Invoice</span>
+</button>
+<button class="w-full sm:w-auto flex items-center justify-center gap-2 rounded-lg h-11 px-6 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-sm font-bold hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+<span class="material-symbols-outlined text-base">download</span>
+<span>Download PDF</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Recent Transactions Card -->
+<div class="w-full bg-white dark:bg-slate-900/60 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800">
+<div class="p-6">
+<h3 class="text-lg font-bold text-[#1A202C] dark:text-white mb-4">Recent Transactions</h3>
+<div class="flow-root">
+<ul class="divide-y divide-slate-200 dark:divide-slate-700" role="list">
+<li class="py-3 sm:py-4">
+<div class="flex items-center space-x-4">
+<div class="flex-shrink-0">
+<span class="material-symbols-outlined p-2 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-full">receipt_long</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-medium text-[#1A202C] dark:text-white truncate">Pro Plan - Annual</p>
+<p class="text-sm text-slate-500 dark:text-slate-400 truncate">Oct 26, 2023</p>
+</div>
+<div class="inline-flex items-center text-base font-semibold text-[#1A202C] dark:text-white">$120.00</div>
+</div>
+</li>
+<li class="py-3 sm:py-4">
+<div class="flex items-center space-x-4">
+<div class="flex-shrink-0">
+<span class="material-symbols-outlined p-2 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-full">receipt_long</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-medium text-[#1A202C] dark:text-white truncate">Pro Plan - Annual</p>
+<p class="text-sm text-slate-500 dark:text-slate-400 truncate">Oct 26, 2022</p>
+</div>
+<div class="inline-flex items-center text-base font-semibold text-[#1A202C] dark:text-white">$110.00</div>
+</div>
+</li>
+<li class="py-3 sm:py-4">
+<div class="flex items-center space-x-4">
+<div class="flex-shrink-0">
+<span class="material-symbols-outlined p-2 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-full">receipt_long</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-medium text-[#1A202C] dark:text-white truncate">Basic Plan - Annual</p>
+<p class="text-sm text-slate-500 dark:text-slate-400 truncate">Oct 26, 2021</p>
+</div>
+<div class="inline-flex items-center text-base font-semibold text-[#1A202C] dark:text-white">$60.00</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>
