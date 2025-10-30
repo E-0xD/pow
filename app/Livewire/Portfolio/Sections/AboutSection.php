@@ -6,6 +6,8 @@ use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\Portfolio;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
 class AboutSection extends Component
 {
@@ -16,7 +18,8 @@ class AboutSection extends Component
         'name' => '',
         'logo' => null,
         'brief' => '',
-        'description' => ''
+        'description' => '',
+        'collapsed' => true,
     ];
 
     protected $rules = [
@@ -37,10 +40,45 @@ class AboutSection extends Component
         if ($about = $this->portfolio->about) {
             $this->about = [
                 'name' => $about->name,
-                'logo' => null,
+                'logo' => $about->logo,
                 'brief' => $about->brief,
-                'description' => $about->description
+                'description' => $about->description,
+                'collapsed' => true,
             ];
+        }
+    }
+
+    public function toggleCollapse()
+    {
+        $this->about['collapsed'] = !$this->about['collapsed'];
+    }
+
+    public function deleteAbout()
+    {
+        try {
+            DB::beginTransaction();
+
+            if ($this->portfolio->about) {
+                if ($this->portfolio->about->logo && Storage::exists($this->portfolio->about->logo)) {
+                    Storage::delete($this->portfolio->about->logo);
+                }
+
+                $this->portfolio->about()->delete();
+            }
+
+            $this->about = [
+                'name' => '',
+                'logo' => null,
+                'brief' => '',
+                'description' => '',
+                'collapsed' => false,
+            ];
+
+            DB::commit();
+            $this->dispatch('sectionSaved');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            session()->flash('error', 'Failed to delete about section.');
         }
     }
 
@@ -50,20 +88,25 @@ class AboutSection extends Component
 
         try {
             DB::beginTransaction();
-            
-            $this->portfolio->about()->updateOrCreate(
+
+            $aboutData = [
+                'name' => $this->about['name'],
+                'brief' => $this->about['brief'],
+                'description' => $this->about['description'],
+            ];
+
+            $aboutModel = $this->portfolio->about()->updateOrCreate(
                 ['portfolio_id' => $this->portfolio->id],
-                [
-                    'name' => $this->about['name'],
-                    'brief' => $this->about['brief'],
-                    'description' => $this->about['description']
-                ]
+                $aboutData
             );
 
-            if ($this->about['logo']) {
-                $path = $this->about['logo']->store('public/portfolios/' . $this->portfolio->id);
-                $this->portfolio->about()->update(['logo' => $path]);
+            if ($this->about['logo'] instanceof TemporaryUploadedFile) {
+                $path = $this->about['logo']->store('portfolios/' . $this->portfolio->id, 'public');
+                $aboutModel->update(['logo' => $path]);
+                $this->about['logo'] = $path;
             }
+
+            $this->about['collapsed'] = true;
 
             DB::commit();
             $this->dispatch('sectionSaved');
