@@ -17,6 +17,7 @@ document.addEventListener("alpine:init", () => {
             this.tags = this.tags.filter((t) => t !== tag);
         },
     }));
+    
 });
 
 

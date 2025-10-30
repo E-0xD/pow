@@ -3,27 +3,27 @@
         <!-- PageHeading -->
         <div class="flex flex-wrap justify-between gap-3 mb-8">
             <p class="text-gray-900 dark:text-white text-4xl font-black leading-tight tracking-[-0.033em]">
-                {{ isset($portfolio) ? 'Edit Portfolio' : 'Create New Portfolio' }}
+                {{ isset($template) ? 'Edit Template' : 'Create New Template' }}
             </p>
         </div>
         <!-- Form Container -->
-        <form action="{{ isset($portfolio) ? route('admin.portfolio.update', $portfolio) : route('admin.portfolio.store') }}"
+        <form action="{{ isset($template) ? route('admin.template.update', $template) : route('admin.template.store') }}"
             method="POST" enctype="multipart/form-data"
             class="bg-white dark:bg-gray-900/50 rounded-xl shadow-sm p-8 space-y-8">
             @csrf
-            @if (isset($portfolio))
+            @if (isset($template))
                 @method('PUT')
             @endif
 
-            <!-- TextField: Portfolio Title -->
+            <!-- TextField: Template Title -->
             <div class="flex flex-wrap items-end gap-4">
                 <label class="flex flex-col min-w-40 flex-1">
-                    <p class="text-gray-800 dark:text-gray-200 text-base font-medium leading-normal pb-2">Portfolio Title
+                    <p class="text-gray-800 dark:text-gray-200 text-base font-medium leading-normal pb-2">Template Title
                     </p>
                     <input name="title"
                         class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-gray-900 dark:text-white focus:outline-0 border border-[#D1D5DB] dark:border-gray-700 bg-transparent dark:bg-background-dark focus:ring-2 focus:ring-primary/50 focus:border-primary h-12 placeholder:text-gray-400 dark:placeholder:text-gray-500 p-[15px] text-base font-normal leading-normal transition-all"
-                        placeholder="Enter the title for the portfolio"
-                        value="{{ old('title', $portfolio->title ?? '') }}" />
+                        placeholder="Enter the title for the template"
+                        value="{{ old('title', $template->title ?? '') }}" />
                     @error('title')
                         <span class="text-red-500 text-sm mt-1">{{ $message }}</span>
                     @enderror
@@ -43,13 +43,13 @@
                             class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-md px-4 has-[:checked]:bg-white dark:has-[:checked]:bg-gray-700 has-[:checked]:shadow-sm has-[:checked]:text-gray-900 dark:has-[:checked]:text-white text-gray-500 dark:text-gray-400 text-sm font-medium leading-normal transition-colors">
                             <span class="truncate">Draft</span>
                             <input class="invisible w-0" name="status" type="radio" value="draft"
-                                {{ old('status', $portfolio->status ?? 'draft') == 'draft' ? 'checked' : '' }} />
+                                {{ old('status', $template->status ?? 'draft') == 'draft' ? 'checked' : '' }} />
                         </label>
                         <label
                             class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-md px-4 has-[:checked]:bg-white dark:has-[:checked]:bg-gray-700 has-[:checked]:shadow-sm has-[:checked]:text-gray-900 dark:has-[:checked]:text-white text-gray-500 dark:text-gray-400 text-sm font-medium leading-normal transition-colors">
                             <span class="truncate">Published</span>
                             <input class="invisible w-0" name="status" type="radio" value="published"
-                                {{ old('status', $portfolio->status ?? '') == 'published' ? 'checked' : '' }} />
+                                {{ old('status', $template->status ?? '') == 'published' ? 'checked' : '' }} />
                         </label>
                     </div>
                 </div>
@@ -69,8 +69,8 @@
                     <label
                         class="flex flex-col items-center justify-center w-full h-64 border-2 border-[#D1D5DB] dark:border-gray-700 border-dashed rounded-xl cursor-pointer bg-gray-50 dark:bg-gray-800/50 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
                         for="thumbnail">
-                        @if (isset($portfolio) && $portfolio->thumbnail_path)
-                            <img src="{{ Storage::url($portfolio->thumbnail_path) }}"
+                        @if (isset($template) && $template->thumbnail_path)
+                            <img src="{{ Storage::url($template->thumbnail_path) }}"
                                 class="w-full h-full object-cover rounded-xl" id="thumbnail-preview" />
                         @else
                             <div class="flex flex-col items-center justify-center pt-5 pb-6">
@@ -96,7 +96,7 @@
                     <p class="text-gray-800 dark:text-gray-200 text-base font-medium leading-normal pb-2">File Path</p>
                     <input name="file_path"
                         class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-gray-900 dark:text-white focus:outline-0 border border-[#D1D5DB] dark:border-gray-700 bg-transparent dark:bg-background-dark focus:ring-2 focus:ring-primary/50 focus:border-primary h-12 placeholder:text-gray-400 dark:placeholder:text-gray-500 p-[15px] text-base font-normal leading-normal transition-all"
-                        placeholder="/portfolio/location" value="{{ old('file_path', $portfolio->file_path ?? '') }}" />
+                        placeholder="/template/location" value="{{ old('file_path', $template->file_path ?? '') }}" />
                     @error('file_path')
                         <span class="text-red-500 text-sm mt-1">{{ $message }}</span>
                     @enderror
@@ -125,7 +125,7 @@
                             class="flex-1 min-w-[100px] bg-transparent border-0 focus:ring-0 text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 text-base"
                             placeholder="Add a tag..." />
                     </div>
-                    <input type="hidden" name="tags" x-bind:value="JSON.stringify(tags)" />
+                    <input type="hidden" name="tags" :value="tags"   />
                 </div>
                 @error('tags')
                     <span class="text-red-500 text-sm mt-1">{{ $message }}</span>
@@ -134,13 +134,13 @@
 
             <!-- Action Buttons -->
             <div class="flex items-center justify-end gap-4 pt-4 border-t border-gray-200 dark:border-gray-800">
-                <a href="{{ route('admin.portfolio.index') }}"
+                <a href="{{ route('admin.template.index') }}"
                     class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-11 px-6 bg-subtle-light text-white dark:text-gray-200 text-sm font-bold leading-normal tracking-[0.015em] hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
                     <span class="truncate">Cancel</span>
                 </a>
                 <button type="submit"
                     class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-11 px-6 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] shadow-md hover:shadow-lg transition-shadow">
-                    <span class="truncate">{{ isset($portfolio) ? 'Update Portfolio' : 'Create Portfolio' }}</span>
+                    <span class="truncate">{{ isset($template) ? 'Update Template' : 'Create Template' }}</span>
                 </button>
             </div>
         </form>
@@ -150,7 +150,7 @@
         <script>
             document.addEventListener('alpine:init', () => {
                 Alpine.data('tags', () => ({
-                    tags: {!! json_encode(old('tags', $portfolio->tags ?? [])) !!},
+                    tags: {!! json_encode(old('tags', $template->tags ?? [])) !!},
                     newTag: '',
                     addTag() {
                         if (this.newTag.trim() !== '' && !this.tags.includes(this.newTag.trim())) {

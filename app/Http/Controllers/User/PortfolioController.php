@@ -3,64 +3,93 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PortfolioRequest;
+use App\Models\Portfolio;
+use App\Models\Template;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PortfolioController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    use AuthorizesRequests;
+
     public function index()
     {
-        return view('user.portfolio.index');
+        $portfolios = Auth::user()->portfolios()->latest()->paginate(10);
+        return view('user.portfolio.index', compact('portfolios'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        // return view('user.portfolio.create');
-        return view('user.portfolio.create-step4');
+       
+        $templates = Template::where('status', 'published')->get();
+        
+        return view('user.portfolio.create', compact('templates'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function store(PortfolioRequest $request)
     {
-        //
+        $data = $request->validated();
+        
+        $portfolio = Auth::user()->portfolios()->create($data);
+
+        return redirect()->route('user.portfolio.customize', $portfolio)
+            ->with([
+                    'type' => 'error',
+                    'message' => 'Portfolio created successfully'
+                ]);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function show(Portfolio $portfolio)
     {
-        //
+        $this->authorize('view', $portfolio);
+        return view('user.portfolio.show', compact('portfolio'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function edit(Portfolio $portfolio)
     {
-        //
+        $this->authorize('update', $portfolio);
+        return view('user.portfolio.edit', compact('portfolio'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(PortfolioRequest $request, Portfolio $portfolio)
     {
-        //
+        $this->authorize('update', $portfolio);
+        
+        $data = $request->validated();
+
+        if ($request->hasFile('favicon')) {
+            if ($portfolio->favicon) {
+                Storage::disk('public')->delete($portfolio->favicon);
+            }
+            $data['favicon'] = $request->file('favicon')->store('favicons', 'public');
+        }
+
+        $portfolio->update($data);
+
+        return redirect()->route('user.portfolio.index')
+            ->with('success', 'Portfolio updated successfully.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy(Portfolio $portfolio)
     {
-        //
+        $this->authorize('delete', $portfolio);
+
+        if ($portfolio->favicon) {
+            Storage::disk('public')->delete($portfolio->favicon);
+        }
+        
+        $portfolio->delete();
+
+        return redirect()->route('user.portfolio.index')
+            ->with('success', 'Portfolio deleted successfully.');
+    }
+
+    public function customize(Portfolio $portfolio)
+    {
+        $this->authorize('update', $portfolio);
+        return view('user.portfolio.customize', compact('portfolio'));
     }
 }

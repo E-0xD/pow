@@ -22,153 +22,73 @@
                 <span
                     class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">expand_more</span>
             </div>
-            <button
-                class="flex w-full sm:w-auto items-center justify-center gap-2 overflow-hidden rounded-lg h-10 px-4 bg-gradient-to-br from-primary to-purple-500 text-white text-sm font-bold shadow-sm hover:opacity-90 transition-opacity">
+            <a href="{{route('user.portfolio.create')}}"
+                class="flex w-full sm:w-auto items-center justify-center gap-2 overflow-hidden bg-primary rounded-lg h-10 px-4 text-white text-sm font-bold shadow-sm hover:opacity-90 transition-opacity">
                 <span class="material-symbols-outlined">add_circle</span>
                 <span class="truncate">Create New Portfolio</span>
-            </button>
+            </a>
         </div>
     </header>
-    <!-- ImageGrid -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        <!-- Portfolio Card 1 -->
-        <div
-            class="flex flex-col group bg-white dark:bg-gray-900/50 rounded-xl overflow-hidden shadow-sm hover:shadow-lg border border-gray-200 dark:border-gray-800 transition-all duration-300">
-            <div class="w-full bg-center bg-no-repeat aspect-[4/3] bg-cover"
-                data-alt="Abstract purple and blue gradient background"
-                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBbqaqZTRzKCB_PXVKlJySHNxvUIUZ602Td5PkLVrXfJ111Amx_A-yuRMF2G6Ko6EUxmkbSBoZ-vkh66yfxij60AYqARCpdVrfFBTM0xkx9t8AtZgPTD3eLwyi4NpJOBVc95GvxOaokbWljdYl0LAoaCFsD0VG1pnM_dqfzSz0E25QX86ZyUa8GAM1t3iZ3KoZ0joFy-ljF2UpN-x4XAV-IPyC0GU53SFU9DMMd6IaZ5oIqNfaJWkND8PqebVH2A-3ba70nSGIe09k");'>
-            </div>
-            <div class="p-4 flex flex-col flex-1">
-                <p class="text-gray-900 dark:text-white text-base font-bold leading-normal mb-2">Web Design Showcase
-                </p>
-                <div class="flex items-center gap-4 text-gray-500 dark:text-gray-400 text-xs mb-4">
-                    <div class="flex items-center gap-1"><span
-                            class="material-symbols-outlined text-sm">visibility</span> 1.2k</div>
-                    <div class="flex items-center gap-1"><span
-                            class="material-symbols-outlined text-sm">ads_click</span> 450</div>
-                    <div class="flex items-center gap-1"><span
-                            class="material-symbols-outlined text-sm">chat_bubble</span> 12</div>
-                </div>
-                <div class="mt-auto flex gap-2">
-                    <button
-                        class="flex-1 flex items-center justify-center gap-1 py-2 px-3 text-sm font-semibold rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
-                        <span class="material-symbols-outlined text-base">edit</span> Edit
-                    </button>
-                    <button
-                        class="flex items-center justify-center py-2 px-3 text-sm font-semibold rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
-                        <span class="material-symbols-outlined text-base">more_vert</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <!-- Portfolio Card 2 -->
-        <div
-            class="flex flex-col group bg-white dark:bg-gray-900/50 rounded-xl overflow-hidden shadow-sm hover:shadow-lg border border-gray-200 dark:border-gray-800 transition-all duration-300">
-            <div class="w-full bg-center bg-no-repeat aspect-[4/3] bg-cover" data-alt="Abstract teal and pink fluid art"
-                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC_YNrJv0LcQ9Asg5lm6_T6atLS2L7jqilmPfnkE4T6cHIC8Xz4Kz6cSXSX0OsqIvv7Et2X0cJ91oJ-qvW9W61DtDMc7NueFT8yMs8SYKzG3XG4fsVq7dCYu7taXOxqeCYa8Pi6HwUFozvQuScTb9-xhk4AXJqaUIAnr1oHcXIzgJX1L7ooXCpQzGGI86yUI3NQ43iCtJgnONUTuoDlga3DHBScskx0ROIDDFSo4EvXjlUt2HPKGrdcG2sDGMJ5ea97IHjkWc4t2TM");'>
-            </div>
-            <div class="p-4 flex flex-col flex-1">
-                <p class="text-gray-900 dark:text-white text-base font-bold leading-normal mb-2">UX/UI Case Studies
-                </p>
-                <div class="flex items-center gap-4 text-gray-500 dark:text-gray-400 text-xs mb-4">
-                    <div class="flex items-center gap-1"><span
-                            class="material-symbols-outlined text-sm">visibility</span> 890</div>
-                    <div class="flex items-center gap-1"><span
-                            class="material-symbols-outlined text-sm">ads_click</span> 320</div>
-                    <div class="flex items-center gap-1"><span
-                            class="material-symbols-outlined text-sm">chat_bubble</span> 8</div>
-                </div>
-                <div class="mt-auto flex gap-2">
-                    <button
-                        class="flex-1 flex items-center justify-center gap-1 py-2 px-3 text-sm font-semibold rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
-                        <span class="material-symbols-outlined text-base">edit</span> Edit
-                    </button>
-                    <button
-                        class="flex items-center justify-center py-2 px-3 text-sm font-semibold rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
-                        <span class="material-symbols-outlined text-base">more_vert</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <!-- Portfolio Card 3 -->
-        <div
-            class="flex flex-col group bg-white dark:bg-gray-900/50 rounded-xl overflow-hidden shadow-sm hover:shadow-lg border border-gray-200 dark:border-gray-800 transition-all duration-300">
-            <div class="w-full bg-center bg-no-repeat aspect-[4/3] bg-cover"
-                data-alt="Abstract orange and yellow paint strokes"
-                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC3xliNRufb1yNB5lrExgmt1BAOxjQwAG7pOTXh2Aa-R5n8riKL77mSWmpZQ0ITpPjLm8EzfxmUBOOXi29k8qOVMleoyLIi7y-GzwdcN2OcoFOMVeRphfT8FmSKXjDWZczX4kVM2KiT9RCNM6ZlOl5latCGmbqdak4yJllyYCevP2yGkRS6MsmTtEu63DU26AuBGLQdpjcC1xJb27vBdPq07HjHsIjutK_VuPmxWM0Yn5Hwp74k4brEkBgtXRp2eweFehxA4ZoxHf0");'>
-            </div>
-            <div class="p-4 flex flex-col flex-1">
-                <p class="text-gray-900 dark:text-white text-base font-bold leading-normal mb-2">Photography
-                    Collection</p>
-                <div class="flex items-center gap-4 text-gray-500 dark:text-gray-400 text-xs mb-4">
-                    <div class="flex items-center gap-1"><span
-                            class="material-symbols-outlined text-sm">visibility</span> 2.5k</div>
-                    <div class="flex items-center gap-1"><span
-                            class="material-symbols-outlined text-sm">ads_click</span> 980</div>
-                    <div class="flex items-center gap-1"><span
-                            class="material-symbols-outlined text-sm">chat_bubble</span> 25</div>
-                </div>
-                <div class="mt-auto flex gap-2">
-                    <button
-                        class="flex-1 flex items-center justify-center gap-1 py-2 px-3 text-sm font-semibold rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
-                        <span class="material-symbols-outlined text-base">edit</span> Edit
-                    </button>
-                    <button
-                        class="flex items-center justify-center py-2 px-3 text-sm font-semibold rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
-                        <span class="material-symbols-outlined text-base">more_vert</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <!-- Portfolio Card 4 -->
-        <div
-            class="flex flex-col group bg-white dark:bg-gray-900/50 rounded-xl overflow-hidden shadow-sm hover:shadow-lg border border-gray-200 dark:border-gray-800 transition-all duration-300">
-            <div class="w-full bg-center bg-no-repeat aspect-[4/3] bg-cover" data-alt="Abstract green and blue texture"
-                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCYF3XWtXw8km9A1-IQoVO4Cd1jBIK1I8qVfPmFhW_JeY77XEPI0SZYYfEr6-tLEDW6_6k7eJev3Hq1OlelzLf0cSetF0pjYxS2fZjoHa0vBbziCSU-LoHVYDgA8LBX2ASDs-VW4cunhYnHItP7Xjs-vYE1CpnR1M7VnEiYUS7YRSkHubbwy67y4zWACs1tPuqjit5KPs9ltyU9AVFSye7_0tMLhp0LWTW1AsqLf7wqHmdcqg_45_h2XmriXSdj10HUBD4IJBpoR5k");'>
-            </div>
-            <div class="p-4 flex flex-col flex-1">
-                <p class="text-gray-900 dark:text-white text-base font-bold leading-normal mb-2">Mobile App Concepts
-                </p>
-                <div class="flex items-center gap-4 text-gray-500 dark:text-gray-400 text-xs mb-4">
-                    <div class="flex items-center gap-1"><span
-                            class="material-symbols-outlined text-sm">visibility</span> 650</div>
-                    <div class="flex items-center gap-1"><span
-                            class="material-symbols-outlined text-sm">ads_click</span> 210</div>
-                    <div class="flex items-center gap-1"><span
-                            class="material-symbols-outlined text-sm">chat_bubble</span> 5</div>
-                </div>
-                <div class="mt-auto flex gap-2">
-                    <button
-                        class="flex-1 flex items-center justify-center gap-1 py-2 px-3 text-sm font-semibold rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
-                        <span class="material-symbols-outlined text-base">edit</span> Edit
-                    </button>
-                    <button
-                        class="flex items-center justify-center py-2 px-3 text-sm font-semibold rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
-                        <span class="material-symbols-outlined text-base">more_vert</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
+    @if ($portfolios->count())
 
-    <div class="flex flex-col items-center justify-center gap-6 mt-16 text-center">
-        <div class="text-primary">
-            <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" fill="currentColor"
-                class="bi bi-collection" viewBox="0 0 16 16">
-                <path
-                    d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6v7zm1.5.5A.5.5 0 0 1 1 13V6a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-13z" />
-            </svg>
+        <!-- ImageGrid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+
+            @foreach ($portfolios as $portfolio)
+                <!-- Portfolio Card -->
+                <div
+                    class="flex flex-col group bg-white dark:bg-gray-900/50 rounded-xl overflow-hidden shadow-sm hover:shadow-lg border border-gray-200 dark:border-gray-800 transition-all duration-300">
+                    <div class="w-full bg-center bg-no-repeat aspect-[4/3] bg-cover"
+                        data-alt="Abstract purple and blue gradient background"
+                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBbqaqZTRzKCB_PXVKlJySHNxvUIUZ602Td5PkLVrXfJ111Amx_A-yuRMF2G6Ko6EUxmkbSBoZ-vkh66yfxij60AYqARCpdVrfFBTM0xkx9t8AtZgPTD3eLwyi4NpJOBVc95GvxOaokbWljdYl0LAoaCFsD0VG1pnM_dqfzSz0E25QX86ZyUa8GAM1t3iZ3KoZ0joFy-ljF2UpN-x4XAV-IPyC0GU53SFU9DMMd6IaZ5oIqNfaJWkND8PqebVH2A-3ba70nSGIe09k");'>
+                    </div>
+                    <div class="p-4 flex flex-col flex-1">
+                        <p class="text-gray-900 dark:text-white text-base font-bold leading-normal mb-2">Web Design
+                            Showcase
+                        </p>
+                        <div class="flex items-center gap-4 text-gray-500 dark:text-gray-400 text-xs mb-4">
+                            <div class="flex items-center gap-1"><span
+                                    class="material-symbols-outlined text-sm">visibility</span> 1.2k</div>
+                            <div class="flex items-center gap-1"><span
+                                    class="material-symbols-outlined text-sm">ads_click</span> 450</div>
+                            <div class="flex items-center gap-1"><span
+                                    class="material-symbols-outlined text-sm">chat_bubble</span> 12</div>
+                        </div>
+                        <div class="mt-auto flex gap-2">
+                            <button
+                                class="flex-1 flex items-center justify-center gap-1 py-2 px-3 text-sm font-semibold rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                                <span class="material-symbols-outlined text-base">edit</span> Edit
+                            </button>
+                            <button
+                                class="flex items-center justify-center py-2 px-3 text-sm font-semibold rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                                <span class="material-symbols-outlined text-base">more_vert</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
         </div>
-        <div class="flex max-w-md flex-col items-center gap-2">
-            <p class="text-gray-900 dark:text-white text-lg font-bold">No portfolios yet</p>
-            <p class="text-gray-600 dark:text-gray-400 text-sm font-normal">Start building your first portfolio to share
-                your work with the world.</p>
+    @else
+        <div class="flex flex-col items-center justify-center gap-6 mt-16 text-center">
+            <div class="text-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" fill="currentColor"
+                    class="bi bi-collection" viewBox="0 0 16 16">
+                    <path
+                        d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6v7zm1.5.5A.5.5 0 0 1 1 13V6a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-13z" />
+                </svg>
+            </div>
+            <div class="flex max-w-md flex-col items-center gap-2">
+                <p class="text-gray-900 dark:text-white text-lg font-bold">No portfolios yet</p>
+                <p class="text-gray-600 dark:text-gray-400 text-sm font-normal">Start building your first portfolio
+                    to share
+                    your work with the world.</p>
+            </div>
+            <a href="{{route('user.portfolio.create')}}"
+                class="flex min-w-[84px] items-center justify-center gap-2 overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold shadow-sm hover:opacity-90 transition-opacity">
+                <span class="material-symbols-outlined">add_circle</span>
+                <span class="truncate">Create New Portfolio</span>
+            </a>
         </div>
-        <button
-            class="flex min-w-[84px] items-center justify-center gap-2 overflow-hidden rounded-lg h-10 px-4 bg-gradient-to-br from-primary to-purple-500 text-white text-sm font-bold shadow-sm hover:opacity-90 transition-opacity">
-            <span class="material-symbols-outlined">add_circle</span>
-            <span class="truncate">Create New Portfolio</span>
-        </button>
-    </div>
+    @endif
 
 </x-layouts.app>

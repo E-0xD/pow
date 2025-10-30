@@ -8,7 +8,7 @@
             <button
                 class="flex h-12 min-w-[84px] cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg bg-primary px-5 text-white shadow-lg shadow-primary/30 transition-all hover:bg-primary/90">
                 <span class="material-symbols-outlined">add</span>
-                <a href="{{ route('admin.portfolio.create') }}" class="truncate text-sm font-bold">Add New Template</a>
+                <a href="{{ route('admin.template.create') }}" class="truncate text-sm font-bold">Add New Template</a>
             </button>
         </div>
         <!-- Search and Filters -->
@@ -52,29 +52,29 @@
         <!-- ImageGrid -->
         <div class="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-6">
 
-            @foreach ($portfolios as $portfolio)
+            @foreach ($templates as $template)
                 <div
                     class="group relative flex flex-col overflow-hidden rounded-lg border border-border-light bg-white shadow-sm transition-all hover:shadow-lg dark:border-border-dark dark:bg-gray-800">
                     <div class="aspect-video w-full bg-cover bg-center bg-no-repeat"
                         data-alt="Minimalist Grid Template Thumbnail"
                         style="
-                                    background-image: url({{ Storage::url($portfolio->thumbnail_path) }});
+                                    background-image: url({{ Storage::url($template->thumbnail_path) }});
                                 ">
                     </div>
                     <div class="flex flex-1 items-start justify-between gap-4 p-4">
                         <div class="flex flex-col">
                             <p class="font-bold text-text-light dark:text-text-dark">
-                                {{ $portfolio->title }}
+                                {{ $template->title }}
                             </p>
                             <span
-                                class="text-xs font-semibold text-green-500">{{ ucFirst($portfolio->status->value) }}</span>
+                                class="text-xs font-semibold text-green-500">{{ ucFirst($template->status->value) }}</span>
                         </div>
                         <div class="flex items-center gap-1">
-                            <a href="{{ route('admin.portfolio.edit', $portfolio->uid) }}"
+                            <a href="{{ route('admin.template.edit', $template->uid) }}"
                                 class="flex size-8 items-center justify-center rounded-full text-subtle-light transition-colors hover:bg-gray-100 hover:text-text-light dark:text-subtle-dark dark:hover:bg-gray-700 dark:hover:text-text-dark">
                                 <span class="material-symbols-outlined text-xl">edit</span>
                             </a>
-                            <form action="{{ route('admin.portfolio.destroy', $portfolio->uid) }}" method="post">
+                            <form action="{{ route('admin.template.destroy', $template->uid) }}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit"

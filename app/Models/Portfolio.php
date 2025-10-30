@@ -2,38 +2,60 @@
 
 namespace App\Models;
 
-use App\Enums\PortfolioStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use illuminate\Support\Str;
+use Illuminate\Support\Str;
 
 class Portfolio extends Model
 {
     use HasFactory;
 
     protected $fillable = [
+        'template_id',
         'title',
+        'slug',
+        'visibility',
+        'theme',
+        'typography',
+        'expires_at',
         'status',
-        'thumbnail_path',
-        'file_path',
-        'tags',
+        'favicon',
+        'meta_title',
+        'meta_description',
     ];
 
     protected $casts = [
-        'status' => PortfolioStatus::class,
-        'tags' => 'array',
+        'typography' => 'array',
+        'expires_at' => 'datetime',
     ];
 
     protected static function boot()
     {
         parent::boot();
-        static::creating(function($portfolio){
-            $portfolio->uid = (string) Str::uuid();
+
+        static::creating(function ($Portfolio) {
+            $Portfolio->uid = (string) Str::uuid();
+            if (!$Portfolio->title) {
+                $Portfolio->title = Str::uuid(5);
+            }
+            if (!$Portfolio->slug) {
+                $Portfolio->slug = $Portfolio->title;
+            }
         });
     }
 
     public function getRouteKeyName()
     {
-       return 'uid';   
+        return 'uid';
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function template()
+    {
+        return $this->belongsTo(Template::class);
     }
 }
