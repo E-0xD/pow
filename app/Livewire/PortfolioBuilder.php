@@ -18,7 +18,7 @@ class PortfolioBuilder extends Component
     public Portfolio $portfolio;
     public $selectedSections = [];
     public $availableSections;
-    
+
     // Add these new properties
     public $editingExperienceIndex = null;
     public $experienceForm = [
@@ -28,7 +28,7 @@ class PortfolioBuilder extends Component
         'end_date' => '',
         'description' => ''
     ];
-    
+
     protected $listeners = [
         'addSection',
         'removeSection'
@@ -93,6 +93,7 @@ class PortfolioBuilder extends Component
         if (in_array('education', $selectedSectionIds) && $this->portfolio->educationRecords) {
             $this->education = $this->portfolio->educationRecords->map(function ($edu) {
                 return [
+                      'id' => $edu->id,
                     'school' => $edu->school,
                     'degree' => $edu->degree,
                     'year_of_admission' => $edu->year_of_admission,
@@ -208,7 +209,7 @@ class PortfolioBuilder extends Component
     }
 
     // ========== EXPERIENCE METHODS ==========
-    
+
     public function addNewExperience()
     {
         $this->editingExperienceIndex = 'new';
@@ -225,7 +226,7 @@ class PortfolioBuilder extends Component
     {
         $this->editingExperienceIndex = $index;
         $experience = $this->experiences[$index];
-        
+
         $this->experienceForm = [
             'company' => $experience['company'] ?? '',
             'position' => $experience['position'] ?? '',
@@ -272,7 +273,7 @@ class PortfolioBuilder extends Component
             } else {
                 // Update existing experience
                 $experienceId = $this->experiences[$this->editingExperienceIndex]['id'];
-                
+
                 $this->portfolio->experiences()
                     ->where('id', $experienceId)
                     ->update([
@@ -311,7 +312,7 @@ class PortfolioBuilder extends Component
             DB::beginTransaction();
 
             $experienceId = $this->experiences[$index]['id'];
-            
+
             $this->portfolio->experiences()
                 ->where('id', $experienceId)
                 ->delete();
@@ -341,16 +342,148 @@ class PortfolioBuilder extends Component
         $this->resetErrorBag();
     }
 
-    // Keep your existing addExperience and removeExperience for backward compatibility
-    public function addExperience()
+    // ========== EDUCATION METHODS ==========
+    // ==================== EDUCATION SECTION ====================
+
+    public $editingEducationIndex = null;
+    public $educationForm = [
+        'school' => '',
+        'degree' => '',
+        'year_of_admission' => '',
+        'year_of_graduation' => '',
+
+    ];
+
+    public function addEducation()
     {
-        $this->addNewExperience();
+        $this->editingEducationIndex = 'new';
+        $this->educationForm = [
+            'school' => '',
+            'degree' => '',
+            'year_of_admission' => '',
+            'year_of_graduation' => '',
+
+        ];
     }
-    
-    public function removeExperience($index)
+
+    public function editEducation($index)
     {
-        $this->deleteExperience($index);
+        $this->editingEducationIndex = $index;
+        $education = $this->education[$index];
+
+        $this->educationForm = [
+            'school' => $education['school'] ?? '',
+            'degree' => $education['degree'] ?? '',
+            'year_of_admission' => $education['year_of_admission'] ?? '',
+            'year_of_graduation' => $education['year_of_graduation'] ?? '',
+
+        ];
     }
+
+    public function saveEducation()
+    {
+        $this->validate([
+            'educationForm.school' => 'required|string|max:255',
+            'educationForm.degree' => 'required|string|max:255',
+            'educationForm.year_of_admission' => 'required|integer|min:1901|max:2155',
+            'educationForm.year_of_graduation' => 'nullable|integer|min:1901|max:2155|gte:educationForm.year_of_admission',
+        ]);
+
+
+        try {
+            DB::beginTransaction();
+
+            if ($this->editingEducationIndex === 'new') {
+                // Create new education
+                $newEducation = $this->portfolio->educationRecords()->create([
+                    'school' => $this->educationForm['school'],
+                    'degree' => $this->educationForm['degree'],
+                    'year_of_admission' => $this->educationForm['year_of_admission'],
+                    'year_of_graduation' => $this->educationForm['year_of_graduation'] ?: null,
+
+                ]);
+
+                // Push to local array
+                $this->education[] = [
+                    'id' => $newEducation->id,
+                    'school' => $newEducation->school,
+                    'degree' => $newEducation->degree,
+                    'year_of_admission' => $newEducation->year_of_admission,
+                    'year_of_graduation' => $newEducation->year_of_graduation,
+
+                ];
+
+                session()->flash('message', 'Education added successfully!');
+            } else {
+                // Update existing education
+                $educationId = $this->education[$this->editingEducationIndex]['id'];
+
+                $this->portfolio->educationRecords()
+                    ->where('id', $educationId)
+                    ->update([
+                        'school' => $this->educationForm['school'],
+                        'degree' => $this->educationForm['degree'],
+                        'year_of_admission' => $this->educationForm['year_of_admission'],
+                        'year_of_graduation' => $this->educationForm['year_of_graduation'] ?: null,
+
+                    ]);
+
+                $this->education[$this->editingEducationIndex] = [
+                    'id' => $educationId,
+                    'school' => $this->educationForm['school'],
+                    'degree' => $this->educationForm['degree'],
+                    'year_of_admission' => $this->educationForm['year_of_admission'],
+                    'year_of_graduation' => $this->educationForm['year_of_graduation'],
+
+                ];
+
+                session()->flash('message', 'Education updated successfully!');
+            }
+
+            DB::commit();
+            $this->cancelEditEducation();
+        } catch (\Exception $e) {
+            dd($e);
+            DB::rollBack();
+            session()->flash('error', 'An error occurred while saving education.');
+        }
+    }
+
+    public function deleteEducation($index)
+    {
+        try {
+            DB::beginTransaction();
+
+            $educationId = $this->education[$index]['id'];
+
+            $this->portfolio->educationRecords()
+                ->where('id', $educationId)
+                ->delete();
+
+            unset($this->education[$index]);
+            $this->education = array_values($this->education);
+
+            DB::commit();
+            session()->flash('message', 'Education deleted successfully!');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            session()->flash('error', 'An error occurred while deleting education.');
+        }
+    }
+
+    public function cancelEditEducation()
+    {
+        $this->editingEducationIndex = null;
+        $this->educationForm = [
+            'school' => '',
+            'degree' => '',
+            'year_of_admission' => '',
+            'year_of_graduation' => '',
+            'description' => ''
+        ];
+        $this->resetErrorBag();
+    }
+
 
     // ========== SECTION MANAGEMENT METHODS ==========
 
@@ -485,6 +618,7 @@ class PortfolioBuilder extends Component
                 break;
             case 'education':
                 $this->education[] = [
+                     'id' => null,
                     'school' => '',
                     'degree' => '',
                     'year_of_admission' => '',
@@ -510,17 +644,6 @@ class PortfolioBuilder extends Component
     }
 
     // ========== OTHER SECTION METHODS ==========
-
-    public function addEducation()
-    {
-        $this->education[] = [
-            'school' => '',
-            'degree' => '',
-            'year_of_admission' => '',
-            'year_of_graduation' => ''
-        ];
-    }
-
     public function addProject()
     {
         $this->projects[] = [
@@ -761,7 +884,7 @@ class PortfolioBuilder extends Component
                     ['position' => $index]
                 );
             }
-            
+
             DB::table('portfolio_section_orders')
                 ->where('portfolio_id', $this->portfolio->id)
                 ->whereNotIn('section_id', $orderedIds)

@@ -44,6 +44,7 @@ class PortfolioController extends Controller
 
     public function show(Portfolio $portfolio)
     {
+        // dd($portfolio);
         $this->authorize('view', $portfolio);
         return view('user.portfolio.show', compact('portfolio'));
     }

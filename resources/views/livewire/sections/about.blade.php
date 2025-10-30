@@ -1,63 +1,83 @@
-<![CDATA[<div class="bg-white p-6 rounded-lg shadow-sm">
-    <h3 class="text-lg font-semibold mb-4">About Section</h3>
-    <div class="space-y-4">
-        <div>
-            <label for="about.name" class="block text-sm font-medium text-gray-700">Name</label>
-            <input type="text" 
-                   id="about.name" 
-                   wire:model="about.name" 
-                   class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                   placeholder="Your full name">
-            @error('about.name')
-                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-            @enderror
-        </div>
+        <section
+            class="flex flex-col gap-4 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900/50 p-6 shadow-sm">
+            <h2 class="text-gray-900 dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em]">About</h2>
 
-        <div>
-            <label for="about.logo" class="block text-sm font-medium text-gray-700">Logo/Avatar</label>
-            <div class="mt-1 flex items-center space-x-4">
-                @if($about['logo'] ?? null)
-                    <div class="w-20 h-20 rounded-full overflow-hidden">
-                        <img src="{{ $about['logo']->temporaryUrl() }}" alt="Preview" class="w-full h-full object-cover">
+            <!-- Name + Brief -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Name -->
+                <label class="flex flex-col col-span-1">
+                    <p class="text-gray-800 dark:text-gray-200 text-base font-medium leading-normal pb-2">Name</p>
+                    <input wire:model="about.name" placeholder="Jane Doe"
+                        class="form-input flex w-full min-w-0 flex-1 rounded-lg text-gray-900 dark:text-gray-100
+                        focus:outline-none focus:ring-2 focus:ring-primary/50
+                        border @error('about.name') border-red-500 focus:ring-red-500 @else border-gray-300 dark:border-gray-700 @enderror
+                        bg-background-light dark:bg-background-dark h-12 placeholder:text-gray-400 px-4 py-2 text-base font-normal" />
+                    @error('about.name')
+                        <span class="text-sm text-red-500 mt-1">{{ $message }}</span>
+                    @enderror
+                </label>
+
+                <!-- Brief -->
+                <label class="flex flex-col col-span-1">
+                    <p class="text-gray-800 dark:text-gray-200 text-base font-medium leading-normal pb-2">Brief</p>
+                    <input wire:model="about.brief" placeholder="e.g. Senior Product Designer"
+                        class="form-input flex w-full min-w-0 flex-1 rounded-lg text-gray-900 dark:text-gray-100
+                        focus:outline-none focus:ring-2 focus:ring-primary/50
+                        border @error('about.brief') border-red-500 focus:ring-red-500 @else border-gray-300 dark:border-gray-700 @enderror
+                        bg-background-light dark:bg-background-dark h-12 placeholder:text-gray-400 px-4 py-2 text-base font-normal" />
+                    @error('about.brief')
+                        <span class="text-sm text-red-500 mt-1">{{ $message }}</span>
+                    @enderror
+                </label>
+            </div>
+
+            <!-- Description -->
+            <label class="flex flex-col">
+                <p class="text-gray-800 dark:text-gray-200 text-base font-medium leading-normal pb-2">Description</p>
+                <textarea wire:model="about.description" placeholder="Tell us about yourself..."
+                    class="form-textarea flex w-full min-w-0 flex-1 resize-y overflow-hidden rounded-lg text-gray-900 dark:text-gray-100
+                    focus:outline-none focus:ring-2 focus:ring-primary/50
+                    border @error('about.description') border-red-500 focus:ring-red-500 @else border-gray-300 dark:border-gray-700 @enderror
+                    bg-background-light dark:bg-background-dark min-h-32 placeholder:text-gray-400 p-4 text-base font-normal"></textarea>
+                @error('about.description')
+                    <span class="text-sm text-red-500 mt-1">{{ $message }}</span>
+                @enderror
+            </label>
+
+            <!-- Logo Upload -->
+            <div>
+                <h2 class="text-gray-800 dark:text-gray-200 text-lg font-bold leading-tight tracking-[-0.015em] text-left pb-2">
+                    Logo
+                </h2>
+
+                <div class="flex items-center justify-center w-full">
+                    <label
+                        for="logo"
+                        class="flex flex-col items-center justify-center w-full h-64 border-2 border-dashed rounded-xl cursor-pointer
+                        @error('about.logo') border-red-500 dark:border-red-500 @else border-[#D1D5DB] dark:border-gray-700 @enderror
+                        bg-gray-50 dark:bg-gray-800/50 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+
+                        <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                            <span class="material-symbols-outlined text-gray-500 dark:text-gray-400" style="font-size: 48px;">cloud_upload</span>
+                            <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
+                                <span class="font-semibold">Click to upload</span> or drag and drop
+                            </p>
+                            <p class="text-xs text-gray-500 dark:text-gray-400">PNG, JPG or GIF (MAX. 2MB)</p>
+                        </div>
+                    </label>
+                    <input id="logo" wire:model="about.logo" class="hidden" name="logo" type="file" accept="image/*" />
+                </div>
+
+                @error('about.logo')
+                    <span class="text-sm text-red-500 mt-2 block">{{ $message }}</span>
+                @enderror
+
+                <!-- Optional preview -->
+                @if ($about['logo'])
+                    <div class="mt-4">
+                        <img src="{{ $about['logo']->temporaryUrl() }}" alt="Logo Preview"
+                            class="w-32 h-32 object-cover rounded-lg border border-gray-200 dark:border-gray-700">
                     </div>
                 @endif
-                <input type="file" 
-                       id="about.logo" 
-                       wire:model="about.logo"
-                       class="block w-full text-sm text-gray-500
-                              file:mr-4 file:py-2 file:px-4
-                              file:rounded-full file:border-0
-                              file:text-sm file:font-semibold
-                              file:bg-indigo-50 file:text-indigo-700
-                              hover:file:bg-indigo-100">
-                @error('about.logo')
-                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                @enderror
             </div>
-        </div>
-
-        <div>
-            <label for="about.brief" class="block text-sm font-medium text-gray-700">Brief Description</label>
-            <input type="text" 
-                   id="about.brief" 
-                   wire:model="about.brief"
-                   class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                   placeholder="A short description about yourself">
-            @error('about.brief')
-                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-            @enderror
-        </div>
-
-        <div>
-            <label for="about.description" class="block text-sm font-medium text-gray-700">Full Description</label>
-            <textarea id="about.description" 
-                      wire:model="about.description"
-                      rows="4"
-                      class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                      placeholder="Tell your story"></textarea>
-            @error('about.description')
-                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-            @enderror
-        </div>
-    </div>
-</div>]]>
+        </section>

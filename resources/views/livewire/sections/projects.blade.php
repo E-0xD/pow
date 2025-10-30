@@ -1,104 +1,118 @@
-<![CDATA[<div class="bg-white p-6 rounded-lg shadow-sm">
-    <div class="flex justify-between items-center mb-4">
-        <h3 class="text-lg font-semibold">Projects</h3>
-        <button type="button" 
-                wire:click="addProject"
-                class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-            <svg class="h-4 w-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
-            </svg>
-            Add Project
-        </button>
-    </div>
-
-    <div class="space-y-6">
-        @foreach($projects as $index => $project)
-            <div class="border rounded-md p-4 relative">
-                <button type="button"
-                        wire:click="removeProject({{ $index }})"
-                        class="absolute top-2 right-2 text-gray-400 hover:text-red-500">
-                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                    </svg>
+<section
+            class="flex flex-col gap-4 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900/50 p-6 shadow-sm">
+            <div class="flex items-center justify-between">
+                <h2 class="text-gray-900 dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em]">
+                    Projects
+                </h2>
+                <button
+                    wire:click="addProject"
+                    class="flex items-center gap-2 min-w-[84px] cursor-pointer justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary/90 text-sm font-bold leading-normal transition-colors hover:bg-primary/20 dark:hover:bg-primary/30">
+                    <span class="material-symbols-outlined text-base">add</span>
+                    <span>Add Project</span>
                 </button>
-
-                <div class="space-y-4">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">Project Title</label>
-                        <input type="text"
-                               wire:model="projects.{{ $index }}.title"
-                               class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                               placeholder="Project name">
-                        @error("projects.{$index}.title")
-                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                        @enderror
-                    </div>
-
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">Brief Description</label>
-                        <textarea wire:model="projects.{{ $index }}.brief_description"
-                                  rows="2"
-                                  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                                  placeholder="Short description of the project"></textarea>
-                        @error("projects.{$index}.brief_description")
-                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                        @enderror
-                    </div>
-
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">Project Link</label>
-                        <input type="url"
-                               wire:model="projects.{{ $index }}.project_link"
-                               class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                               placeholder="https://...">
-                        @error("projects.{$index}.project_link")
-                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                        @enderror
-                    </div>
-
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">Thumbnail</label>
-                        <div class="mt-1 flex items-center space-x-4">
-                            @if(isset($projects[$index]['thumbnail']) && $projects[$index]['thumbnail'])
-                                <div class="w-24 h-16 rounded overflow-hidden">
-                                    <img src="{{ $projects[$index]['thumbnail']->temporaryUrl() }}" 
-                                         alt="Preview" 
-                                         class="w-full h-full object-cover">
-                                </div>
-                            @endif
-                            <input type="file"
-                                   wire:model="projects.{{ $index }}.thumbnail"
-                                   class="block w-full text-sm text-gray-500
-                                          file:mr-4 file:py-2 file:px-4
-                                          file:rounded-full file:border-0
-                                          file:text-sm file:font-semibold
-                                          file:bg-indigo-50 file:text-indigo-700
-                                          hover:file:bg-indigo-100">
-                        </div>
-                        @error("projects.{$index}.thumbnail")
-                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                        @enderror
-                    </div>
-
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Technologies Used</label>
-                        <div class="grid grid-cols-3 gap-4">
-                            @foreach($skills as $skill)
-                                <label class="inline-flex items-center">
-                                    <input type="checkbox"
-                                           wire:model="projects.{{ $index }}.skills"
-                                           value="{{ $skill->id }}"
-                                           class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                                    <span class="ml-2">{{ $skill->name }}</span>
-                                </label>
-                            @endforeach
-                        </div>
-                        @error("projects.{$index}.skills")
-                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                        @enderror
-                    </div>
-                </div>
             </div>
-        @endforeach
-    </div>
-</div>]]>
+            <div class="flex flex-col gap-4">
+                @foreach($projects as $index => $project)
+                <details class="group rounded-lg border border-gray-200 dark:border-gray-700 p-4" open="">
+                    <summary class="flex cursor-pointer list-none items-center justify-between">
+                        <div>
+                            <p class="font-semibold text-gray-900 dark:text-white">{{ $project['title'] }}</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-500">{{ $project['brief_description'] }}</p>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button
+                                class="p-2 text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800"><span
+                                    class="material-symbols-outlined text-base">edit</span></button>
+                            <button
+                                wire:click="removeProject({{ $index }})"
+                                class="p-2 text-gray-500 dark:text-gray-400 hover:text-red-500 rounded-md hover:bg-red-50 dark:hover:bg-red-900/30"><span
+                                    class="material-symbols-outlined text-base">delete</span></button>
+                            <span
+                                class="material-symbols-outlined text-gray-500 transition-transform group-open:rotate-180">expand_more</span>
+                        </div>
+                    </summary>
+                    @endforeach
+                    <div class="mt-6 border-t border-gray-200 dark:border-gray-700 pt-6">
+                        <!-- Project Title (Full Width) -->
+                        <label class="flex flex-col col-span-full mb-6">
+                            <p class="text-gray-800 dark:text-gray-200 text-base font-medium leading-normal pb-2">
+                                Project Title
+                            </p>
+                            <input type="text" 
+                                wire:model="projects.{{ $index }}.title"
+                                placeholder="Enter project title..."
+                                class="form-input w-full rounded-lg text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-primary/50 border border-gray-300 dark:border-gray-700 bg-background-light dark:bg-background-dark focus:border-primary h-12 placeholder:text-gray-400 px-4" />
+                        </label>
+
+                        <!-- Two-column layout -->
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                            <!-- Description -->
+                            <label class="flex flex-col">
+
+                                <textarea 
+                                    wire:model="projects.{{ $index }}.description"
+                                    placeholder="Tell us about the project..."
+                                    class="form-textarea flex w-full min-w-0 flex-1 resize-y overflow-hidden rounded-lg text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-primary/50 border border-gray-300 dark:border-gray-700 bg-background-light dark:bg-background-dark focus:border-primary min-h-32 placeholder:text-gray-400 p-4 text-base font-normal"></textarea>
+                            </label>
+                            <!-- Project Thumbnail Upload -->
+                            <label
+                                class="flex flex-col items-center justify-center w-full h-64 border-2 border-dashed border-gray-300 dark:border-gray-700 rounded-xl cursor-pointer bg-gray-50 dark:bg-gray-800/50 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                                for="project_thumbnail">
+
+                                <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                                    <span class="material-symbols-outlined text-gray-500 dark:text-gray-400 text-5xl">
+                                        cloud_upload
+                                    </span>
+                                    <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
+                                        <span class="font-semibold">Click to upload</span> or drag and drop
+                                    </p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">
+                                        PNG, JPG or GIF (MAX. 2MB)
+                                    </p>
+                                </div>
+                            </label>
+                            <input id="project_thumbnail" 
+                                wire:model="projects.{{ $index }}.thumbnail"
+                                class="hidden" 
+                                type="file"
+                                accept="image/*" />
+
+                        </div>
+
+                        <label class="flex flex-col  col-span-full pt-6">
+                            <p class="text-gray-800 dark:text-gray-200 text-sm font-medium pb-2">Project link</p>
+                            <input type="url" 
+                                wire:model="projects.{{ $index }}.link"
+                                placeholder="https://example.com"
+                                class="form-input w-full rounded-lg text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-primary/50 border border-gray-300 dark:border-gray-700 bg-background-light dark:bg-background-dark focus:border-primary h-12 placeholder:text-gray-400 px-4" />
+                        </label>
+
+                        <label class="flex flex-col  col-span-full pt-6">
+                            <p class="text-gray-800 dark:text-gray-200 text-sm font-medium pb-2">Skills used</p>
+                            <div class="relative">
+                                <span
+                                    class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500 text-xl">search</span>
+                                <input
+                                    wire:model.lazy="projectSkillSearch.{{ $index }}"
+                                    wire:keydown.enter="addProjectSkill({{ $index }})"
+                                    class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-primary/50 border border-gray-300 dark:border-gray-700 bg-background-light dark:bg-background-dark focus:border-primary h-12 placeholder:text-gray-400 pl-10 pr-4 py-2 text-base"
+                                    placeholder="Search and add skills..." />
+                            </div>
+                            <div class="flex flex-wrap gap-2 pt-2">
+                                @foreach($project['skills'] ?? [] as $skillIndex => $skill)
+                                <span
+                                    class="inline-flex items-center gap-1.5 rounded-full bg-primary/10 dark:bg-primary/20 px-3 py-1 text-sm font-medium text-primary dark:text-primary/90">
+                                    {{ $skill }}
+                                    <button
+                                        wire:click="removeProjectSkill({{ $index }}, {{ $skillIndex }})"
+                                        class="p-0.5 rounded-full hover:bg-primary/20 dark:hover:bg-primary/30"><span
+                                            class="material-symbols-outlined text-xs">close</span></button>
+                                </span>
+                                @endforeach
+                            </div>
+                        </label>
+                    </div>
+
+                </details>
+            </div>
+        </section>

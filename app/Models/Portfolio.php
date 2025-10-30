@@ -90,7 +90,7 @@ class Portfolio extends Model
 
     public function contactMethods(): BelongsToMany
     {
-        return $this->belongsToMany(ContactMethod::class)
+        return $this->belongsToMany(ContactMethod::class, 'portfolio_contact_method')
             ->withPivot('value');
     }
 

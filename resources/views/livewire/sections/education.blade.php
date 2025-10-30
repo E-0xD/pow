@@ -1,75 +1,164 @@
-<![CDATA[<div class="bg-white p-6 rounded-lg shadow-sm">
-    <div class="flex justify-between items-center mb-4">
-        <h3 class="text-lg font-semibold">Education</h3>
-        <button type="button" 
-                wire:click="addEducation"
-                class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-            <svg class="h-4 w-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
-            </svg>
-            Add Education
-        </button>
-    </div>
+<section
+    class="flex flex-col gap-4 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900/50 p-6 shadow-sm">
+    <h2 class="text-gray-900 dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em]">Education</h2>
 
-    <div class="space-y-6">
-        @foreach($education as $index => $edu)
-            <div class="border rounded-md p-4 relative">
-                <button type="button"
-                        wire:click="removeEducation({{ $index }})"
-                        class="absolute top-2 right-2 text-gray-400 hover:text-red-500">
-                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                    </svg>
-                </button>
+    <div class="flex flex-col gap-4">
+        @foreach ($education as $index => $edu)
+            <div
+                class="border border-gray-200 dark:border-gray-800 rounded-xl p-4 bg-white dark:bg-gray-900/50 shadow-sm">
+                <!-- Collapsed View -->
+                @if ($editingEducationIndex !== $index)
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <h3 class="text-gray-900 dark:text-white font-semibold">
+                                {{ $edu['degree'] ?? 'Untitled Degree' }}
+                            </h3>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm">
+                                {{ $edu['school'] ?? '' }} —
+                                {{ $edu['year_of_admission'] ?? '' }}
+                                @if (!empty($edu['year_of_graduation']))
+                                    to {{ $edu['year_of_graduation'] }}
+                                @endif
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button type="button" wire:click="editEducation({{ $index }})"
+                                class="flex items-center gap-1 text-primary hover:text-primary/80 text-sm font-medium">
+                                <span class="material-symbols-outlined text-base">edit</span>
+                                Edit
+                            </button>
+                            <button type="button" wire:click="deleteEducation({{ $index }})"
+                                class="flex items-center gap-1 text-red-500 hover:text-red-400 text-sm font-medium">
+                                <span class="material-symbols-outlined text-base">delete</span>
+                                Delete
+                            </button>
+                        </div>
+                    </div>
+                    @if (!empty($edu['description']))
+                        <p class="text-gray-700 dark:text-gray-300 text-sm mt-2">
+                            {{ $edu['description'] }}
+                        </p>
+                    @endif
+                @endif
 
-                <div class="grid grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">School/University</label>
-                        <input type="text"
-                               wire:model="education.{{ $index }}.school"
-                               class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                               placeholder="Institution name">
-                        @error("education.{$index}.school")
-                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                        @enderror
+                <!-- Edit Form -->
+                @if ($editingEducationIndex === $index)
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                        <div class="flex flex-col gap-2">
+                            <label class="text-sm font-medium text-gray-700 dark:text-gray-300">School</label>
+                            <input type="text" wire:model="educationForm.school"
+                                class="rounded-lg border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-primary focus:border-primary">
+                            @error('educationForm.school')
+                                <span class="text-red-500 text-xs">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        <div class="flex flex-col gap-2">
+                            <label class="text-sm font-medium text-gray-700 dark:text-gray-300">Degree</label>
+                            <input type="text" wire:model="educationForm.degree"
+                                class="rounded-lg border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-primary focus:border-primary">
+                            @error('educationForm.degree')
+                                <span class="text-red-500 text-xs">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        <div class="flex flex-col gap-2">
+                            <label class="text-sm font-medium text-gray-700 dark:text-gray-300">Year of
+                                Admission</label>
+                            <input type="number" wire:model="educationForm.year_of_admission"
+                                class="rounded-lg border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-primary focus:border-primary">
+                            @error('educationForm.year_of_admission')
+                                <span class="text-red-500 text-xs">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        <div class="flex flex-col gap-2">
+                            <label class="text-sm font-medium text-gray-700 dark:text-gray-300">Year of
+                                Graduation</label>
+                            <input type="number" wire:model="educationForm.year_of_graduation"
+                                class="rounded-lg border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-primary focus:border-primary">
+                            @error('educationForm.year_of_graduation')
+                                <span class="text-red-500 text-xs">{{ $message }}</span>
+                            @enderror
+                        </div>
                     </div>
 
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">Degree/Certificate</label>
-                        <input type="text"
-                               wire:model="education.{{ $index }}.degree"
-                               class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                               placeholder="Degree or certificate name">
-                        @error("education.{$index}.degree")
-                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                        @enderror
+                    <div class="flex justify-end gap-2 mt-4">
+                        <button type="button" wire:click="cancelEditEducation"
+                            class="px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 text-sm font-medium">
+                            Cancel
+                        </button>
+                        <button type="button" wire:click="saveEducation"
+                            class="px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary/90 text-sm font-semibold">
+                            Save
+                        </button>
                     </div>
-
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">Year of Admission</label>
-                        <input type="number"
-                               wire:model="education.{{ $index }}.year_of_admission"
-                               class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                               min="1900"
-                               max="{{ date('Y') }}">
-                        @error("education.{$index}.year_of_admission")
-                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                        @enderror
-                    </div>
-
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">Year of Graduation</label>
-                        <input type="number"
-                               wire:model="education.{{ $index }}.year_of_graduation"
-                               class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                               min="1900"
-                               max="{{ date('Y') + 10 }}">
-                        @error("education.{$index}.year_of_graduation")
-                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                        @enderror
-                    </div>
-                </div>
+                @endif
             </div>
         @endforeach
     </div>
-</div>]]>
+
+    <!-- Add New Education -->
+    @if ($editingEducationIndex === 'new')
+        <div
+            class="border border-gray-200 dark:border-gray-800 rounded-xl p-4 bg-gray-50 dark:bg-gray-900/40 shadow-sm">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="flex flex-col gap-2">
+                    <label class="text-sm font-medium text-gray-700 dark:text-gray-300">School</label>
+                    <input type="text" wire:model="educationForm.school"
+                        class="rounded-lg border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-primary focus:border-primary">
+                    @error('educationForm.school')
+                        <span class="text-red-500 text-xs">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <div class="flex flex-col gap-2">
+                    <label class="text-sm font-medium text-gray-700 dark:text-gray-300">Degree</label>
+                    <input type="text" wire:model="educationForm.degree"
+                        class="rounded-lg border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-primary focus:border-primary">
+                    @error('educationForm.degree')
+                        <span class="text-red-500 text-xs">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <div class="flex flex-col gap-2">
+                    <label class="text-sm font-medium text-gray-700 dark:text-gray-300">Year of Admission</label>
+                    <input type="number" wire:model="educationForm.year_of_admission"
+                        class="rounded-lg border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-primary focus:border-primary">
+                    @error('educationForm.year_of_admission')
+                        <span class="text-red-500 text-xs">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <div class="flex flex-col gap-2">
+                    <label class="text-sm font-medium text-gray-700 dark:text-gray-300">Year of Graduation</label>
+                    <input type="number" wire:model="educationForm.year_of_graduation"
+                        class="rounded-lg border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-primary focus:border-primary">
+                    @error('educationForm.year_of_graduation')
+                        <span class="text-red-500 text-xs">{{ $message }}</span>
+                    @enderror
+                </div>
+
+            </div>
+
+            <div class="flex justify-end gap-2 mt-4">
+                <button type="button" wire:click="cancelEditEducation"
+                    class="px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 text-sm font-medium">
+                    Cancel
+                </button>
+                <button type="button" wire:click="saveEducation"
+                    class="px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary/90 text-sm font-semibold">
+                    Save
+                </button>
+            </div>
+        </div>
+    @endif
+
+    @if ($editingEducationIndex !== 'new')
+        <button type="button" wire:click="addEducation"
+            class="mt-2 flex items-center gap-2 min-w-[84px] cursor-pointer justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary/90 text-sm font-bold leading-normal transition-colors hover:bg-primary/20 dark:hover:bg-primary/30">
+            <span class="material-symbols-outlined text-base">add</span>
+            <span>Add New Education</span>
+        </button>
+    @endif
+</section>
