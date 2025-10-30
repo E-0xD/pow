@@ -88,11 +88,10 @@ class Portfolio extends Model
         return $this->belongsToMany(Skill::class);
     }
 
-    public function contactMethods(): BelongsToMany
-    {
-        return $this->belongsToMany(ContactMethod::class, 'portfolio_contact_method')
-            ->withPivot('value');
-    }
+ public function contactMethods(): HasMany
+{
+    return $this->hasMany(PortfolioContactMethod::class);
+}
 
     public function user()
     {
