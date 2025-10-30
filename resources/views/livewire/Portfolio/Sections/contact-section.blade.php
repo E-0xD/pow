@@ -55,13 +55,15 @@
                         <div class="flex items-center gap-2">
                             <button type="button" 
                                 wire:click="toggleCollapse({{ $index }})"
-                                class="p-2 text-gray-500 hover:text-primary rounded-md hover:bg-gray-100 dark:hover:bg-gray-800">
-                                <span class="material-symbols-outlined text-base">edit</span>
+                                class="flex items-center gap-1 text-primary hover:text-primary/80 text-sm font-medium">
+                                    <span class="material-symbols-outlined text-base">edit</span>
+                                    Edit
                             </button>
                             <button type="button" 
                                 wire:click="removeContact({{ $index }})"
-                                class="p-2 text-gray-500 hover:text-red-500 rounded-md hover:bg-red-50 dark:hover:bg-red-900/30">
-                                <span class="material-symbols-outlined text-base">delete</span>
+                                 class="flex items-center gap-1 text-red-500 hover:text-red-400 text-sm font-medium">
+                                    <span class="material-symbols-outlined text-base">delete</span>
+                                    Delete
                             </button>
                         </div>
                     </div>

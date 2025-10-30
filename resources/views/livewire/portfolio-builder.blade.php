@@ -124,7 +124,7 @@
                         Your changes will be saved automatically.</p>
                 </div>
             </div>
-            <form id="portfolioForm" wire:submit.prevent="save" method="post" class="space-y-4">
+       
                 @foreach ($selectedSections as $section)
                     <div wire:key="section-{{ $section['id'] }}" class="mb-8">
                         @switch($section['id'])
@@ -149,7 +149,7 @@
                         @endswitch
                     </div>
                 @endforeach
-            </form>
+          
         </div>
     @endif
 
@@ -166,9 +166,9 @@
                 <span class="material-symbols-outlined">arrow_forward</span>
             </button>
         @else
-            <button type="submit" form="portfolioForm"
+            <button
                 class="flex min-w-[84px] cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-10 px-5 bg-primary text-white text-sm font-bold leading-normal shadow-lg shadow-primary/30 hover:bg-primary/90">
-                <span class="truncate">Save Portfolio</span>
+                <span class="truncate">Preview Portfolio</span>
                 <span class="material-symbols-outlined">check</span>
             </button>
         @endif
