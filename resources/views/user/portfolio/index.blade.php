@@ -55,10 +55,10 @@
                                     class="material-symbols-outlined text-sm">chat_bubble</span> 12</div>
                         </div>
                         <div class="mt-auto flex gap-2">
-                            <button
+                            <a href="{{route('user.portfolio.customize', $portfolio->uid)}}"
                                 class="flex-1 flex items-center justify-center gap-1 py-2 px-3 text-sm font-semibold rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
                                 <span class="material-symbols-outlined text-base">edit</span> Edit
-                            </button>
+                            </a>
                             <button
                                 class="flex items-center justify-center py-2 px-3 text-sm font-semibold rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
                                 <span class="material-symbols-outlined text-base">more_vert</span>

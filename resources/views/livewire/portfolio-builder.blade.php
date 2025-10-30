@@ -124,50 +124,33 @@
                         Your changes will be saved automatically.</p>
                 </div>
             </div>
-            <div class="flex flex-col gap-4 px-8 pb-8">
+            <form id="portfolioForm" wire:submit.prevent="save" method="post" class="space-y-4">
                 @foreach ($selectedSections as $section)
-                    <div x-data="{ open: true }"
-                        class="flex flex-col rounded-xl border border-neutral-light-gray dark:border-neutral-dark-gray/20 bg-neutral-white dark:bg-background-dark/50 px-4">
-                        <summary @click="open = !open"
-                            class="flex cursor-pointer items-center justify-between gap-6 py-3.5">
-                            <p class="text-neutral-dark-gray dark:text-neutral-white text-base font-semibold">
-                                {{ $section['title'] }}</p>
-                            <span class="material-symbols-outlined text-neutral-medium-gray transition-transform"
-                                :class="{ 'rotate-180': open }">expand_more</span>
-                        </summary>
-                        <div x-show="open" class="flex flex-col gap-4 pb-4 pt-2">
-                            @include("livewire.sections.{$section['id']}")
-                        </div>
-                    </div>
+                    @include("livewire.sections.{$section['id']}")
                 @endforeach
-            </div>
-        </div>
-    @endif
-
-    @if (session()->has('message'))
-        <div
-            class="fixed top-4 right-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg shadow-lg">
-            {{ session('message') }}
-        </div>
-    @endif
-
-    @if (session()->has('error'))
-        <div class="fixed top-4 right-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg shadow-lg">
-            {{ session('error') }}
+            </form>
         </div>
     @endif
 
     <!-- Action Buttons -->
     <div class="flex justify-between items-center mt-10 pt-6 border-t border-slate-200 dark:border-slate-800">
-        <button wire:click="previousStep"
+        <button type="button" wire:click="previousStep"
             class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 text-slate-700 dark:text-slate-300 text-sm font-bold leading-normal tracking-wide hover:bg-slate-200 dark:hover:bg-slate-800">
             <span class="truncate">Back</span>
         </button>
-        <button wire:click="nextStep"
-            class="flex min-w-[84px] cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-10 px-5 bg-primary text-white text-sm font-bold leading-normal shadow-lg shadow-primary/30 hover:bg-primary/90">
-            <span class="truncate">{{ $currentStep === 1 ? 'Next: Add Content' : 'Next: Preview' }}</span>
-            <span class="material-symbols-outlined">arrow_forward</span>
-        </button>
+        @if ($currentStep === 1)
+            <button type="button" wire:click="nextStep"
+                class="flex min-w-[84px] cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-10 px-5 bg-primary text-white text-sm font-bold leading-normal shadow-lg shadow-primary/30 hover:bg-primary/90">
+                <span class="truncate">Next: Add Content</span>
+                <span class="material-symbols-outlined">arrow_forward</span>
+            </button>
+        @else
+            <button type="submit" form="portfolioForm"
+                class="flex min-w-[84px] cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-10 px-5 bg-primary text-white text-sm font-bold leading-normal shadow-lg shadow-primary/30 hover:bg-primary/90">
+                <span class="truncate">Save Portfolio</span>
+                <span class="material-symbols-outlined">check</span>
+            </button>
+        @endif
     </div>
 
 </div>

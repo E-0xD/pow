@@ -13,7 +13,8 @@ class Experience extends Model
         'start_date',
         'end_date',
         'company',
-        'position'
+        'position',
+        'description'
     ];
 
     protected $casts = [
