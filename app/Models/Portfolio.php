@@ -4,6 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Str;
 
 class Portfolio extends Model
@@ -49,13 +53,50 @@ class Portfolio extends Model
         return 'uid';
     }
 
+    public function template(): BelongsTo
+    {
+        return $this->belongsTo(Template::class);
+    }
+
+    public function about(): HasOne
+    {
+        return $this->hasOne(About::class);
+    }
+
+    public function experiences(): HasMany
+    {
+        return $this->hasMany(Experience::class);
+    }
+
+    public function educationRecords(): HasMany
+    {
+        return $this->hasMany(EducationRecord::class);
+    }
+
+    public function projects(): HasMany
+    {
+        return $this->hasMany(Project::class);
+    }
+
+    public function sectionOrders(): HasMany
+    {
+        return $this->hasMany(PortfolioSectionOrder::class);
+    }
+
+    public function skills(): BelongsToMany
+    {
+        return $this->belongsToMany(Skill::class);
+    }
+
+    public function contactMethods(): BelongsToMany
+    {
+        return $this->belongsToMany(ContactMethod::class)
+            ->withPivot('value');
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function template()
-    {
-        return $this->belongsTo(Template::class);
-    }
 }
