@@ -14,10 +14,10 @@
                                 {{ $experience['position'] ?? 'Untitled Position' }}
                             </h3>
                             <p class="text-gray-600 dark:text-gray-400 text-sm">
-                                {{ $experience['company'] ?? '' }} — {{ $experience['start_date']->format('d M Y') ?? '' }}
-                                @if (!empty($experience['end_date']))
-                                    to {{ $experience['end_date']->format('d M Y') }}
-                                @endif
+                                {{ $experience['company'] ?? '' }} — {{ Carbon\Carbon::parse($experience['start_date'])->format('d M Y') ?? '' }}
+                                @isset($experience['end_date'])
+                                    to {{ Carbon\Carbon::parse($experience['end_date'])->format('d M Y') }}
+                                @endisset
                             </p>
                         </div>
                         <div class="flex items-center gap-2">
@@ -168,7 +168,7 @@
     @endif
 
     @if ($editingExperienceIndex !== 'new')
-        <button type="button"  wire:click="addExperience"
+        <button type="button"  wire:click="addNewExperience"
             class="mt-2 flex items-center gap-2 min-w-[84px] cursor-pointer justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary/90 text-sm font-bold leading-normal transition-colors hover:bg-primary/20 dark:hover:bg-primary/30">
             <span class="material-symbols-outlined text-base">add</span>
             <span>Add New Experience</span>

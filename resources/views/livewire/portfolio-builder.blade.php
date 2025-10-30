@@ -126,7 +126,28 @@
             </div>
             <form id="portfolioForm" wire:submit.prevent="save" method="post" class="space-y-4">
                 @foreach ($selectedSections as $section)
-                    @include("livewire.sections.{$section['id']}")
+                    <div wire:key="section-{{ $section['id'] }}" class="mb-8">
+                        @switch($section['id'])
+                            @case('about')
+                                <livewire:portfolio.sections.about-section :portfolio="$portfolio" :wire:key="'about-'.$portfolio->id" />
+                                @break
+                            @case('experience')
+                                <livewire:portfolio.sections.experience-section :portfolio="$portfolio" :wire:key="'experience-'.$portfolio->id" />
+                                @break
+                            @case('education')
+                                <livewire:portfolio.sections.education-section :portfolio="$portfolio" :wire:key="'education-'.$portfolio->id" />
+                                @break
+                            @case('skills')
+                                <livewire:portfolio.sections.skills-section :portfolio="$portfolio" :wire:key="'skills-'.$portfolio->id" />
+                                @break
+                            @case('projects')
+                                <livewire:portfolio.sections.projects-section :portfolio="$portfolio" :wire:key="'projects-'.$portfolio->id" />
+                                @break
+                            @case('contact')
+                                <livewire:portfolio.sections.contact-section :portfolio="$portfolio" :wire:key="'contact-'.$portfolio->id" />
+                                @break
+                        @endswitch
+                    </div>
                 @endforeach
             </form>
         </div>
