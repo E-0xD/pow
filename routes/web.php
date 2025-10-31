@@ -7,6 +7,11 @@ use App\Livewire\Settings\TwoFactor;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
 
+
+require __DIR__ . '/user.php';
+require __DIR__ . '/admin.php';
+require __DIR__ . '/portfolio.php';
+
 Route::view('/', 'guest.welcome')->name('guest.welcome');
 
 Route::view('features', 'guest.features')->name('guest.features');
@@ -19,9 +24,7 @@ Route::view('templates', 'guest.templates')->name('guest.templates');
 
 Route::view('contact', 'guest.contact')->name('guest.contact');
 
-require __DIR__ . '/user.php';
-require __DIR__ . '/admin.php';
-require __DIR__ . '/portfolio.php';
+
 
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');

@@ -34,6 +34,7 @@
                         <!-- TopNavBar -->
                         <x-layouts.guest.header />
                          <main class="flex flex-col gap-16 md:gap-24 py-16 md:py-24">
+                             <x-toast />
                         {{ $slot }}
                          </main>
                         <!-- Footer -->

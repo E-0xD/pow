@@ -125,4 +125,7 @@ return [
 
     'logo' => env('APP_LOGO'),
 
+    'desc' => env('APP_DESC'),
+
+    'favicon' => env('APP_FAVICON'),
 ];
