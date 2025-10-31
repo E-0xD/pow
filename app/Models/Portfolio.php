@@ -99,4 +99,9 @@ class Portfolio extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function messages(): HasMany
+    {
+        return $this->hasMany(PortfolioMessage::class);
+    }
 }
