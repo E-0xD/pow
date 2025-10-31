@@ -65,9 +65,9 @@ class Portfolio extends Model
         return $this->hasOne(About::class);
     }
 
-    public function experiences(): HasMany
+    public function experiences()
     {
-        return $this->hasMany(Experience::class);
+        return $this->hasMany(Experience::class)->orderBy('start_date', 'desc');
     }
 
     public function educationRecords(): HasMany
@@ -87,17 +87,16 @@ class Portfolio extends Model
 
     public function skills(): BelongsToMany
     {
-        return $this->belongsToMany(Skill::class);
+        return $this->belongsToMany(Skill::class, 'portfolio_skills');
     }
 
- public function contactMethods(): HasMany
-{
-    return $this->hasMany(PortfolioContactMethod::class);
-}
+    public function contactMethods(): HasMany
+    {
+        return $this->hasMany(PortfolioContactMethod::class);
+    }
 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
-
 }

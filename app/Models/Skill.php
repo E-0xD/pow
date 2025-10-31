@@ -18,18 +18,13 @@ class Skill extends Model
         'type' => SkillType::class
     ];
 
-    public function experiences(): BelongsToMany
+    public function portfolios(): BelongsToMany
     {
-        return $this->belongsToMany(Experience::class);
+        return $this->belongsToMany(Portfolio::class, 'portfolio_skills');
     }
 
     public function projects(): BelongsToMany
     {
         return $this->belongsToMany(Project::class);
-    }
-
-    public function portfolios(): BelongsToMany
-    {
-        return $this->belongsToMany(Portfolio::class);
     }
 }

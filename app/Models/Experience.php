@@ -26,9 +26,4 @@ class Experience extends Model
     {
         return $this->belongsTo(Portfolio::class);
     }
-
-    public function skills(): BelongsToMany
-    {
-        return $this->belongsToMany(Skill::class);
-    }
 }

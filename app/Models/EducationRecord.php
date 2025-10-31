@@ -16,8 +16,8 @@ class EducationRecord extends Model
     ];
 
     protected $casts = [
-        'year_of_admission' => 'integer',
-        'year_of_graduation' => 'integer'
+        'year_of_admission' => 'date',
+        'year_of_graduation' => 'date'
     ];
 
     public function portfolio(): BelongsTo
