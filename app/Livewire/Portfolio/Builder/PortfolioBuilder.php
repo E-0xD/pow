@@ -1,14 +1,12 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Portfolio\Builder;
 
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Livewire\WithFileUploads;
 use App\Models\Portfolio;
 use App\Models\Skill;
-use App\Models\ContactMethod;
 
 class PortfolioBuilder extends Component
 {
@@ -17,11 +15,6 @@ class PortfolioBuilder extends Component
     public $selectedSections = [];
     public $availableSections;
 
-    protected $listeners = [
-        'addSection',
-        'removeSection',
-        'sectionSaved' => 'handleSectionSaved'
-    ];
 
     public function mount($portfolio)
     {
@@ -128,7 +121,7 @@ class PortfolioBuilder extends Component
                 DB::beginTransaction();
 
                 $this->selectedSections[] = $section;
-               
+
 
                 $this->availableSections = collect($this->availableSections)
                     ->reject(fn($s) => $s['id'] === $sectionId)
@@ -271,6 +264,6 @@ class PortfolioBuilder extends Component
 
     public function render()
     {
-        return view('livewire.portfolio-builder');
+        return view('livewire.portfolio.builder.portfolio-builder');
     }
 }
