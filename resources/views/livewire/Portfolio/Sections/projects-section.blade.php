@@ -14,113 +14,37 @@
                                 class="w-16 h-16 rounded-lg object-cover border border-gray-200 dark:border-gray-700" />
                         @endif
                         <div class="flex justify-between items-center flex-1">
-                            <div>
-                                <h3 class="text-gray-900 dark:text-white font-semibold">
+                            <div class="min-w-0 max-w-[150px] sm:max-w-[150px] lg:max-w-none">
+                                <h3
+                                    class="text-gray-900 dark:text-white font-semibold overflow-hidden text-ellipsis whitespace-nowrap lg:whitespace-normal">
                                     {{ $proj['title'] ?? 'Untitled Project' }}
                                 </h3>
-                                <p class="text-gray-600 dark:text-gray-400 text-sm">
+                                <p
+                                    class="text-gray-600 dark:text-gray-400 text-sm overflow-hidden text-ellipsis whitespace-nowrap lg:whitespace-normal">
                                     {{ $proj['project_link'] ?? '' }}
                                 </p>
 
                                 @if (!empty($proj['brief_description']))
-                                    <p class="text-gray-700 dark:text-gray-300 text-sm mt-2">
+                                    <p
+                                        class="text-gray-700 dark:text-gray-300 text-sm mt-2 overflow-hidden text-ellipsis line-clamp-2 lg:line-clamp-none">
                                         {{ $proj['brief_description'] }}
                                     </p>
                                 @endif
                             </div>
-                            <div class="flex items-center gap-2">
+
+                            <div class="flex items-center gap-2 ml-3 shrink-0">
                                 <button type="button" wire:click="editProject({{ $index }})"
                                     class="flex items-center gap-1 text-primary hover:text-primary/80 text-sm font-medium">
                                     <span class="material-symbols-outlined text-base">edit</span>
-                                    Edit
+                                    <span class="hidden lg:inline">Edit</span>
                                 </button>
                                 <button type="button" wire:click="deleteProject({{ $index }})"
                                     class="flex items-center gap-1 text-red-500 hover:text-red-400 text-sm font-medium">
                                     <span class="material-symbols-outlined text-base">delete</span>
-                                    Delete
+                                    <span class="hidden lg:inline">Delete</span>
                                 </button>
                             </div>
                         </div>
-                    </div>
-                @endif
-
-                <!-- Edit Form -->
-                @if ($editingProjectIndex === $index)
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-                        <!-- Project Title -->
-                        <div class="flex flex-col gap-2">
-                            <label class="text-sm font-medium text-gray-700 dark:text-gray-300">Project Title</label>
-                            <input type="text" wire:model="projectForm.title"
-                                class="rounded-lg border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-primary focus:border-primary">
-                            @error('projectForm.title')
-                                <span class="text-red-500 text-xs">{{ $message }}</span>
-                            @enderror
-                        </div>
-
-                        <!-- Project Link -->
-                        <div class="flex flex-col gap-2">
-                            <label class="text-sm font-medium text-gray-700 dark:text-gray-300">Project Link</label>
-                            <input type="url" wire:model="projectForm.project_link"
-                                placeholder="https://example.com"
-                                class="rounded-lg border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-primary focus:border-primary">
-                            @error('projectForm.project_link')
-                                <span class="text-red-500 text-xs">{{ $message }}</span>
-                            @enderror
-                        </div>
-
-                        <!-- Thumbnail -->
-                        <div class="flex flex-col gap-2 md:col-span-2">
-                            <label class="text-sm font-medium text-gray-700 dark:text-gray-300">Thumbnail</label>
-                            <input type="file" wire:model="projectForm.thumbnail_path"
-                                class="rounded-lg border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-primary focus:border-primary">
-                            @if (isset($projectForm['thumbnail_path']) && is_string($projectForm['thumbnail_path']))
-                                <img src="{{ Storage::url($projectForm['thumbnail_path']) }}"
-                                    class="w-32 h-24 rounded-lg mt-2 object-cover border border-gray-200 dark:border-gray-700" />
-                            @endif
-                            @error('projectForm.thumbnail_path')
-                                <span class="text-red-500 text-xs">{{ $message }}</span>
-                            @enderror
-                        </div>
-
-                        <!-- Description -->
-                        <div class="flex flex-col gap-2 md:col-span-2">
-                            <label class="text-sm font-medium text-gray-700 dark:text-gray-300">Brief
-                                Description</label>
-                            <textarea wire:model="projectForm.brief_description" rows="3"
-                                class="rounded-lg border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-primary focus:border-primary"></textarea>
-                            @error('projectForm.brief_description')
-                                <span class="text-red-500 text-xs">{{ $message }}</span>
-                            @enderror
-                        </div>
-
-                        <!-- Skills -->
-                        <div class="flex flex-col gap-2 md:col-span-2">
-                            <label class="text-sm font-medium text-gray-700 dark:text-gray-300">Skills</label>
-                            <div class="flex flex-wrap gap-3">
-                                @foreach ($availableSkills as $skill)
-                                    <label class="flex items-center gap-2 text-sm">
-                                        <input type="checkbox" wire:model="projectForm.skills"
-                                            value="{{ $skill->id }}"
-                                            class="rounded text-primary focus:ring-primary">
-                                        <span class="text-gray-700 dark:text-gray-300">{{ $skill->name }}</span>
-                                    </label>
-                                @endforeach
-                            </div>
-                            @error('projectForm.skills')
-                                <span class="text-red-500 text-xs">{{ $message }}</span>
-                            @enderror
-                        </div>
-                    </div>
-
-                    <div class="flex justify-end gap-2 mt-4">
-                        <button type="button" wire:click="cancelEditProject"
-                            class="px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 text-sm font-medium">
-                            Cancel
-                        </button>
-                        <button type="button" wire:click="saveProject"
-                            class="px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary/90 text-sm font-semibold">
-                            Save
-                        </button>
                     </div>
                 @endif
             </div>

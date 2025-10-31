@@ -134,10 +134,10 @@
                             @case('experience')
                                 <livewire:portfolio.sections.experience-section :portfolio="$portfolio" :wire:key="'experience-'.$portfolio->id" />
                                 @break
-                            @case('education')
+                           @case('education')
                                 <livewire:portfolio.sections.education-section :portfolio="$portfolio" :wire:key="'education-'.$portfolio->id" />
-                                @break
-                            @case('skills')
+                                @break 
+                             @case('skills')
                                 <livewire:portfolio.sections.skills-section :portfolio="$portfolio" :wire:key="'skills-'.$portfolio->id" />
                                 @break
                             @case('projects')

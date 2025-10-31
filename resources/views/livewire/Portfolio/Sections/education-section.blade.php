@@ -25,14 +25,15 @@
                             <button type="button" wire:click="editEducation({{ $index }})"
                                 class="flex items-center gap-1 text-primary hover:text-primary/80 text-sm font-medium">
                                 <span class="material-symbols-outlined text-base">edit</span>
-                                Edit
+                                <span class="hidden lg:inline">Edit</span>
                             </button>
                             <button type="button" wire:click="deleteEducation({{ $index }})"
                                 class="flex items-center gap-1 text-red-500 hover:text-red-400 text-sm font-medium">
                                 <span class="material-symbols-outlined text-base">delete</span>
-                                Delete
+                                <span class="hidden lg:inline">Delete</span>
                             </button>
                         </div>
+
                     </div>
                     @if (!empty($edu['description']))
                         <p class="text-gray-700 dark:text-gray-300 text-sm mt-2">
