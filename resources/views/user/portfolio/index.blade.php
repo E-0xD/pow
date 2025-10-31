@@ -45,7 +45,7 @@
 
                     <div class="p-4 flex flex-col flex-1">
                         <p class="text-gray-900 dark:text-white text-base font-bold leading-normal mb-2">
-                            {{$portfolio->title}}
+                            {{ $portfolio->title }}
                         </p>
                         <div class="flex items-center gap-4 text-gray-500 dark:text-gray-400 text-xs mb-4">
                             <div class="flex items-center gap-1"><span
@@ -61,10 +61,18 @@
                                     bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
                                 <span class="material-symbols-outlined text-base">edit</span>
                             </a>
-                            <a href="{{route('user.portfolio.edit', $portfolio->uid)}}"
+                            <a href="{{ route('user.portfolio.edit', $portfolio->uid) }}"
                                 class="flex flex-1 items-center justify-center py-2 px-3 text-sm font-semibold rounded-lg 
                                     bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
                                 <span class="material-symbols-outlined text-base">settings</span>
+                            </a>
+                            <a href="{{ route('user.portfolio.analytics', $portfolio->uid) }}"
+                                class="flex flex-1 items-center justify-center py-2 px-3 text-sm font-semibold rounded-lg 
+                                 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                                <span class="material-symbols-outlined text-base"><span
+                                        class="material-symbols-outlined">
+                                        bar_chart
+                                    </span></span>
                             </a>
                             <button
                                 class="flex flex-1 items-center justify-center py-2 px-3 text-sm font-semibold rounded-lg 

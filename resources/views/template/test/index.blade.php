@@ -3,6 +3,7 @@
 <html class="dark" lang="en">
 
     <head>
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         @include('partials.teamplate-head')
 
         <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -84,6 +85,7 @@
                 </div>
             </main>
         </div>
+        <script src="{{ asset('js/analytics-tracker.js') }}"></script>
     </body>
 
 </html>

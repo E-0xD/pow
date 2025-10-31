@@ -134,4 +134,109 @@ class PortfolioController extends Controller
         $this->authorize('update', $portfolio);
         return view('user.portfolio.customize', compact('portfolio'));
     }
+
+    public function analytics(Portfolio $portfolio)
+    {
+        $this->authorize('view', $portfolio);
+
+        $thirtyDaysAgo = now()->subDays(30);
+        $sixtyDaysAgo = now()->subDays(60);
+
+        // Current period stats
+        $totalVisits = $portfolio->visits()
+            ->where('created_at', '>=', $thirtyDaysAgo)
+            ->count();
+
+        $totalClicks = $portfolio->clicks()
+            ->where('created_at', '>=', $thirtyDaysAgo)
+            ->count();
+
+        $totalMessages = $portfolio->messages()
+            ->where('created_at', '>=', $thirtyDaysAgo)
+            ->count();
+
+        // Previous period stats for growth calculation
+        $previousVisits = $portfolio->visits()
+            ->whereBetween('created_at', [$sixtyDaysAgo, $thirtyDaysAgo])
+            ->count();
+
+        $previousClicks = $portfolio->clicks()
+            ->whereBetween('created_at', [$sixtyDaysAgo, $thirtyDaysAgo])
+            ->count();
+
+        // Calculate growth rates for each metric
+        $calculateGrowthRate = function ($current, $previous) {
+            if ($previous === 0) {
+                return $current > 0 ? 100 : 0;
+            }
+            return (($current - $previous) / $previous) * 100;
+        };
+
+        $visitsGrowthRate = $calculateGrowthRate($totalVisits, $previousVisits);
+        $clicksGrowthRate = $calculateGrowthRate($totalClicks, $previousClicks);
+
+        // Get previous period messages
+        $previousMessages = $portfolio->messages()
+            ->whereBetween('created_at', [$sixtyDaysAgo, $thirtyDaysAgo])
+            ->count();
+        $messagesGrowthRate = $calculateGrowthRate($totalMessages, $previousMessages);
+
+        // Calculate total engagement and growth rate
+        $currentEngagement = $totalVisits + $totalClicks;
+        $previousEngagement = $previousVisits + $previousClicks;
+        $engagementGrowthRate = $calculateGrowthRate($currentEngagement, $previousEngagement);
+
+        // Get traffic sources with color mapping
+        $trafficSources = $portfolio->trafficSources()
+            ->where('date', '>=', $thirtyDaysAgo)
+            ->selectRaw('source, SUM(visits_count) as total')
+            ->groupBy('source')
+            ->get();
+
+        $colors = [
+            'direct' => '#50E3C2',
+            'google' => '#4A90E2',
+            'facebook' => '#BD10E0',
+            'twitter' => '#1DA1F2',
+            'linkedin' => '#0077B5',
+            'other' => '#FFC700'
+        ];
+
+        $stats = [
+            'total_visits' => $totalVisits,
+            'total_clicks' => $totalClicks,
+            'total_messages' => $totalMessages,
+            'visits_growth_rate' => $visitsGrowthRate,
+            'clicks_growth_rate' => $clicksGrowthRate,
+            'messages_growth_rate' => $messagesGrowthRate,
+            'total_engagement' => $currentEngagement,
+            'engagement_growth_rate' => $engagementGrowthRate,
+            'traffic_sources' => $trafficSources->map(function ($source) use ($colors) {
+                return [
+                    'source' => $source->source,
+                    'total' => $source->total,
+                    'color' => $colors[$source->source] ?? $colors['other']
+                ];
+            }),
+            'top_pages' => $portfolio->visits()
+                ->where('created_at', '>=', $thirtyDaysAgo)
+                ->selectRaw('page_url, COUNT(*) as views')
+                ->groupBy('page_url')
+                ->orderByDesc('views')
+                ->limit(5)
+                ->get(),
+            'daily_engagement' => $portfolio->visits()
+                ->where('created_at', '>=', $thirtyDaysAgo)
+                ->selectRaw('DATE(created_at) as date, COUNT(*) as visits')
+                ->groupBy('date')
+                ->orderBy('date')
+                ->get()
+        ];
+
+        return view('user.portfolio.analytics', [
+            'stats' => $stats,
+            'portfolio' => $portfolio,
+            'colors' => $colors
+        ]);
+    }
 }

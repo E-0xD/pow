@@ -10,4 +10,5 @@ Route::prefix('user')->name('user.')->group(function () {
 
     Route::resource('portfolio', PortfolioController::class);
     Route::get('portfolio/{portfolio}/customize', PortfolioBuilder::class)->name('portfolio.customize');
+    Route::get('portfolio/{portfolio}/analytics', [PortfolioController::class, 'analytics'])->name('portfolio.analytics');
 });
