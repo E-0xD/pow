@@ -15,27 +15,7 @@
                      <span class="material-symbols-outlined !font-bold">image</span>
                      <p class="text-sm font-medium leading-normal">My Portfolios</p>
                  </a>
-                 <nav class="flex flex-col gap-2">
-                     <a class="flex items-center gap-3 px-3 py-2" href="#">
-                         <span class="material-symbols-outlined text-primary">check_circle</span>
-                         <p class="text-slate-700 dark:text-slate-300 text-sm font-medium leading-normal">Choose Template</p>
-                     </a>
-                     <a class="flex items-center gap-3 px-3 py-2" href="#">
-                         <span class="material-symbols-outlined text-primary">check_circle</span>
-                         <p class="text-slate-700 dark:text-slate-300 text-sm font-medium leading-normal">Basic Info</p>
-                     </a>
-                     <a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 dark:bg-primary/20"
-                         href="#">
-                         <span class="material-symbols-outlined text-primary fill">radio_button_checked</span>
-                         <p class="text-primary text-sm font-bold leading-normal">Arrange Sections</p>
-                     </a>
-                     <a class="flex items-center gap-3 px-3 py-2" href="#">
-                         <span
-                             class="material-symbols-outlined text-slate-500 dark:text-slate-400">radio_button_unchecked</span>
-                         <p class="text-slate-500 dark:text-slate-400 text-sm font-medium leading-normal">Add Content
-                         </p>
-                     </a>
-                 </nav>
+                 
                  <a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 text-[#1F2937] dark:text-gray-300"
                      href="#">
                      <span class="material-symbols-outlined text-2xl">pie_chart</span>
