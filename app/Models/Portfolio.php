@@ -26,11 +26,13 @@ class Portfolio extends Model
         'favicon',
         'meta_title',
         'meta_description',
+        'accept_messages',
     ];
 
     protected $casts = [
         'typography' => 'array',
         'expires_at' => 'datetime',
+        'accept_messages' => 'boolean'
     ];
 
     protected static function boot()
