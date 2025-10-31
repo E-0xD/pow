@@ -119,4 +119,16 @@ class Portfolio extends Model
     {
         return $this->hasMany(PortfolioTrafficSource::class);
     }
+
+    public function subscriptions()
+    {
+        return $this->hasMany(PortfolioSubscription::class);
+    }
+
+    public function activeSubscription()
+    {
+        return $this->hasOne(PortfolioSubscription::class)
+            ->where('status', 'active')
+            ->where('expires_at', '>', now());
+    }
 }
