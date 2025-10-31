@@ -2,7 +2,7 @@
 
 namespace App\Enums;
 
-enum UserPortfolioVisibility: string
+enum PortfolioVisibility: string
 {
     case PUBLIC = 'public';
     case PRIVATE = 'private';

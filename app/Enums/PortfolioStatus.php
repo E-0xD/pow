@@ -4,6 +4,7 @@ namespace App\Enums;
 
 enum PortfolioStatus: string
 {
-    case DRAFT = 'draft';
-    case PUBLISHED = 'published';
+    case PUBLIC = 'draft';
+    case DISABLED = 'disabled';
+    case ACTIVE = 'active';
 }

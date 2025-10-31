@@ -30,7 +30,7 @@
         <div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
             <div class="flex flex-row min-h-screen">
                 <!-- SideNavBar -->
-                <x-layouts.app.sidebar />
+                {{-- <x-layouts.app.sidebar /> --}}
                  {{-- <x-layouts.app.header /> --}}
                 <!-- Main Content -->
                 <main class="flex-1 p-6 lg:p-10">

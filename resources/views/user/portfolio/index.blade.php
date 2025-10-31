@@ -22,7 +22,7 @@
                 <span
                     class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">expand_more</span>
             </div>
-            <a href="{{route('user.portfolio.create')}}"
+            <a href="{{ route('user.portfolio.create') }}"
                 class="flex w-full sm:w-auto items-center justify-center gap-2 overflow-hidden bg-primary rounded-lg h-10 px-4 text-white text-sm font-bold shadow-sm hover:opacity-90 transition-opacity">
                 <span class="material-symbols-outlined">add_circle</span>
                 <span class="truncate">Create New Portfolio</span>
@@ -40,11 +40,12 @@
                     class="flex flex-col group bg-white dark:bg-gray-900/50 rounded-xl overflow-hidden shadow-sm hover:shadow-lg border border-gray-200 dark:border-gray-800 transition-all duration-300">
                     <div class="w-full bg-center bg-no-repeat aspect-[4/3] bg-cover"
                         data-alt="Abstract purple and blue gradient background"
-                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBbqaqZTRzKCB_PXVKlJySHNxvUIUZ602Td5PkLVrXfJ111Amx_A-yuRMF2G6Ko6EUxmkbSBoZ-vkh66yfxij60AYqARCpdVrfFBTM0xkx9t8AtZgPTD3eLwyi4NpJOBVc95GvxOaokbWljdYl0LAoaCFsD0VG1pnM_dqfzSz0E25QX86ZyUa8GAM1t3iZ3KoZ0joFy-ljF2UpN-x4XAV-IPyC0GU53SFU9DMMd6IaZ5oIqNfaJWkND8PqebVH2A-3ba70nSGIe09k");'>
+                        style="background-image: url('{{ optional($portfolio->about)->logo ? Storage::url($portfolio->about->logo) : asset(config('app.logo')) }}');">
                     </div>
+
                     <div class="p-4 flex flex-col flex-1">
-                        <p class="text-gray-900 dark:text-white text-base font-bold leading-normal mb-2">Web Design
-                            Showcase
+                        <p class="text-gray-900 dark:text-white text-base font-bold leading-normal mb-2">
+                            {{$portfolio->title}}
                         </p>
                         <div class="flex items-center gap-4 text-gray-500 dark:text-gray-400 text-xs mb-4">
                             <div class="flex items-center gap-1"><span
@@ -54,16 +55,29 @@
                             <div class="flex items-center gap-1"><span
                                     class="material-symbols-outlined text-sm">chat_bubble</span> 12</div>
                         </div>
-                        <div class="mt-auto flex gap-2">
-                            <a href="{{route('user.portfolio.customize', $portfolio->uid)}}"
-                                class="flex-1 flex items-center justify-center gap-1 py-2 px-3 text-sm font-semibold rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
-                                <span class="material-symbols-outlined text-base">edit</span> Edit
+                        <div class="mt-auto flex justify-around items-center w-full gap-2">
+                            <a href="{{ route('user.portfolio.customize', $portfolio->uid) }}"
+                                class="flex flex-1 items-center justify-center py-2 px-3 text-sm font-semibold rounded-lg 
+                                    bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                                <span class="material-symbols-outlined text-base">edit</span>
+                            </a>
+                            <a href="{{route('user.portfolio.edit', $portfolio->uid)}}"
+                                class="flex flex-1 items-center justify-center py-2 px-3 text-sm font-semibold rounded-lg 
+                                    bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                                <span class="material-symbols-outlined text-base">settings</span>
                             </a>
                             <button
-                                class="flex items-center justify-center py-2 px-3 text-sm font-semibold rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
-                                <span class="material-symbols-outlined text-base">more_vert</span>
+                                class="flex flex-1 items-center justify-center py-2 px-3 text-sm font-semibold rounded-lg 
+                                 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                                <span class="material-symbols-outlined text-base">share</span>
+                            </button>
+                            <button
+                                class="flex flex-1 items-center justify-center py-2 px-3 text-sm font-semibold rounded-lg 
+                                    bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                                <span class="material-symbols-outlined text-base">download</span>
                             </button>
                         </div>
+
                     </div>
                 </div>
             @endforeach
@@ -83,7 +97,7 @@
                     to share
                     your work with the world.</p>
             </div>
-            <a href="{{route('user.portfolio.create')}}"
+            <a href="{{ route('user.portfolio.create') }}"
                 class="flex min-w-[84px] items-center justify-center gap-2 overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold shadow-sm hover:opacity-90 transition-opacity">
                 <span class="material-symbols-outlined">add_circle</span>
                 <span class="truncate">Create New Portfolio</span>

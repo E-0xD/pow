@@ -1,7 +1,7 @@
 <?php
 
-use App\Enums\UserPortfolioStatus;
-use App\Enums\UserPortfolioVisibility;
+use App\Enums\PortfolioStatus;
+use App\Enums\PortfolioVisibility;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -17,11 +17,11 @@ return new class extends Migration
             $table->foreignId('template_id')->constrained()->cascadeOnDelete();
             $table->string('title');
             $table->string('slug')->unique();
-            $table->string('visibility')->default(UserPortfolioVisibility::PUBLIC);
+            $table->string('visibility')->default(PortfolioVisibility::PUBLIC);
             $table->string('theme')->nullable();
-            $table->json('typography')->nullable();
+            $table->string('typography')->nullable();
             $table->timestamp('expires_at')->nullable();
-            $table->string('status')->default(UserPortfolioStatus::DISABLED);
+            $table->string('status')->default(PortfolioStatus::DISABLED);
             $table->string('favicon')->nullable();
             $table->string('meta_title')->nullable();
             $table->text('meta_description')->nullable();

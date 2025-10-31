@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\Enums\PortfolioStatus;
+use App\Enums\TemplateStatus;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rules\Enum;
 
@@ -17,7 +17,7 @@ class TemplateRequest extends FormRequest
     {
         return [
             'title' => ['required', 'string', 'max:255'],
-            'status' => ['required', new Enum(PortfolioStatus::class)],
+            'status' => ['required', new Enum(TemplateStatus::class)],
             'thumbnail' => ['nullable', 'image', 'max:2048'],
             'file_path' => ['required', 'string', 'max:255'],
             'tags' => ['nullable', 'string'],

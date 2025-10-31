@@ -25,8 +25,7 @@ export default {
                 "border-dark": "#3a2c4a",
                 "subtle-light": "#797B81",
                 "subtle-dark": "#a89bb9",
-                "background-danger" : "#E64A19"
-                
+                "background-danger" : "#E64A19"  
             },
             fontFamily: {
                 display: ["Manrope", "sans-serif"],
