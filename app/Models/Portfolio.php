@@ -104,4 +104,19 @@ class Portfolio extends Model
     {
         return $this->hasMany(PortfolioMessage::class);
     }
+
+    public function visits(): HasMany
+    {
+        return $this->hasMany(PortfolioVisit::class);
+    }
+
+    public function clicks(): HasMany
+    {
+        return $this->hasMany(PortfolioClick::class);
+    }
+
+    public function trafficSources(): HasMany
+    {
+        return $this->hasMany(PortfolioTrafficSource::class);
+    }
 }
