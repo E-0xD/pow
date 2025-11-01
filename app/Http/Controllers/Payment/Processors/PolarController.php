@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Log;
 
 class PolarController extends Controller
 {
-    public function process($productId, $successUrl, $cancelUrl)
+    public function process($subscription_id, $productId, $successUrl, $cancelUrl)
     {
         $confirmationUrl = $successUrl . '?checkout_id={CHECKOUT_ID}';
 
@@ -22,6 +22,7 @@ class PolarController extends Controller
             'success_url' => $confirmationUrl,
             'cancel_url' => $cancelUrl,
             'payment_processor' => 'stripe',
+            'metadata' => ['uid' => $subscription_id]
         ]);
 
         $data = $response->json();

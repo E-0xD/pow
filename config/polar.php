@@ -6,4 +6,6 @@ return [
         : 'https://api.polar.sh/v1',
         
     'access_token' => env('POLAR_ACCESS_TOKEN'),
+
+    'webhook_secret' => env('POLAR_WEBHOOK_SECRET'),
 ];

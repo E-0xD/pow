@@ -17,6 +17,9 @@ return Application::configure(basePath: dirname(__DIR__))
             'validate.portfolio.subdomain' => ValidatePortfolioSubdomain::class,
             'track.portfolio.analytics' => TrackPortfolioAnalytics::class,
         ]);
+        $middleware->validateCsrfTokens(except: [
+            'webhook/*',
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
