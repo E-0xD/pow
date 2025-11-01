@@ -14,7 +14,7 @@ class PolarController extends Controller
     {
         $confirmationUrl = $successUrl . '?checkout_id={CHECKOUT_ID}';
 
-        $result = Http::withHeaders([
+        $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . config('polar.access_token'),
             'Content-Type' => 'application/json',
         ])->post(config('polar.url') . '/checkouts/custom/', [
@@ -24,7 +24,7 @@ class PolarController extends Controller
             'payment_processor' => 'stripe',
         ]);
 
-        $data = $result->json();
+        $data = $response->json();
 
         return response()->json([
             'success' => true,

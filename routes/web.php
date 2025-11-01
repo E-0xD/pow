@@ -11,6 +11,7 @@ use Laravel\Fortify\Features;
 require __DIR__ . '/user.php';
 require __DIR__ . '/admin.php';
 require __DIR__ . '/portfolio.php';
+require __DIR__ . '/payment.php';
 
 Route::view('/', 'guest.welcome')->name('guest.welcome');
 

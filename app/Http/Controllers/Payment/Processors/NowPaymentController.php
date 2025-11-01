@@ -16,12 +16,12 @@ class NowPaymentController extends Controller
                 'x-api-key' => config('nowpayment.key'),
                 'Content-Type' => 'application/json',
             ])->post(config('nowpayment.invoice_url'), [
-                'price_amount' => $amount,
+                'price_amount' => (int) $amount,
                 'price_currency' => "USD",
                 'order_id' => uniqid(),
                 'order_description' => config('app.name'),
-                'success_url' => route($successUrl),
-                'cancel_url' => route($cancelUrl),
+                'success_url' => $successUrl,
+                'cancel_url' => $cancelUrl,
                 'is_fee_paid_by_user' => true,
             ]);
 
