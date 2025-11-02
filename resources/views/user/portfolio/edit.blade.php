@@ -47,7 +47,7 @@
                                     class="form-input flex-1 w-full min-w-0 rounded-none rounded-l-lg text-text-primary dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/50 border border-gray-300 dark:border-gray-700 bg-background-light dark:bg-gray-800 h-12 px-4 text-base font-normal @error('slug') border-danger @enderror"
                                     placeholder="your-unique-slug" value="{{ old('slug', $portfolio->slug) }}" />
                                 <span
-                                    class="inline-flex items-center h-12 px-3 rounded-r-lg border border-r-0 border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-text-secondary dark:text-gray-400 text-sm">pow.io</span>
+                                    class="inline-flex items-center h-12 px-3 rounded-r-lg border border-r-0 border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-text-secondary dark:text-gray-400 text-sm">{{parse_url(config('app.url'), PHP_URL_HOST)}}</span>
                             </div>
                             @error('slug')
                                 <p class="mt-1 text-danger text-sm">{{ $message }}</p>

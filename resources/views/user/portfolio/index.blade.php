@@ -1,38 +1,67 @@
 <x-layouts.app>
 
-    <!-- PageHeading & ToolBar -->
-    <header class="flex flex-col sm:flex-row flex-wrap justify-between items-center gap-4 mb-8">
-        <h1 class="text-gray-900 dark:text-white text-3xl font-black tracking-tight w-full sm:w-auto">My Portfolios
-        </h1>
-        <div class="flex flex-col sm:flex-row flex-wrap items-center gap-3 w-full sm:w-auto">
-            <div class="relative w-full sm:w-auto">
-                <span
-                    class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">search</span>
-                <input
-                    class="pl-10 pr-4 py-2 w-full sm:w-56 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary focus:border-primary"
-                    placeholder="Search portfolios..." type="text" />
+    <div x-data="{
+        showToast: false,
+        toastMessage: '',
+        toastType: 'success',
+        copyToClipboard(value) {
+            if (!value) return;
+            navigator.clipboard.writeText(value).then(() => {
+                this.toastMessage = '{{ __('Copied to clipboard') }}';
+                this.toastType = 'success';
+                this.showToast = true;
+                setTimeout(() => this.showToast = false, 3000);
+            }).catch(() => {
+                this.toastMessage = '{{ __('Unable to copy') }}';
+                this.toastType = 'error';
+                this.showToast = true;
+                setTimeout(() => this.showToast = false, 3000);
+            });
+        }
+    }">
+
+        <!-- Toast (client-side) -->
+        <div
+            x-show="showToast"
+            x-transition:enter="transition ease-out duration-300"
+            x-transition:enter-start="opacity-0 translate-y-2"
+            x-transition:enter-end="opacity-100 translate-y-0"
+            x-transition:leave="transition ease-in duration-300"
+            x-transition:leave-start="opacity-100 translate-y-0"
+            x-transition:leave-end="opacity-0 translate-y-2"
+            class="fixed top-5 right-5 z-50"
+            style="display: none;"
+        >
+            <div :class="toastType === 'success' ? 'bg-green-500 text-white' : (toastType === 'error' ? 'bg-red-500 text-white' : 'bg-blue-500 text-white')" class="flex items-center gap-3 max-w-sm rounded-lg p-4 shadow-md">
+                <span class="material-symbols-outlined" x-text="toastType === 'success' ? 'check_circle' : (toastType === 'error' ? 'error' : 'info')"></span>
+                <span class="flex-1" x-text="toastMessage"></span>
+                <button @click="showToast = false" class="ml-2 focus:outline-none">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
             </div>
-            <div class="relative w-full sm:w-auto">
-                <select
-                    class="w-full sm:w-auto pl-3 pr-8 py-2 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-lg appearance-none focus:ring-primary focus:border-primary">
-                    <option>Sort by: Date Created</option>
-                    <option>Sort by: Name</option>
-                    <option>Sort by: Views</option>
-                </select>
-                <span
-                    class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">expand_more</span>
-            </div>
-            <a href="{{ route('user.portfolio.create') }}"
-                class="flex w-full sm:w-auto items-center justify-center gap-2 overflow-hidden bg-primary rounded-lg h-10 px-4 text-white text-sm font-bold shadow-sm hover:opacity-90 transition-opacity">
-                <span class="material-symbols-outlined">add_circle</span>
-                <span class="truncate">Create New Portfolio</span>
-            </a>
         </div>
+
+        <!-- PageHeading & ToolBar -->
+    <header class="flex justify-between items-center gap-4 mb-8 flex-wrap">
+        <h1 class="text-gray-900 dark:text-white text-2xl sm:text-3xl font-black tracking-tight">
+            My Portfolios
+        </h1>
+
+        <a href="{{ route('user.portfolio.create') }}"
+            class="flex items-center justify-center bg-primary rounded-lg h-10 w-10 sm:w-auto sm:px-4 text-white text-sm font-bold shadow-sm hover:opacity-90 transition-all">
+
+            <!-- Icon -->
+            <span class="material-symbols-outlined text-lg sm:text-base">add_circle</span>
+
+            <!-- Text (hidden on small screens) -->
+            <span class="hidden sm:inline truncate ml-1">Create New Portfolio</span>
+        </a>
     </header>
+
     @if ($portfolios->count())
 
         <!-- ImageGrid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
 
             @foreach ($portfolios as $portfolio)
                 <!-- Portfolio Card -->
@@ -74,16 +103,17 @@
                                         bar_chart
                                     </span></span>
                             </a>
-                            <button
+                            <button data-copy="{{$portfolio->uid.'.'.parse_url(config('app.url'), PHP_URL_HOST)}}"
+                                @click.prevent="copyToClipboard($event.currentTarget.dataset.copy)"
                                 class="flex flex-1 items-center justify-center py-2 px-3 text-sm font-semibold rounded-lg 
                                  bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
                                 <span class="material-symbols-outlined text-base">share</span>
                             </button>
-                            <button
+                            {{-- <button
                                 class="flex flex-1 items-center justify-center py-2 px-3 text-sm font-semibold rounded-lg 
                                     bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
                                 <span class="material-symbols-outlined text-base">download</span>
-                            </button>
+                            </button> --}}
                         </div>
 
                     </div>

@@ -416,7 +416,7 @@
         <!-- Action Buttons -->
         <div class="flex justify-between items-center mt-10 pt-6 border-t border-slate-200 dark:border-slate-800">
             <button
-                class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 text-slate-700 dark:text-slate-300 text-sm font-bold leading-normal tracking-wide hover:bg-slate-200 dark:hover:bg-slate-800">
+                class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4  text-sm font-bold leading-normal tracking-wide bg-primary/10 dark:bg-primary/20 text-primary dark:text-white">
                 <span class="truncate">Back</span>
             </button>
             <button

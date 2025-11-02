@@ -28,12 +28,12 @@
 
     <body class="font-display bg-background-light dark:bg-background-dark text-[#1F2937] dark:text-gray-200">
         <div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
-            <div class="flex flex-row min-h-screen">
+            <div class="flex flex-row min-h-screen ">
                 <!-- SideNavBar -->
-                {{-- <x-layouts.app.sidebar /> --}}
-                {{-- <x-layouts.app.header /> --}}
+                <x-layouts.app.sidebar />
+                <x-layouts.app.mobile-bottom-bar />
                 <!-- Main Content -->
-                <main class="flex-1 p-6 lg:p-10">
+                <main class="flex-1 p-6 lg:p-10 md:ml-64 pb-20 md:pb-0">
                     <x-toast />
                     {{ $slot }}
 
