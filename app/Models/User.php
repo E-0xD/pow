@@ -59,7 +59,7 @@ class User extends Authenticatable
         return Str::of($this->name)
             ->explode(' ')
             ->take(2)
-            ->map(fn ($word) => Str::substr($word, 0, 1))
+            ->map(fn($word) => Str::substr($word, 0, 1))
             ->implode('');
     }
 
@@ -68,8 +68,34 @@ class User extends Authenticatable
         return $this->hasMany(Portfolio::class);
     }
 
-        public function transactions()
+    public function transactions()
     {
         return $this->hasMany(Transaction::class);
+    }
+
+
+
+    /**
+     * Count of unread notifications
+     */
+    public function unreadNotificationsCount(): int
+    {
+        return $this->notifications()->wherePivot('is_read', false)->count();
+    }
+
+    /**
+     * Mark a notification as read
+     */
+    public function markNotificationAsRead(int $notificationId): bool
+    {
+        $exists = $this->notifications()->where('notifications.id', $notificationId)->exists();
+        if (!$exists) return false;
+
+        $this->notifications()->updateExistingPivot($notificationId, [
+            'is_read' => true,
+            'read_at' => now(),
+        ]);
+
+        return true;
     }
 }

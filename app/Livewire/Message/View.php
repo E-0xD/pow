@@ -6,7 +6,9 @@ use App\Models\PortfolioMessage;
 use App\Models\Portfolio;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Livewire\Attributes\Layout;
 
+#[Layout('components.layouts.app')]
 class View extends Component
 {
     public PortfolioMessage $message;

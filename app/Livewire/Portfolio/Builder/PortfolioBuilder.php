@@ -7,7 +7,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\Portfolio;
 use App\Models\Skill;
+use Livewire\Attributes\Layout;
 
+#[Layout('components.layouts.app')]
 class PortfolioBuilder extends Component
 {
     public $currentStep = 1;

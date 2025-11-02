@@ -8,8 +8,9 @@ use Livewire\Component;
 use Livewire\Attributes\Computed;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\Auth;
+use Livewire\Attributes\Layout;
 
-
+#[Layout('components.layouts.app')]
 class Messages extends Component
 {
     use WithPagination;
