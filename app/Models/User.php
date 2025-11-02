@@ -73,6 +73,16 @@ class User extends Authenticatable
         return $this->hasMany(Transaction::class);
     }
 
+    /**
+     * Notifications received by the user (pivot contains read state)
+     */
+    public function notifications()
+    {
+        return $this->belongsToMany(Notification::class, 'notification_user')
+            ->withPivot(['is_read', 'read_at'])
+            ->withTimestamps()
+            ->orderBy('notification_user.created_at', 'desc');
+    }
 
 
     /**
@@ -97,5 +107,31 @@ class User extends Authenticatable
         ]);
 
         return true;
+    }
+
+    public function portfolioVisitsCountLastDays(int $days = 30): array
+    {
+        $since = now()->subDays($days);
+
+        // load portfolios with a visits_count restricted to the timeframe
+        $perPortfolio = $this->portfolios()
+            ->withCount(['visits as visits_count' => function ($q) use ($since) {
+                $q->where('created_at', '>=', $since);
+            }])
+            ->get()
+            ->map(fn($p) => [
+                'portfolio_id' => $p->id,
+                'uid' => $p->uid ?? null,
+                'title' => $p->title,
+                'visits' => (int) $p->visits_count,
+            ]);
+
+        $total = $perPortfolio->sum('visits');
+
+        return [
+            'per_portfolio' => $perPortfolio,
+            'total' => (int) $total,
+            'days' => $days,
+        ];
     }
 }

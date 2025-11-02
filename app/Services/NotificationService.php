@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Enums\NotificationType;
 use App\Models\Notification;
 use App\Models\User;
 
@@ -16,9 +17,10 @@ class NotificationService
      * @param array $data
      * @return Notification
      */
-    public function sendToAll(string $title, ?string $body = null, array $data = []): Notification
+    public function sendToAll(NotificationType $notification_type, string $title, ?string $body = null, array $data = []): Notification
     {
         $notification = Notification::create([
+            'type' => $notification_type,
             'title' => $title,
             'body' => $body,
             'data' => $data,
@@ -45,9 +47,10 @@ class NotificationService
      * @param string|\Closure $group
      * @return Notification
      */
-    public function sendToGroup(string $title, ?string $body = null, array $data = [], $group = null): Notification
+    public function sendToGroup(NotificationType $notification_type, string $title, ?string $body = null, array $data = [], $group = null): Notification
     {
         $notification = Notification::create([
+            'type' => $notification_type,
             'title' => $title,
             'body' => $body,
             'data' => $data,
@@ -76,11 +79,12 @@ class NotificationService
     /**
      * Send to a single user.
      */
-    public function sendToUser(int|User $user, string $title, ?string $body = null, array $data = []): Notification
+    public function sendToUser(NotificationType $notification_type, int|User $user, string $title, ?string $body = null, array $data = []): Notification
     {
         $userId = $user instanceof User ? $user->id : $user;
 
         $notification = Notification::create([
+            'type' => $notification_type,
             'title' => $title,
             'body' => $body,
             'data' => $data,

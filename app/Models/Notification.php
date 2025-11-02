@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\NotificationType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
@@ -21,6 +22,7 @@ class Notification extends Model
 
     protected $casts = [
         'data' => 'array',
+        'type' => NotificationType::class
     ];
 
     /**

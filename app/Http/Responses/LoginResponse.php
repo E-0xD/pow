@@ -2,6 +2,7 @@
 
 namespace App\Http\Responses;
 
+use App\Enums\NotificationType;
 use App\Services\NotificationService;
 use Illuminate\Support\Facades\Auth;
 use Jenssegers\Agent\Agent;
@@ -31,6 +32,7 @@ class LoginResponse implements LoginResponseContract
         // }
 
         $this->notificationService->sendToUser(
+            NotificationType::LOGIN,
             Auth::user(),
             'Login Attempt',
             'A login was detected on ' . now()->format('Y-m-d H:i:s') .
