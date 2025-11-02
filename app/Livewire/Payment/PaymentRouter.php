@@ -18,7 +18,7 @@ class PaymentRouter extends Component
     public $plans;
     public $selectedPlan = null;
     public $user;
-    public $paymentMethod;
+    public $paymentMethod = 'polar';
     protected $nowpayment;
     protected $polar;
     public $portfolio;

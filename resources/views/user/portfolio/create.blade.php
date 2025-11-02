@@ -4,15 +4,7 @@
 
         <!-- Progress Bar -->
         <div class="flex flex-col gap-6">
-            <div class="flex flex-col gap-3">
-                <div class="flex gap-6 justify-between items-center">
-                    <p class="text-slate-900 dark:text-white text-base font-medium leading-normal">Step 1 of 4</p>
-                    <p class="text-sm text-slate-500 dark:text-slate-400">Choose a Template</p>
-                </div>
-                <div class="rounded-full bg-slate-200 dark:bg-slate-700 h-2">
-                    <div class="h-2 rounded-full bg-primary" style="width: 25%;"></div>
-                </div>
-            </div>
+          
 
             <!-- Heading -->
             <div class="flex flex-wrap justify-between gap-3 items-center">
@@ -27,7 +19,7 @@
             </div>
 
             <!-- Toolbar -->
-            <div
+            {{-- <div
                 class="flex justify-between items-center gap-4 py-3 border-t border-b border-slate-200/80 dark:border-slate-800">
                 <div class="flex-1 relative">
                     <span
@@ -44,7 +36,7 @@
                     <button class="chip">Color<span
                             class="material-symbols-outlined text-lg">expand_more</span></button>
                 </div>
-            </div>
+            </div> --}}
         </div>
 
         <!-- Template Grid -->
@@ -73,7 +65,6 @@
             @endforeach
         </div>
 
-
         <!-- Modal -->
         <div x-ref="modal"
             class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
@@ -87,17 +78,12 @@
                     </div>
                     <div class="flex items-center gap-2">
                         <div class="flex items-center p-1 bg-slate-200 dark:bg-slate-800 rounded-lg">
-                            <button class="p-2 rounded-md bg-white dark:bg-slate-700 text-primary">
-                                <span class="material-symbols-outlined">desktop_windows</span>
+                            <button class="text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 p-2 rounded-lg">
+                                <span class="material-symbols-outlined">
+                                    visibility
+                                </span>
                             </button>
-                            <button
-                                class="p-2 rounded-md text-slate-500 dark:text-slate-400 hover:bg-white/50 dark:hover:bg-slate-700/50">
-                                <span class="material-symbols-outlined">tablet_mac</span>
-                            </button>
-                            <button
-                                class="p-2 rounded-md text-slate-500 dark:text-slate-400 hover:bg-white/50 dark:hover:bg-slate-700/50">
-                                <span class="material-symbols-outlined">smartphone</span>
-                            </button>
+
                         </div>
                         <button @click="closeModal()"
                             class="text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 p-2 rounded-lg">
@@ -108,7 +94,8 @@
 
                 <div class="flex-1 overflow-y-auto bg-slate-200 dark:bg-slate-900 p-8">
                     <div class="bg-center bg-no-repeat w-full h-[1200px] bg-cover shadow-lg rounded-md"
-                        :style="'background-image: url(' + selectedTemplate?.thumbnail_path + ');'"></div>
+                        :style="`background-image: url('${selectedTemplate ? '{{ Storage::url('') }}' + selectedTemplate.thumbnail_path : ''}')`">
+                    </div>
                 </div>
 
                 <footer class="p-4 border-t border-slate-200 dark:border-slate-800 flex justify-end">

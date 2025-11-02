@@ -94,7 +94,7 @@
                                 <label
                                     class="flex cursor-pointer h-full flex-1 items-center justify-center overflow-hidden rounded-full px-2 py-1.5 has-[:checked]:bg-white dark:has-[:checked]:bg-background-dark has-[:checked]:shadow-soft text-text-muted-light dark:text-text-muted-dark has-[:checked]:text-text-light dark:has-[:checked]:text-text-dark text-sm font-medium transition-all duration-300">
                                     <span class="truncate">Pay with Card</span>
-                                    <input checked="" class="invisible w-0" wire:model="paymentMethod" name="paymentMethod" value="polar" type="radio"
+                                    <input checked class="invisible w-0" wire:model="paymentMethod" name="paymentMethod" value="polar" type="radio"
                                         value="monthly" />
                                 </label>
                                 <label
@@ -129,22 +129,19 @@
                                     <span>Subtotal</span>
                                     <span>${{ number_format($selectedPlan['price'], 2) }}</span>
                                 </div>
-                                @php
-                                    $tax = $selectedPlan['price'] * 0.1;
-                                    $total = $selectedPlan['price'] + $tax;
-                                @endphp
+                               
                                 <div class="flex justify-between">
-                                    <span>Tax (10%)</span>
-                                    <span>${{ number_format($tax, 2) }}</span>
+                                    <span>Tax (0%)</span>
+                                    <span>$0</span>
                                 </div>
                                 <div class="flex justify-between text-base font-bold text-[#140d1b] dark:text-white">
                                     <span>Total</span>
-                                    <span>${{ number_format($total, 2) }}</span>
+                                    <span>${{ number_format($selectedPlan['price'], 2) }}</span>
                                 </div>
                                 <div
                                     class="mt-2 flex items-center justify-between text-xs text-gray-500 dark:text-gray-400">
                                     <span>Invoice ID:</span>
-                                    <span>INV-{{ date('Y') }}-{{ strtoupper(substr(md5(uniqid()), 0, 5)) }}</span>
+                                    <span>WOULD BE SENT VIA EMAIL</span>
                                 </div>
 
                             </div>
@@ -163,7 +160,7 @@
                             class="sticky bottom-0 bg-background-light dark:bg-background-dark/80 backdrop-blur-sm p-4 mt-auto">
                             <button type="button" wire:click="pay"
                                 class="h-14 w-full rounded-xl bg-primary text-lg font-bold text-white shadow-lg shadow-primary/30 transition-transform hover:scale-[1.02] active:scale-[0.98]">
-                                Pay ${{ number_format($total, 2) }}
+                                Pay ${{ number_format($selectedPlan['price'], 2) }}
                             </button>
                             <div
                                 class="mt-4 flex items-center justify-center gap-2 text-xs text-gray-500 dark:text-gray-400">

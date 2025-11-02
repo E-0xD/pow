@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Enums\PortfolioStatus;
+use App\Enums\TemplateStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use illuminate\Support\Str;
@@ -20,7 +20,7 @@ class Template extends Model
     ];
 
     protected $casts = [
-        'status' => PortfolioStatus::class,
+        'status' => TemplateStatus::class,
         'tags' => 'array',
     ];
 

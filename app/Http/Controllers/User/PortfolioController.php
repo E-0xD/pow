@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Enums\TemplateStatus;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PortfolioCreateRequest;
 use App\Http\Requests\PortfolioUpdateRequest;
@@ -31,7 +32,7 @@ class PortfolioController extends Controller
     public function create()
     {
 
-        $templates = Template::where('status', 'published')->get();
+        $templates = Template::where('status', TemplateStatus::PUBLISHED)->get();
 
         return view('user.portfolio.create', compact('templates'));
     }
@@ -42,16 +43,15 @@ class PortfolioController extends Controller
 
         $portfolio = Auth::user()->portfolios()->create($data);
 
-        return redirect()->route('user.portfolio.customize', $portfolio)
+        return redirect()->route('payment.checkout', $portfolio->uid)
             ->with([
-                'type' => 'error',
-                'message' => 'Portfolio created successfully'
+                'type' => 'info',
+                'message' => 'Select a Plan and start proving your work'
             ]);
     }
 
     public function show(Portfolio $portfolio)
     {
-        // dd($portfolio);
         $this->authorize('view', $portfolio);
         return view('user.portfolio.show', compact('portfolio'));
     }
