@@ -21,8 +21,6 @@ class Portfolio extends Model
         'visibility',
         'theme',
         'typography',
-        'expires_at',
-        'status',
         'favicon',
         'meta_title',
         'meta_description',

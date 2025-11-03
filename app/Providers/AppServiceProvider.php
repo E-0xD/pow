@@ -24,7 +24,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // listen for Registered event to attach referred_by
-        Event::listen(Registered::class, [HandleRegisteredReferral::class, 'handle']);
+ 
     }
 }

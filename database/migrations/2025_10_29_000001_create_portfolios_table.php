@@ -20,8 +20,6 @@ return new class extends Migration
             $table->string('visibility')->default(PortfolioVisibility::PUBLIC);
             $table->string('theme')->nullable();
             $table->string('typography')->nullable();
-            $table->timestamp('expires_at')->nullable();
-            $table->string('status')->default(PortfolioStatus::DISABLED);
             $table->string('favicon')->nullable();
             $table->string('meta_title')->nullable();
             $table->text('meta_description')->nullable();

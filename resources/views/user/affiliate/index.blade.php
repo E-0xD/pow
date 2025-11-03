@@ -69,28 +69,28 @@
                     @csrf
                     <div class="flex flex-col gap-3">
                         <label class="text-sm font-medium">Payout Method</label>
-                        <select name="payout_method" class="form-input rounded-md h-10" id="payoutMethod">
+                        <select name="payout_method" class="form-input rounded-md h-10 text-text-primary dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/50 border border-gray-300 dark:border-gray-700 bg-background-light dark:bg-gray-800" id="payoutMethod">
                             <option value="bank" @if(($affiliate->payout_method ?? '') === 'bank') selected @endif>Bank Transfer</option>
                             <option value="crypto" @if(($affiliate->payout_method ?? '') === 'crypto') selected @endif>Crypto</option>
                         </select>
 
                         <div id="bankFields" class="flex flex-col gap-3" @if(($affiliate->payout_method ?? '') !== 'bank') style="display:none" @endif>
                             <label class="text-sm font-medium">Bank Name</label>
-                            <input type="text" name="bank_name" class="form-input rounded-md h-10" 
+                            <input type="text" name="bank_name" class="form-input rounded-md h-10 text-text-primary dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/50 border border-gray-300 dark:border-gray-700 bg-background-light dark:bg-gray-800" 
                                 value="{{ $affiliate->payout_details['bank_name'] ?? '' }}">
                             
                             <label class="text-sm font-medium">Account Number</label>
-                            <input type="text" name="account_number" class="form-input rounded-md h-10"
+                            <input type="text" name="account_number" class="form-input rounded-md h-10 text-text-primary dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/50 border border-gray-300 dark:border-gray-700 bg-background-light dark:bg-gray-800"
                                 value="{{ $affiliate->payout_details['account_number'] ?? '' }}">
                         </div>
 
                         <div id="cryptoFields" class="flex flex-col gap-3" @if(($affiliate->payout_method ?? '') !== 'crypto') style="display:none" @endif>
                             <label class="text-sm font-medium">Network</label>
-                            <input type="text" name="network" class="form-input rounded-md h-10"
+                            <input type="text" name="network" class="form-input rounded-md h-10 text-text-primary dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/50 border border-gray-300 dark:border-gray-700 bg-background-light dark:bg-gray-800"
                                 value="{{ $affiliate->payout_details['network'] ?? '' }}">
                             
                             <label class="text-sm font-medium">Wallet Address</label>
-                            <input type="text" name="wallet_address" class="form-input rounded-md h-10"
+                            <input type="text" name="wallet_address" class="form-input rounded-md h-10 text-text-primary dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/50 border border-gray-300 dark:border-gray-700 bg-background-light dark:bg-gray-800"
                                 value="{{ $affiliate->payout_details['wallet_address'] ?? '' }}">
                         </div>
 
