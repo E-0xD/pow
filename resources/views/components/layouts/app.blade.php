@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html class="dark" lang="en">
+<html class="light" lang="en">
 
     <head>
         <meta charset="utf-8" />

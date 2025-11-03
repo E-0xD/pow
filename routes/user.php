@@ -11,14 +11,14 @@ use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('user')->name('user.')->group(function () {
+Route::prefix('user')->name('user.')->middleware(['auth', 'ensure.active', 'message.owner', 'portfolio.owner', 'portfolio.editable'])->group(function () {
     Route::get('dashboard', DashboardController::class)->name('dashboard');
     Route::resource('portfolio', PortfolioController::class);
     Route::get('portfolio/{portfolio}/customize', PortfolioBuilder::class)->name('portfolio.customize');
     Route::get('portfolio/{portfolio}/analytics', [PortfolioController::class, 'analytics'])->name('portfolio.analytics');
     Route::get('messages', Messages::class)->name('messages.index');
     Route::get('messages/{message}', View::class)->name('messages.show');
-    Route::resource('affiliate', AffiliateController::class);
+    Route::resource('affiliate', AffiliateController::class)->middleware(['ensure.affiliate']);
 
     Route::redirect('settings', 'settings/profile');
 
