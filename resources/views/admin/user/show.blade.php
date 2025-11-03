@@ -16,6 +16,54 @@
             </div>
         </div>
 
+        <!-- Affiliate Section -->
+        <div class="bg-white dark:bg-card-dark rounded-xl p-6 mb-6">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="font-semibold">Affiliate Status</h3>
+                @if(!$user->affiliate)
+                    <button type="button" onclick="document.getElementById('affiliate-form').classList.remove('hidden')"
+                        class="px-4 py-2 bg-primary text-white rounded text-sm">Make Affiliate</button>
+                @endif
+            </div>
+
+            @if($user->affiliate)
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div>
+                        <p class="text-sm text-gray-500">Commission Rate</p>
+                        <p class="font-medium">{{ $user->affiliate->commission_rate }}%</p>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-500">Current Balance</p>
+                        <p class="font-medium">${{ number_format($user->affiliate->balance, 2) }}</p>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-500">Last Payout</p>
+                        <p class="font-medium">{{ $user->affiliate->last_payout_at?->format('M d, Y') ?? 'Never' }}</p>
+                    </div>
+                </div>
+            @endif
+
+            <!-- New Affiliate Form -->
+            <form id="affiliate-form" action="{{ route('admin.affiliate.store', $user->id) }}" method="post" 
+                class="{{ $user->affiliate ? 'hidden' : 'hidden mt-4 border-t dark:border-gray-700 pt-4' }}">
+                @csrf
+                    <div>
+                        <label class="block text-sm font-medium">Commission Rate (%)</label>
+                        <input type="number" name="commission_rate" min="0" max="100" step="0.1"
+                            value="{{ old('commission_rate', 10) }}" 
+                            class="form-input rounded-md h-10 w-full text-text-primary dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/50 border border-gray-300 dark:border-gray-700 bg-background-light dark:bg-gray-800" />
+                        @error('commission_rate') <p class="text-sm text-red-500">{{ $message }}</p> @enderror
+                    </div>
+             
+
+                <div class="mt-4">
+                    <button type="submit" class="px-4 py-2 bg-primary text-white rounded">Save</button>
+                    <button type="button" onclick="document.getElementById('affiliate-form').classList.add('hidden')"
+                        class="px-4 py-2 text-gray-500 rounded">Cancel</button>
+                </div>
+            </form>
+        </div>
+
         <div class="bg-white dark:bg-card-dark rounded-xl p-6 mb-6">
             <h3 class="font-semibold mb-4">Edit Role & Status</h3>
             <form action="{{ route('admin.user.update', $user) }}" method="post">

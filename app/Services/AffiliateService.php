@@ -36,11 +36,9 @@ class AffiliateService
         $affiliateUser = User::find($referredUser->referred_by);
         if (!$affiliateUser) return null;
 
-        $affiliate = Affiliate::firstOrCreate([
-            'user_id' => $affiliateUser->id,
-        ], [
-            'commission_rate' => 30.00,
-        ]);
+        $affiliate = Affiliate::where('user_id', $affiliateUser->id)->first();
+
+        if (!$affiliate) return null;
 
         $plan = $subscription->plan;
 

@@ -4,11 +4,6 @@
         <div class="flex flex-wrap justify-between gap-4 items-center mb-6">
             <h1 class="text-3xl font-bold leading-tight tracking-tight text-text-light dark:text-text-dark">Manage
                 Affiliates</h1>
-            <button
-                class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md bg-primary px-4 py-2 text-sm font-medium text-white shadow-sm transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50">
-                <span class="material-symbols-outlined text-base">add</span>
-                <span>Add Affiliate</span>
-            </button>
         </div>
         <!-- Stats -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
@@ -16,21 +11,22 @@
                 class="flex flex-1 flex-col gap-2 rounded-xl p-6 border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark">
                 <p class="text-base font-medium leading-normal text-text-secondary-light dark:text-text-secondary-dark">
                     Total Affiliates</p>
-                <p class="tracking-tight text-3xl font-bold leading-tight text-text-light dark:text-text-dark">1,204</p>
+                <p class="tracking-tight text-3xl font-bold leading-tight text-text-light dark:text-text-dark">
+                    {{ number_format($totalAffiliates) }}</p>
             </div>
             <div
                 class="flex flex-1 flex-col gap-2 rounded-xl p-6 border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark">
                 <p class="text-base font-medium leading-normal text-text-secondary-light dark:text-text-secondary-dark">
                     Pending Withdrawals</p>
                 <p class="tracking-tight text-3xl font-bold leading-tight text-text-light dark:text-text-dark">
-                    $15,830.50</p>
+                    ${{ number_format($pendingWithdrawals, 2) }}</p>
             </div>
             <div
                 class="flex flex-1 flex-col gap-2 rounded-xl p-6 border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark">
                 <p class="text-base font-medium leading-normal text-text-secondary-light dark:text-text-secondary-dark">
                     Commissions Paid</p>
                 <p class="tracking-tight text-3xl font-bold leading-tight text-text-light dark:text-text-dark">
-                    $124,721.00</p>
+                    ${{ number_format($totalPaid, 2) }}</p>
             </div>
         </div>
         <!-- ToolBar -->
@@ -39,12 +35,12 @@
                 <span
                     class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-secondary-light dark:text-text-secondary-dark">search</span>
                 <input
-                    class="w-full rounded-md border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark pl-10 pr-4 py-2 text-sm focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                    class="w-full rounded-md pl-10 pr-4 py-2 text-sm text-text-primary dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/50 border border-gray-300 dark:border-gray-700 bg-background-light dark:bg-gray-800"
                     placeholder="Search by name or email..." type="text" />
             </div>
             <div class="flex gap-4">
                 <select
-                    class="rounded-md border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark px-3 py-2 text-sm focus:ring-2 focus:ring-primary/50 focus:border-primary">
+                    class="rounded-md px-3 py-2 text-sm text-text-primary dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/50 border border-gray-300 dark:border-gray-700 bg-background-light dark:bg-gray-800">
                     <option>All</option>
                     <option>Active</option>
                     <option>Pending Withdrawal</option>
@@ -74,164 +70,100 @@
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-border-light dark:divide-border-dark">
-                            <tr class="relative hover:bg-background-light dark:hover:bg-background-dark">
-                                <td class="w-px h-full absolute left-0 bg-warning"
-                                    data-alt="indicator for pending withdrawal"></td>
-                                <td
-                                    class="whitespace-nowrap px-6 py-4 text-sm font-medium text-text-light dark:text-text-dark">
-                                    John Doe</td>
-                                <td
-                                    class="whitespace-nowrap px-6 py-4 text-sm text-text-secondary-light dark:text-text-secondary-dark">
-                                    152</td>
-                                <td
-                                    class="whitespace-nowrap px-6 py-4 text-sm text-text-secondary-light dark:text-text-secondary-dark">
-                                    $1,520.00</td>
-                                <td
-                                    class="whitespace-nowrap px-6 py-4 text-sm text-text-secondary-light dark:text-text-secondary-dark">
-                                    10%</td>
-                                <td
-                                    class="whitespace-nowrap px-6 py-4 text-sm text-text-secondary-light dark:text-text-secondary-dark">
-                                    $350.00</td>
-                                <td class="whitespace-nowrap px-6 py-4 text-right text-sm font-medium">
-                                    <div class="flex items-center justify-end gap-2">
-                                        <button class="p-2 rounded-md text-success hover:bg-success/10"><span
-                                                class="material-symbols-outlined text-xl">check_circle</span></button>
-                                        <button class="p-2 rounded-md text-danger hover:bg-danger/10"><span
-                                                class="material-symbols-outlined text-xl">cancel</span></button>
-                                        <button
-                                            class="p-2 rounded-md text-text-secondary-light dark:text-text-secondary-dark hover:bg-primary/10 hover:text-primary"><span
-                                                class="material-symbols-outlined text-xl">edit</span></button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="hover:bg-background-light dark:hover:bg-background-dark">
-                                <td
-                                    class="whitespace-nowrap px-6 py-4 text-sm font-medium text-text-light dark:text-text-dark">
-                                    Jane Smith</td>
-                                <td
-                                    class="whitespace-nowrap px-6 py-4 text-sm text-text-secondary-light dark:text-text-secondary-dark">
-                                    128</td>
-                                <td
-                                    class="whitespace-nowrap px-6 py-4 text-sm text-text-secondary-light dark:text-text-secondary-dark">
-                                    $1,280.00</td>
-                                <td
-                                    class="whitespace-nowrap px-6 py-4 text-sm text-text-secondary-light dark:text-text-secondary-dark">
-                                    10%</td>
-                                <td
-                                    class="whitespace-nowrap px-6 py-4 text-sm text-text-secondary-light dark:text-text-secondary-dark">
-                                    $120.00</td>
-                                <td class="whitespace-nowrap px-6 py-4 text-right text-sm font-medium">
-                                    <div class="flex items-center justify-end gap-2">
-                                        <button
-                                            class="p-2 rounded-md text-text-secondary-light dark:text-text-secondary-dark hover:bg-primary/10 hover:text-primary"><span
-                                                class="material-symbols-outlined text-xl">edit</span></button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="relative hover:bg-background-light dark:hover:bg-background-dark">
-                                <td class="w-px h-full absolute left-0 bg-warning"
-                                    data-alt="indicator for pending withdrawal"></td>
-                                <td
-                                    class="whitespace-nowrap px-6 py-4 text-sm font-medium text-text-light dark:text-text-dark">
-                                    Mike Johnson</td>
-                                <td
-                                    class="whitespace-nowrap px-6 py-4 text-sm text-text-secondary-light dark:text-text-secondary-dark">
-                                    98</td>
-                                <td
-                                    class="whitespace-nowrap px-6 py-4 text-sm text-text-secondary-light dark:text-text-secondary-dark">
-                                    $1,470.00</td>
-                                <td
-                                    class="whitespace-nowrap px-6 py-4 text-sm text-text-secondary-light dark:text-text-secondary-dark">
-                                    15%</td>
-                                <td
-                                    class="whitespace-nowrap px-6 py-4 text-sm text-text-secondary-light dark:text-text-secondary-dark">
-                                    $450.00</td>
-                                <td class="whitespace-nowrap px-6 py-4 text-right text-sm font-medium">
-                                    <div class="flex items-center justify-end gap-2">
-                                        <button class="p-2 rounded-md text-success hover:bg-success/10"><span
-                                                class="material-symbols-outlined text-xl">check_circle</span></button>
-                                        <button class="p-2 rounded-md text-danger hover:bg-danger/10"><span
-                                                class="material-symbols-outlined text-xl">cancel</span></button>
-                                        <button
-                                            class="p-2 rounded-md text-text-secondary-light dark:text-text-secondary-dark hover:bg-primary/10 hover:text-primary"><span
-                                                class="material-symbols-outlined text-xl">edit</span></button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="hover:bg-background-light dark:hover:bg-background-dark">
-                                <td
-                                    class="whitespace-nowrap px-6 py-4 text-sm font-medium text-text-light dark:text-text-dark">
-                                    Emily White</td>
-                                <td
-                                    class="whitespace-nowrap px-6 py-4 text-sm text-text-secondary-light dark:text-text-secondary-dark">
-                                    85</td>
-                                <td
-                                    class="whitespace-nowrap px-6 py-4 text-sm text-text-secondary-light dark:text-text-secondary-dark">
-                                    $850.00</td>
-                                <td
-                                    class="whitespace-nowrap px-6 py-4 text-sm text-text-secondary-light dark:text-text-secondary-dark">
-                                    10%</td>
-                                <td
-                                    class="whitespace-nowrap px-6 py-4 text-sm text-text-secondary-light dark:text-text-secondary-dark">
-                                    $50.00</td>
-                                <td class="whitespace-nowrap px-6 py-4 text-right text-sm font-medium">
-                                    <div class="flex items-center justify-end gap-2">
-                                        <button
-                                            class="p-2 rounded-md text-text-secondary-light dark:text-text-secondary-dark hover:bg-primary/10 hover:text-primary"><span
-                                                class="material-symbols-outlined text-xl">edit</span></button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="hover:bg-background-light dark:hover:bg-background-dark">
-                                <td
-                                    class="whitespace-nowrap px-6 py-4 text-sm font-medium text-text-light dark:text-text-dark">
-                                    Chris Green</td>
-                                <td
-                                    class="whitespace-nowrap px-6 py-4 text-sm text-text-secondary-light dark:text-text-secondary-dark">
-                                    76</td>
-                                <td
-                                    class="whitespace-nowrap px-6 py-4 text-sm text-text-secondary-light dark:text-text-secondary-dark">
-                                    $1,140.00</td>
-                                <td
-                                    class="whitespace-nowrap px-6 py-4 text-sm text-text-secondary-light dark:text-text-secondary-dark">
-                                    15%</td>
-                                <td
-                                    class="whitespace-nowrap px-6 py-4 text-sm text-text-secondary-light dark:text-text-secondary-dark">
-                                    $210.00</td>
-                                <td class="whitespace-nowrap px-6 py-4 text-right text-sm font-medium">
-                                    <div class="flex items-center justify-end gap-2">
-                                        <button
-                                            class="p-2 rounded-md text-text-secondary-light dark:text-text-secondary-dark hover:bg-primary/10 hover:text-primary"><span
-                                                class="material-symbols-outlined text-xl">edit</span></button>
-                                    </div>
-                                </td>
-                            </tr>
+                            @foreach ($affiliates as $affiliate)
+                                <tr class="relative hover:bg-background-light dark:hover:bg-background-dark">
+                                  
+                                    <td
+                                        class="whitespace-nowrap px-6 py-4 text-sm font-medium text-text-light dark:text-text-dark">
+                                        <div>
+                                            <div class="font-medium">{{ $affiliate->user->name }}</div>
+                                            <div class="text-gray-500 text-xs">{{ $affiliate->user->email }}</div>
+                                        </div>
+                                    </td>
+                                    <td
+                                        class="whitespace-nowrap px-6 py-4 text-sm text-text-secondary-light dark:text-text-secondary-dark">
+                                        {{ $affiliate->user->referredBy()->count() }}
+                                    </td>
+                                    <td
+                                        class="whitespace-nowrap px-6 py-4 text-sm text-text-secondary-light dark:text-text-secondary-dark">
+                                        ${{ number_format($affiliate->total_commission ?? 0, 2) }}
+                                    </td>
+                                    <td
+                                        class="whitespace-nowrap px-6 py-4 text-sm text-text-secondary-light dark:text-text-secondary-dark">
+                                        {{ $affiliate->commission_rate }}%
+                                    </td>
+                                    <td
+                                        class="whitespace-nowrap px-6 py-4 text-sm text-text-secondary-light dark:text-text-secondary-dark">
+                                        ${{ number_format($affiliate->balance, 2) }}
+                                    </td>
+                                    <td class="whitespace-nowrap px-6 py-4 text-right text-sm font-medium">
+                                        <div class="flex items-center justify-end gap-2">
+                                            @if ($affiliate->balance > 0)
+                                                <button
+                                                    onclick="document.getElementById('payout-modal-{{ $affiliate->id }}').classList.remove('hidden')"
+                                                    class="p-2 rounded-md text-green-600 hover:bg-green-100 dark:hover:bg-green-900/30">
+                                                    <span class="material-symbols-outlined text-lg">payments</span>
+                                                </button>
+                                            @endif
+                                            <a href="{{ route('admin.affiliate.edit', $affiliate) }}"
+                                                class="p-2 rounded-md text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700">
+                                                <span class="material-symbols-outlined text-lg">edit</span>
+                                            </a>
+                                            <form action="{{ route('admin.affiliate.destroy', $affiliate) }}"
+                                                method="post" class="inline-block"
+                                                onsubmit="return confirm('Are you sure you want to remove this affiliate?')">
+                                                @csrf
+                                                @method('delete')
+                                                <button type="submit"
+                                                    class="p-2 rounded-md text-red-500 hover:bg-red-100 dark:hover:bg-red-900/30">
+                                                    <span class="material-symbols-outlined text-lg">person_remove</span>
+                                                </button>
+                                            </form>
+                                        </div>
+
+                                        <!-- Payout Modal -->
+                                        @if ($affiliate->balance > 0)
+                                            <div id="payout-modal-{{ $affiliate->id }}"
+                                                class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+                                                <div
+                                                    class="bg-white dark:bg-card-dark rounded-xl p-6 max-w-md w-full mx-4">
+                                                    <h3 class="text-lg font-semibold mb-4">Process Payout</h3>
+                                                    <form action="{{ route('admin.affiliate.payout', $affiliate) }}"
+                                                        method="post">
+                                                        @csrf
+                                                        <div>
+                                                            <label class="block text-sm font-medium">Amount</label>
+                                                            <input type="number" name="amount" min="0"
+                                                                max="{{ $affiliate->balance }}" step="0.01"
+                                                                value="{{ old('amount', $affiliate->balance) }}"
+                                                                class="form-input rounded-md h-10 w-full mt-1 text-text-primary dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/50 border border-gray-300 dark:border-gray-700 bg-background-light dark:bg-gray-800" />
+                                                            @error('amount')
+                                                                <p class="text-sm text-red-500">{{ $message }}</p>
+                                                            @enderror
+                                                        </div>
+                                                        <div class="mt-4">
+                                                            <button type="submit"
+                                                                class="px-4 py-2 bg-primary text-white rounded">Process</button>
+                                                            <button type="button"
+                                                                onclick="document.getElementById('payout-modal-{{ $affiliate->id }}').classList.add('hidden')"
+                                                                class="px-4 py-2 text-gray-500">Cancel</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        @endif
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
         <!-- Pagination -->
-        <div class="flex items-center justify-between py-4">
-            <span class="text-sm text-text-secondary-light dark:text-text-secondary-dark">Showing 1 to 5 of 1,204
-                results</span>
-            <div class="inline-flex items-center -space-x-px">
-                <button
-                    class="px-3 py-1.5 rounded-l-md border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark text-sm hover:bg-background-light dark:hover:bg-background-dark disabled:opacity-50"
-                    disabled="">Previous</button>
-                <button
-                    class="px-3 py-1.5 border-y border-border-light dark:border-border-dark bg-primary/10 text-primary text-sm">1</button>
-                <button
-                    class="px-3 py-1.5 border-y border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark text-sm hover:bg-background-light dark:hover:bg-background-dark">2</button>
-                <button
-                    class="px-3 py-1.5 border-y border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark text-sm hover:bg-background-light dark:hover:bg-background-dark">3</button>
-                <span
-                    class="px-3 py-1.5 border-y border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark text-sm">...</span>
-                <button
-                    class="px-3 py-1.5 border-y border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark text-sm hover:bg-background-light dark:hover:bg-background-dark">241</button>
-                <button
-                    class="px-3 py-1.5 rounded-r-md border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark text-sm hover:bg-background-light dark:hover:bg-background-dark">Next</button>
-            </div>
+        <div class="mt-6">
+            {{ $affiliates->links() }}
         </div>
+    </div>
     </div>
 </x-layouts.app>
