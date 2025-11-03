@@ -66,4 +66,75 @@ php artisan key:generate
 php artisan migrate
 
 # Start the development server
-php artisan serve
+php artisan serve 
+
+#or to build assets as you develop
+
+composer dev
+
+
+### 🧭 Configure Hosts File (Windows Only)
+
+To make sure the **admin subdomain** (`admin.pow.test`) can access the **same login session** as the main app (`pow.test`), you’ll need to map both domains locally.
+
+> **Reason:**
+> Laravel sessions are domain-specific.
+> By mapping both domains and setting `SESSION_DOMAIN=.pow.test`, you ensure that logging in on the main domain also keeps you authenticated on the admin subdomain.
+
+---
+
+#### 🪜 Step-by-Step (Windows)
+
+1. **Open Notepad as Administrator**
+
+   * Press **Start → type “Notepad” → right-click → “Run as Administrator”**
+
+2. **Open the hosts file**
+
+   ```
+   C:\Windows\System32\drivers\etc\hosts
+   ```
+
+3. **Add these lines at the bottom**
+
+   ```
+   127.0.0.1 pow.test
+   127.0.0.1 admin.pow.test
+   ```
+
+   > This tells Windows to resolve both domains locally to your development server.
+
+4. **Save and close the file**
+
+---
+
+#### Clear Your DNS Cache
+
+After editing your hosts file, run this command in **Command Prompt (as Administrator):**
+
+```bash
+ipconfig /flushdns
+```
+
+You should see:
+
+```
+Successfully flushed the DNS Resolver Cache.
+```
+
+This ensures Windows picks up your new domain mappings immediately.
+
+---
+
+#### Laravel `.env` Configuration
+
+In your `.env` file, make sure your session settings allow both domains to share the same login:
+
+```env
+SESSION_DRIVER=database
+SESSION_DOMAIN=.pow.test
+SESSION_PATH=/
+```
+
+> This means `pow.test` and `admin.pow.test` will **share authentication cookies**.
+> Other subdomains (like `user.pow.test`) won’t be affected.
