@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\PortfolioSubscriptionStatus;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -18,7 +19,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamp('purchased_at')->nullable();
             $table->timestamp('expires_at')->nullable();
-            $table->enum('status', ['active', 'expired', 'pending', 'cancelled'])->default('pending');
+            $table->string('status')->default(PortfolioSubscriptionStatus::PENDING);
             $table->foreignId('transaction_id')->nullable()->constrained()->onDelete('set null');
             $table->timestamps();
         });

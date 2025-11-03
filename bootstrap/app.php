@@ -16,6 +16,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'validate.portfolio.subdomain' => ValidatePortfolioSubdomain::class,
             'track.portfolio.analytics' => TrackPortfolioAnalytics::class,
+            'capture.affiliate' => \App\Http\Middleware\CaptureAffiliate::class,
         ]);
         $middleware->validateCsrfTokens(except: [
             'webhook/*',

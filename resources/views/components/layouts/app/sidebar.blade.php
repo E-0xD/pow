@@ -47,7 +47,7 @@
                 <a @class(["flex items-center gap-3 px-3 py-2 rounded-lg",
                     'dark:bg-primary/20 text-primary dark:text-white bg-primary/10' => request()->routeIs('user.profile.*'),
                     'hover:bg-gray-100 dark:hover:bg-white/10 text-[#1F2937] dark:text-gray-300' => ! request()->routeIs('user.profile.*')
-                ]) href="{{ route('profile.edit') }}">
+                ]) href="{{ route('user.profile.edit') }}">
                     <span class="material-symbols-outlined text-2xl">settings</span>
                     <p class="text-sm font-medium leading-normal">Settings</p>
                 </a>

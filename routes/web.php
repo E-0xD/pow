@@ -9,14 +9,17 @@ require __DIR__ . '/portfolio.php';
 require __DIR__ . '/payment.php';
 require __DIR__ . '/api.php';
 
-Route::view('/', 'guest.welcome')->name('guest.welcome');
 
-Route::view('features', 'guest.features')->name('guest.features');
+Route::middleware(['capture.affiliate'])->group(function () {
+    Route::view('/', 'guest.welcome')->name('guest.welcome');
 
-Route::view('pricing', 'guest.pricing')->name('guest.pricing');
+    Route::view('features', 'guest.features')->name('guest.features');
 
-Route::view('about', 'guest.about')->name('guest.about');
+    Route::view('pricing', 'guest.pricing')->name('guest.pricing');
 
-Route::view('templates', 'guest.templates')->name('guest.templates');
+    Route::view('about', 'guest.about')->name('guest.about');
 
-Route::view('contact', 'guest.contact')->name('guest.contact');
+    Route::view('templates', 'guest.templates')->name('guest.templates');
+
+    Route::view('contact', 'guest.contact')->name('guest.contact');
+});

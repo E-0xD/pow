@@ -40,7 +40,7 @@
         <span class="text-xs font-medium">Affiliate</span>
     </a>
 
-    <a href="{{ route('profile.edit') }}"
+    <a href="{{ route('user.profile.edit') }}"
         @class(["flex flex-col items-center rounded-2xl px-3 py-1",
             'dark:bg-primary/20 text-primary dark:text-white bg-primary/10' => request()->routeIs('user.profile.*'),
             'hover:bg-gray-100 dark:hover:bg-white/10 text-[#1F2937] dark:text-gray-300' => ! request()->routeIs('user.profile.*')

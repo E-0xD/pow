@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\PortfolioSubscription;
 use App\Models\Plan;
 use App\Enums\PortfolioStatus;
+use App\Enums\PortfolioSubscriptionStatus;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Carbon\Carbon;
@@ -25,22 +26,22 @@ class PolarWebhookController extends Controller
             case 'subscription.created':
             case 'subscription.updated':
                
-                $subscriptionId = $data['data']['metadata']['uid'] ?? null;
+                $subscriptionId = $data['data']['metadata']['subscription_id'] ?? null;
                 if (!$subscriptionId) {
-                    Log::warning('No subscription UID found in webhook payload.');
+                    Log::warning('No subscription Id found in webhook payload.');
                     break;
                 }
 
                 $portfolioSubscription = PortfolioSubscription::find($subscriptionId);
                 if (!$portfolioSubscription) {
-                    Log::warning("PortfolioSubscription not found for UID {$subscriptionId}");
+                    Log::warning("PortfolioSubscription not found for Id {$subscriptionId}");
                     break;
                 }
 
                 $plan = Plan::find($portfolioSubscription->plan_id);
 
                 $portfolioSubscription->update([
-                    'status' => 'active',
+                    'status' => PortfolioSubscriptionStatus::ACTIVE,
                     'purchased_at' => now(),
                     'expires_at' => Carbon::now()->addDays((int) $plan->duration),
                 ]);

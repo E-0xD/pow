@@ -2,9 +2,13 @@
 
 namespace App\Models;
 
+use App\Enums\PortfolioSubscriptionStatus;
+use App\Observers\PortfolioSubscriptionObserver;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 
+#[ObservedBy([PortfolioSubscriptionObserver::class])]
 class PortfolioSubscription extends Model
 {
     use HasFactory;
@@ -21,7 +25,8 @@ class PortfolioSubscription extends Model
 
     protected $casts = [
         'purchased_at' => 'datetime',
-        'expires_at' => 'datetime'
+        'expires_at' => 'datetime',
+        'status' => PortfolioSubscriptionStatus::class,
     ];
 
     public function portfolio()

@@ -22,7 +22,7 @@ class PolarController extends Controller
             'success_url' => $confirmationUrl,
             'cancel_url' => $cancelUrl,
             'payment_processor' => 'stripe',
-            'metadata' => ['uid' => $subscription_id]
+            'metadata' => ['subscription_id' => $subscription_id]
         ]);
 
         $data = $response->json();

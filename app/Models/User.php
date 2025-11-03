@@ -9,7 +9,11 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use App\Models\Affiliate;
+use App\Observers\UserObserver;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 
+#[ObservedBy([UserObserver::class])]
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
@@ -66,6 +70,16 @@ class User extends Authenticatable
     public function portfolios()
     {
         return $this->hasMany(Portfolio::class);
+    }
+
+    public function affiliate()
+    {
+        return $this->hasOne(Affiliate::class, 'user_id');
+    }
+
+    public function referredBy()
+    {
+        return $this->belongsTo(self::class, 'referred_by');
     }
 
     public function transactions()
