@@ -1,4 +1,4 @@
-````markdown
+
 <p align="center">
   <a href="https://mypow.app" target="_blank">
     <img src="public/images/brand/Icon1.png" width="200" alt="POW Logo">
