@@ -1,9 +1,8 @@
 <section 
-    class="flex flex-col gap-4 rounded-xl border border-gray-200 dark:border-gray-800 
-           bg-white dark:bg-gray-900/50 p-6 shadow-sm w-full max-w-4xl mx-auto">
+    class="flex flex-col gap-4 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900/50 p-4 sm:p-6 shadow-sm">
 
     <!-- Header -->
-    <div class="gap-4">
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <h2 class="text-gray-900 dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em] text-center sm:text-left">
             Contact
         </h2>
