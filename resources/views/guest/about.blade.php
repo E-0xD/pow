@@ -1,15 +1,7 @@
  <x-layouts.guest>
 
     <div class="layout-content-container flex flex-col max-w-6xl flex-1 px-4 md:px-10">
-        <!-- HeroSection -->
-        <section class="text-center py-20 md:py-28">
-            <h1
-                class="text-primary dark:text-white text-4xl font-black leading-tight tracking-[-0.033em] sm:text-5xl lg:text-6xl">
-                Empowering creators to showcase their best work easily.</h1>
-            <p class="mt-4 text-lg font-normal leading-normal text-subtle-light dark:text-subtle-dark max-w-3xl mx-auto">
-                POW is a SaaS platform for creating, customizing, and sharing personal or business portfolios without
-                the hassle.</p>
-        </section>
+      
         <!-- FeatureSection (Problem & Solution) -->
         <section class="flex flex-col gap-16 py-10">
             <div class="flex flex-col gap-10 @container">
@@ -55,117 +47,80 @@
             </div>
         </section>
         <!-- Timeline Section -->
-        <section class="py-20 md:py-28">
-            <div class="max-w-3xl mx-auto">
-                <h2
-                    class="text-primary dark:text-white tracking-tight text-3xl font-bold leading-tight sm:text-4xl text-center">
-                    Our Story</h2>
-                <div class="mt-12 grid grid-cols-[auto_1fr] gap-x-4 md:gap-x-8">
-                    <div class="flex flex-col items-center gap-1.5 pt-3">
-                        <div
-                            class="flex items-center justify-center size-10 rounded-full bg-secondary/10 dark:bg-secondary/20 text-secondary">
-                            <span class="material-symbols-outlined">lightbulb</span>
-                        </div>
-                        <div class="w-px bg-gray-300 dark:bg-gray-700 h-2 grow"></div>
-                    </div>
-                    <div class="flex flex-1 flex-col pb-12 pt-3">
-                        <p class="text-subtle-light dark:text-subtle-dark text-sm font-normal leading-normal">January
-                            2021</p>
-                        <p class="text-text-light dark:text-text-dark text-lg font-medium leading-normal">The Idea was
-                            Born</p>
-                        <p class="text-subtle-light dark:text-subtle-dark text-base font-normal leading-normal mt-1">Our
-                            founders, tired of clunky portfolio builders, envisioned a simpler, more powerful tool for
-                            creators.</p>
-                    </div>
-                    <div class="flex flex-col items-center gap-1.5">
-                        <div class="w-px bg-gray-300 dark:bg-gray-700 h-2"></div>
-                        <div
-                            class="flex items-center justify-center size-10 rounded-full bg-secondary/10 dark:bg-secondary/20 text-secondary">
-                            <span class="material-symbols-outlined">group</span>
-                        </div>
-                        <div class="w-px bg-gray-300 dark:bg-gray-700 h-2 grow"></div>
-                    </div>
-                    <div class="flex flex-1 flex-col pb-12 pt-3">
-                        <p class="text-subtle-light dark:text-subtle-dark text-sm font-normal leading-normal">August
-                            2021</p>
-                        <p class="text-text-light dark:text-text-dark text-lg font-medium leading-normal">First 100
-                            Creators</p>
-                        <p class="text-subtle-light dark:text-subtle-dark text-base font-normal leading-normal mt-1">We
-                            launched our beta and welcomed our first 100 users, gathering invaluable feedback to refine
-                            the platform.</p>
-                    </div>
-                    <div class="flex flex-col items-center gap-1.5">
-                        <div class="w-px bg-gray-300 dark:bg-gray-700 h-2"></div>
-                        <div
-                            class="flex items-center justify-center size-10 rounded-full bg-secondary/10 dark:bg-secondary/20 text-secondary">
-                            <span class="material-symbols-outlined">rocket_launch</span>
-                        </div>
-                    </div>
-                    <div class="flex flex-1 flex-col pt-3">
-                        <p class="text-subtle-light dark:text-subtle-dark text-sm font-normal leading-normal">May 2022
-                        </p>
-                        <p class="text-text-light dark:text-text-dark text-lg font-medium leading-normal">Secured Seed
-                            Funding</p>
-                        <p class="text-subtle-light dark:text-subtle-dark text-base font-normal leading-normal mt-1">
-                            With a growing user base, we secured funding to expand our team and accelerate product
-                            development.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Team Section -->
-        <section class="py-10">
-            <div class="flex flex-col items-center gap-4 text-center">
-                <h2 class="text-primary dark:text-white tracking-tight text-3xl font-bold leading-tight sm:text-4xl">
-                    Meet Our Team</h2>
-                <p class="text-subtle-light dark:text-subtle-dark text-base font-normal leading-normal max-w-3xl">We're
-                    a passionate group of designers, developers, and strategists dedicated to helping you succeed.</p>
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
-                <div class="flex flex-col items-center text-center group">
-                    <img class="w-40 h-40 rounded-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
-                        data-alt="Headshot of Jane Doe"
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYFvVLf8yebgH-XcSfxUpa89K5T3eQ63rz5bUT0WmgAC1x2iLCa9WFcZiu4b0OSLeSTzOazsP-srDUiSrVjcTQEyUWG6W_rdkdpJAdQeDGYPAZU7r189IRglTZJvP-KdyPiIwtsD0QjbE1XZDceAjiDb6ehbpv8cm7M20qW4h99y4UNIZY3pyitxPxhogmpA1Goc3s8RQSm5x84Ffiam6Lc_9Es75Rf4vDSiDOk971jYesQcSKmiH-cMKPbMdxobzyX3Hb3-127x0" />
-                    <h3 class="mt-4 text-xl font-bold text-text-light dark:text-text-dark">Jane Doe</h3>
-                    <p class="text-secondary text-sm font-medium">Co-Founder &amp; CEO</p>
-                    <a class="mt-1 text-subtle-light dark:text-subtle-dark opacity-0 group-hover:opacity-100 transition-opacity"
-                        href="#">LinkedIn</a>
-                </div>
-                <div class="flex flex-col items-center text-center group">
-                    <img class="w-40 h-40 rounded-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
-                        data-alt="Headshot of John Smith"
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZoPkG55Um4e2PJ5h1dScPuFzpRtSt7YJG8w9Lw5yxbtlWxZVJ-Eb3JM-s1ZMqFS2UkrGleU_LKuzLxcaXFHAn1dm-KM9wYgElvwvhZkSZC84FttC-hWXNCCr4d-Xj7fisPnycJoOuOfaia6dM4NDW0UkkptohwQ0RcEdPInrNv1DFcffQNkionz7p8BClrL4tEUZtVCboYHhwjHjPpBMRgSj3QA9Eo0ALaqzySNJAdqsGigNDw96lZZbpBBqWfpWds0JH9oLS4So" />
-                    <h3 class="mt-4 text-xl font-bold text-text-light dark:text-text-dark">John Smith</h3>
-                    <p class="text-secondary text-sm font-medium">Co-Founder &amp; CTO</p>
-                    <a class="mt-1 text-subtle-light dark:text-subtle-dark opacity-0 group-hover:opacity-100 transition-opacity"
-                        href="#">LinkedIn</a>
-                </div>
-                <div class="flex flex-col items-center text-center group">
-                    <img class="w-40 h-40 rounded-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
-                        data-alt="Headshot of Emily White"
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3a8ojNRHY_T-7j7MoFwbz0Tqvfa1aPGTFTWfgB_IxwQlcp5wof1-EYT4ojs1qM6DGqjoKJZKfUfPfN8Bq7TBY3hjQTpHAxVYnjKE4nwWC8hYmZC8DfxzDjJp3UC77pFMlkYrJa2pnwEcMkk5FNQs3TKCF3hEArBDs-ix-DLg6fI-Vcq5MRFoQ6X52i-pNPMYbtrUQRed99S-RF06vuxQo7rqKCYjXWMkCpUY3CFGR65tQuQzRsxQOCK-bbwrHvPQn5D7IaMiYkvI" />
-                    <h3 class="mt-4 text-xl font-bold text-text-light dark:text-text-dark">Emily White</h3>
-                    <p class="text-secondary text-sm font-medium">Head of Design</p>
-                    <a class="mt-1 text-subtle-light dark:text-subtle-dark opacity-0 group-hover:opacity-100 transition-opacity"
-                        href="#">LinkedIn</a>
-                </div>
-            </div>
-        </section>
+      <section class="py-20 md:py-28">
+  <div class="max-w-3xl mx-auto">
+    <h2 class="text-primary dark:text-white tracking-tight text-3xl font-bold leading-tight sm:text-4xl text-center">
+      Our Story
+    </h2>
+
+    <div class="mt-12 grid grid-cols-[auto_1fr] gap-x-4 md:gap-x-8">
+
+      <!-- IDEA -->
+      <div class="flex flex-col items-center gap-1.5 pt-3">
+        <div class="flex items-center justify-center size-10 rounded-full bg-secondary/10 dark:bg-secondary/20 text-secondary">
+          <span class="material-symbols-outlined">lightbulb</span>
+        </div>
+        <div class="w-px bg-gray-300 dark:bg-gray-700 h-2 grow"></div>
+      </div>
+      <div class="flex flex-1 flex-col pb-12 pt-3">
+        <p class="text-subtle-light dark:text-subtle-dark text-sm font-normal leading-normal">October 2025</p>
+        <p class="text-text-light dark:text-text-dark text-lg font-medium leading-normal">The Journey Began</p>
+        <p class="text-subtle-light dark:text-subtle-dark text-base font-normal leading-normal mt-1">
+          What started as a simple idea, helping people prove their work and land more gigs — quickly became a mission to build the easiest way to create a professional portfolio.
+        </p>
+      </div>
+
+      <!-- BUILD PHASE -->
+      <div class="flex flex-col items-center gap-1.5">
+        <div class="w-px bg-gray-300 dark:bg-gray-700 h-2"></div>
+        <div class="flex items-center justify-center size-10 rounded-full bg-secondary/10 dark:bg-secondary/20 text-secondary">
+          <span class="material-symbols-outlined">construction</span>
+        </div>
+        <div class="w-px bg-gray-300 dark:bg-gray-700 h-2 grow"></div>
+      </div>
+      <div class="flex flex-1 flex-col pb-12 pt-3">
+        <p class="text-subtle-light dark:text-subtle-dark text-sm font-normal leading-normal">November 2025</p>
+        <p class="text-text-light dark:text-text-dark text-lg font-medium leading-normal">Building the Foundation</p>
+        <p class="text-subtle-light dark:text-subtle-dark text-base font-normal leading-normal mt-1">
+          We began designing the core features, customizable profiles, proof-of-work displays, and tools to help creators stand out in seconds.
+        </p>
+      </div>
+
+      <!-- FUTURE -->
+      <div class="flex flex-col items-center gap-1.5">
+        <div class="w-px bg-gray-300 dark:bg-gray-700 h-2"></div>
+        <div class="flex items-center justify-center size-10 rounded-full bg-secondary/10 dark:bg-secondary/20 text-secondary">
+          <span class="material-symbols-outlined">rocket_launch</span>
+        </div>
+      </div>
+      <div class="flex flex-1 flex-col pt-3">
+        <p class="text-subtle-light dark:text-subtle-dark text-sm font-normal leading-normal">Coming 2026</p>
+        <p class="text-text-light dark:text-text-dark text-lg font-medium leading-normal">Launch & Growth</p>
+        <p class="text-subtle-light dark:text-subtle-dark text-base font-normal leading-normal mt-1">
+          We're gearing up for our first public launch — empowering professionals to seal their next gig with a portfolio that proves their worth.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+     
         <!-- Final CTA Section -->
-        <section class="py-20 md:py-28">
-            <div
-                class="bg-primary dark:bg-opacity-20 text-white dark:text-text-dark p-10 md:p-16 rounded-xl text-center">
-                <h2 class="text-3xl font-bold tracking-tight text-white dark:text-white sm:text-4xl">Join thousands of
-                    creators using POW</h2>
-                <p class="mt-4 text-lg leading-8 text-gray-200 dark:text-gray-300 max-w-2xl mx-auto">Start building your
-                    stunning portfolio today. No credit card required.</p>
-                <div class="mt-8 flex items-center justify-center">
-                    <button
-                        class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-secondary text-primary text-base font-bold leading-normal tracking-wide hover:bg-opacity-90 transition-colors">
-                        <span class="truncate">Start Your Free Portfolio</span>
-                    </button>
-                </div>
-            </div>
-        </section>
+    <section
+        class="p-8 md:p-12 rounded-xl bg-primary/10 dark:bg-primary/20 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+        <div class="flex flex-col gap-2">
+            <h3 class="text-2xl font-bold text-text-light dark:text-text-dark">
+                70% of professionals lose gigs without a portfolio.
+            </h3>
+            <p class="text-subtle-light dark:text-subtle-dark">
+                We built this to change that — create your Proof of Work in minutes and start
+                landing opportunities with a portfolio that speaks for you.
+            </p>
+        </div>
+        <a class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] hover:opacity-90"
+            href="route('register')">
+            <span class="truncate">Register</span>
+        </a>
+    </section>
     </div>
  </x-layouts.guest>

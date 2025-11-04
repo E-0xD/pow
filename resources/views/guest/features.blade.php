@@ -7,20 +7,20 @@
                 All the tools you need to build a stunning portfolio
             </h1>
             <p class="mt-4 max-w-2xl mx-auto text-lg text-text-muted-light dark:text-text-muted-dark">
-                POW is a SaaS platform for creating, customizing, and sharing personal or business portfolios with ease.
+                {{config('app.name')}} is a SaaS platform for creating, customizing, and sharing personal or business portfolios with ease.
             </p>
             <div class="mt-8 flex justify-center">
-                <button
+                <a href="{{route('register')}}"
                     class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors">
-                    <span class="truncate">Get Started for Free</span>
-                </button>
+                    <span class="truncate">Get Started</span>
+                </a>
             </div>
         </div>
     </section>
     <!-- Feature Sections -->
     <div class="space-y-24 md:space-y-32 py-16">
         <!-- Smart Portfolio Builder -->
-        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {{-- <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div class="flex flex-col gap-4">
                     <span
@@ -40,12 +40,13 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> --}}
         <!-- Portfolio Customization -->
         <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div
                     class="bg-white dark:bg-gray-800/50 p-6 rounded-xl shadow-lg ring-1 ring-gray-200 dark:ring-gray-800 md:order-last">
+                    
                     <div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg"
                         data-alt="A split screen showing a portfolio before and after customization, with different colors, fonts, and layouts."
                         style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB0SMrIoMd_y0ZG8lu6Fphs6MUnPP5i6Cxk_KjIWutgnBjq-9zuPRnBuZuSnMXoTnnb7CPw3KKFs2JxpUe6BsTNQrD75-YwqB5t0nueMBc9Li0AuJJH1JFrSlC5SceON9Dn3xvXn6NrlSSIBV5qI0hvmglFuPg39fSfbCoGWCzN3y3N1QEDHHp3RQZwisuU0fXY_pQOTCXK2ixqq4Hr_vYrMKhOmEA0NJPc7mfnfHFJBdjs--_lTXbnBEoDT0wGEhwTXLFUXWBuvA8");'>
@@ -58,7 +59,7 @@
                     <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-gray-900 dark:text-white">Total
                         Customization</h2>
                     <p class="text-lg text-text-muted-light dark:text-text-muted-dark">
-                        Take full control of your brand with custom colors, fonts, and layouts. Our flexible editor lets
+                        Take full control of your brand. Our flexible editor lets
                         you fine-tune every detail to perfectly match your unique style and professional identity.
                     </p>
                 </div>

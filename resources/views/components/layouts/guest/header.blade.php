@@ -20,10 +20,6 @@
             <a class="text-text-light dark:text-text-dark text-sm font-medium hover:text-primary dark:hover:text-primary bg-background-light dark:bg-background-dark px-3 py-1 rounded"
                 href="{{ route('guest.features') }}">Features</a>
             <a class="text-text-light dark:text-text-dark text-sm font-medium hover:text-primary dark:hover:text-primary bg-background-light dark:bg-background-dark px-3 py-1 rounded"
-                href="{{ route('guest.templates') }}">Templates</a>
-            <a class="text-text-light dark:text-text-dark text-sm font-medium hover:text-primary dark:hover:text-primary bg-background-light dark:bg-background-dark px-3 py-1 rounded"
-                href="{{ route('guest.pricing') }}">Pricing</a>
-            <a class="text-text-light dark:text-text-dark text-sm font-medium hover:text-primary dark:hover:text-primary bg-background-light dark:bg-background-dark px-3 py-1 rounded"
                 href="{{ route('guest.about') }}">About</a>
             <a class="text-text-light dark:text-text-dark text-sm font-medium hover:text-primary dark:hover:text-primary bg-background-light dark:bg-background-dark px-3 py-1 rounded"
                 href="{{ route('guest.contact') }}">Contact Us</a>
