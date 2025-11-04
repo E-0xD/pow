@@ -2,7 +2,7 @@
     class="flex flex-col gap-4 rounded-xl border border-gray-200 dark:border-gray-800 
            bg-white dark:bg-gray-900/50 p-6 shadow-sm">
 
-    <div class="flex items-center justify-between">
+    <div class="flex flex-col items-center justify-between">
         <h2 class="text-gray-900 dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em]">
             Contact
         </h2>
