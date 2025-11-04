@@ -4,26 +4,23 @@
 
     <!-- Header -->
 
-        <h2
-            class="text-gray-900 dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em]">
-            Contact
-        </h2>
-
- 
+    <h2 class="text-gray-900 dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em]">
+        Contact
+    </h2>
 
     <!-- Search / Add -->
     <div class="relative">
         <input wire:model.live.debounce.300ms="contactSearch"
-            class="form-input flex w-full rounded-lg border border-gray-300 dark:border-gray-700
-                       bg-background-light dark:bg-background-dark text-gray-900 dark:text-gray-100
-                       focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary h-10 px-4
-                       placeholder:text-gray-400"
+            class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg 
+                   text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-primary/50 
+                   border border-gray-300 dark:border-gray-700 bg-background-light dark:bg-background-dark 
+                   focus:border-primary h-12 placeholder:text-gray-400 pl-10 pr-4 py-2 text-base"
             placeholder="Search contact method..." />
 
         @if (!empty($searchResults))
             <ul
-                class="absolute z-10 mt-1 w-full bg-white dark:bg-gray-800 border border-gray-200 
-                           dark:border-gray-700 rounded-lg shadow-md max-h-60 overflow-y-auto">
+                class="absolute z-10 mt-2 w-full bg-white dark:bg-gray-800 border border-gray-200 
+                       dark:border-gray-700 rounded-lg shadow-md max-h-60 overflow-y-auto">
                 @foreach ($searchResults as $method)
                     <li wire:click="selectMethod({{ $method['id'] }})"
                         class="flex items-center gap-2 px-4 py-2 cursor-pointer hover:bg-gray-100 
