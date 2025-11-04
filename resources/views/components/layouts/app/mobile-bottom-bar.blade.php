@@ -58,10 +58,4 @@
         <span class="material-symbols-outlined text-2xl">settings</span>
         <span class="text-xs font-medium">Settings</span>
     </a>
-
-    <a href="{{ route('logout') }}"
-        class="flex flex-col items-center rounded-2xl px-3 py-1 hover:bg-gray-100 dark:hover:bg-white/10 text-[#1F2937] dark:text-gray-300">
-        <span class="material-symbols-outlined text-2xl">logout</span>
-        <span class="text-xs font-medium">Logout</span>
-    </a>
 </nav>
