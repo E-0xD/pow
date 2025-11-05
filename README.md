@@ -231,12 +231,12 @@ Follow the steps below to configure Google OAuth in your Laravel application.
 4. Under **Authorized JavaScript origins**, add your local domain:
 ```
 
-[http://127.0.0.1:8000](http://127.0.0.1:8000)
-[http://pow.test](http://pow.test)
+http://127.0.0.1:8000
+http://pow.test
 
 ```
 5. Under **Authorized redirect URIs**, add your Laravel callback route.  
-It must match exactly the callback route defined in your Laravel API routes file(the route name is 'auth.google.redirect'):
+It must match exactly the callback route defined in your Laravel API routes file(the route name is 'auth.google.callback'):
 ```
 
 [http://127.0.0.1:8000/api/google/callback](http://127.0.0.1:8000/api/google/callback)
