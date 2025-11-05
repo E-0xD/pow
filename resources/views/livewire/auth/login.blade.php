@@ -12,7 +12,7 @@
 
                 {{-- Google Login Button (Optional Integration Later) --}}
                 <div class="w-full">
-                    <button type="button"
+                    <a href="{{route('auth.google.initialize')}}"
                         class="flex w-full items-center justify-center rounded-lg h-12 px-5 bg-white dark:bg-zinc-800 text-[#111827] dark:text-white gap-3 text-base font-bold border border-gray-300 dark:border-zinc-700 hover:bg-gray-50 dark:hover:bg-zinc-700 transition-colors">
                         <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none">
                             <g clip-path="url(#clip0_3033_558)">
@@ -36,7 +36,7 @@
                             </defs>
                         </svg>
                         <span>Continue with Google</span>
-                    </button>
+                    </a>
                 </div>
 
                 {{-- Divider --}}

@@ -201,6 +201,93 @@ POW integrates with **Polar** for subscription billing and **NowPayments** for c
 
 ---
 
+Here’s a polished **README section** you can copy and paste directly beneath your payment setup section.
+It explains how to obtain Google OAuth credentials, configure your `.env`, and set the proper redirect URL in line with your Laravel routes.
+
+---
+
+## Authentication Configuration
+
+
+### 1. Google OAuth Setup
+
+POW supports Google Sign-In for user authentication.  
+Follow the steps below to configure Google OAuth in your Laravel application.
+
+#### Step 1. Create a Google Cloud Project
+
+1. Go to the [Google Cloud Console](https://console.cloud.google.com/).  
+2. Sign in with your Google account.  
+3. Click **Select a Project → New Project** and give it a name (for example, `POW Authentication`).  
+4. Click **Create**.
+
+#### Step 2. Configure the OAuth Consent Screen
+
+1. In the left sidebar, navigate to **APIs & Services → OAuth consent screen**.  
+2. Select **External** and click **Create**.  
+3. Enter your app name, user support email, and developer contact information.  
+4. Save and continue through the steps until the app is published.
+
+#### Step 3. Create OAuth 2.0 Credentials
+
+1. Go to **APIs & Services → Credentials**.  
+2. Click **+ Create Credentials → OAuth client ID**.  
+3. Choose **Web application** as the application type.  
+4. Under **Authorized JavaScript origins**, add your local domain:
+```
+
+[http://127.0.0.1:8000](http://127.0.0.1:8000)
+[http://pow.test](http://pow.test)
+
+```
+5. Under **Authorized redirect URIs**, add your Laravel callback route.  
+It must match exactly the callback route defined in your Laravel API routes file(the route name is 'auth.google.redirect'):
+```
+
+[http://127.0.0.1:8000/api/google/callback](http://127.0.0.1:8000/api/google/callback)
+
+```
+or, if using a custom local domain:
+```
+
+[http://pow.test/api/google/callback](http://pow.test/api/google/callback)
+
+````
+6. Click **Create**, then copy your **Client ID** and **Client Secret**.
+
+#### Step 4. Add the Credentials to `.env`
+
+Add the following environment variables to your `.env` file:
+
+```env
+GOOGLE_CLIENT_ID=your_client_id_here
+GOOGLE_CLIENT_SECRET=your_client_secret_here
+GOOGLE_CLIENT_REDIRECT=http://pow.test/api/google/callback
+````
+
+> If you use a different local domain or port, update `GOOGLE_CLIENT_REDIRECT` to match your actual callback route.
+
+#### Step 5. Verify `config/services.php`
+
+Ensure your `config/services.php` file includes the Google configuration:
+
+```php
+'google' => [
+    'client_id' => env('GOOGLE_CLIENT_ID'),
+    'client_secret' => env('GOOGLE_CLIENT_SECRET'),
+    'redirect' => env('GOOGLE_CLIENT_REDIRECT'),
+],
+```
+
+The `redirect` URL must match exactly with the one registered in your Google Cloud Console.
+
+---
+
+After saving your configuration, you can authenticate users via Google OAuth by visiting the corresponding login route defined in your Laravel application.
+
+```
+
+
 ## Development Notes
 
 * The `composer dev` script automatically rebuilds assets while watching for file changes.

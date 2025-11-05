@@ -33,7 +33,10 @@ class User extends Authenticatable
         'password',
         'role',
         'status',
-        'referred_by'
+        'referred_by',
+        'google_id',
+        'google_token',
+        'google_refresh_token'
     ];
 
     /**

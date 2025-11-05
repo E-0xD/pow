@@ -70,7 +70,7 @@
                     <hr class="w-full border-t border-[#e0dbe6] dark:border-gray-700" />
                 </div>
 
-                <button
+                <a href="{{route('auth.google.initialize')}}"
                     class="flex h-14 w-full items-center justify-center gap-3 rounded-lg border border-[#e0dbe6] bg-white px-4 py-3 text-base font-semibold text-[#141118] transition-colors hover:bg-gray-50 dark:bg-background-dark dark:text-white dark:border-gray-700 dark:hover:bg-background-dark/80"
                     type="button">
                     <svg class="h-6 w-6" viewBox="0 0 48 48">
@@ -100,7 +100,7 @@
                             fill="#1976D2"></path>
                     </svg>
                     Sign up with Google
-                </button>
+                </a>
             </form>
 
             <div class="mt-8 text-center">
