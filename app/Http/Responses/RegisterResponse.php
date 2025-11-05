@@ -6,9 +6,9 @@ use App\Enums\NotificationType;
 use App\Services\NotificationService;
 use Illuminate\Support\Facades\Auth;
 use Jenssegers\Agent\Agent;
-use Laravel\Fortify\Contracts\LoginResponse as LoginResponseContract;
+use Laravel\Fortify\Contracts\RegisterResponse as ContractsRegisterResponse;
 
-class LoginResponse implements LoginResponseContract
+class RegisterResponse implements ContractsRegisterResponse
 {
 
     public $notificationService;
@@ -21,16 +21,15 @@ class LoginResponse implements LoginResponseContract
     }
 
     /**
-     * Handle response after successful login.
+     * Handle response after successful registration.
      */
     public function toResponse($request)
     {
         $this->notificationService->sendToUser(
-            NotificationType::LOGIN,
+            NotificationType::SIGNUP,
             Auth::user(),
-            'Login Attempt',
-            'A login was detected on ' . now()->format('Y-m-d H:i:s') .
-                'UTC 0 using ' . $this->agent->browser() . ' on ' . $this->agent->platform()
+            'Welcome' ,
+            'Your Work, Your Badge. let’s make it count.'
         );
 
         return redirect()->intended(route('user.dashboard'));

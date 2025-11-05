@@ -5,13 +5,7 @@
             <div
                 class="flex flex-col items-center rounded-xl bg-white dark:bg-zinc-900 shadow-md border border-gray-200 dark:border-zinc-800 p-8 sm:p-10">
 
-                {{-- App Logo / Title --}}
-                <div class="mb-4 flex items-center gap-2">
-                    <div class="rounded-lg p-2 text-white size-20">
-                        <img src="{{asset(config('app.logo'))}}" alt="" srcset="">
-                    </div>
-                    
-                </div>
+             
                 <h3 class="text-[#111827] dark:text-white text-2xl font-bold text-center pb-8 pt-2">
                     Sign in to your account
                 </h3>
@@ -65,7 +59,10 @@
                         <input id="email" type="email" name="email" value="{{ old('email') }}" required
                             autofocus autocomplete="username" placeholder="you@example.com"
                             class="form-input w-full rounded-lg border border-gray-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 h-14 px-[15px] text-base text-text-light dark:text-text-dark placeholder:text-subtext-light dark:placeholder:text-subtext-dark focus:outline-none focus:ring-2 focus:ring-primary transition-shadow" />
-                    </label>
+                        @error('email')
+                        <span class="text-sm text-red-500 mt-1">{{ $message }}</span>
+                    @enderror
+                        </label>
 
                     {{-- Password --}}
                     <label class="flex flex-col flex-1">
@@ -81,7 +78,11 @@
                         <input id="password" type="password" name="password" required autocomplete="current-password"
                             placeholder="Enter your password"
                             class="form-input w-full rounded-lg border border-gray-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 h-14 px-[15px] text-base text-text-light dark:text-text-dark placeholder:text-subtext-light dark:placeholder:text-subtext-dark focus:outline-none focus:ring-2 focus:ring-primary transition-shadow" />
-                    </label>
+                   
+                       @error('password')
+                        <span class="text-sm text-red-500 mt-1">{{ $message }}</span>
+                    @enderror
+                        </label>
 
                     {{-- Remember Me --}}
                     <label class="flex items-center gap-2 mt-2">

@@ -4,12 +4,7 @@
 
         <div class="w-full max-w-md rounded-xl p-8 shadow-sm bg-white dark:bg-zinc-900  sm:p-10">
             <div class="flex flex-col items-center">
-                <div class="mb-4 flex items-center gap-2">
-                    <div class="rounded-lg p-2 text-white size-20">
-                        <img src="{{asset(config('app.logo'))}}" alt="" srcset="">
-                    </div>
-                    
-                </div>
+              
                 <h1
                     class="text-[#141118] tracking-light text-[32px] font-bold leading-tight text-center pb-3 pt-4 dark:text-white">
                     Create Your Account
@@ -26,6 +21,8 @@
                         <input id="name" name="name" type="text" required autofocus autocomplete="name"
                             class="form-input w-full rounded-lg border border-[#e0dbe6] bg-white dark:bg-background-dark dark:border-gray-700 dark:text-white focus:ring-2 focus:ring-primary/50 h-14 p-[15px] text-base"
                             placeholder="Enter your full name" value="{{ old('name') }}" />
+                              @error('name')
+                        <span class="text-sm text-red-500 mt-1">{{ $message }}</span>
                     </label>
                 </div>
 
@@ -35,6 +32,8 @@
                         <input id="email" name="email" type="email" required autocomplete="username"
                             class="form-input w-full rounded-lg border border-[#e0dbe6] bg-white dark:bg-background-dark dark:border-gray-700 dark:text-white focus:ring-2 focus:ring-primary/50 h-14 p-[15px] text-base"
                             placeholder="Enter your email" value="{{ old('email') }}" />
+                              @error('email')
+                        <span class="text-sm text-red-500 mt-1">{{ $message }}</span>
                     </label>
                 </div>
 
@@ -44,6 +43,8 @@
                         <input id="password" name="password" type="password" required autocomplete="new-password"
                             class="form-input w-full rounded-lg border border-[#e0dbe6] bg-white dark:bg-background-dark dark:border-gray-700 dark:text-white focus:ring-2 focus:ring-primary/50 h-14 p-[15px] text-base"
                             placeholder="Enter your password" />
+                              @error('password')
+                        <span class="text-sm text-red-500 mt-1">{{ $message }}</span>
                     </label>
                 </div>
 
