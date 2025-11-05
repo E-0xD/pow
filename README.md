@@ -201,11 +201,6 @@ POW integrates with **Polar** for subscription billing and **NowPayments** for c
 
 ---
 
-Here’s a polished **README section** you can copy and paste directly beneath your payment setup section.
-It explains how to obtain Google OAuth credentials, configure your `.env`, and set the proper redirect URL in line with your Laravel routes.
-
----
-
 ## Authentication Configuration
 
 
