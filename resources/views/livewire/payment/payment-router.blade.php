@@ -69,15 +69,7 @@
                                 class="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-primary/10 text-primary dark:bg-primary/20 dark:text-white">
                                 <span class="material-symbols-outlined">arrow_back</span>
                             </button>
-                            <div class="flex items-center gap-2 text-[#140d1b] dark:text-white">
-                                <div class="h-6 w-6 text-primary">
-                                    <img src="{{ asset(config('app.logo')) }}" alt="" srcset="">
-                                </div>
-                                <h2 class="text-2xl font-bold leading-tight tracking-[-0.015em]">
-                                    {{ config('app.name') }}
-                                </h2>
-                            </div>
-                            <div class="w-10"></div>
+                        
                         </header>
 
                         <div class="flex flex-wrap justify-between gap-3 p-4">
