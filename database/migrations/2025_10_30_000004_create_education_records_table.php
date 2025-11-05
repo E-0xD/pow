@@ -11,8 +11,8 @@ return new class extends Migration
         Schema::create('education_records', function (Blueprint $table) {
             $table->id();
             $table->foreignId('portfolio_id')->constrained()->cascadeOnDelete();
-            $table->year('year_of_admission');
-            $table->year('year_of_graduation');
+            $table->string('year_of_admission');
+            $table->string('year_of_graduation');
             $table->string('school');
             $table->string('degree');
             $table->timestamps();

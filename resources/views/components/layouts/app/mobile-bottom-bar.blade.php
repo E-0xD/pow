@@ -29,24 +29,26 @@
         'hover:bg-gray-100 dark:hover:bg-white/10 text-[#1F2937] dark:text-gray-300' => !request()->routeIs(
             'user.messages.*'),
     ])>
-        <span class="material-symbols-outlined">
+        <span class="material-symbols-outlined text-2xl">
             mail
         </span>
         <span class="text-xs font-medium">Inbox</span>
     </a>
 
-    <a href="{{ route('user.messages.index') }}" @class([
-        'flex flex-col items-center rounded-2xl px-3 py-1',
-        'dark:bg-primary/20 text-primary dark:text-white bg-primary/10' => request()->routeIs(
-            'user.affiliate.*'),
-        'hover:bg-gray-100 dark:hover:bg-white/10 text-[#1F2937] dark:text-gray-300' => !request()->routeIs(
-            'user.affiliate.*'),
-    ])>
-        <span class="material-symbols-outlined">
-            network_node
-        </span>
-        <span class="text-xs font-medium">Affiliate</span>
-    </a>
+    @if (Auth::user()->affiliate)
+        <a href="{{ route('user.affiliate.index') }}" @class([
+            'flex flex-col items-center rounded-2xl px-3 py-1',
+            'dark:bg-primary/20 text-primary dark:text-white bg-primary/10' => request()->routeIs(
+                'user.affiliate.*'),
+            'hover:bg-gray-100 dark:hover:bg-white/10 text-[#1F2937] dark:text-gray-300' => !request()->routeIs(
+                'user.affiliate.*'),
+        ])>
+            <span class="material-symbols-outlined text-2xl">
+                network_node
+            </span>
+            <span class="text-xs font-medium">Affiliate</span>
+        </a>
+    @endif
 
     <a href="{{ route('user.profile.edit') }}" @class([
         'flex flex-col items-center rounded-2xl px-3 py-1',

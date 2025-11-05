@@ -1,6 +1,5 @@
 <section
-    class="flex flex-col gap-4 rounded-xl border border-gray-200 dark:border-gray-800 
-           bg-white dark:bg-gray-900/50 p-6 shadow-sm w-full max-w-4xl mx-auto">
+    class="flex flex-col gap-4 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900/50 p-6 shadow-sm">
 
     <!-- Header -->
 
@@ -35,13 +34,13 @@
         @endif
     </div>
     <!-- Contact List -->
-    <div class="flex flex-wrap gap-2 pt-2">
+    <div class="flex flex-col gap-2 pt-2">
         @foreach ($contacts as $index => $contact)
             <div class="flex flex-col gap-2 border rounded-xl border-gray-200 dark:border-gray-700 p-4">
 
                 @if ($contact['collapsed'])
                     <!-- Collapsed View -->
-                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                    <div class="flex justify-between items-center">
                         <div class="flex items-start sm:items-center gap-3">
                             <span class="material-symbols-outlined text-primary text-xl shrink-0">
                                 {!! $contact['logo'] !!}
@@ -58,12 +57,12 @@
                             <button type="button" wire:click="toggleCollapse({{ $index }})"
                                 class="flex items-center gap-1 text-primary hover:text-primary/80 text-sm font-medium">
                                 <span class="material-symbols-outlined text-base">edit</span>
-                                Edit
+                               <span class="hidden lg:inline">Edit</span>
                             </button>
                             <button type="button" wire:click="removeContact({{ $index }})"
                                 class="flex items-center gap-1 text-red-500 hover:text-red-400 text-sm font-medium">
                                 <span class="material-symbols-outlined text-base">delete</span>
-                                Delete
+                                <span class="hidden lg:inline">Delete</span>
                             </button>
                         </div>
                     </div>

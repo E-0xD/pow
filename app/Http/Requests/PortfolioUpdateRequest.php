@@ -7,6 +7,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rules\Enum;
+use Illuminate\Validation\Rules\NotIn;
 
 class PortfolioUpdateRequest extends FormRequest
 {
@@ -32,6 +33,7 @@ class PortfolioUpdateRequest extends FormRequest
                 'max:255',
                 'regex:/^[a-z0-9-]+$/',
                 Rule::unique('portfolios')->ignore($this->portfolio),
+                Rule::notIn(Config('subdomains.restricted'))
             ],
 
             'visibility' => ['required', new Enum(PortfolioVisibility::class) ],

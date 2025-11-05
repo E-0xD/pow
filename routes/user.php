@@ -18,7 +18,7 @@ Route::prefix('user')->name('user.')->middleware(['auth', 'ensure.active', 'mess
     Route::get('portfolio/{portfolio}/analytics', [PortfolioController::class, 'analytics'])->name('portfolio.analytics');
     Route::get('messages', Messages::class)->name('messages.index');
     Route::get('messages/{message}', View::class)->name('messages.show');
-    Route::resource('affiliate', AffiliateController::class)->middleware(['ensure.affiliate']);
+    Route::resource('affiliate', AffiliateController::class)->middleware('ensure.affiliate');
 
     Route::redirect('settings', 'settings/profile');
 

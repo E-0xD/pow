@@ -35,7 +35,7 @@
                                 class="form-input w-full rounded-lg text-text-primary dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/50 border border-gray-300 dark:border-gray-700 bg-background-light dark:bg-gray-800 h-12 px-4 text-base font-normal @error('title') border-danger @enderror"
                                 placeholder="My Awesome Portfolio" value="{{ old('title', $portfolio->title) }}" />
                             @error('title')
-                                <p class="mt-1 text-danger text-sm">{{ $message }}</p>
+                                <p class="mt-1 text-red-500 text-sm">{{ $message }}</p>
                             @enderror
                         </label>
                         <label class="flex flex-col w-full">
@@ -47,10 +47,10 @@
                                     class="form-input flex-1 w-full min-w-0 rounded-none rounded-l-lg text-text-primary dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/50 border border-gray-300 dark:border-gray-700 bg-background-light dark:bg-gray-800 h-12 px-4 text-base font-normal @error('slug') border-danger @enderror"
                                     placeholder="your-unique-slug" value="{{ old('slug', $portfolio->slug) }}" />
                                 <span
-                                    class="inline-flex items-center h-12 px-3 rounded-r-lg border border-r-0 border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-text-secondary dark:text-gray-400 text-sm">{{parse_url(config('app.url'), PHP_URL_HOST)}}</span>
+                                    class="inline-flex items-center h-12 px-3 rounded-r-lg border border-r-0 border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-text-secondary dark:text-gray-400 text-sm">{{ parse_url(config('app.url'), PHP_URL_HOST) }}</span>
                             </div>
                             @error('slug')
-                                <p class="mt-1 text-danger text-sm">{{ $message }}</p>
+                                <p class="mt-1 text-red-500 text-sm">{{ $message }}</p>
                             @enderror
                         </label>
                         <div>
@@ -85,7 +85,7 @@
 
                             </div>
                             @error('visibility')
-                                <p class="mt-1 text-danger text-sm">{{ $message }}</p>
+                                <p class="mt-1 text-red-500 text-sm">{{ $message }}</p>
                             @enderror
                         </div>
                     </div>
@@ -109,7 +109,7 @@
                                     class="text-text-primary dark:text-white font-mono text-sm">{{ old('theme', $portfolio->theme) }}</span>
                             </div>
                             @error('theme')
-                                <p class="mt-1 text-danger text-sm">{{ $message }}</p>
+                                <p class="mt-1 text-red-500 text-sm">{{ $message }}</p>
                             @enderror
                         </div>
                         <div class="flex flex-col w-full">
@@ -130,7 +130,7 @@
                                     Classic Serif</option>
                             </select>
                             @error('typography')
-                                <p class="mt-1 text-danger text-sm">{{ $message }}</p>
+                                <p class="mt-1 text-red-500 text-sm">{{ $message }}</p>
                             @enderror
                         </div>
 
@@ -152,7 +152,7 @@
                                 placeholder="Title for search engines"
                                 value="{{ old('meta_title', $portfolio->meta_title) }}" />
                             @error('meta_title')
-                                <p class="mt-1 text-danger text-sm">{{ $message }}</p>
+                                <p class="mt-1 text-red-500 text-sm">{{ $message }}</p>
                             @enderror
                         </label>
                         <label class="flex flex-col w-full">
@@ -163,7 +163,7 @@
                                 class="form-textarea w-full rounded-lg text-text-primary dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/50 border border-gray-300 dark:border-gray-700 bg-background-light dark:bg-gray-800 p-4 text-base font-normal @error('meta_description') border-danger @enderror"
                                 placeholder="A short description for search engines." rows="3">{{ old('meta_description', $portfolio->meta_description) }}</textarea>
                             @error('meta_description')
-                                <p class="mt-1 text-danger text-sm">{{ $message }}</p>
+                                <p class="mt-1 text-red-500 text-sm">{{ $message }}</p>
                             @enderror
                         </label>
                         <div>
@@ -193,7 +193,7 @@
                                         </div>
                                         <input name="favicon" class="hidden" type="file" accept=".png,.jpg,.ico" />
                                         @error('favicon')
-                                            <p class="mt-1 text-danger text-sm">{{ $message }}</p>
+                                            <p class="mt-1 text-red-500 text-sm">{{ $message }}</p>
                                         @enderror
                                     </label>
                                 </div>
@@ -232,7 +232,7 @@
                     </div>
                 </div>
                 <div class="mt-6 border-2 border-danger/40 rounded-xl p-6">
-                    <h3 class="text-danger font-bold text-lg">
+                    <h3 class="text-red-500 font-bold text-lg">
                         Danger Zone
                     </h3>
                     <p class="text-text-secondary dark:text-gray-400 mt-2">

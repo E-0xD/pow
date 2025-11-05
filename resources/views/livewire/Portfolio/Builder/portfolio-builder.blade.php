@@ -1,5 +1,9 @@
 <div>
     @if ($currentStep === 1)
+
+        <x-layouts.app.page-heading title="Edit Your POW"
+            subtitle="Make changes to your portfolio sections. Add, update, or remove content to keep it fresh." />
+
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 flex-1">
             <!-- Available Sections -->
             <div class="flex flex-col gap-4">
@@ -67,7 +71,7 @@
                             <span
                                 class="material-symbols-outlined text-4xl text-slate-400 dark:text-slate-600 mb-2">add_to_photos</span>
                             <p class="font-bold text-slate-600 dark:text-slate-400">Your portfolio is empty</p>
-                            <p class="text-sm text-slate-500 dark:text-slate-500">Drag sections here to start building.
+                            <p class="text-sm text-slate-500 dark:text-slate-500">Click on (+) add sections here to start building.
                             </p>
                         </div>
                     @endif
@@ -115,41 +119,46 @@
         </div>
     @else
         <!-- Step 2: Content Editor -->
-        <div
-            class="lg:col-span- xl:col-span-2 flex h-[calc(100vh-4rem)] flex-col overflow-y-auto border-r border-neutral-light-gray dark:border-neutral-dark-gray/20">
-            <div class="p-8">
-                <div class="flex flex-col gap-2">
-                    <h1 class="text-2xl font-bold text-neutral-dark-gray dark:text-neutral-white">Portfolio Content</h1>
-                    <p class="text-neutral-medium-gray text-base font-normal">Fill in the details for your portfolio.
-                        Your changes will be saved automatically.</p>
-                </div>
-            </div>
-       
-                @foreach ($selectedSections as $section)
-                    <div wire:key="section-{{ $section['id'] }}" class="mb-8">
-                        @switch($section['id'])
-                            @case('about')
-                                <livewire:portfolio.sections.about-section :portfolio="$portfolio" :wire:key="'about-'.$portfolio->id" />
-                                @break
-                            @case('experience')
-                                <livewire:portfolio.sections.experience-section :portfolio="$portfolio" :wire:key="'experience-'.$portfolio->id" />
-                                @break
-                           @case('education')
-                                <livewire:portfolio.sections.education-section :portfolio="$portfolio" :wire:key="'education-'.$portfolio->id" />
-                                @break 
-                             @case('skills')
-                                <livewire:portfolio.sections.skills-section :portfolio="$portfolio" :wire:key="'skills-'.$portfolio->id" />
-                                @break
-                            @case('projects')
-                                <livewire:portfolio.sections.projects-section :portfolio="$portfolio" :wire:key="'projects-'.$portfolio->id" />
-                                @break
-                            @case('contact')
-                                <livewire:portfolio.sections.contact-section :portfolio="$portfolio" :wire:key="'contact-'.$portfolio->id" />
-                                @break
-                        @endswitch
-                    </div>
-                @endforeach
+        <div>
           
+             <x-layouts.app.page-heading title="Portfolio Content"
+            subtitle="Make changes to your portfolio sections. Add, update, or remove content to keep it fresh." />
+
+            @foreach ($selectedSections as $section)
+                <div wire:key="section-{{ $section['id'] }}" class="mb-8">
+                    @switch($section['id'])
+                        @case('about')
+                            <livewire:portfolio.sections.about-section :portfolio="$portfolio" :wire:key="'about-'.$portfolio->id" />
+                        @break
+
+                        @case('experience')
+                            <livewire:portfolio.sections.experience-section :portfolio="$portfolio"
+                                :wire:key="'experience-'.$portfolio->id" />
+                        @break
+
+                        @case('education')
+                            <livewire:portfolio.sections.education-section :portfolio="$portfolio"
+                                :wire:key="'education-'.$portfolio->id" />
+                        @break
+
+                        @case('skills')
+                            <livewire:portfolio.sections.skills-section :portfolio="$portfolio"
+                                :wire:key="'skills-'.$portfolio->id" />
+                        @break
+
+                        @case('projects')
+                            <livewire:portfolio.sections.projects-section :portfolio="$portfolio"
+                                :wire:key="'projects-'.$portfolio->id" />
+                        @break
+
+                        @case('contact')
+                            <livewire:portfolio.sections.contact-section :portfolio="$portfolio"
+                                :wire:key="'contact-'.$portfolio->id" />
+                        @break
+                    @endswitch
+                </div>
+            @endforeach
+
         </div>
     @endif
 
@@ -168,7 +177,7 @@
         @else
             <button
                 class="flex min-w-[84px] cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-10 px-5 bg-primary text-white text-sm font-bold leading-normal shadow-lg shadow-primary/30 hover:bg-primary/90">
-                <span class="truncate">Preview Portfolio</span>
+                <span class="truncate">view Portfolio</span>
                 <span class="material-symbols-outlined">check</span>
             </button>
         @endif

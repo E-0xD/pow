@@ -30,8 +30,8 @@
         <div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
             <div class="flex flex-row min-h-screen ">
                 <!-- SideNavBar (user or admin depending on host) -->
-                @php $isAdminHost = \Illuminate\Support\Str::startsWith(request()->getHost(), 'admin.'); @endphp
-                @if($isAdminHost)
+                @php $isAdminHost = Str::startsWith(request()->getHost(), 'admin.'); @endphp
+                @if ($isAdminHost)
                     <x-layouts.app.admin-sidebar />
                     <x-layouts.app.admin-mobile-bottom-bar />
                 @else
@@ -41,13 +41,13 @@
                 <!-- Main Content -->
                 <main class="flex-1 p-6 lg:p-10 md:ml-64 pb-20 md:pb-0">
                     <x-toast />
+
                     {{ $slot }}
 
                 </main>
             </div>
         </div>
 
-        
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         @stack('scripts')
     </body>

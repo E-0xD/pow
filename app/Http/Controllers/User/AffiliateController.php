@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Affiliate;
 use App\Services\NotificationService;
 use App\Models\Transaction;
-
+use App\Models\User;
 
 class AffiliateController extends Controller
 {
@@ -29,7 +29,7 @@ class AffiliateController extends Controller
             ->where('reference', 'commission')
             ->sum('amount');
 
-        $totalReferrals = \App\Models\User::where('referred_by', $user->id)->count();
+        $totalReferrals = User::where('referred_by', $user->id)->count();
 
         return view('user.affiliate.index', [
             'affiliate' => $affiliate,

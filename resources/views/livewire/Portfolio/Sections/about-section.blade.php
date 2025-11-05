@@ -41,17 +41,20 @@
 
             <div class="min-w-0 max-w-[150px] sm:max-w-[150px] lg:max-w-none">
                 <!-- Name -->
-                <p class="text-base sm:text-lg font-semibold text-gray-900 dark:text-white overflow-hidden text-ellipsis whitespace-nowrap lg:whitespace-normal">
+                <p
+                    class="text-base sm:text-lg font-semibold text-gray-900 dark:text-white overflow-hidden text-ellipsis whitespace-nowrap lg:whitespace-normal">
                     {{ $about['name'] }}
                 </p>
 
                 <!-- Brief -->
-                <p class="text-sm text-gray-500 dark:text-gray-400 overflow-hidden text-ellipsis whitespace-nowrap lg:whitespace-normal">
+                <p
+                    class="text-sm text-gray-500 dark:text-gray-400 overflow-hidden text-ellipsis whitespace-nowrap lg:whitespace-normal">
                     {{ $about['brief'] }}
                 </p>
 
                 <!-- Description -->
-                <p class="mt-1 text-gray-700 dark:text-gray-300 text-sm overflow-hidden text-ellipsis whitespace-nowrap lg:whitespace-normal">
+                <p
+                    class="mt-1 text-gray-700 dark:text-gray-300 text-sm overflow-hidden text-ellipsis whitespace-nowrap lg:whitespace-normal">
                     {{ $about['description'] }}
                 </p>
             </div>
@@ -103,44 +106,16 @@
             <div>
                 <h2
                     class="text-gray-800 dark:text-gray-200 text-base sm:text-lg font-bold leading-tight tracking-[-0.015em] pb-2">
-                    Logo
+                    Profile Picture
                 </h2>
 
-                <div class="flex items-center justify-center w-full">
-                    <label for="logo"
-                        class="flex flex-col items-center justify-center w-full h-48 sm:h-64 border-2 border-dashed rounded-xl cursor-pointer
-                        @error('about.logo') border-red-500 @else border-[#D1D5DB] dark:border-gray-700 @enderror
-                        bg-gray-50 dark:bg-gray-800/50 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors p-4 sm:p-6">
-                        <div class="flex flex-col items-center justify-center pt-2 sm:pt-5 pb-3 sm:pb-6">
-                            <span
-                                class="material-symbols-outlined text-gray-500 dark:text-gray-400 text-4xl sm:text-5xl">cloud_upload</span>
-                            <p class="mb-2 text-xs sm:text-sm text-gray-500 dark:text-gray-400 text-center">
-                                <span class="font-semibold">Click to upload</span> or drag and drop
-                            </p>
-                            <p class="text-[10px] sm:text-xs text-gray-500 dark:text-gray-400">PNG, JPG or GIF (MAX.
-                                1MB)
-                            </p>
-                        </div>
-                    </label>
-                    <input id="logo" wire:model="about.logo" class="hidden" name="logo" type="file"
-                        accept="image/*" />
-                </div>
+                <x-layouts.app.image-uploader name="about.logo" model="about.logo" :old="$about['logo'] ?? null"
+                    placeholder-icon="person" placeholder-text="Upload your profile picture" height="h-48 sm:h-64" />
 
                 @error('about.logo')
                     <span class="text-sm text-red-500 mt-2 block">{{ $message }}</span>
                 @enderror
 
-                @if ($about['logo'] instanceof \Livewire\TemporaryUploadedFile)
-                    <div class="mt-4 flex justify-center sm:justify-start">
-                        <img src="{{ $about['logo']->temporaryUrl() }}" alt="Logo Preview"
-                            class="w-28 h-28 sm:w-32 sm:h-32 object-cover rounded-lg border border-gray-200 dark:border-gray-700">
-                    </div>
-                @elseif ($about['logo'])
-                    <div class="mt-4 flex justify-center sm:justify-start">
-                        <img src="{{ Storage::url($about['logo']) }}" alt="Current Logo"
-                            class="w-28 h-28 sm:w-32 sm:h-32 object-cover rounded-lg border border-gray-200 dark:border-gray-700">
-                    </div>
-                @endif
             </div>
 
             <!-- Save Button -->

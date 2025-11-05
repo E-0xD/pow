@@ -1,13 +1,14 @@
-<!-- Message List Panel -->
-{{-- <x-layouts.app> --}}
 
-<div
-    class="col-span-12 md:col-span-4 lg:col-span-3 border-r border-border-light dark:border-border-dark flex flex-col bg-surface-light dark:bg-surface-dark">
+<div class=" bg-surface-light dark:bg-surface-dark">
+    <!-- PageHeading & ToolBar -->
+    <x-layouts.app.page-heading 
+        title="Your Portfolio Messages"
+        subtitle="View and manage all messages and inquiries sent through your portfolios." 
+    />
+
     <div class="p-4 border-b border-border-light dark:border-border-dark flex justify-between">
-        <p class="text-2xl font-bold leading-tight tracking-tight">
-            Inbox
-        </p>
-        <label class="flex flex-col w-70">
+
+        <label class="flex flex-col w-full">
             <div class="flex w-full flex-1 items-stretch rounded h-11">
                 <div
                     class="text-text-secondary-light dark:text-text-secondary-dark flex bg-background-light dark:bg-background-dark items-center justify-center pl-3 rounded-l">
@@ -97,4 +98,4 @@
         @endforelse
     </div>
 </div>
-{{-- </x-layouts.app> --}}
+
