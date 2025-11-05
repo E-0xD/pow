@@ -22,7 +22,7 @@
                             class="form-input w-full rounded-lg border border-[#e0dbe6] bg-white dark:bg-background-dark dark:border-gray-700 dark:text-white focus:ring-2 focus:ring-primary/50 h-14 p-[15px] text-base"
                             placeholder="Enter your full name" value="{{ old('name') }}" />
                               @error('name')
-                        <span class="text-sm text-red-500 mt-1">{{ $message }}</span>
+                        <span class="text-sm text-red-500 mt-1">{{ $message }}</span>@enderror
                     </label>
                 </div>
 
@@ -33,7 +33,7 @@
                             class="form-input w-full rounded-lg border border-[#e0dbe6] bg-white dark:bg-background-dark dark:border-gray-700 dark:text-white focus:ring-2 focus:ring-primary/50 h-14 p-[15px] text-base"
                             placeholder="Enter your email" value="{{ old('email') }}" />
                               @error('email')
-                        <span class="text-sm text-red-500 mt-1">{{ $message }}</span>
+                        <span class="text-sm text-red-500 mt-1">{{ $message }}</span>@enderror
                     </label>
                 </div>
 
@@ -44,7 +44,7 @@
                             class="form-input w-full rounded-lg border border-[#e0dbe6] bg-white dark:bg-background-dark dark:border-gray-700 dark:text-white focus:ring-2 focus:ring-primary/50 h-14 p-[15px] text-base"
                             placeholder="Enter your password" />
                               @error('password')
-                        <span class="text-sm text-red-500 mt-1">{{ $message }}</span>
+                        <span class="text-sm text-red-500 mt-1">{{ $message }}</span>@enderror
                     </label>
                 </div>
 

@@ -59,7 +59,7 @@
     {{-- order confirmation  --}}
     @if ($selectedPlan)
         <!-- Main Content -->
-        <div class="relative flex min-h-screen w-full flex-col group/design-root">
+        <div class="flex flex-col max-w-6xl w-full flex-1 items-center">
             <div class="layout-container flex h-full grow flex-col">
                 <div class="flex flex-1 justify-center p-4 sm:p-5">
                     <div class="layout-content-container flex w-full max-w-md flex-1 flex-col space-y-10">
