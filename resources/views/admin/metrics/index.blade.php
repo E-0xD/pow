@@ -7,7 +7,7 @@
                     class="text-text-light-primary dark:text-text-dark-primary text-3xl lg:text-4xl font-black tracking-tighter">
                     Growth Analytics</p>
                 <p class="text-text-light-secondary dark:text-text-dark-secondary text-base font-normal leading-normal">
-                    Insights into platform performance and user growth.</p>
+                    Insights into platform performance and user growth</p>
             </div>
             <div class="flex gap-2 flex-wrap">
                 <form method="get" class="flex items-center gap-2">
