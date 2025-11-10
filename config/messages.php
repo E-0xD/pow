@@ -1,11 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Auth;
-
 return [
     'register' => [
         'payload' => [
-            'greeting' => 'Hi ' . Auth::user()->name . ', welcome to POW',
+            'greeting' => 'Welcome to POW',
             'introLines' => [
                 'We’re excited to have you here! You’ve just taken the first step toward owning your digital proof of work, a place to showcase your skills, projects, and experience with confidence.',
                 'With POW, you can easily build and share a portfolio that tells your professional story, all in one simple link.',
@@ -18,8 +16,7 @@ return [
 
     'login' => [
         'payload' => [
-            'name'       => Auth::user()->name,
-            'greeting' => 'Hi ' . Auth::user()->name . ', welcome back',
+            'greeting' => 'Welcome back',
             'introLines' => [
                 'We noticed a new login to your account on',
                 'It’s great to see you again. keep growing your digital proof of work and showcasing what you do best.',
