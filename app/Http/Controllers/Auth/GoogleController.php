@@ -91,7 +91,7 @@ class GoogleController extends Controller
                 'signature'  => '— The ' . config('app.name') . ' Team',
                 'company'    => config('app.name'),
             ];
-            $subject = 'Welcome to ' . config('app.name');
+            $subject = 'Your Work, Your Badge. let’s make it count.';
         } else {
             $payload = [
                 'title'      => 'Welcome Back to ' . config('app.name'),
