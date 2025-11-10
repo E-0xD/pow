@@ -1,0 +1,53 @@
+---
+deployment:
+  tasks:
+    - # set variables
+      - export DEPLOY_USER=nidccglo
+      - export REPO_PATH=/home/${DEPLOY_USER}/mypow.app
+      - export DEPLOY_PATH=/home/${DEPLOY_USER}/public_html
+      - export PHP_BIN=/opt/cpanel/ea-php84/root/usr/bin/php
+
+    - # go to repo
+      - cd $REPO_PATH
+
+    - # ensure composer is available (assumes composer.phar exists in repo root or system composer available)
+      - |
+        if [ ! -f ./composer.phar ]; then
+          echo "composer.phar not found in repo root — attempting system composer..."
+        fi
+
+    - # install/update PHP deps (production)
+      - $PHP_BIN -d allow_url_fopen=On composer.phar install --no-dev --optimize-autoloader || $PHP_BIN -d allow_url_fopen=On composer install --no-dev --optimize-autoloader
+
+    - # optional: run npm build if you have frontend assets (uncomment if needed)
+      - # cd $REPO_PATH && if [ -f package.json ]; then /usr/bin/npm install && /usr/bin/npm run build; fi
+
+    - # clear/optimize caches
+      - $PHP_BIN artisan optimize:clear || true
+      - $PHP_BIN artisan view:clear || true
+      - $PHP_BIN artisan config:clear || true
+      - $PHP_BIN artisan route:clear || true
+      - $PHP_BIN artisan cache:clear || true
+      - $PHP_BIN artisan migrate --force || true
+
+    - # ensure storage symlink (if not present)
+      - |
+        if [ ! -L $REPO_PATH/public/storage ]; then
+          $PHP_BIN artisan storage:link || true
+        fi
+
+    - # sync code to public dir, excluding sensitive files and dev folders
+      - rsync -av --delete --exclude='.git' --exclude='.env' --exclude='node_modules' --exclude='vendor' $REPO_PATH/ $DEPLOY_PATH/
+
+    - # install composer vendor into deployed path (optional: if you want vendors in public path)
+      - |
+        # If you prefer vendors in repo root, skip this. If you want vendor in public dir, uncomment:
+        # cd $DEPLOY_PATH && $PHP_BIN -d allow_url_fopen=On composer.phar install --no-dev --optimize-autoloader
+
+    - # permissions (adjust to your needs)
+      - find $DEPLOY_PATH -type f -exec chmod 644 {} \;
+      - find $DEPLOY_PATH -type d -exec chmod 755 {} \;
+      - chmod -R 775 $DEPLOY_PATH/storage $DEPLOY_PATH/bootstrap/cache || true
+
+    - # final message to cPanel logs
+      - echo "Deployment completed by .cpanel.yml"
