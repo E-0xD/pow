@@ -35,7 +35,7 @@
                                 </clipPath>
                             </defs>
                         </svg>
-                        <span>Continue with Google</span>
+                        <span>Sign in with Google</span>
                     </a>
                 </div>
 
