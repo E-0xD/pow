@@ -44,7 +44,7 @@ start_queue() {
     fi
 
     # Start the worker
-    nohup php artisan queue:work "$QUEUE_CONNECTION" \
+    nohup php artisan queue:work\
         --tries=3 \
         --timeout=90 \
         --sleep=3 \
