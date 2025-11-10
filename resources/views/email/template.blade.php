@@ -12,6 +12,7 @@
       margin: 0;
       padding: 0;
     }
+
     .email-container {
       max-width: 600px;
       margin: 40px auto;
@@ -20,45 +21,66 @@
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
       overflow: hidden;
     }
+
+    .logo {
+      text-align: center;
+      padding: 25px 0 10px 0;
+      background-color: #ffffff;
+    }
+
+    .logo img {
+      max-width: 140px;
+      height: auto;
+      display: inline-block;
+      border-radius: 8px;
+    }
+
     .header {
-      background-color: #667eea;
+      background-color: #713BAB;
       color: #ffffff;
       text-align: center;
-      padding: 30px 20px;
+      padding: 25px 20px;
     }
+
     .header h1 {
       margin: 0;
       font-size: 24px;
       font-weight: 600;
     }
+
     .content {
       padding: 30px 20px;
       text-align: left;
     }
+
     .content h2 {
       color: #1a1a1a;
       font-size: 20px;
       margin-bottom: 10px;
     }
+
     .content p {
       color: #555;
       line-height: 1.6;
       font-size: 15px;
       margin-bottom: 20px;
     }
+
     .button {
       display: inline-block;
       padding: 12px 24px;
-      background-color: #667eea;
+      background-color: #713BAB;
       color: #ffffff !important;
       border-radius: 8px;
       text-decoration: none;
       font-weight: 600;
       font-size: 15px;
     }
+
     .button:hover {
       background-color: #5a6edc;
     }
+
     .footer {
       background-color: #f0f2f8;
       color: #888;
@@ -67,6 +89,7 @@
       padding: 20px;
       border-top: 1px solid #e6e8ef;
     }
+
     @media (max-width: 480px) {
       .email-container {
         margin: 10px;
@@ -74,11 +97,18 @@
       .content {
         padding: 20px 15px;
       }
+      .logo img {
+        max-width: 100px;
+      }
     }
   </style>
 </head>
 <body>
   <div class="email-container">
+    <div class="logo">
+      <img src="{{ asset(config('app.logo')) }}" alt="{{ config('app.name') }} Logo">
+    </div>
+
     <div class="header">
       <h1>{{ $title ?? 'Notification from ' . ($company ?? config('app.name')) }}</h1>
     </div>

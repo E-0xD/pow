@@ -36,7 +36,7 @@ class LoginResponse implements LoginResponseContract
                 Auth::user(),
                 'Login Attempt',
                 'A login was detected on ' . now()->format('Y-m-d H:i:s') .
-                    'UTC 0 using ' . $this->agent->browser() . ' on ' . $this->agent->platform()
+                    ' UTC 0 using ' . $this->agent->browser() . ' on ' . $this->agent->platform()
             );
 
             $payload = [
@@ -45,7 +45,7 @@ class LoginResponse implements LoginResponseContract
                 'greeting'    => 'Welcome back, ' . Auth::user()->name,
                 'introLines'  => [
                     'A login was detected on ' . now()->format('Y-m-d H:i:s') .
-                        'UTC 0 using ' . $this->agent->browser() . ' on ' . $this->agent->platform()
+                        ' UTC 0 using ' . $this->agent->browser() . ' on ' . $this->agent->platform()
                 ],
                 'actionText'  => 'Go to Dashboard',
                 'actionUrl'   =>  route('user.dashboard'),
@@ -54,7 +54,7 @@ class LoginResponse implements LoginResponseContract
                 'company'     => config('app.name'),
             ];
 
-            $this->emailService->send(Auth::user()->email, 'Login Attempt', $payload, false);
+            $this->emailService->send(Auth::user()->email, 'Login Attempt', $payload, true);
             return redirect()->intended(route('user.dashboard'));
         } catch (\Throwable $th) {
             Log::error($th);
