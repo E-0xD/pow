@@ -106,7 +106,7 @@
 <body>
   <div class="email-container">
     <div class="logo">
-      <img src="{{ asset(config('app.logo')) }}" alt="{{ config('app.name') }} Logo">
+      <img src="{{ config('app.url') . '/' . ltrim(config('app.logo'), '/') }}" alt="{{ config('app.name') }} Logo">
     </div>
 
     <div class="header">
