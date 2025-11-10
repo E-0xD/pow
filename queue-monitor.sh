@@ -1,24 +1,24 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Laravel Queue Monitor Script (Fixed)
-# Ensures queue:work runs continuously and restarts if stopped
-
-# Configuration
-LARAVEL_PATH="$(cd "$(dirname "$0")" && pwd)" # Laravel app directory
-QUEUE_CONNECTION="database"                   # Adjust your queue connection
+LARAVEL_PATH="/home/nidccglo/mypow.app"
+QUEUE_CONNECTION="database"
 LOG_FILE="$LARAVEL_PATH/storage/logs/queue-monitor.log"
 PID_FILE="$LARAVEL_PATH/storage/logs/queue-worker.pid"
 
-# Function to log with timestamp
+# Define absolute paths (adjust to your system)
+PHP_BIN="/usr/local/bin/php"
+NOHUP_BIN="/usr/bin/nohup"
+PS_BIN="/bin/ps"
+
 log_message() {
     echo "$(date '+%Y-%m-%d %H:%M:%S') - $1" >> "$LOG_FILE"
 }
 
-# Check if queue worker is running
 is_queue_running() {
     if [ -f "$PID_FILE" ]; then
         PID=$(cat "$PID_FILE")
-        if ps -p "$PID" > /dev/null 2>&1; then
+        if $PS_BIN -p "$PID" > /dev/null 2>&1; then
             return 0
         else
             log_message "Process with PID $PID not running, removing stale PID file"
@@ -30,21 +30,18 @@ is_queue_running() {
     fi
 }
 
-# Start queue worker
 start_queue() {
     cd "$LARAVEL_PATH" || {
         log_message "ERROR: Cannot change to Laravel directory: $LARAVEL_PATH"
         exit 1
     }
 
-    # Ensure Laravel works properly
-    if ! php artisan --version > /dev/null 2>&1; then
+    if ! $PHP_BIN artisan --version > /dev/null 2>&1; then
         log_message "ERROR: Artisan not found or Laravel not initialized in $LARAVEL_PATH"
         exit 1
     fi
 
-    # Start the worker
-    nohup php artisan queue:work\
+    $NOHUP_BIN $PHP_BIN artisan queue:work \
         --tries=3 \
         --timeout=90 \
         --sleep=3 \
@@ -55,7 +52,7 @@ start_queue() {
     echo "$QUEUE_PID" > "$PID_FILE"
     sleep 2
 
-    if ps -p "$QUEUE_PID" > /dev/null 2>&1; then
+    if $PS_BIN -p "$QUEUE_PID" > /dev/null 2>&1; then
         log_message "Queue worker started successfully (PID: $QUEUE_PID)"
     else
         log_message "ERROR: Failed to start queue worker"
@@ -63,13 +60,9 @@ start_queue() {
     fi
 }
 
-# Create log directory if missing
 mkdir -p "$LARAVEL_PATH/storage/logs"
 
-# Main execution
 if is_queue_running; then
-    # Queue worker is running, no action
-    # log_message "Queue worker running (PID: $(cat "$PID_FILE"))"
     exit 0
 else
     log_message "Queue worker not running, starting new worker"
