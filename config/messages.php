@@ -21,7 +21,7 @@ return [
             'name'       => Auth::user()->name,
             'greeting' => 'Hi ' . Auth::user()->name . ', welcome back',
             'introLines' => [
-                'We noticed a new login to your account on ' . now()->format('Y-m-d H:i:s') . ' UTC ',
+                'We noticed a new login to your account on',
                 'It’s great to see you again. keep growing your digital proof of work and showcasing what you do best.',
                 'If this wasn’t you, please visit your account settings right away to secure your profile.'
             ],
