@@ -141,15 +141,8 @@
             </div>
 
             <div class="footer">
-                @if (!empty($signature))
-                    <p>{{ $signature }}</p>
-                @else
-                    <p>&copy; {{ date('Y') }} {{ $company ?? config('app.name') }}. All rights reserved.</p>
-                @endif
 
-                @if (!empty($address))
-                    <p>{{ $address }}</p>
-                @endif
+                <p>{{ '— The ' . config('app.name') . ' Team' }}</p>
             </div>
         </div>
     </body>

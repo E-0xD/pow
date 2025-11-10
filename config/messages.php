@@ -5,10 +5,10 @@ use Illuminate\Support\Facades\Auth;
 return [
     'register' => [
         'payload' => [
-            'greeting' => 'Hi ' . Auth::user()->name . ', welcome to ' . config('app.name'),
+            'greeting' => 'Hi ' . Auth::user()->name . ', welcome to POW',
             'introLines' => [
                 'We’re excited to have you here! You’ve just taken the first step toward owning your digital proof of work, a place to showcase your skills, projects, and experience with confidence.',
-                'With ' . config('app.name') . ', you can easily build and share a portfolio that tells your professional story, all in one simple link.',
+                'With POW, you can easily build and share a portfolio that tells your professional story, all in one simple link.',
                 'Our goal is to help you stand out and open new doors of opportunity. If you have ideas or features you’d love to see, we’d love to hear from you anytime.',
                 'Here’s to building something meaningful; and to landing that next big, life-changing opportunity.'
             ],
@@ -16,8 +16,6 @@ return [
             'actionText' => 'Go to Dashboard',
             'actionUrl'  => route('user.dashboard'),
             'outroLines' => ['If you need help, reply to this email.'],
-            'signature'  => '— The ' . config('app.name') . ' Team',
-            'company'    => config('app.name'),
         ],
         'subject' => 'Your Work, Your Badge. let’s make it count.'
     ],
@@ -34,8 +32,6 @@ return [
             'actionText' => 'Go to Dashboard',
             'actionUrl'  => route('user.dashboard'),
             'outroLines' => ['If you need help, reply to this email.'],
-            'signature'  => '— The ' . config('app.name') . ' Team',
-            'company'    => config('app.name'),
         ],
         'subject' => 'Login Attempt',
 
