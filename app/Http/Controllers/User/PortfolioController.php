@@ -8,7 +8,6 @@ use App\Http\Requests\PortfolioCreateRequest;
 use App\Http\Requests\PortfolioUpdateRequest;
 use App\Models\Portfolio;
 use App\Models\Template;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -16,8 +15,6 @@ use Illuminate\Support\Facades\Storage;
 
 class PortfolioController extends Controller
 {
-    use AuthorizesRequests;
-
     public function index()
     {
         $portfolios = Auth::user()
@@ -52,35 +49,28 @@ class PortfolioController extends Controller
 
     public function show(Portfolio $portfolio)
     {
-        $this->authorize('view', $portfolio);
         return view('user.portfolio.show', compact('portfolio'));
     }
 
     public function edit(Portfolio $portfolio)
     {
-        $this->authorize('update', $portfolio);
         return view('user.portfolio.edit', compact('portfolio'));
     }
 
     public function update(PortfolioUpdateRequest $request, Portfolio $portfolio)
     {
         try {
-            $this->authorize('update', $portfolio);
-
             $data = $request->validated();
 
             // Handle favicon upload
             if ($request->hasFile('favicon')) {
-                try {
-                    if ($portfolio->favicon) {
-                        Storage::disk('public')->delete($portfolio->favicon);
-                    }
-                    $data['favicon'] = $request->file('favicon')->store('favicons', 'public');
-                } catch (\Exception $e) {
-                    dd('here');
-                    return back()->with('error', 'Failed to upload favicon. Please try again.');
+
+                if ($portfolio->favicon) {
+                    Storage::disk('public')->delete($portfolio->favicon);
                 }
+                $data['favicon'] = $request->file('favicon')->store('favicons', 'public');
             }
+
             $portfolio->update($data);
 
             return redirect()->route('user.portfolio.edit', $portfolio)
@@ -104,8 +94,6 @@ class PortfolioController extends Controller
     public function destroy(Portfolio $portfolio)
     {
         try {
-
-            $this->authorize('delete', $portfolio);
 
             if ($portfolio->favicon) {
                 Storage::disk('public')->delete($portfolio->favicon);
@@ -131,14 +119,11 @@ class PortfolioController extends Controller
 
     public function customize(Portfolio $portfolio)
     {
-        $this->authorize('update', $portfolio);
         return view('user.portfolio.customize', compact('portfolio'));
     }
 
     public function analytics(Portfolio $portfolio)
     {
-        $this->authorize('view', $portfolio);
-
         $thirtyDaysAgo = now()->subDays(30);
         $sixtyDaysAgo = now()->subDays(60);
 
