@@ -1,73 +1,75 @@
 #!/bin/bash
 
-# Laravel Queue Monitor Script
-# Tracks queue:work by PID and restarts if needed
+# Laravel Queue Monitor Script (Fixed)
+# Ensures queue:work runs continuously and restarts if stopped
 
 # Configuration
-LARAVEL_PATH="$(cd "$(dirname "$0")" && pwd)"  # Gets the directory where script is located
-QUEUE_CONNECTION="database"  # Change to your queue connection name
+LARAVEL_PATH="$(cd "$(dirname "$0")" && pwd)" # Laravel app directory
+QUEUE_CONNECTION="database"                   # Adjust your queue connection
 LOG_FILE="$LARAVEL_PATH/storage/logs/queue-monitor.log"
 PID_FILE="$LARAVEL_PATH/storage/logs/queue-worker.pid"
 
-# Function to log messages with timestamp
+# Function to log with timestamp
 log_message() {
     echo "$(date '+%Y-%m-%d %H:%M:%S') - $1" >> "$LOG_FILE"
 }
 
-# Function to check if queue worker is running by PID
+# Check if queue worker is running
 is_queue_running() {
     if [ -f "$PID_FILE" ]; then
         PID=$(cat "$PID_FILE")
-        if kill -0 "$PID" 2>/dev/null; then
-            return 0  # Process is running
+        if ps -p "$PID" > /dev/null 2>&1; then
+            return 0
         else
-            log_message "Process with PID $PID is not running, removing stale PID file"
+            log_message "Process with PID $PID not running, removing stale PID file"
             rm -f "$PID_FILE"
-            return 1  # Process is not running
+            return 1
         fi
     else
-        return 1  # No PID file exists
+        return 1
     fi
 }
 
-# Function to start queue:work
+# Start queue worker
 start_queue() {
     cd "$LARAVEL_PATH" || {
         log_message "ERROR: Cannot change to Laravel directory: $LARAVEL_PATH"
         exit 1
     }
-    
-    # Start queue:work in background
+
+    # Ensure Laravel works properly
+    if ! php artisan --version > /dev/null 2>&1; then
+        log_message "ERROR: Artisan not found or Laravel not initialized in $LARAVEL_PATH"
+        exit 1
+    fi
+
+    # Start the worker
     nohup php artisan queue:work "$QUEUE_CONNECTION" \
         --tries=3 \
         --timeout=90 \
         --sleep=3 \
         --max-jobs=1000 \
         >> "$LOG_FILE" 2>&1 &
-    
-    # Store the process ID
+
     QUEUE_PID=$!
     echo "$QUEUE_PID" > "$PID_FILE"
-    
-    # Wait a moment for the process to start
-    sleep 3
-    
-    # Verify the process started successfully
-    if kill -0 "$QUEUE_PID" 2>/dev/null; then
-        log_message "Queue worker started successfully for connection: $QUEUE_CONNECTION (PID: $QUEUE_PID)"
+    sleep 2
+
+    if ps -p "$QUEUE_PID" > /dev/null 2>&1; then
+        log_message "Queue worker started successfully (PID: $QUEUE_PID)"
     else
         log_message "ERROR: Failed to start queue worker"
         rm -f "$PID_FILE"
     fi
 }
 
-# Create storage/logs directory if it doesn't exist
+# Create log directory if missing
 mkdir -p "$LARAVEL_PATH/storage/logs"
 
 # Main execution
 if is_queue_running; then
-    # Queue is running
-    # log_message "Queue worker is running (PID: $(cat "$PID_FILE"))"
+    # Queue worker is running, no action
+    # log_message "Queue worker running (PID: $(cat "$PID_FILE"))"
     exit 0
 else
     log_message "Queue worker not running, starting new worker"
