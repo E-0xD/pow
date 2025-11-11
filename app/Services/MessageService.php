@@ -119,8 +119,6 @@ class MessageService
                     'Sometimes this can happen due to network delays or an issue with your payment provider.',
                     'You can try again or choose a different payment method to complete your upgrade for **' . $portfolioName . '**.'
                 ],
-                'actionText' => 'Try Again',
-                'actionUrl' => route('user.billing'),
                 'outroLines' => [
                     'If you need assistance, feel free to reply to this email; we’re here to help.'
                 ],
@@ -144,7 +142,7 @@ class MessageService
                     'We’re excited to see what you build next. Keep showing the world your proof of work!'
                 ],
                 'actionText' => 'View Portfolio',
-                'actionUrl' => route('user.portfolio', ['name' => $portfolioName]),
+                'actionUrl' => route('user.portfolio.index', ['name' => $portfolioName]),
                 'outroLines' => [
                     'If you have any feedback or run into an issue, reply to this email; we’d love to hear from you.'
                 ],
