@@ -37,6 +37,7 @@ class PortfolioUpdateRequest extends FormRequest
             ],
 
             'visibility' => ['required', new Enum(PortfolioVisibility::class) ],
+              'accept_messages' => ['required', 'boolean'],
             'theme' => ['nullable', 'string'],
             'typography' => ['nullable'],
             'favicon' => ['nullable', 'image', 'max:1024'],

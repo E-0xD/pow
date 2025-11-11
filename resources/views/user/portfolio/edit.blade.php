@@ -17,7 +17,7 @@
         </div>
 
         <div class="mt-8 space-y-10">
-            <form action="{{ route('user.portfolio.update', $portfolio) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('user.portfolio.update', $portfolio) }}" method="POST" enctype="multipart/form-data" class="space-y-10">
                 @csrf
                 @method('PUT')
                 <!-- General Section -->
@@ -53,6 +53,7 @@
                                 <p class="mt-1 text-red-500 text-sm">{{ $message }}</p>
                             @enderror
                         </label>
+                        <!-- Visibility Toggle -->
                         <div>
                             <div
                                 class="flex items-center justify-between p-4 rounded-lg bg-background-light dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
@@ -88,54 +89,92 @@
                                 <p class="mt-1 text-red-500 text-sm">{{ $message }}</p>
                             @enderror
                         </div>
-                    </div>
-                </section>
-                <!-- Appearance Section -->
-                <section>
-                    <h2
-                        class="text-text-primary dark:text-white text-xl font-bold leading-tight tracking-tight pb-4 border-b border-gray-200 dark:border-gray-700">
-                        Appearance
-                    </h2>
-                    <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="flex flex-col w-full">
-                            <p class="text-text-primary dark:text-gray-200 text-base font-medium leading-normal pb-2">
-                                Theme Color
-                            </p>
+                        <!-- Accept Messages Toggle -->
+                        <div>
                             <div
-                                class="flex items-center gap-3 p-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-background-light dark:bg-gray-800">
-                                <input type="color" name="theme" class="size-8 rounded-md cursor-pointer"
-                                    value="{{ old('theme', $portfolio->theme) }}">
-                                <span
-                                    class="text-text-primary dark:text-white font-mono text-sm">{{ old('theme', $portfolio->theme) }}</span>
-                            </div>
-                            @error('theme')
-                                <p class="mt-1 text-red-500 text-sm">{{ $message }}</p>
-                            @enderror
-                        </div>
-                        <div class="flex flex-col w-full">
-                            <p class="text-text-primary dark:text-gray-200 text-base font-medium leading-normal pb-2">
-                                Typography
-                            </p>
-                            <select name="typography"
-                                class="form-select w-full rounded-lg text-text-primary dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/50 border border-gray-300 dark:border-gray-700 bg-background-light dark:bg-gray-800 h-12 px-4 text-base font-normal @error('typography') border-danger @enderror">
-                                <option value="modern-sans"
-                                    {{ old('typography', $portfolio->typography) == 'modern-sans' ? 'selected' : '' }}>
-                                    Modern Sans</option>
-                                <option value="serif-sans"
-                                    {{ old('typography', $portfolio->typography) == 'serif-sans' ? 'selected' : '' }}>
-                                    Serif &amp; Sans-serif
-                                </option>
-                                <option value="classic-serif"
-                                    {{ old('typography', $portfolio->typography) == 'classic-serif' ? 'selected' : '' }}>
-                                    Classic Serif</option>
-                            </select>
-                            @error('typography')
-                                <p class="mt-1 text-red-500 text-sm">{{ $message }}</p>
-                            @enderror
-                        </div>
+                                class="flex items-center justify-between p-4 rounded-lg bg-background-light dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
+                                <div>
+                                    <p
+                                        class="text-text-primary dark:text-gray-200 text-base font-medium leading-normal">
+                                        Accept Messages
+                                    </p>
+                                    <p class="text-text-secondary dark:text-gray-400 text-sm">
+                                        Show a contact form that allows visitors to send you a message.
+                                    </p>
+                                </div>
+                                <div x-data="{ on: {{ old('accept_messages', $portfolio->accept_messages) ? 'true' : 'false' }} }">
+                                    <button type="button"
+                                        @click="on = !on; $refs.acceptMessagesInput.value = on ? 1 : 0"
+                                        :class="on ? 'bg-primary' : 'bg-gray-200 dark:bg-gray-700'"
+                                        class="relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent
+                                            transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                                        role="switch">
 
+                                        <input type="hidden" name="accept_messages" x-ref="acceptMessagesInput"
+                                            :value="on ? 1 : 0">
+
+                                        <span :class="on ? 'translate-x-5' : 'translate-x-0'"
+                                            class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0
+                                            transition duration-200 ease-in-out"></span>
+                                    </button>
+                                </div>
+                            </div>
+                            @error('accept_messages')
+                                <p class="mt-1 text-red-500 text-sm">{{ $message }}</p>
+                            @enderror
+                        </div>
                     </div>
                 </section>
+                @if (0 != 0)
+                    <!-- Appearance Section -->
+                    <section>
+                        <h2
+                            class="text-text-primary dark:text-white text-xl font-bold leading-tight tracking-tight pb-4  border-b border-gray-200 dark:border-gray-700">
+                            Appearance
+                        </h2>
+                        <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="flex flex-col w-full">
+                                <p
+                                    class="text-text-primary dark:text-gray-200 text-base font-medium leading-normal pb-2">
+                                    Theme Color
+                                </p>
+                                <div
+                                    class="flex items-center gap-3 p-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-background-light dark:bg-gray-800">
+                                    <input type="color" name="theme" class="size-8 rounded-md cursor-pointer"
+                                        value="{{ old('theme', $portfolio->theme) }}">
+                                    <span
+                                        class="text-text-primary dark:text-white font-mono text-sm">{{ old('theme', $portfolio->theme) }}</span>
+                                </div>
+                                @error('theme')
+                                    <p class="mt-1 text-red-500 text-sm">{{ $message }}</p>
+                                @enderror
+                            </div>
+                            <div class="flex flex-col w-full">
+                                <p
+                                    class="text-text-primary dark:text-gray-200 text-base font-medium leading-normal pb-2">
+                                    Typography
+                                </p>
+                                <select name="typography"
+                                    class="form-select w-full rounded-lg text-text-primary dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/50 border border-gray-300 dark:border-gray-700 bg-background-light dark:bg-gray-800 h-12 px-4 text-base font-normal @error('typography') border-danger @enderror">
+                                    <option value="modern-sans"
+                                        {{ old('typography', $portfolio->typography) == 'modern-sans' ? 'selected' : '' }}>
+                                        Modern Sans</option>
+                                    <option value="serif-sans"
+                                        {{ old('typography', $portfolio->typography) == 'serif-sans' ? 'selected' : '' }}>
+                                        Serif &amp; Sans-serif
+                                    </option>
+                                    <option value="classic-serif"
+                                        {{ old('typography', $portfolio->typography) == 'classic-serif' ? 'selected' : '' }}>
+                                        Classic Serif</option>
+                                </select>
+                                @error('typography')
+                                    <p class="mt-1 text-red-500 text-sm">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                        </div>
+                    </section>
+                @endif
                 <!-- SEO Section -->
                 <section>
                     <h2
@@ -191,7 +230,8 @@
                                                 (max. 1MB)
                                             </p>
                                         </div>
-                                        <input name="favicon" class="hidden" type="file" accept=".png,.jpg,.ico" />
+                                        <input name="favicon" class="hidden" type="file"
+                                            accept=".png,.jpg,.ico" />
                                         @error('favicon')
                                             <p class="mt-1 text-red-500 text-sm">{{ $message }}</p>
                                         @enderror
@@ -212,25 +252,27 @@
                     class="text-text-primary dark:text-white text-xl font-bold leading-tight tracking-tight pb-4 border-b border-gray-200 dark:border-gray-700">
                     Advanced
                 </h2>
-                <div
-                    class="mt-6 bg-background-light dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6">
-                    <h3 class="text-text-primary dark:text-gray-200 text-base font-medium leading-normal">
-                        Custom Domain
-                    </h3>
-                    <p class="text-text-secondary dark:text-gray-400 text-sm mt-1">
-                        Connect your own domain to your
-                        portfolio.
-                    </p>
-                    <div class="flex items-center gap-2 mt-4">
-                        <input
-                            class="form-input flex-1 w-full rounded-lg text-text-primary dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/50 border border-gray-300 dark:border-gray-700 bg-background-light dark:bg-gray-900 h-11 px-4 text-base font-normal"
-                            placeholder="e.g., yourdomain.com" />
-                        <button
-                            class="flex items-center justify-center rounded-lg h-11 px-4 bg-gray-200 dark:bg-gray-700 text-text-primary dark:text-white text-sm font-bold hover:bg-gray-300 dark:hover:bg-gray-600">
-                            Connect
-                        </button>
+                @if (0 != 0)
+                    <div
+                        class="mt-6 bg-background-light dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6">
+                        <h3 class="text-text-primary dark:text-gray-200 text-base font-medium leading-normal">
+                            Custom Domain
+                        </h3>
+                        <p class="text-text-secondary dark:text-gray-400 text-sm mt-1">
+                            Connect your own domain to your
+                            portfolio.
+                        </p>
+                        <div class="flex items-center gap-2 mt-4">
+                            <input
+                                class="form-input flex-1 w-full rounded-lg text-text-primary dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/50 border border-gray-300 dark:border-gray-700 bg-background-light dark:bg-gray-900 h-11 px-4 text-base font-normal"
+                                placeholder="e.g., yourdomain.com" />
+                            <button
+                                class="flex items-center justify-center rounded-lg h-11 px-4 bg-gray-200 dark:bg-gray-700 text-text-primary dark:text-white text-sm font-bold hover:bg-gray-300 dark:hover:bg-gray-600">
+                                Connect
+                            </button>
+                        </div>
                     </div>
-                </div>
+                @endif
                 <div class="mt-6 border-2 border-danger/40 rounded-xl p-6">
                     <h3 class="text-red-500 font-bold text-lg">
                         Danger Zone
