@@ -63,7 +63,7 @@ class PolarWebhookController extends Controller
                         $portfolioSubscription->transaction->update(['status' => 'Successful']);
                     }
 
-                    $message = $this->messageService->getPaymentSuccessMessage($portfolioSubscription->transaction->amount, $portfolioSubscription->transaction->reference,  $portfolioSubscription->portfolio->title);
+                    $message = $this->messageService->getPaymentSuccessMessage($portfolioSubscription->user,$portfolioSubscription->transaction->amount, $portfolioSubscription->transaction->reference,  $portfolioSubscription->portfolio->title);
 
                     $this->emailService->send(
                         $portfolioSubscription->user->email,

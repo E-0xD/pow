@@ -12,6 +12,7 @@ use App\Services\EmailService;
 use App\Services\MessageService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Jenssegers\Agent\Agent;
 
 class NowPaymentValidationController extends Controller
@@ -41,6 +42,7 @@ class NowPaymentValidationController extends Controller
             'transaction_id' => $transactionId
         ] = $responseData['data'];
 
+        Log::info($response, $responseData);
 
         $transaction = Transaction::where('processor_reference',  $transactionId)->first();
         $portfolioSubscription = PortfolioSubscription::where('transaction_id', $transaction->id)->first();
@@ -51,7 +53,7 @@ class NowPaymentValidationController extends Controller
                 'message' => 'Incomplete Payment Received, Kindly contact support'
             ]);
 
-            $message = $this->messageService->getPaymentFailedMessage($portfolioSubscription->transaction->amount, $portfolioSubscription->transaction->reference,  $portfolioSubscription->portfolio->title);
+            $message = $this->messageService->getPaymentFailedMessage( $portfolioSubscription->user, $portfolioSubscription->transaction->amount, $portfolioSubscription->transaction->reference,  $portfolioSubscription->portfolio->title);
 
             $this->emailService->send(
                 $portfolioSubscription->user->email,

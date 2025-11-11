@@ -82,7 +82,7 @@ class MessageService
         return  'Your Work, Your Badge. let\'s make it count.';
     }
 
-    public static function getPaymentInitiatedMessage($amount, $reference, $portfolioName): array
+    public function getPaymentInitiatedMessage($amount, $reference, $portfolioName): array
     {
         return [
             'subject' => 'Payment Initiated',
@@ -106,14 +106,14 @@ class MessageService
         ];
     }
 
-    public function getPaymentFailedMessage($amount, $reference, $portfolioName): array
+    public function getPaymentFailedMessage($user, $amount, $reference, $portfolioName): array
     {
         return [
             'subject' => 'Payment Failed',
             'payload' => [
                 'title' => 'Payment Failed for ' . $portfolioName,
-                'name' => Auth::user()->name,
-                'greeting' => 'Hi ' . Auth::user()->name . ',',
+                'name' => $user->name,
+                'greeting' => 'Hi ' . $user->name . ',',
                 'introLines' => [
                     'We noticed that your payment of $' . number_format($amount, 2) . ' (Ref: ' . $reference . ') didn’t go through.',
                     'Sometimes this can happen due to network delays or an issue with your payment provider.',
@@ -130,14 +130,14 @@ class MessageService
         ];
     }
 
-    public function getPaymentSuccessMessage($amount, $reference, $portfolioName): array
+    public function getPaymentSuccessMessage($user, $amount, $reference, $portfolioName): array
     {
         return [
             'subject' => 'Payment Successful',
             'payload' => [
                 'title' => 'Payment Successful for ' . $portfolioName,
-                'name' => Auth::user()->name,
-                'greeting' => 'Congratulations ' . Auth::user()->name . '!',
+                'name' => $user->name,
+                'greeting' => 'Congratulations ' . $user->name . '!',
                 'introLines' => [
                     'Your payment of $' . number_format($amount, 2) . ' (Ref: ' . $reference . ') was successful.',
                     'Your portfolio — **' . $portfolioName . '** — has been upgraded and is now live with all your selected features.',
