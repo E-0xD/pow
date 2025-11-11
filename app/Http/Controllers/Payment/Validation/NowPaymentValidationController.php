@@ -45,6 +45,8 @@ class NowPaymentValidationController extends Controller
         Log::info($response, $responseData);
 
         $transaction = Transaction::where('processor_reference',  $transactionId)->first();
+         Log::info($transaction);
+
         $portfolioSubscription = PortfolioSubscription::where('transaction_id', $transaction->id)->first();
 
         if ($transaction->amount  > $amount) {
@@ -70,7 +72,7 @@ class NowPaymentValidationController extends Controller
                 'expires_at' => Carbon::now()->addDays((int) $plan->duration),
             ]);
 
-            $message = $this->messageService->getPaymentSuccessMessage($portfolioSubscription->transaction->amount, $portfolioSubscription->transaction->reference,  $portfolioSubscription->portfolio->title);
+            $message = $this->messageService->getPaymentSuccessMessage($portfolioSubscription->user, $portfolioSubscription->transaction->amount, $portfolioSubscription->transaction->reference,  $portfolioSubscription->portfolio->title);
 
             $this->emailService->send(
                 $portfolioSubscription->user->email,
