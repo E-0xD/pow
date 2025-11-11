@@ -156,7 +156,7 @@ class ProjectsSection extends Component
         if (!empty($this->projectForm['thumbnail_path']) && !is_string($this->projectForm['thumbnail_path'])) {
             Validator::make(
                 ['projectForm.thumbnail_path' => $this->projectForm['thumbnail_path']],
-                ['projectForm.thumbnail_path' => 'image|max:2048']
+                ['projectForm.thumbnail_path' => 'image|max:10240']
             )->validate();
         }
 

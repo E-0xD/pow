@@ -24,7 +24,7 @@ class AboutSection extends Component
 
     protected $rules = [
         'about.name' => 'required|string|max:255',
-        'about.logo' => 'nullable|image|max:1024',
+        'about.logo' => 'nullable|image|max:10240',
         'about.brief' => 'required|string|max:255',
         'about.description' => 'required|string|max:1000',
     ];
