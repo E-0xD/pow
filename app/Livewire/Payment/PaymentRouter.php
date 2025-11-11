@@ -7,9 +7,12 @@ use App\Http\Controllers\Payment\Processors\PolarController;
 use App\Models\Plan;
 use App\Models\Portfolio;
 use App\Models\Transaction;
+use App\Services\EmailService;
+use App\Services\MessageService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Jenssegers\Agent\Agent;
 use Livewire\Component;
 use Livewire\Attributes\Layout;
 
@@ -23,11 +26,15 @@ class PaymentRouter extends Component
     protected $nowpayment;
     protected $polar;
     public $portfolio;
+    public $emailService;
+    public $messageService;
 
     public function boot()
     {
         $this->nowpayment =  new NowPaymentController();
         $this->polar = new PolarController();
+        $this->emailService = new EmailService();
+        $this->messageService = new MessageService(new Agent());
     }
 
     public function mount(Portfolio $portfolio)
@@ -104,6 +111,14 @@ class PaymentRouter extends Component
                 'meta->payment_url' => $data['data']['invoice_url'],
                 'processor_reference' => $data['data']['transaction_id']
             ]);
+
+            $message = $this->messageService->getPaymentInitiatedMessage( $transaction->amount , $transaction->reference, $this->portfolio->title);
+
+            $this->emailService->send(
+                Auth::user()->email,
+                $message['subject'],
+                $message['payload']
+            );
 
             $this->redirect($data['data']['invoice_url']);
         } catch (\Exception $e) {

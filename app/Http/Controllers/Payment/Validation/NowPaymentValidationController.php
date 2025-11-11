@@ -8,14 +8,22 @@ use App\Http\Controllers\Payment\Processors\NowPaymentController;
 use App\Models\Plan;
 use App\Models\PortfolioSubscription;
 use App\Models\Transaction;
+use App\Services\EmailService;
+use App\Services\MessageService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Jenssegers\Agent\Agent;
 
 class NowPaymentValidationController extends Controller
 {
     public $nowpayment;
+    public $emailService;
+    public $messageService;
+
     public function __construct()
     {
+        $this->emailService = new EmailService();
+        $this->messageService = new MessageService(new Agent());
         $this->nowpayment = new NowPaymentController();
     }
 
@@ -35,15 +43,23 @@ class NowPaymentValidationController extends Controller
 
 
         $transaction = Transaction::where('processor_reference',  $transactionId)->first();
+        $portfolioSubscription = PortfolioSubscription::where('transaction_id', $transaction->id)->first();
 
         if ($transaction->amount  > $amount) {
             return redirect()->route('user.portfolio.index')->with([
                 'type' => 'error',
                 'message' => 'Incomplete Payment Received, Kindly contact support'
             ]);
+
+            $message = $this->messageService->getPaymentFailedMessage($portfolioSubscription->transaction->amount, $portfolioSubscription->transaction->reference,  $portfolioSubscription->portfolio->title);
+
+            $this->emailService->send(
+                $portfolioSubscription->user->email,
+                $message['subject'],
+                $message['payload']
+            );
         } else {
 
-            $portfolioSubscription = PortfolioSubscription::where('transaction_id', $transaction->id)->first();
             $plan = Plan::find($portfolioSubscription->plan_id);
 
             $portfolioSubscription->update([
@@ -51,6 +67,14 @@ class NowPaymentValidationController extends Controller
                 'purchased_at' => now(),
                 'expires_at' => Carbon::now()->addDays((int) $plan->duration),
             ]);
+
+            $message = $this->messageService->getPaymentSuccessMessage($portfolioSubscription->transaction->amount, $portfolioSubscription->transaction->reference,  $portfolioSubscription->portfolio->title);
+
+            $this->emailService->send(
+                $portfolioSubscription->user->email,
+                $message['subject'],
+                $message['payload']
+            );
 
             return redirect()->route('user.portfolio.index')->with([
                 'type' => 'success',
