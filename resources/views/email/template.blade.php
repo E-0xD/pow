@@ -36,19 +36,6 @@
                 border-radius: 8px;
             }
 
-            .header {
-                background-color: #713BAB;
-                color: #ffffff;
-                text-align: center;
-                padding: 25px 20px;
-            }
-
-            .header h1 {
-                margin: 0;
-                font-size: 24px;
-                font-weight: 600;
-            }
-
             .content {
                 padding: 30px 20px;
                 text-align: left;
