@@ -16,9 +16,9 @@ use Jenssegers\Agent\Agent;
 
 class NowPaymentValidationController extends Controller
 {
-    public $nowpayment;
-    public $emailService;
-    public $messageService;
+    protected $nowpayment;
+    protected $emailService;
+    protected $messageService;
 
     public function __construct()
     {

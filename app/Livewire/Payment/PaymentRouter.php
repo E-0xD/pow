@@ -26,8 +26,8 @@ class PaymentRouter extends Component
     protected $nowpayment;
     protected $polar;
     public $portfolio;
-    public $emailService;
-    public $messageService;
+    protected $emailService;
+    protected $messageService;
 
     public function boot()
     {

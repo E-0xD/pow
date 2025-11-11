@@ -17,8 +17,8 @@ use Symfony\Component\HttpFoundation\Response;
 
 class PolarWebhookController extends Controller
 {
-    public $emailService;
-    public $messageService;
+    protected $emailService;
+    protected $messageService;
 
     public function __construct()
     {
