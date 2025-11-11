@@ -13,6 +13,7 @@
     <link rel="canonical" href="{{ url()->current() }}" />
 
     <!-- Favicon -->
+    <link rel="icon" href="{{ asset(config('app.favicon')) }}" type="image/x-icon" />
     <link rel="icon" href="{{ asset(config('app.favicon')) }}" sizes="any">
     <link rel="icon" href="{{ asset(config('app.favicon')) }}" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
