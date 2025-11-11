@@ -282,6 +282,46 @@ After saving your configuration, you can authenticate users via Google OAuth by 
 
 ```
 
+## Queue Monitor Script
+
+The **`queue-monitor.sh`** script ensures that the Laravel queue worker is always running.
+It automatically checks every minute (via Laravel’s Task Scheduler) and restarts the queue worker if it has stopped; keeping your background jobs processing reliably.
+
+### Scheduling
+
+The script is scheduled inside Laravel’s `routes/console.php`:
+
+```php
+$schedule->exec(base_path('queue-monitor.sh'))->everyMinute();
+```
+
+This ensures it runs every minute automatically when you’ve set up your Laravel scheduler.
+
+### Starting the Scheduler
+
+Make sure your Laravel scheduler itself is running (usually via cron):
+
+```bash
+* * * * * php /project path/artisan schedule:run >> /dev/null 2>&1
+```
+
+Once this is in place, Laravel will run the queue monitor script every minute automatically.
+
+### Script Permissions
+
+To ensure the script is executable, run :
+
+```bash
+chmod +x queue-monitor.sh
+```
+
+### Notes
+
+* The script should live in your project root (same directory as `artisan`).
+* You can edit it to customize queue behavior if needed.
+* Check `storage/logs/queue-monitor.log` to confirm restarts if needed.
+
+---
 
 ## Development Notes
 
