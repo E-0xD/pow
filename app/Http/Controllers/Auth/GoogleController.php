@@ -6,6 +6,7 @@ use App\Enums\NotificationType;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Services\EmailService;
+use App\Services\MessageService;
 use App\Services\NotificationService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -17,6 +18,7 @@ class GoogleController extends Controller
 
     public $emailService;
     public $notificationService;
+    public $messageService;
     public $agent;
 
     public function __construct()
@@ -24,6 +26,7 @@ class GoogleController extends Controller
         $this->notificationService = new NotificationService();
         $this->agent = new Agent();
         $this->emailService = new EmailService();
+        $this->messageService = new MessageService($this->agent);
     }
     public function initialize()
     {
@@ -63,21 +66,33 @@ class GoogleController extends Controller
 
             Auth::login($user);
 
-
-            $this->notificationService->sendToUser(
-                NotificationType::LOGIN,
-                Auth::user(),
-                'Login Attempt',
-                'A login was detected on ' . now()->format('Y-m-d H:i:s') .
-                    ' UTC using ' . $this->agent->browser() . ' on ' . $this->agent->platform()
-            );
-
-
             if ($isNewUser) {
-                $this->emailService->send(Auth::user()->email, config('messages.register.subject'), config('messages.register.payload'), true);
+
+                $this->notificationService->sendToUser(
+                    NotificationType::SIGNUP,
+                    Auth::user(),
+                    'Welcome to ' . config('app.name'),
+                    $this->messageService->getRegisterNotification()
+                );
+                $message = $this->messageService->getRegisterMessage();
+
             } else {
-                $this->emailService->send(Auth::user()->email, config('messages.login.subject'), config('messages.login.payload'), true);
+
+                $this->notificationService->sendToUser(
+                    NotificationType::LOGIN,
+                    Auth::user(),
+                    'Login Attempt',
+                    $this->messageService->getLoginNotification()
+                );
+                $message = $this->messageService->getLoginMessage();
+
             }
+
+            $this->emailService->send(
+                Auth::user()->email,
+                $message['subject'],
+                $message['payload']
+            );
 
             return redirect()->intended(route('user.dashboard'));
         } catch (\Throwable $th) {

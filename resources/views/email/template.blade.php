@@ -109,8 +109,8 @@
 
     <body>
         <div class="email-container">
-            <div class="logo">
-                <img src="{{ asset('images/brand/Icon1.png') }}" alt="{{ config('app.name') }} Logo">
+              <div class="logo">
+                <img src="{{ config('app.url') }}/images/brand/Icon1.png" alt="{{ config('app.name') }} Logo">
             </div>
 
             <div class="content">
@@ -141,8 +141,15 @@
             </div>
 
             <div class="footer">
+                @if (!empty($signature))
+                    <p>{{ $signature }}</p>
+                @else
+                    <p>&copy; {{ date('Y') }} {{ $company ?? config('app.name') }}. All rights reserved.</p>
+                @endif
 
-                <p>{{ '— The ' . config('app.name') . ' Team' }}</p>
+                @if (!empty($address))
+                    <p>{{ $address }}</p>
+                @endif
             </div>
         </div>
     </body>

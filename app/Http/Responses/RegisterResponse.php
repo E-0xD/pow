@@ -4,6 +4,7 @@ namespace App\Http\Responses;
 
 use App\Enums\NotificationType;
 use App\Services\EmailService;
+use App\Services\MessageService;
 use App\Services\NotificationService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -15,6 +16,7 @@ class RegisterResponse implements ContractsRegisterResponse
 
     public $emailService;
     public $notificationService;
+    public $messageService;
     public $agent;
 
     public function __construct()
@@ -22,6 +24,7 @@ class RegisterResponse implements ContractsRegisterResponse
         $this->notificationService = new NotificationService();
         $this->agent = new Agent();
         $this->emailService = new EmailService();
+        $this->messageService = new MessageService($this->agent);
     }
 
 
@@ -35,9 +38,17 @@ class RegisterResponse implements ContractsRegisterResponse
                 NotificationType::SIGNUP,
                 Auth::user(),
                 'Welcome to ' . config('app.name'),
-                'Your Work, Your Badge. let’s make it count.'
+                $this->messageService->getRegisterNotification()
             );
-            $this->emailService->send(Auth::user()->email, config('messages.register.subject'), config('messages.register.payload'), true);
+
+            $message = $this->messageService->getRegisterMessage();
+
+            $this->emailService->send(
+                Auth::user()->email,
+                $message['subject'],
+                $message['payload']
+            );
+
             return redirect()->intended(route('user.dashboard'));
         } catch (\Throwable $th) {
             Log::error($th);
