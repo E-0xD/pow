@@ -1,6 +1,6 @@
 <x-layouts.app>
 
-    <div class="mx-auto w-full">
+    <div class="mx-auto max-w-7xl">
         <!-- PageHeading -->
         <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
             <h1 class="text-gray-900 dark:text-white text-3xl font-bold leading-tight tracking-tight">Manage Users</h1>
@@ -25,11 +25,10 @@
             </div>
         </div>
         <!-- Users Table -->
-        <div class="bg-white dark:bg-[#20152d] rounded-xl overflow-x-auto">
-            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <div class="bg-white dark:bg-[#20152d] rounded-xl w-full overflow-x-auto">
+            <table class="min-w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700/20 dark:text-gray-400">
                     <tr>
-
                         <th class="px-6 py-3" scope="col">Name</th>
                         <th class="px-6 py-3" scope="col">Portfolios</th>
                         <th class="px-6 py-3" scope="col">Join Date</th>
@@ -40,10 +39,8 @@
                     @foreach ($users as $user)
                         <tr
                             class="bg-white dark:bg-[#20152d] border-b dark:border-gray-700/50 hover:bg-gray-50 dark:hover:bg-gray-800/20">
-
                             <th class="flex items-center px-6 py-4 text-gray-900 dark:text-white whitespace-nowrap"
                                 scope="row">
-
                                 <div class="pl-3">
                                     <div class="text-base font-semibold">{{ $user->name }}</div>
                                     <div class="font-normal text-gray-500">{{ $user->email }}</div>
@@ -51,20 +48,20 @@
                             </th>
                             <td class="px-6 py-4">{{ $user->portfolios()->count() }}</td>
                             <td class="px-6 py-4">{{ $user->created_at?->format('M d, Y') }}</td>
-
                             <td class="px-6 py-4">
                                 <div class="flex items-center space-x-2">
                                     <a href="{{ route('admin.user.show', $user) }}"
-                                        class="p-1 text-gray-500 rounded hover:bg-gray-100 dark:hover:bg-gray-700"><span
-                                            class="material-symbols-outlined text-lg">visibility</span></a>
-                                  
+                                        class="p-1 text-gray-500 rounded hover:bg-gray-100 dark:hover:bg-gray-700">
+                                        <span class="material-symbols-outlined text-lg">visibility</span>
+                                    </a>
                                     <form action="{{ route('admin.user.destroy', $user) }}" method="post"
                                         onsubmit="return confirm('Delete user?');">
                                         @csrf
                                         @method('delete')
                                         <button type="submit"
-                                            class="p-1 text-red-500 rounded hover:bg-red-100 dark:hover:bg-red-900/50"><span
-                                                class="material-symbols-outlined text-lg">delete</span></button>
+                                            class="p-1 text-red-500 rounded hover:bg-red-100 dark:hover:bg-red-900/50">
+                                            <span class="material-symbols-outlined text-lg">delete</span>
+                                        </button>
                                     </form>
                                 </div>
                             </td>
@@ -73,6 +70,7 @@
                 </tbody>
             </table>
         </div>
+
     </div>
 
 </x-layouts.app>
