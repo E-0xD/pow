@@ -26,7 +26,7 @@ class MessageService
                 'name' => Auth::user()->name,
                 'greeting' => 'Hi ' . Auth::user()->name . ', welcome to ' . config('app.name'),
                 'introLines' => [
-                    'We’re excited to have you here! You’ve just taken the first step toward owning your digital proof of work; a place to showcase your skills, projects, and experience with confidence.',
+                    'We’re excited to have you here! You’ve just taken the first step toward owning your digital proof of work; a place to help you showcase your skills, projects, and experience with confidence.',
                     'With ' . config('app.name') . ', you can easily build and share a portfolio that tells your professional story, all in one simple link.',
                     'Our goal is to help you stand out and open new doors of opportunity. If you have ideas or features you’d love to see, we’d love to hear from you anytime.',
                     'Here’s to building something meaningful, and to landing that next big, life-changing opportunity.'

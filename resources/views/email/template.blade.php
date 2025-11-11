@@ -97,7 +97,7 @@
     <body>
         <div class="email-container">
               <div class="logo">
-                <img src="{{ config('app.url') }}/images/brand/Icon1.png" alt="{{ config('app.name') }} Logo">
+                <img src="{{asset(config('app.logo'))}}" alt="{{ config('app.name') }} Logo">
             </div>
 
             <div class="content">
