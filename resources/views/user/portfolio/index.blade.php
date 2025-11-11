@@ -57,9 +57,6 @@
                         <div class="w-full bg-center bg-no-repeat aspect-[4/3] bg-cover"
                             data-alt="Abstract purple and blue gradient background"
                             style="background-image: url('{{ optional($portfolio->about)->logo ? Storage::url($portfolio->about->logo) : asset(str_replace('\\', '/', config('app.logo'))) }}');
-                                    background-size: contain;
-                                    background-repeat: no-repeat;
-                                    background-position: center;
                             ">
                         </div>
 
