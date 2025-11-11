@@ -26,7 +26,7 @@ class PolarController extends Controller
         ]);
 
         $data = $response->json();
-Log::error($data);
+
         return response()->json([
             'success' => true,
             'data' => [

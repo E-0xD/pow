@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Payment\Processors;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class NowPaymentController extends Controller
 {
@@ -85,13 +86,14 @@ class NowPaymentController extends Controller
             return response()->json([
                 'success' => true,
                 'data' => [
-                    'payment_status' => $data['status'],
+                    'payment_status' => $data['payment_status'],
                     'transaction_id' => $data['invoice_id'],
                     'amount' => $data['price_amount']
                 ],
             ], 200);
 
         } catch (\Throwable $th) {
+            Log::error($th);
             return response()->json([
                 'success' => false,
                 'message' => 'Payment validation failed',

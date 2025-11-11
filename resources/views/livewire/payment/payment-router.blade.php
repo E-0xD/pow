@@ -20,7 +20,7 @@
                     <div wire:click="selectPlan({{ $plan->id }})"
                         class="flex flex-1 flex-col gap-6 rounded-xl border border-solid border-border-light dark:border-border-dark bg-white dark:bg-background-dark/50 p-6 shadow-soft hover:shadow-soft-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer">
                         <div class="flex flex-col gap-2">
-                            <h3 class="text-lg font-bold">20% Off</h3>
+
                             <p class="flex items-baseline gap-1">
                                 <span class="text-4xl font-black tracking-tight">${{ $plan->price }}</span>
                                 <span class="text-base font-bold text-text-muted-light dark:text-text-muted-dark">/
@@ -34,20 +34,14 @@
                             <span class="truncate"> Get Started</span>
                         </button>
                         <div class="flex flex-col gap-3 pt-2 border-t border-border-light dark:border-border-dark">
-                            <div class="flex items-center gap-3 text-sm">
-                                <span class="material-symbols-outlined text-primary text-base">check_circle</span> 1
-                                Active
-                                Project
-                            </div>
-                            <div class="flex items-center gap-3 text-sm">
-                                <span class="material-symbols-outlined text-primary text-base">check_circle</span> Basic
-                                Templates
-                            </div>
-                            <div class="flex items-center gap-3 text-sm">
-                                <span class="material-symbols-outlined text-primary text-base">check_circle</span>
-                                Community
-                                Support
-                            </div>
+
+                            @foreach ($plan->benefits as $benefit)
+                                <div class="flex items-center gap-3 text-sm">
+                                    <span class="material-symbols-outlined text-primary text-base">check_circle</span> 1
+                                    {{ $benefit }}
+                                </div>
+                            @endforeach
+
                         </div>
                     </div>
                 @endforeach
@@ -80,8 +74,6 @@
                             <div class="w-10"></div>
                         </header>
 
-                    
-
                         <!-- Payment Method Section -->
                         <div class="flex flex-col items-center gap-2 w-full max-w-md">
                             <div
@@ -89,13 +81,14 @@
                                 <label
                                     class="flex cursor-pointer h-full flex-1 items-center justify-center overflow-hidden rounded-full px-2 py-1.5 has-[:checked]:bg-white dark:has-[:checked]:bg-background-dark has-[:checked]:shadow-soft text-text-muted-light dark:text-text-muted-dark has-[:checked]:text-text-light dark:has-[:checked]:text-text-dark text-sm font-medium transition-all duration-300">
                                     <span class="truncate">Pay with Card</span>
-                                    <input checked class="invisible w-0" wire:model="paymentMethod" name="paymentMethod" value="polar" type="radio"
-                                        value="monthly" />
+                                    <input checked class="invisible w-0" wire:model="paymentMethod" name="paymentMethod"
+                                        value="polar" type="radio" value="monthly" />
                                 </label>
                                 <label
                                     class="flex cursor-pointer h-full flex-1 items-center justify-center overflow-hidden rounded-full px-2 py-1.5 has-[:checked]:bg-white dark:has-[:checked]:bg-background-dark has-[:checked]:shadow-soft text-text-muted-light dark:text-text-muted-dark has-[:checked]:text-text-light dark:has-[:checked]:text-text-dark text-sm font-medium transition-all duration-300">
                                     <span class="truncate">Pay with Crypto</span>
-                                    <input class="invisible w-0" wire:model="paymentMethod" name="paymentMethod" value="nowpayment" type="radio" value="yearly" />
+                                    <input class="invisible w-0" wire:model="paymentMethod" name="paymentMethod"
+                                        value="nowpayment" type="radio" value="yearly" />
                                 </label>
                             </div>
 
@@ -124,7 +117,7 @@
                                     <span>Subtotal</span>
                                     <span>${{ number_format($selectedPlan['price'], 2) }}</span>
                                 </div>
-                               
+
                                 <div class="flex justify-between">
                                     <span>Tax (0%)</span>
                                     <span>$0</span>

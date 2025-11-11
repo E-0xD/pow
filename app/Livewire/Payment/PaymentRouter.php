@@ -9,6 +9,7 @@ use App\Models\Portfolio;
 use App\Models\Transaction;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 use Livewire\Attributes\Layout;
 
@@ -61,8 +62,7 @@ class PaymentRouter extends Component
                 'payable_id' => $this->selectedPlan->id,
                 'meta' => [
                     'plan_name' => $this->selectedPlan->name,
-                    'tax_amount' => $this->selectedPlan->price * 0.1,
-                    'total_amount' => $this->selectedPlan->price * 1.1
+                    'total_amount' => $this->selectedPlan->price
                 ]
             ]);
 
@@ -80,7 +80,7 @@ class PaymentRouter extends Component
                     $response = $this->polar->process(
                         $portfolioSubscription->id,
                         $this->selectedPlan->uid,
-                        route('user.dashboard'),
+                        route('user.portfolio.index'),
                         route('user.dashboard')
                     );
                     break;
@@ -88,7 +88,7 @@ class PaymentRouter extends Component
                 case 'nowpayment':
                     $response = $this->nowpayment->process(
                         $this->selectedPlan->price,
-                        route('user.dashboard'),
+                        route('nowpayment.validate'),
                         route('user.dashboard')
                     );
                     break;
@@ -101,12 +101,13 @@ class PaymentRouter extends Component
 
             // Update transaction with payment gateway reference
             $transaction->update([
-                'meta->payment_url' => $data['data']['invoice_url']
+                'meta->payment_url' => $data['data']['invoice_url'],
+                'processor_reference' => $data['data']['transaction_id']
             ]);
 
             $this->redirect($data['data']['invoice_url']);
         } catch (\Exception $e) {
-            dd($e);
+            Log::error($e);
             DB::rollBack();
             session()->flash('error', 'Payment processing failed. Please try again.');
             return;

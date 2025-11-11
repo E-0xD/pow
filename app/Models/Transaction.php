@@ -15,6 +15,7 @@ class Transaction extends Model
         'status',
         'gateway',
         'reference',
+        'processor_reference',
         'payable_type',
         'payable_id',
         'meta'
