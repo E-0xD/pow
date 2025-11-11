@@ -23,7 +23,7 @@ class EnsurePortfolioMessageOwner
         }
 
         // Allow admin
-        if ($user->role === UserRole::ADMIN) {
+        if ($user->role == UserRole::ADMIN) {
             return $next($request);
         }
 

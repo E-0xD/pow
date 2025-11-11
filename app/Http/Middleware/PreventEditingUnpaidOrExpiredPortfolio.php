@@ -19,7 +19,7 @@ class PreventEditingUnpaidOrExpiredPortfolio
 
         $user = Auth::user();
         // Admins may bypass
-        if ($user && $user->role === UserRole::ADMIN) {
+        if ($user && $user->role == UserRole::ADMIN) {
             return $next($request);
         }
 

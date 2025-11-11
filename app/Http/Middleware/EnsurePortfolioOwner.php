@@ -24,7 +24,7 @@ class EnsurePortfolioOwner
         }
 
         // Allow owner or admin
-        if ($portfolio->user_id !== $user->id && $user->role !== UserRole::ADMIN) {
+        if ($portfolio->user_id != $user->id && $user->role != UserRole::ADMIN) {
             abort(403, 'You do not have permission to access this portfolio.');
         }
 

@@ -13,7 +13,7 @@ class EnsureUserIsActive
     {
         $user = Auth::user();
 
-        if ($user && $user->status !== UserStatus::ACTIVE) {
+        if ($user && $user->status != UserStatus::ACTIVE) {
             abort(403, 'Your account is disabled.');
         }
 

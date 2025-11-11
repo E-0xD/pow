@@ -13,7 +13,7 @@ class EnsureAdmin
     {
         $user = Auth::user();
 
-        if (!$user || $user->role !== UserRole::ADMIN) {
+        if (!$user || $user->role != UserRole::ADMIN) {
             abort(403, 'Admin access required.');
         }
 
