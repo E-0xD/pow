@@ -94,18 +94,61 @@
 
                 <div class="flex flex-col gap-2 md:col-span-2">
                     <label class="text-sm font-medium text-gray-700 dark:text-gray-300">Skills</label>
-                    <div class="flex flex-wrap gap-3">
-                        @foreach ($availableSkills as $skill)
-                            <label class="flex items-center gap-2 text-sm">
-                                <input type="checkbox" wire:model="projectForm.skills" value="{{ $skill->id }}"
-                                    class="rounded text-primary focus:ring-primary">
-                                <span class="text-gray-700 dark:text-gray-300">{{ $skill->name }}</span>
-                            </label>
+                    
+                    <!-- Skill Search Input -->
+                    <div class="relative">
+                        <span
+                            class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500 text-xl">
+                            search
+                        </span>
+                        <input 
+                            wire:model.live.debounce.300ms="projectSkillSearch"
+                            class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg 
+                                   text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-primary/50 
+                                   border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 
+                                   focus:border-primary h-10 placeholder:text-gray-400 pl-10 pr-4 py-2 text-sm"
+                            placeholder="Search and add skills..." 
+                        />
+
+                        <!-- Dropdown Results -->
+                        @if(!empty($projectSkillSearchResults))
+                            <ul class="absolute z-10 mt-2 w-full bg-white dark:bg-gray-800 border border-gray-200 
+                                       dark:border-gray-700 rounded-lg shadow-md max-h-60 overflow-y-auto">
+                                @foreach($projectSkillSearchResults as $skill)
+                                    <li 
+                                        wire:click="addProjectSkill({{ $skill['id'] }})"
+                                        class="flex items-center gap-2 px-4 py-2 cursor-pointer hover:bg-gray-100 
+                                               dark:hover:bg-gray-700 transition">
+                                        <span class="material-symbols-outlined text-primary text-base">
+                                            {!! $skill['logo'] !!}
+                                        </span>
+                                        <span class="text-gray-900 dark:text-gray-100">{{ $skill['title'] }}</span>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        @endif
+                    </div>
+
+                    <!-- Selected Skills Display -->
+                    <div class="flex flex-wrap gap-2 pt-2">
+                        @foreach ($projectForm['skills'] as $skillId)
+                            @php
+                                $skill = \App\Models\Skill::find($skillId);
+                            @endphp
+                            @if($skill)
+                                <span
+                                    class="inline-flex items-center gap-1.5 rounded-full bg-primary/10 dark:bg-primary/20 
+                                           px-3 py-1 text-sm font-medium text-primary dark:text-primary/90">
+                                    <span class="material-symbols-outlined text-sm">{!! $skill->logo !!}</span>
+                                    {{ $skill->title }}
+                                    <button type="button" wire:click="removeProjectSkill({{ $skillId }})"
+                                        class="p-0.5 rounded-full hover:bg-primary/20 dark:hover:bg-primary/30">
+                                        <span class="material-symbols-outlined text-xs">close</span>
+                                    </button>
+                                </span>
+                            @endif
                         @endforeach
                     </div>
-                    @error('projectForm.skills')
-                        <span class="text-red-500 text-xs">{{ $message }}</span>
-                    @enderror
                 </div>
             </div>
 
