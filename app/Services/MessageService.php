@@ -81,4 +81,76 @@ class MessageService
     {
         return  'Your Work, Your Badge. let\'s make it count.';
     }
+
+    public static function getPaymentInitiatedMessage($amount, $reference, $portfolioName): array
+    {
+        return [
+            'subject' => 'Payment Initiated',
+            'payload' => [
+                'title' => 'Payment Started for ' . $portfolioName,
+                'name' => Auth::user()->name,
+                'greeting' => 'Hi ' . Auth::user()->name . ',',
+                'introLines' => [
+                    'We’ve received your request to make a payment of $' . number_format($amount, 2) . '.',
+                    'Your payment reference is **' . $reference . '**.',
+                    'Once confirmed, your portfolio — **' . $portfolioName . '** — will be upgraded automatically.',
+                    'You’ll receive an update as soon as the payment is processed successfully.'
+                ],
+
+                'outroLines' => [
+                    'If you didn’t initiate this payment, please contact support immediately.'
+                ],
+                'signature' => '— The ' . config('app.name') . ' Team',
+                'company' => config('app.name'),
+            ]
+        ];
+    }
+
+    public function getPaymentFailedMessage($amount, $reference, $portfolioName): array
+    {
+        return [
+            'subject' => 'Payment Failed',
+            'payload' => [
+                'title' => 'Payment Failed for ' . $portfolioName,
+                'name' => Auth::user()->name,
+                'greeting' => 'Hi ' . Auth::user()->name . ',',
+                'introLines' => [
+                    'We noticed that your payment of $' . number_format($amount, 2) . ' (Ref: ' . $reference . ') didn’t go through.',
+                    'Sometimes this can happen due to network delays or an issue with your payment provider.',
+                    'You can try again or choose a different payment method to complete your upgrade for **' . $portfolioName . '**.'
+                ],
+                'actionText' => 'Try Again',
+                'actionUrl' => route('user.billing'),
+                'outroLines' => [
+                    'If you need assistance, feel free to reply to this email; we’re here to help.'
+                ],
+                'signature' => '— The ' . config('app.name') . ' Team',
+                'company' => config('app.name'),
+            ]
+        ];
+    }
+
+    public function getPaymentSuccessMessage($amount, $reference, $portfolioName): array
+    {
+        return [
+            'subject' => 'Payment Successful',
+            'payload' => [
+                'title' => 'Payment Successful for ' . $portfolioName,
+                'name' => Auth::user()->name,
+                'greeting' => 'Congratulations ' . Auth::user()->name . '!',
+                'introLines' => [
+                    'Your payment of $' . number_format($amount, 2) . ' (Ref: ' . $reference . ') was successful.',
+                    'Your portfolio — **' . $portfolioName . '** — has been upgraded and is now live with all your selected features.',
+                    'We’re excited to see what you build next. Keep showing the world your proof of work!'
+                ],
+                'actionText' => 'View Portfolio',
+                'actionUrl' => route('user.portfolio', ['name' => $portfolioName]),
+                'outroLines' => [
+                    'If you have any feedback or run into an issue, reply to this email; we’d love to hear from you.'
+                ],
+                'signature' => '— The ' . config('app.name') . ' Team',
+                'company' => config('app.name'),
+            ]
+        ];
+    }
 }
