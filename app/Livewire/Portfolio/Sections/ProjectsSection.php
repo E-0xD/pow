@@ -22,7 +22,8 @@ class ProjectsSection extends Component
         'skills' => [],
     ];
     public $editingProjectIndex = null;
-    public $projectSkillSearch = [];
+    public $projectSkillSearch = '';
+    public $projectSkillSearchResults = [];
 
     protected $rules = [
         'projectForm.title' => 'required|string|max:255',
@@ -79,6 +80,43 @@ class ProjectsSection extends Component
             'thumbnail_path' => null,
             'skills' => [],
         ];
+        $this->projectSkillSearch = '';
+        $this->projectSkillSearchResults = [];
+    }
+
+    public function updatedProjectSkillSearch()
+    {
+        if (strlen($this->projectSkillSearch) > 1) {
+            $this->projectSkillSearchResults = Skill::query()
+                ->where('title', 'like', '%' . $this->projectSkillSearch . '%')
+                ->limit(8)
+                ->get(['id', 'title', 'logo'])
+                ->toArray();
+        } else {
+            $this->projectSkillSearchResults = [];
+        }
+    }
+
+    public function addProjectSkill($skillId)
+    {
+        $skill = Skill::find($skillId);
+        if (!$skill) return;
+
+        // Avoid duplicates
+        if (in_array($skill->id, $this->projectForm['skills'])) return;
+
+        $this->projectForm['skills'][] = $skill->id;
+        $this->projectSkillSearch = '';
+        $this->projectSkillSearchResults = [];
+    }
+
+    public function removeProjectSkill($skillId)
+    {
+        $this->projectForm['skills'] = array_filter(
+            $this->projectForm['skills'],
+            fn($id) => $id != $skillId
+        );
+        $this->projectForm['skills'] = array_values($this->projectForm['skills']);
     }
 
     public function deleteProject($index)

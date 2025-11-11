@@ -13,8 +13,8 @@
     <link rel="canonical" href="{{ url()->current() }}" />
 
     <!-- Favicon -->
-    <link rel="icon" href="{{ asset(config('app.logo')) }}" sizes="any">
-    <link rel="icon" href="{{ asset(config('app.logo')) }}" type="image/svg+xml">
+    <link rel="icon" href="{{ asset(config('app.favicon')) }}" sizes="any">
+    <link rel="icon" href="{{ asset(config('app.favicon')) }}" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
     <!-- Fonts -->
@@ -27,7 +27,7 @@
     <meta property="og:title" content="{{ $title ?? 'Showcase Your Digital Proof of Work | ' . config('app.name') }}" />
     <meta property="og:description"
         content="Turn your projects into opportunities. Build and share your digital proof of work with a portfolio that speaks for you." />
-    <meta property="og:image" content="{{ asset(config('app.logo')) }}" />
+    <meta property="og:image" content="{{ asset(config('app.favicon')) }}" />
     <meta property="og:url" content="{{ url()->current() }}" />
 
     <!-- Twitter Card -->
@@ -36,19 +36,7 @@
         content="{{ $title ?? 'Build and Share Your Proof of Work | ' . config('app.name') }}" />
     <meta name="twitter:description"
         content={{ config('app.name') . ' helps professionals and creatives turn their skills and projects into a visual, shareable portfolio.' }} />
-    <meta name="twitter:image" content="{{ asset(config('app.logo')) }}" />
-
-    <!-- Structured Data (JSON-LD for search engines) -->
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "{{ config('app.name') }}",
-  "url": "{{ url('/') }}",
-  "logo": "{{ asset(config('app.logo')) }}",
-  "description": "{{config('app.name')}} lets you build, showcase, and share your digital proof of work; your projects, achievements, and professional journey.",
-}
-</script>
+    <meta name="twitter:image" content="{{ asset(config('app.favicon')) }}" />
 
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
