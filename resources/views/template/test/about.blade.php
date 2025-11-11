@@ -1,13 +1,13 @@
     <section class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center" id="home">
         <div class="lg:col-span-2 space-y-6">
             <h1 class="text-5xl sm:text-7xl font-heading font-bold text-zinc-900 dark:text-white">
-                {{ $portfolio->about->name }}
+                {{ $portfolio->about->name ?? 'N/A' }}
             </h1>
             <h2 class="text-xl sm:text-2xl font-medium text-zinc-800 dark:text-zinc-200">
-                {{ $portfolio->about->brief }}
+                {{ $portfolio->about->brief ?? 'N/A' }}
             </h2>
             <p class="max-w-xl text-base leading-relaxed">
-                {{ $portfolio->about->description }}
+                {{ $portfolio->about->description ?? 'N/A' }}
             </p>
             <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-4">
                 <button
