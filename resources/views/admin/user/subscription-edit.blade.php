@@ -33,7 +33,7 @@
                         <label class="block text-sm font-medium">Status</label>
                         <select name="status" class="form-input rounded-md h-10 w-full text-text-primary dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/50 border border-gray-300 dark:border-gray-700 bg-background-light dark:bg-gray-800">
                             @php 
-                                $currentStatus = old('status', $subscription?->status ?? \App\Enums\PortfolioSubscriptionStatus::ACTIVE); 
+                                $currentStatus = old('status', $subscription?->status->value ?? \App\Enums\PortfolioSubscriptionStatus::ACTIVE); 
                             @endphp
                             @foreach(\App\Enums\PortfolioSubscriptionStatus::cases() as $status)
                                 <option value="{{ $status->value }}" 

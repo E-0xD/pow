@@ -48,6 +48,7 @@
             </div>
         </div>
         <!-- Table -->
+        <div class="grid grid-cols-1 ">
         <div class="overflow-x-auto">
             <div class="inline-block min-w-full align-middle">
                 <div
@@ -159,6 +160,7 @@
                     </table>
                 </div>
             </div>
+        </div>
         </div>
         <!-- Pagination -->
         <div class="mt-6">

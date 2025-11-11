@@ -22,7 +22,7 @@
             'dark:bg-primary/20 text-primary dark:text-white bg-primary/10' => request()->routeIs('admin.affiliate.*'),
             'hover:bg-gray-100 dark:hover:bg-white/10 text-[#1F2937] dark:text-gray-300' => ! request()->routeIs('admin.affiliate.*')
         ])>
-        <span class="material-symbols-outlined">network_node</span>
+        <span class="material-symbols-outlined  text-2xl">network_node</span>
         <span class="text-xs font-medium">Affiliates</span>
     </a>
 

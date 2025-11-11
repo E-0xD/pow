@@ -16,7 +16,7 @@
                 @method('put')
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
+                   <div class="col-span-2">
                         <label class="block text-sm font-medium">Commission Rate (%)</label>
                         <input type="number" name="commission_rate" 
                             min="0" max="100" step="0.1"
@@ -25,7 +25,7 @@
                         @error('commission_rate') <p class="text-sm text-red-500">{{ $message }}</p> @enderror
                     </div>
 
-                    <div>
+                   <div class="col-span-2">
                         <label class="block text-sm font-medium">Payout Method</label>
                         <select name="payout_method" class="form-input rounded-md h-10 w-full text-text-primary dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/50 border border-gray-300 dark:border-gray-700 bg-background-light dark:bg-gray-800">
                             @php $method = old('payout_method', $affiliate->payout_method) @endphp

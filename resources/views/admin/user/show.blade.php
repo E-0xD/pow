@@ -20,13 +20,14 @@
         <div class="bg-white dark:bg-card-dark rounded-xl p-6 mb-6">
             <div class="flex items-center justify-between mb-4">
                 <h3 class="font-semibold">Affiliate Status</h3>
-                @if(!$user->affiliate)
-                    <button type="button" onclick="document.getElementById('affiliate-form').classList.remove('hidden')"
+                @if (!$user->affiliate)
+                    <button type="button"
+                        onclick="document.getElementById('affiliate-form').classList.remove('hidden')"
                         class="px-4 py-2 bg-primary text-white rounded text-sm">Make Affiliate</button>
                 @endif
             </div>
 
-            @if($user->affiliate)
+            @if ($user->affiliate)
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div>
                         <p class="text-sm text-gray-500">Commission Rate</p>
@@ -44,17 +45,18 @@
             @endif
 
             <!-- New Affiliate Form -->
-            <form id="affiliate-form" action="{{ route('admin.affiliate.store', $user->id) }}" method="post" 
+            <form id="affiliate-form" action="{{ route('admin.affiliate.store', $user->id) }}" method="post"
                 class="{{ $user->affiliate ? 'hidden' : 'hidden mt-4 border-t dark:border-gray-700 pt-4' }}">
                 @csrf
-                    <div>
-                        <label class="block text-sm font-medium">Commission Rate (%)</label>
-                        <input type="number" name="commission_rate" min="0" max="100" step="0.1"
-                            value="{{ old('commission_rate', 10) }}" 
-                            class="form-input rounded-md h-10 w-full text-text-primary dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/50 border border-gray-300 dark:border-gray-700 bg-background-light dark:bg-gray-800" />
-                        @error('commission_rate') <p class="text-sm text-red-500">{{ $message }}</p> @enderror
-                    </div>
-             
+                <div>
+                    <label class="block text-sm font-medium">Commission Rate (%)</label>
+                    <input type="number" name="commission_rate" min="0" max="100" step="0.1"
+                        value="{{ old('commission_rate', 10) }}"
+                        class="form-input rounded-md h-10 w-full text-text-primary dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/50 border border-gray-300 dark:border-gray-700 bg-background-light dark:bg-gray-800" />
+                    @error('commission_rate')
+                        <p class="text-sm text-red-500">{{ $message }}</p>
+                    @enderror
+                </div>
 
                 <div class="mt-4">
                     <button type="submit" class="px-4 py-2 bg-primary text-white rounded">Save</button>
@@ -73,35 +75,39 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-sm font-medium">Role</label>
-                        <select name="role" class="form-input rounded-md h-10 w-full text-text-primary dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/50 border border-gray-300 dark:border-gray-700 bg-background-light dark:bg-gray-800">
-                            @php 
-                                $currentRole = old('role', $user->role ?? \App\Enums\UserRole::default()); 
+                        <select name="role"
+                            class="form-input rounded-md h-10 w-full text-text-primary dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/50 border border-gray-300 dark:border-gray-700 bg-background-light dark:bg-gray-800">
+                            @php
+                                $currentRole = old('role', $user->role->value ?? \App\Enums\UserRole::USER);
                             @endphp
-                            @foreach(\App\Enums\UserRole::cases() as $role)
-                                <option value="{{ $role->value }}" 
-                                    @if($currentRole == $role->value) selected @endif
+                            @foreach (\App\Enums\UserRole::cases() as $role)
+                                <option value="{{ $role->value }}" @if ($currentRole == $role->value) selected @endif
                                     class="{{ $role->color() }}">
                                     {{ $role->label() }}
                                 </option>
                             @endforeach
                         </select>
-                        @error('role') <p class="text-sm text-red-500">{{ $message }}</p> @enderror
+                        @error('role')
+                            <p class="text-sm text-red-500">{{ $message }}</p>
+                        @enderror
                     </div>
                     <div>
                         <label class="block text-sm font-medium">Status</label>
-                        <select name="status" class="form-input rounded-md h-10 w-full text-text-primary dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/50 border border-gray-300 dark:border-gray-700 bg-background-light dark:bg-gray-800">
-                            @php 
-                                $currentStatus = old('status', $user->status ?? \App\Enums\UserStatus::default()); 
+                        <select name="status"
+                            class="form-input rounded-md h-10 w-full text-text-primary dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/50 border border-gray-300 dark:border-gray-700 bg-background-light dark:bg-gray-800">
+                            @php
+                                $currentStatus = old('status', $user->status->value ?? \App\Enums\UserStatus::ACTIVE);
                             @endphp
-                            @foreach(\App\Enums\UserStatus::cases() as $status)
-                                <option value="{{ $status->value }}" 
-                                    @if($currentStatus == $status->value) selected @endif
+                            @foreach (\App\Enums\UserStatus::cases() as $status)
+                                <option value="{{ $status->value }}" @if ($currentStatus == $status->value) selected @endif
                                     class="{{ $status->color() }}">
                                     {{ $status->label() }}
                                 </option>
                             @endforeach
                         </select>
-                        @error('status') <p class="text-sm text-red-500">{{ $message }}</p> @enderror
+                        @error('status')
+                            <p class="text-sm text-red-500">{{ $message }}</p>
+                        @enderror
                     </div>
                 </div>
 
@@ -112,64 +118,68 @@
         </div>
 
         <!-- Portfolios Table -->
-        <div class="bg-white dark:bg-card-dark rounded-xl overflow-x-auto">
-            <div class="p-6 border-b border-gray-200 dark:border-gray-700">
-                <h3 class="text-lg font-semibold">User Portfolios</h3>
-            </div>
-            
-            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 overflow-x-auto">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700/20 dark:text-gray-400">
-                    <tr>
-                        <th class="px-6 py-3">Title</th>
-                        <th class="px-6 py-3">Template</th>
-                        <th class="px-6 py-3">Subscription</th>
-                        <th class="px-6 py-3">Status</th>
-                        <th class="px-6 py-3">Expires</th>
-                        <th class="px-6 py-3">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($portfolios as $portfolio)
-                        <tr class="bg-white dark:bg-[#20152d] border-b dark:border-gray-700/50 hover:bg-gray-50 dark:hover:bg-gray-800/20">
-                            <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">
-                                {{ $portfolio->title }}
-                            </td>
-                            <td class="px-6 py-4">
-                                {{ $portfolio->template?->title ?? 'N/A' }}
-                            </td>
-                            <td class="px-6 py-4">
-                                {{ $portfolio->activeSubscription?->plan?->name ?? 'No active plan' }}
-                            </td>
-                            <td class="px-6 py-4">
-                                @if($portfolio->activeSubscription)
-                                    <span class="px-2 py-1 text-xs rounded-full
-                                        @if($portfolio->activeSubscription->status->value === 'active') bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300
-                                        @elseif($portfolio->activeSubscription->status->value === 'cancelled') bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300
-                                        @else bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300
-                                        @endif">
-                                        {{ ucfirst($portfolio->activeSubscription->status->value) }}
-                                    </span>
-                                @else
-                                    <span class="px-2 py-1 text-xs rounded-full bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300">
-                                        No subscription
-                                    </span>
-                                @endif
-                            </td>
-                            <td class="px-6 py-4">
-                                {{ $portfolio->activeSubscription?->expires_at?->format('M d, Y') ?? 'N/A' }}
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="flex items-center space-x-2">
-                                    <a href="{{ route('admin.portfolio.subscription.edit', $portfolio) }}" 
-                                       class="p-1 text-gray-500 rounded hover:bg-gray-100 dark:hover:bg-gray-700">
-                                        <span class="material-symbols-outlined text-lg">edit</span>
-                                    </a>
-                                </div>
-                            </td>
+        <div class="grid grid-cols-1 ">
+            <div class="bg-white dark:bg-card-dark rounded-xl overflow-x-auto">
+                <div class="p-6 border-b border-gray-200 dark:border-gray-700">
+                    <h3 class="text-lg font-semibold">User Portfolios</h3>
+                </div>
+
+                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 overflow-x-auto">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700/20 dark:text-gray-400">
+                        <tr>
+                            <th class="px-6 py-3">Title</th>
+                            <th class="px-6 py-3">Template</th>
+                            <th class="px-6 py-3">Subscription</th>
+                            <th class="px-6 py-3">Status</th>
+                            <th class="px-6 py-3">Expires</th>
+                            <th class="px-6 py-3">Actions</th>
                         </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach ($portfolios as $portfolio)
+                            <tr
+                                class="bg-white dark:bg-[#20152d] border-b dark:border-gray-700/50 hover:bg-gray-50 dark:hover:bg-gray-800/20">
+                                <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">
+                                    {{ $portfolio->title }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ $portfolio->template?->title ?? 'N/A' }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ $portfolio->activeSubscription?->plan?->name ?? 'No active plan' }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    @if ($portfolio->activeSubscription)
+                                        <span
+                                            class="px-2 py-1 text-xs rounded-full
+                                        @if ($portfolio->activeSubscription->status->value === 'active') bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300
+                                        @elseif($portfolio->activeSubscription->status->value === 'cancelled') bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300
+                                        @else bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300 @endif">
+                                            {{ ucfirst($portfolio->activeSubscription->status->value) }}
+                                        </span>
+                                    @else
+                                        <span
+                                            class="px-2 py-1 text-xs rounded-full bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300">
+                                            No subscription
+                                        </span>
+                                    @endif
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ $portfolio->activeSubscription?->expires_at?->format('M d, Y') ?? 'N/A' }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center space-x-2">
+                                        <a href="{{ route('admin.portfolio.subscription.edit', $portfolio) }}"
+                                            class="p-1 text-gray-500 rounded hover:bg-gray-100 dark:hover:bg-gray-700">
+                                            <span class="material-symbols-outlined text-lg">edit</span>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </x-layouts.app>
