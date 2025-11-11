@@ -280,8 +280,6 @@ The `redirect` URL must match exactly with the one registered in your Google Clo
 
 After saving your configuration, you can authenticate users via Google OAuth by visiting the corresponding login route defined in your Laravel application.
 
-```
-
 ## Queue Monitor Script
 
 The **`queue-monitor.sh`** script ensures that the Laravel queue worker is always running.
