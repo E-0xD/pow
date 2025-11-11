@@ -33,57 +33,63 @@ class NowPaymentValidationController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $response = $this->nowpayment->validate($request);
+        try {
 
-        $responseData = json_decode($response->getContent(), true);
+            $response = $this->nowpayment->validate($request);
 
-        [
-            'amount' => $amount,
-            'transaction_id' => $transactionId
-        ] = $responseData['data'];
+            $responseData = json_decode($response->getContent(), true);
 
-        Log::info($response, $responseData);
+            [
+                'amount' => $amount,
+                'transaction_id' => $transactionId
+            ] = $responseData['data'];
 
-        $transaction = Transaction::where('processor_reference',  $transactionId)->first();
-         Log::info($transaction);
+            $transaction = Transaction::where('processor_reference',  $transactionId)->first();
 
-        $portfolioSubscription = PortfolioSubscription::where('transaction_id', $transaction->id)->first();
+            $portfolioSubscription = PortfolioSubscription::where('transaction_id', $transaction->id)->first();
 
-        if ($transaction->amount  > $amount) {
+            if ($transaction->amount  > $amount) {
+                return redirect()->route('user.portfolio.index')->with([
+                    'type' => 'error',
+                    'message' => 'Incomplete Payment Received, Kindly contact support'
+                ]);
+
+                $message = $this->messageService->getPaymentFailedMessage($portfolioSubscription->user, $portfolioSubscription->transaction->amount, $portfolioSubscription->transaction->reference,  $portfolioSubscription->portfolio->title);
+
+                $this->emailService->send(
+                    $portfolioSubscription->user->email,
+                    $message['subject'],
+                    $message['payload']
+                );
+            } else {
+
+                $plan = Plan::find($portfolioSubscription->plan_id);
+
+                $portfolioSubscription->update([
+                    'status' => PortfolioSubscriptionStatus::ACTIVE,
+                    'purchased_at' => now(),
+                    'expires_at' => Carbon::now()->addDays((int) $plan->duration),
+                ]);
+
+                $message = $this->messageService->getPaymentSuccessMessage($portfolioSubscription->user, $portfolioSubscription->transaction->amount, $portfolioSubscription->transaction->reference,  $portfolioSubscription->portfolio->title);
+
+                $this->emailService->send(
+                    $portfolioSubscription->user->email,
+                    $message['subject'],
+                    $message['payload']
+                );
+
+                return redirect()->route('user.portfolio.index')->with([
+                    'type' => 'success',
+                    'message' => 'Payment Received, Portfolio Activated'
+                ]);
+            };
+        } catch (\Throwable $th) {
+            Log::error($th);
             return redirect()->route('user.portfolio.index')->with([
                 'type' => 'error',
-                'message' => 'Incomplete Payment Received, Kindly contact support'
+                'message' => 'An Error Occurred, Kindly contact support'
             ]);
-
-            $message = $this->messageService->getPaymentFailedMessage( $portfolioSubscription->user, $portfolioSubscription->transaction->amount, $portfolioSubscription->transaction->reference,  $portfolioSubscription->portfolio->title);
-
-            $this->emailService->send(
-                $portfolioSubscription->user->email,
-                $message['subject'],
-                $message['payload']
-            );
-        } else {
-
-            $plan = Plan::find($portfolioSubscription->plan_id);
-
-            $portfolioSubscription->update([
-                'status' => PortfolioSubscriptionStatus::ACTIVE,
-                'purchased_at' => now(),
-                'expires_at' => Carbon::now()->addDays((int) $plan->duration),
-            ]);
-
-            $message = $this->messageService->getPaymentSuccessMessage($portfolioSubscription->user, $portfolioSubscription->transaction->amount, $portfolioSubscription->transaction->reference,  $portfolioSubscription->portfolio->title);
-
-            $this->emailService->send(
-                $portfolioSubscription->user->email,
-                $message['subject'],
-                $message['payload']
-            );
-
-            return redirect()->route('user.portfolio.index')->with([
-                'type' => 'success',
-                'message' => 'Payment Received, Portfolio Activated'
-            ]);
-        };
+        }
     }
 }

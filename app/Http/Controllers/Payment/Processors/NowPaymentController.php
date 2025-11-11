@@ -87,7 +87,7 @@ class NowPaymentController extends Controller
                 'success' => true,
                 'data' => [
                     'payment_status' => $data['payment_status'],
-                    'transaction_id' => $data['invoice_id'],
+                    'transaction_id' => (string) trim($data['invoice_id']),
                     'amount' => $data['price_amount']
                 ],
             ], 200);
