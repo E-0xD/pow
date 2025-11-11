@@ -7,6 +7,7 @@ use Livewire\WithFileUploads;
 use App\Models\Portfolio;
 use App\Models\Skill;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class ProjectsSection extends Component
 {
@@ -29,7 +30,7 @@ class ProjectsSection extends Component
         'projectForm.title' => 'required|string|max:255',
         'projectForm.brief_description' => 'required|string|max:500',
         'projectForm.project_link' => 'nullable|url|max:255',
-        'projectForm.thumbnail_path' => 'nullable|image|max:2048',
+        'projectForm.thumbnail_path' => 'nullable',
         'projectForm.skills' => 'array',
     ];
 
@@ -63,6 +64,15 @@ class ProjectsSection extends Component
     {
         $this->editingProjectIndex = $index;
         $this->projectForm = $this->projects[$index];
+
+        // Reset skill search UI when editing an existing project
+        $this->projectSkillSearch = '';
+        $this->projectSkillSearchResults = [];
+
+        // Clear any previous validation errors
+        if (method_exists($this, 'resetErrorBag')) {
+            $this->resetErrorBag();
+        }
     }
 
     public function cancelEditProject()
@@ -142,6 +152,14 @@ class ProjectsSection extends Component
     {
         $this->validate();
 
+        // If a new file was uploaded (Livewire provides an UploadedFile), validate it's an image
+        if (!empty($this->projectForm['thumbnail_path']) && !is_string($this->projectForm['thumbnail_path'])) {
+            Validator::make(
+                ['projectForm.thumbnail_path' => $this->projectForm['thumbnail_path']],
+                ['projectForm.thumbnail_path' => 'image|max:2048']
+            )->validate();
+        }
+
         DB::beginTransaction();
         try {
             $projectData = [
@@ -150,7 +168,7 @@ class ProjectsSection extends Component
                 'project_link' => $this->projectForm['project_link'],
             ];
 
-           
+
             if ($this->projectForm['thumbnail_path'] && !is_string($this->projectForm['thumbnail_path'])) {
                 $path = $this->projectForm['thumbnail_path']->store('portfolios/' . $this->portfolio->id . '/projects', 'public');
                 $projectData['thumbnail_path'] = $path;
