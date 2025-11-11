@@ -1,6 +1,6 @@
 <x-layouts.app>
 
-    <div class="mx-auto max-w-7xl">
+    <div class="mx-auto w-full">
         <!-- PageHeading -->
         <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
             <h1 class="text-gray-900 dark:text-white text-3xl font-bold leading-tight tracking-tight">Manage Users</h1>
