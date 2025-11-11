@@ -22,4 +22,8 @@ Route::middleware(['capture.affiliate'])->group(function () {
     Route::view('templates', 'guest.templates')->name('guest.templates');
 
     Route::view('contact', 'guest.contact')->name('guest.contact');
+
+    Route::view('privacy-policy', 'guest.privacy-policy')->name('guest.privacy-policy');
+      Route::view('terms', 'guest.terms')->name('guest.terms');
+        Route::view('refund-policy', 'guest.refund-policy')->name('guest.refund-policy');
 });
