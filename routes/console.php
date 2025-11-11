@@ -9,3 +9,5 @@ Artisan::command('inspire', function () {
 })->purpose('Display an inspiring quote');
 
 Schedule::exec(base_path('queue-monitor.sh'))->everyMinute();
+Schedule::command('portfolio:delete-pending')->dailyAt('02:00');
+Schedule::command('portfolio:expire-subscriptions')->everySixHours();
