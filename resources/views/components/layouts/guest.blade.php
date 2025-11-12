@@ -11,7 +11,7 @@
                     <div class="layout-content-container flex flex-col w-full max-w-6xl px-4 md:px-10">
                         <!-- TopNavBar -->
                         <x-layouts.guest.header />
-                        <main class="flex flex-col gap-16 md:gap-24 py-16 md:py-24">
+                        <main class="flex flex-col gap-16 md:gap-24 py-16 md:py-24 mt-24">
                             <x-toast />
                             {{ $slot }}
                         </main>
