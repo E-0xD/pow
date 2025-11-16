@@ -206,7 +206,7 @@ This section explains how to configure Paystack for subscription payments, set u
 
 ---
 
-#### Step 1 — Install and Configure Paystack Keys
+#### Step 1 — Configure Paystack Keys
 
 Add your Paystack **Public** and **Secret** keys to `.env`:
 
@@ -214,26 +214,6 @@ Add your Paystack **Public** and **Secret** keys to `.env`:
 PAYSTACK_PUBLIC=pk_live_xxxxxxxxxxxxxxxxxxxxx
 PAYSTACK_SECRET=sk_live_xxxxxxxxxxxxxxxxxxxxx
 PAYSTACK_URL=https://api.paystack.co/transaction/
-```
-
-Then create the configuration file:
-
-`config/paystack.php`
-
-```php
-<?php
-
-return [
-   'url' => env('PAYSTACK_URL'),
-   'secret' => env('PAYSTACK_SECRET'),
-   'public' => env('PAYSTACK_PUBLIC'),
-];
-```
-
-Make sure to clear your configuration cache:
-
-```bash
-php artisan config:clear
 ```
 
 ---
