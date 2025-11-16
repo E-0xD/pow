@@ -82,7 +82,7 @@
                                     class="flex cursor-pointer h-full flex-1 items-center justify-center overflow-hidden rounded-full px-2 py-1.5 has-[:checked]:bg-white dark:has-[:checked]:bg-background-dark has-[:checked]:shadow-soft text-text-muted-light dark:text-text-muted-dark has-[:checked]:text-text-light dark:has-[:checked]:text-text-dark text-sm font-medium transition-all duration-300">
                                     <span class="truncate">Pay with Card</span>
                                     <input checked class="invisible w-0" wire:model="paymentMethod" name="paymentMethod"
-                                        value="polar" type="radio" value="monthly" />
+                                        value="paystack" type="radio" value="monthly" />
                                 </label>
                                 <label
                                     class="flex cursor-pointer h-full flex-1 items-center justify-center overflow-hidden rounded-full px-2 py-1.5 has-[:checked]:bg-white dark:has-[:checked]:bg-background-dark has-[:checked]:shadow-soft text-text-muted-light dark:text-text-muted-dark has-[:checked]:text-text-light dark:has-[:checked]:text-text-dark text-sm font-medium transition-all duration-300">

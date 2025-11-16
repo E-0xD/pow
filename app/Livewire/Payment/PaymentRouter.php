@@ -3,6 +3,7 @@
 namespace App\Livewire\Payment;
 
 use App\Http\Controllers\Payment\Processors\NowPaymentController;
+use App\Http\Controllers\Payment\Processors\PaystackController;
 use App\Http\Controllers\Payment\Processors\PolarController;
 use App\Models\Plan;
 use App\Models\Portfolio;
@@ -22,9 +23,10 @@ class PaymentRouter extends Component
     public $plans;
     public $selectedPlan = null;
     public $user;
-    public $paymentMethod = 'polar';
+    public $paymentMethod = 'paystack';
     protected $nowpayment;
     protected $polar;
+    protected $paystack;
     public $portfolio;
     protected $emailService;
     protected $messageService;
@@ -33,13 +35,14 @@ class PaymentRouter extends Component
     {
         $this->nowpayment =  new NowPaymentController();
         $this->polar = new PolarController();
+        $this->paystack = new PaystackController();
         $this->emailService = new EmailService();
         $this->messageService = new MessageService(new Agent());
     }
 
     public function mount(Portfolio $portfolio)
     {
-         $this->portfolio = $portfolio;
+        $this->portfolio = $portfolio;
         $this->plans = Plan::get();
     }
 
@@ -99,7 +102,14 @@ class PaymentRouter extends Component
                         route('user.dashboard')
                     );
                     break;
-
+                case 'paystack':
+                    $response = $this->paystack->process(
+                        $portfolioSubscription->id,
+                        $this->selectedPlan,
+                        route('user.portfolio.index'),
+                        route('user.dashboard')
+                    );
+                    break;
                 default:
                     throw new \Exception('Invalid payment method');
             }
@@ -112,7 +122,7 @@ class PaymentRouter extends Component
                 'processor_reference' => $data['data']['transaction_id']
             ]);
 
-            $message = $this->messageService->getPaymentInitiatedMessage( $transaction->amount , $transaction->reference, $this->portfolio->title);
+            $message = $this->messageService->getPaymentInitiatedMessage($transaction->amount, $transaction->reference, $this->portfolio->title);
 
             $this->emailService->send(
                 Auth::user()->email,

@@ -26,6 +26,7 @@ class PlanSeeder extends Seeder
                     'Advanced analytics',
                     'Custom domain connection'
                 ]),
+                'paystack_plan_code' => 'PLN_tfkihoy29c8v65s',
                 'duration' => 365,
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -40,6 +41,7 @@ class PlanSeeder extends Seeder
                     'Priority support',
                     'Basic analytics'
                 ]),
+                'paystack_plan_code' => 'PLN_2yxk0odys330i9h',
                 'duration' => 30,
                 'created_at' => now(),
                 'updated_at' => now(),
