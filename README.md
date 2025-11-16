@@ -135,7 +135,7 @@ SESSION_PATH=/
 
 ## Payment and Webhook Configuration
 
-POW integrates with **Polar** for subscription billing and **NowPayments** for cryptocurrency payment handling.
+POW integrates with **Polar** and **paystack** for subscription billing and **NowPayments** for cryptocurrency payment handling.
 
 ### 1. Polar Setup
 
