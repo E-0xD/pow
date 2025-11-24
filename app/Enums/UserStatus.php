@@ -7,6 +7,7 @@ enum UserStatus: string
     case PENDING = 'pending';
     case ACTIVE = 'active';
     case SUSPENDED = 'suspended';
+    case WAITLIST = 'waitlist';
 
     public function label(): string
     {
@@ -14,6 +15,7 @@ enum UserStatus: string
             self::PENDING => 'Pending',
             self::ACTIVE => 'Active',
             self::SUSPENDED => 'Suspended',
+            self::WAITLIST => 'Waitlist'
         };
     }
 
@@ -23,6 +25,7 @@ enum UserStatus: string
             self::PENDING => 'text-yellow-500',
             self::ACTIVE => 'text-green-600',
             self::SUSPENDED => 'text-red-600',
+            self::WAITLIST => 'text-yellow-500',
         };
     }
 
@@ -32,6 +35,7 @@ enum UserStatus: string
             self::PENDING => 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300',
             self::ACTIVE => 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300',
             self::SUSPENDED => 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300',
+            self::WAITLIST => 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300',
         };
     }
 

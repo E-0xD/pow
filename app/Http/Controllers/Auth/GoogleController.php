@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Enums\NotificationType;
+use App\Enums\UserStatus;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Services\EmailService;
@@ -58,6 +59,7 @@ class GoogleController extends Controller
                     'email'                => $googleUser->email,
                     'password'             => bcrypt(str()->random(16)),
                     'google_refresh_token' => $googleUser->refreshToken ?? null,
+                    'status' => config('app.status') == 'waitlist' ? UserStatus::WAITLIST : UserStatus::ACTIVE
                 ]);
 
                 $isNewUser = true;

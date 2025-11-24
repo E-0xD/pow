@@ -12,19 +12,19 @@
          <div class="flex flex-col gap-3">
              <h4 class="font-bold text-text-light dark:text-text-dark">Product</h4>
              <a class="text-sm text-subtle-light dark:text-subtle-dark hover:text-primary dark:hover:text-primary"
-                 href="#">Features</a>
+                 href{{ URL::to(route('guest.welcome') . '#features') }}">Features</a>
 
              <a class="text-sm text-subtle-light dark:text-subtle-dark hover:text-primary dark:hover:text-primary"
-                 href="#">Register</a>
+                 href="{{route('register')}}"> {{ config('app.status') == 'waitlist' ? 'Join the waitlist' : 'Sign Up' }}</a>
              <a class="text-sm text-subtle-light dark:text-subtle-dark hover:text-primary dark:hover:text-primary"
                  href="#">Login</a>
          </div>
          <div class="flex flex-col gap-3">
              <h4 class="font-bold text-text-light dark:text-text-dark">Company</h4>
              <a class="text-sm text-subtle-light dark:text-subtle-dark hover:text-primary dark:hover:text-primary"
-                 href="#">About Us</a>
+                 href="{{ URL::to(route('guest.welcome') . '#about') }}">About Us</a>
              <a class="text-sm text-subtle-light dark:text-subtle-dark hover:text-primary dark:hover:text-primary"
-                 href="#">Contact</a>
+                 href="{{ URL::to(route('guest.welcome') . '#contact') }}">Contact</a>
          </div>
          <div class="flex flex-col gap-3">
              <h4 class="font-bold text-text-light dark:text-text-dark">Legal</h4>

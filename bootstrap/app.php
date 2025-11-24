@@ -10,6 +10,7 @@ use App\Http\Middleware\PreventEditingUnpaidOrExpiredPortfolio;
 use App\Http\Middleware\PreventViewingExpiredPortfolio;
 use App\Http\Middleware\TrackPortfolioAnalytics;
 use App\Http\Middleware\ValidatePortfolioSubdomain;
+use App\Http\Middleware\Waitlist;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -32,6 +33,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'portfolio.view_not_expired' => PreventViewingExpiredPortfolio::class,
             'message.owner' => EnsurePortfolioMessageOwner::class,
             'ensure.affiliate' => EnsureAffiliate::class,
+            'waitlist' => Waitlist::class,
         ]);
         $middleware->validateCsrfTokens(except: [
             'webhook/*',

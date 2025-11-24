@@ -17,7 +17,7 @@
       </a>
       <a href="{{ route('register') }}"
         class="hidden md:flex items-center justify-center rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold hover:opacity-90">
-        Sign Up
+        {{ config('app.status') == 'waitlist' ? 'Join the waitlist' : 'Sign Up' }}
       </a>
 
     
@@ -63,7 +63,7 @@
           </a>
           <a href="{{ route('register') }}"
             class="block text-center rounded-lg py-2 bg-primary text-white hover:opacity-90">
-            Sign Up
+              {{ config('app.status') == 'waitlist' ? 'Join the waitlist' : 'Sign Up' }}
           </a>
         </li>
 

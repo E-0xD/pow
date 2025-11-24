@@ -7,14 +7,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Enums\UserStatus;
 
-class EnsureUserIsActive
+class Waitlist
 {
     public function handle(Request $request, Closure $next)
     {
         $user = Auth::user();
 
-        if ($user && $user->status == UserStatus::SUSPENDED) {
-            abort(403, 'Your account is disabled.');
+        if (config('app.status') == 'waitlist' && $user && $user->status == UserStatus::WAITLIST) {
+          return redirect(route('user.waitlist'));
         }
 
         return $next($request);

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Enums\NotificationType;
+use App\Enums\UserStatus;
 use App\Services\EmailService;
 use App\Services\MessageService;
 use App\Services\NotificationService;
@@ -38,7 +39,14 @@ class RegisterController extends Controller
         try {
             throw "Error Processing Request";
 
-            $user = User::create($request->only(['email', 'name', 'password']));
+            $user = User::create(array_merge(
+                $request->only(['email', 'name', 'password']),
+                [
+                    'status' => config('app.status') === 'waitlist'
+                        ? UserStatus::WAITLIST
+                        : UserStatus::ACTIVE,
+                ]
+            ));
 
             Auth::login($user);
         } catch (\Throwable $th) {

@@ -14,17 +14,18 @@
         <div class="flex flex-wrap gap-3 justify-center">
             <a href="{{ route('register') }}"
                 class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] hover:opacity-90">
-                <span class="truncate">Start Proving Your Work</span>
+                <span
+                    class="truncate">{{ config('app.status') == 'waitlist' ? 'Join the waitlist' : 'Start Proving Your Work' }}</span>
             </a>
 
         </div>
-        <div class="w-full mt-8 aspect-[1/1] md:max-w-[600px] mx-auto
+        <div
+            class="w-full mt-8 aspect-[1/1] md:max-w-[600px] mx-auto
      bg-card-light dark:bg-card-dark rounded-xl 
-     border border-border-light dark:border-border-dark shadow-lg"
-            data-alt="A mockup image showing the POW portfolio builder on a desktop screen and a mobile device.">
+     border border-border-light dark:border-border-dark shadow-lg">
 
             <video src="{{ asset('videos/brand.mp4') }}" class="w-full h-full object-cover rounded-xl" muted
-                autoplay loop></video>
+                autoplay></video>
         </div>
 
     </section>
@@ -175,7 +176,7 @@
                     <div class="w-px bg-gray-300 dark:bg-gray-700 h-2 grow"></div>
                 </div>
                 <div class="flex flex-1 flex-col pb-12 pt-3">
-                    <p class="text-subtle-light dark:text-subtle-dark text-sm font-normal leading-normal">October
+                    <p class="text-subtle-light dark:text-subtle-dark text-sm font-normal leading-normal">Septemmber
                         2025</p>
                     <p class="text-primary dark:text-text-dark text-lg font-medium leading-normal">The Journey
                         Began</p>
@@ -195,7 +196,7 @@
                     <div class="w-px bg-gray-300 dark:bg-gray-700 h-2 grow"></div>
                 </div>
                 <div class="flex flex-1 flex-col pb-12 pt-3">
-                    <p class="text-subtle-light dark:text-subtle-dark text-sm font-normal leading-normal">November
+                    <p class="text-subtle-light dark:text-subtle-dark text-sm font-normal leading-normal">October
                         2025</p>
                     <p class="text-primary dark:text-text-dark text-lg font-medium leading-normal">Building the
                         Foundation</p>
@@ -215,7 +216,8 @@
                 </div>
                 <div class="flex flex-1 flex-col pt-3">
                     <p class="text-subtle-light dark:text-subtle-dark text-sm font-normal leading-normal">Coming
-                        2026</p>
+                        November
+                        2025</p>
                     <p class="text-primary dark:text-text-dark text-lg font-medium leading-normal">Launch &
                         Growth</p>
                     <p class="text-subtle-light dark:text-subtle-dark text-base font-normal leading-normal mt-1">

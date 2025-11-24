@@ -128,4 +128,6 @@ return [
     'desc' => env('APP_DESC'),
 
     'favicon' => env('APP_FAVICON'),
+
+    'status' => env('APP_STATUS', 'live')
 ];

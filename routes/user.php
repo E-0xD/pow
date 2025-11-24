@@ -11,7 +11,7 @@ use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('user')->name('user.')->middleware(['auth', 'ensure.active', 'message.owner', 'portfolio.owner', 'portfolio.editable'])->group(function () {
+Route::prefix('user')->name('user.')->middleware(['waitlist', 'auth', 'ensure.active', 'message.owner', 'portfolio.owner', 'portfolio.editable'])->group(function () {
     Route::get('dashboard', DashboardController::class)->name('dashboard');
     Route::resource('portfolio', PortfolioController::class);
     Route::get('portfolio/{portfolio}/customize', PortfolioBuilder::class)->name('portfolio.customize');
@@ -25,9 +25,8 @@ Route::prefix('user')->name('user.')->middleware(['auth', 'ensure.active', 'mess
     Route::get('settings/profile', Profile::class)->name('profile.edit');
     Route::get('settings/password', Password::class)->name('user-password.edit');
     Route::get('settings/appearance', Appearance::class)->name('appearance.edit');
-
-
-        
 });
 
-    Route::view('gen_z_seven', 'template.gen_z_seven.index');
+Route::view('waitlist', 'user.other.waitlist')->middleware('auth')->name('user.waitlist');
+
+Route::view('gen_z_seven', 'template.gen_z_seven.index');
