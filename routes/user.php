@@ -26,5 +26,8 @@ Route::prefix('user')->name('user.')->middleware(['auth', 'ensure.active', 'mess
     Route::get('settings/password', Password::class)->name('user-password.edit');
     Route::get('settings/appearance', Appearance::class)->name('appearance.edit');
 
+
         
 });
+
+    Route::view('gen_z_seven', 'template.gen_z_seven.index');

@@ -48,7 +48,7 @@
 
 
                 {{-- Login Form --}}
-                <form method="POST" action="{{ route('login') }}" class="flex w-full flex-col gap-5">
+                <form method="POST" action="{{ route('login.submit') }}" class="flex w-full flex-col gap-5">
                     @csrf
 
                     {{-- Email --}}

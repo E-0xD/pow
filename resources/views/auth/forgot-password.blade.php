@@ -31,9 +31,12 @@
                     </div>
 
                     <div class="flex items-center justify-end mt-4">
-                        <x-button>
-                            {{ __('Email Password Reset Link') }}
-                        </x-button>
+
+                        <button type="submit"
+                            class="flex w-full justify-center items-center rounded-lg h-12 mt-4 bg-primary text-white text-base font-bold hover:bg-primary/90 transition-colors">
+                            Email Password Reset Link
+                        </button>
+
                     </div>
                 </form>
 

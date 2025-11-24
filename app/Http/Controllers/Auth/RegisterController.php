@@ -1,17 +1,19 @@
 <?php
 
-namespace App\Http\Responses;
+namespace App\Http\Controllers\Auth;
 
 use App\Enums\NotificationType;
 use App\Services\EmailService;
 use App\Services\MessageService;
 use App\Services\NotificationService;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\RegisterRequest;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Jenssegers\Agent\Agent;
-use Laravel\Fortify\Contracts\RegisterResponse as ContractsRegisterResponse;
 
-class RegisterResponse implements ContractsRegisterResponse
+class RegisterController extends Controller
 {
 
     public $emailService;
@@ -26,13 +28,30 @@ class RegisterResponse implements ContractsRegisterResponse
         $this->emailService = new EmailService();
         $this->messageService = new MessageService($this->agent);
     }
-
-
-    /**
-     * Handle response after successful registration.
-     */
-    public function toResponse($request)
+    public function index()
     {
+        return view('auth.register');
+    }
+
+    public function register(RegisterRequest $request)
+    {
+        try {
+            throw "Error Processing Request";
+
+            $user = User::create($request->only(['email', 'name', 'password']));
+
+            Auth::login($user);
+        } catch (\Throwable $th) {
+            Log::error($th);
+            return back()
+                ->withErrors([
+                    'email' => 'An error occurred while logging you in, try again soon',
+                ])
+                ->withInput();
+        }
+
+
+
         try {
             $this->notificationService->sendToUser(
                 NotificationType::SIGNUP,
@@ -48,11 +67,10 @@ class RegisterResponse implements ContractsRegisterResponse
                 $message['subject'],
                 $message['payload']
             );
-
-            return redirect()->intended(route('user.dashboard'));
         } catch (\Throwable $th) {
             Log::error($th);
-            return redirect()->route('user.dashboard');
         }
+
+        return redirect()->intended(route('user.dashboard'));
     }
 }

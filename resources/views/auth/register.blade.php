@@ -11,7 +11,7 @@
                 </h1>
             </div>
 
-            <form method="POST" action="{{ route('register') }}" class="mt-8 space-y-6">
+            <form method="POST" action="{{ route('register.submit') }}" class="mt-8 space-y-6">
                 @csrf
 
                 <div class="flex flex-col">
