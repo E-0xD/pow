@@ -13,15 +13,15 @@ require __DIR__ . '/user.php';
 Route::middleware(['capture.affiliate'])->group(function () {
   Route::view('/', 'guest.welcome')->name('guest.welcome');
 
-  Route::view('features', 'guest.features')->name('guest.features');
+  // Route::view('features', 'guest.features')->name('guest.features');
 
   // Route::view('pricing', 'guest.pricing')->name('guest.pricing');
 
-  Route::view('about', 'guest.about')->name('guest.about');
+  // Route::view('about', 'guest.about')->name('guest.about');
 
   // Route::view('templates', 'guest.templates')->name('guest.templates');
 
-  Route::view('contact', 'guest.contact')->name('guest.contact');
+  // Route::view('contact', 'guest.contact')->name('guest.contact');
 
   Route::view('privacy-policy', 'guest.privacy-policy')->name('guest.privacy-policy');
   Route::view('terms', 'guest.terms')->name('guest.terms');

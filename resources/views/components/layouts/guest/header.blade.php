@@ -38,20 +38,20 @@
         class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-border-light dark:border-border-dark rounded-lg bg-background-light dark:bg-background-dark md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-transparent dark:md:bg-transparent">
 
         <li>
-          <a href="{{ route('guest.welcome') }}"
+          <a href="#home"
             class="block py-2 px-3 text-primary font-semibold md:p-0 rounded-sm hover:text-primary md:hover:text-primary"
             aria-current="page">Home</a>
         </li>
         <li>
-          <a href="{{ route('guest.features') }}"
+          <a href="#features"
             class="block py-2 px-3 text-text-light dark:text-text-dark rounded-sm hover:text-primary md:p-0">Features</a>
         </li>
         <li>
-          <a href="{{ route('guest.about') }}"
+          <a href="#about"
             class="block py-2 px-3 text-text-light dark:text-text-dark rounded-sm hover:text-primary md:p-0">About</a>
         </li>
         <li>
-          <a href="{{ route('guest.contact') }}"
+          <a href="#contact"
             class="block py-2 px-3 text-text-light dark:text-text-dark rounded-sm hover:text-primary md:p-0">Contact</a>
         </li>
 
