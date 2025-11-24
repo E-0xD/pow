@@ -52,7 +52,7 @@ class RegisterController extends Controller
             Log::error($th);
             return back()
                 ->withErrors([
-                    'email' => 'An error occurred while logging you in, try again soon',
+                    'name' => 'An error occurred while signing you up, try again soon',
                 ])
                 ->withInput();
         }
