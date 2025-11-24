@@ -4,7 +4,7 @@
     <section class="flex flex-col gap-8 text-center items-center" id="home">
         <div class="flex flex-col gap-4">
             <h1
-                class="text-primary dark:text-text-dark text-4xl font-extrabold leading-tight tracking-tighter md:text-6xl">
+                class="text-text-light dark:text-text-dark text-4xl font-extrabold leading-tight tracking-tighter md:text-6xl">
                 Create and Share Stunning Portfolios in Minutes</h1>
             <p
                 class="text-subtle-light dark:text-subtle-dark text-base font-normal leading-normal md:text-xl max-w-3xl mx-auto">
@@ -24,7 +24,7 @@
             data-alt="A mockup image showing the POW portfolio builder on a desktop screen and a mobile device.">
 
             <video src="{{ asset('videos/brand.mp4') }}" class="w-full h-full object-cover rounded-xl" muted
-                autoplay></video>
+                autoplay loop></video>
         </div>
 
     </section>
@@ -78,7 +78,7 @@
     <section class="flex flex-col gap-10">
         <div class="flex flex-col gap-4 text-center items-center">
             <h2
-                class="text-primary dark:text-text-dark text-3xl font-bold leading-tight tracking-tight md:text-4xl max-w-[720px]">
+                class="text-text-light dark:text-text-dark text-3xl font-bold leading-tight tracking-tight md:text-4xl max-w-[720px]">
                 Everything you need to stand out</h2>
             <p class="text-subtle-light dark:text-subtle-dark text-base font-normal leading-normal max-w-[720px]">
                 Our platform is packed with features designed to make your work shine and your
@@ -160,7 +160,7 @@
     <section class="">
         <div class="max-w-3xl mx-auto">
             <h2
-                class="text-primary dark:text-white tracking-tight text-3xl font-bold leading-tight sm:text-4xl text-center">
+                class="text-text-light dark:text-white tracking-tight text-3xl font-bold leading-tight sm:text-4xl text-center">
                 Our Story
             </h2>
 
@@ -229,7 +229,7 @@
 
     <!-- How It Works Section -->
     <section class="flex flex-col gap-10 items-center">
-        <h2 class="text-primary dark:text-text-dark text-3xl font-bold leading-tight tracking-tight text-center">
+        <h2 class="text-text-light dark:text-text-dark text-3xl font-bold leading-tight tracking-tight text-center">
             Get Started in 3 Simple Steps</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
             <div class="flex flex-col items-center text-center gap-4">
@@ -268,7 +268,7 @@
             <!-- Page Heading -->
             <div class="flex flex-col gap-3 text-center mb-12">
                 <h1
-                    class="text-primary text-4xl sm:text-5xl font-black leading-tight tracking-[-0.033em] text-[#111827] dark:text-white">
+                    class="text-text-light text-4xl sm:text-5xl font-black leading-tight tracking-[-0.033em] text-[#111827] dark:text-white">
                     Get in Touch</h1>
                 <p
                     class="text-base sm:text-lg font-normal leading-normal text-[#6B7280] dark:text-gray-400 max-w-2xl mx-auto">
