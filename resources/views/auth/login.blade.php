@@ -5,14 +5,13 @@
             <div
                 class="flex flex-col items-center rounded-xl bg-white dark:bg-zinc-900 shadow-md border border-gray-200 dark:border-zinc-800 p-8 sm:p-10">
 
-             
                 <h3 class="text-[#111827] dark:text-white text-2xl font-bold text-center pb-8 pt-2">
                     Sign in to your account
                 </h3>
 
                 {{-- Google Login Button (Optional Integration Later) --}}
                 <div class="w-full">
-                    <a href="{{route('auth.google.initialize')}}"
+                    <a href="{{ route('auth.google.initialize') }}"
                         class="flex w-full items-center justify-center rounded-lg h-12 px-5 bg-white dark:bg-zinc-800 text-[#111827] dark:text-white gap-3 text-base font-bold border border-gray-300 dark:border-zinc-700 hover:bg-gray-50 dark:hover:bg-zinc-700 transition-colors">
                         <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none">
                             <g clip-path="url(#clip0_3033_558)">
@@ -46,7 +45,6 @@
                     <div class="h-px flex-1 bg-gray-200 dark:bg-zinc-700"></div>
                 </div>
 
-
                 {{-- Login Form --}}
                 <form method="POST" action="{{ route('login.submit') }}" class="flex w-full flex-col gap-5">
                     @csrf
@@ -60,9 +58,9 @@
                             autofocus autocomplete="username" placeholder="you@example.com"
                             class="form-input w-full rounded-lg border border-gray-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 h-14 px-[15px] text-base text-text-light dark:text-text-dark placeholder:text-subtext-light dark:placeholder:text-subtext-dark focus:outline-none focus:ring-2 focus:ring-primary transition-shadow" />
                         @error('email')
-                        <span class="text-sm text-red-500 mt-1">{{ $message }}</span>
-                    @enderror
-                        </label>
+                            <span class="text-sm text-red-500 mt-1">{{ $message }}</span>
+                        @enderror
+                    </label>
 
                     {{-- Password --}}
                     <label class="flex flex-col flex-1">
@@ -78,11 +76,11 @@
                         <input id="password" type="password" name="password" required autocomplete="current-password"
                             placeholder="Enter your password"
                             class="form-input w-full rounded-lg border border-gray-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 h-14 px-[15px] text-base text-text-light dark:text-text-dark placeholder:text-subtext-light dark:placeholder:text-subtext-dark focus:outline-none focus:ring-2 focus:ring-primary transition-shadow" />
-                   
-                       @error('password')
-                        <span class="text-sm text-red-500 mt-1">{{ $message }}</span>
-                    @enderror
-                        </label>
+
+                        @error('password')
+                            <span class="text-sm text-red-500 mt-1">{{ $message }}</span>
+                        @enderror
+                    </label>
 
                     {{-- Remember Me --}}
                     <label class="flex items-center gap-2 mt-2">
@@ -100,8 +98,12 @@
 
                 {{-- Register CTA --}}
                 <p class="text-subtext-light dark:text-subtext-dark text-sm pt-8 text-center">
-                    Don't have an account?
-                    <a href="{{ route('register') }}" class="font-bold text-primary hover:underline">Sign Up</a>
+                    {{ config('app.status') == 'waitlist'
+                        ? 'Unlock exclusive discounts as an early adopter'
+                        : 'Don’t have an account?' }}
+
+                    <a href="{{ route('register') }}"
+                        class="font-bold text-primary hover:underline">{{ config('app.status') == 'waitlist' ? 'Join the waitlist' : 'Sign Up' }}</a>
                 </p>
             </div>
         </div>

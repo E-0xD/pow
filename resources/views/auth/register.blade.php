@@ -63,7 +63,7 @@
                 <button
                     class="flex h-14 w-full items-center justify-center gap-2 rounded-lg bg-primary px-4 py-3 text-base font-semibold text-white transition-colors hover:bg-primary/90"
                     type="submit">
-                    Sign Up
+                    {{ config('app.status') == 'waitlist' ? 'Join the waitlist' : 'Sign Up' }}
                 </button>
 
                 <div class="flex items-center gap-4">
@@ -93,13 +93,14 @@
                             C43.021,36.241,44,30.563,44,24
                             C44,22.659,43.862,21.35,43.611,20.083z" fill="#1976D2"></path>
                     </svg>
-                    Sign up with Google
+                     {{ config('app.status') == 'waitlist' ? 'Join the waitlist' : 'Sign Up' }} with Google
                 </a>
             </form>
 
             <div class="mt-8 text-center">
                 <p class="text-base text-gray-600 dark:text-gray-400">
-                    Already have an account?
+                     {{ config('app.status') == 'waitlist' ? 'Joined the waitlist?' : 'Already have an account?' }}
+                    
                     <a class="font-semibold text-primary hover:underline" href="{{ route('login') }}">Log in</a>
                 </p>
             </div>
