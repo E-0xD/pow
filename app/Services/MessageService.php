@@ -151,4 +151,66 @@ class MessageService
             ]
         ];
     }
+
+    /**
+     * Get password reset message
+     */
+    public function getPasswordResetMessage($user, $resetLink): array
+    {
+        return [
+            'subject' => 'Reset Your Password',
+            'payload' => [
+                'title' => 'Password Reset Request',
+                'name' => $user->name,
+                'greeting' => 'Hi ' . $user->name . ',',
+                'introLines' => [
+                    'We received a request to reset the password associated with your ' . config('app.name') . ' account.',
+                    'If you made this request, click the button below to reset your password. This link will expire in 60 minutes.',
+                    'If you didn\'t request a password reset, you can safely ignore this email. Your account is secure.'
+                ],
+                'outroLines' => [
+                    'If you have any trouble, reply to this email or contact our support team.'
+                ],
+                 'actionText' => 'Reset Password',
+                'actionUrl' => $resetLink,
+                'signature' => '— The ' . config('app.name') . ' Team',
+                'company' => config('app.name'),
+            ]
+        ];
+    }
+
+    /**
+     * Get password reset notification message
+     */
+    public function getPasswordResetNotification(): string
+    {
+        return 'A password reset was requested for your account on ' . now()->format('Y-m-d H:i:s') . ' UTC';
+    }
+
+    /**
+     * Get password reset success message
+     */
+    public function getPasswordResetSuccessMessage($user): array
+    {
+        return [
+            'subject' => 'Your Password Has Been Reset',
+            'payload' => [
+                'title' => 'Password Reset Successful',
+                'name' => $user->name,
+                'greeting' => 'Hi ' . $user->name . ',',
+                'introLines' => [
+                    'Your password has been successfully reset.',
+                    'You can now sign in to your ' . config('app.name') . ' account with your new password.',
+                    'If you didn\'t reset your password, please contact our support team immediately to secure your account.'
+                ],
+                'actionText' => 'Go to Dashboard',
+                'actionUrl' => route('user.dashboard'),
+                'outroLines' => [
+                    'If you have any questions, reply to this email or contact our support team.'
+                ],
+                'signature' => '— The ' . config('app.name') . ' Team',
+                'company' => config('app.name'),
+            ]
+        ];
+    }
 }

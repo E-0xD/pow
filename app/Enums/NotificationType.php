@@ -30,6 +30,9 @@ enum NotificationType: string
     case TRIAL_STARTED = 'trial_started';
     case TRIAL_ENDING = 'trial_ending';
 
+    // Password reset
+    case PASSWORD_RESET = 'password_reset';
+
     public function label(): string
     {
         return match ($this) {
@@ -54,6 +57,8 @@ enum NotificationType: string
 
             self::TRIAL_STARTED => 'Trial started',
             self::TRIAL_ENDING => 'Trial ending',
+
+            self::PASSWORD_RESET => 'Password reset',
         };
     }
 
@@ -97,6 +102,8 @@ enum NotificationType: string
 
             self::TRIAL_STARTED => 'star',
             self::TRIAL_ENDING => 'hourglass_bottom',
+
+            self::PASSWORD_RESET => 'lock_reset',
         };
     }
 }

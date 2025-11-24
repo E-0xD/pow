@@ -16,10 +16,10 @@ use Jenssegers\Agent\Agent;
 class RegisterController extends Controller
 {
 
-    public $emailService;
-    public $notificationService;
-    public $messageService;
-    public $agent;
+    protected EmailService $emailService;
+    protected NotificationService $notificationService;
+    protected MessageService $messageService;
+    protected Agent $agent;
 
     public function __construct()
     {
