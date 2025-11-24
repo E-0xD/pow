@@ -26,7 +26,7 @@ class ResetPasswordController extends Controller
         $this->emailService = new EmailService();
     }
 
-    public function showResetForm(Request $request, $token = null)
+    public function index(Request $request, $token = null)
     {
         // pass the incoming request so the blade can access old email if provided
         return view('auth.reset-password', ['request' => $request, 'token' => $token]);
