@@ -37,7 +37,6 @@ class RegisterController extends Controller
     public function register(RegisterRequest $request)
     {
         try {
-            throw "Error Processing Request";
 
             $user = User::create(array_merge(
                 $request->only(['email', 'name', 'password']),
