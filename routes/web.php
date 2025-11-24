@@ -27,3 +27,5 @@ Route::middleware(['capture.affiliate'])->group(function () {
   Route::view('terms', 'guest.terms')->name('guest.terms');
   Route::view('refund-policy', 'guest.refund-policy')->name('guest.refund-policy');
 });
+
+Route::fallback(fn()=> view('guest.404'));
