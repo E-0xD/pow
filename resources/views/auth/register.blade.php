@@ -7,7 +7,9 @@
 
                 <h1
                     class="text-[#141118] tracking-light text-[32px] font-bold leading-tight text-center pb-3 pt-4 dark:text-white">
-                    Create Your Account
+
+                    {{ config('app.status') == 'waitlist' ? 'Be an Early Adopter' : 'Create Your Account' }}
+
                 </h1>
             </div>
 
@@ -93,14 +95,14 @@
                             C43.021,36.241,44,30.563,44,24
                             C44,22.659,43.862,21.35,43.611,20.083z" fill="#1976D2"></path>
                     </svg>
-                     {{ config('app.status') == 'waitlist' ? 'Join the waitlist' : 'Sign Up' }} with Google
+                    {{ config('app.status') == 'waitlist' ? 'Join the waitlist' : 'Sign Up' }} with Google
                 </a>
             </form>
 
             <div class="mt-8 text-center">
                 <p class="text-base text-gray-600 dark:text-gray-400">
-                     {{ config('app.status') == 'waitlist' ? 'Joined the waitlist?' : 'Already have an account?' }}
-                    
+                    {{ config('app.status') == 'waitlist' ? 'Joined the waitlist?' : 'Already have an account?' }}
+
                     <a class="font-semibold text-primary hover:underline" href="{{ route('login') }}">Log in</a>
                 </p>
             </div>
