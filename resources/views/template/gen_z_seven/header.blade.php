@@ -3,7 +3,7 @@
           <div class="box">
               <div class="w-[68px] h-[68px] rounded-full overflow-hidden">
                   <img src="{{ $portfolio->about->logo ? Storage::url($portfolio->about->logo) : asset(config('app.favicon')) }}"
-                      alt="avatar" class="w-full h-full object-cover">
+                      alt="avatar" class="w-full h-full object-cover"  width="68" height="68" >
               </div>
 
               <div class="info">
