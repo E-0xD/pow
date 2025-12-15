@@ -15,11 +15,6 @@ class EducationRecord extends Model
         'degree'
     ];
 
-    protected $casts = [
-        'year_of_admission' => 'date',
-        'year_of_graduation' => 'date'
-    ];
-
     public function portfolio(): BelongsTo
     {
         return $this->belongsTo(Portfolio::class);

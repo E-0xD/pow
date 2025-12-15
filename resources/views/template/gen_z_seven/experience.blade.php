@@ -18,8 +18,8 @@
                         <p class="text-body-1 font-3">{{ ucFirst($experience->description) }}</p>
                     </div>
                     <div class="date text-caption-1 text_white font-3">
-                        {{ $experience->start_date->format('Y') }} -
-                        {{ $experience->end_date ? $experience->end_date->format('Y') : 'Present' }}
+                        {{ $experience->start_date }} -
+                        {{ $experience->end_date ? $experience->end_date : 'Present' }}
                     </div>
                     <div class="item-shape spotlight">
                         <img src="{{ asset('template_assets/gen_z_seven/images/item/small-comet.webp') }}"
