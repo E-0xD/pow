@@ -175,11 +175,11 @@
                 <span class="material-symbols-outlined">arrow_forward</span>
             </button>
         @else
-            <button
+            <a href="{{ $portfolio->slug . '.' . parse_url(config('app.url'), PHP_URL_HOST) }}"
                 class="flex min-w-[84px] cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-10 px-5 bg-primary text-white text-sm font-bold leading-normal shadow-lg shadow-primary/30 hover:bg-primary/90">
                 <span class="truncate">view Portfolio</span>
                 <span class="material-symbols-outlined">check</span>
-            </button>
+            </a>
         @endif
     </div>
 
