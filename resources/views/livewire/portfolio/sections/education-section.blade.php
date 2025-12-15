@@ -66,7 +66,7 @@
                         <div class="flex flex-col gap-2">
                             <label class="text-sm font-medium text-gray-700 dark:text-gray-300">Year of
                                 Admission</label>
-                            <input type="number" wire:model="educationForm.year_of_admission"
+                            <input type="number" wire:model="educationForm.year_of_admission" placeholder="2025"
                                 class="rounded-lg border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-primary focus:border-primary">
                             @error('educationForm.year_of_admission')
                                 <span class="text-red-500 text-xs">{{ $message }}</span>
@@ -76,7 +76,7 @@
                         <div class="flex flex-col gap-2">
                             <label class="text-sm font-medium text-gray-700 dark:text-gray-300">Year of
                                 Graduation</label>
-                            <input type="number" wire:model="educationForm.year_of_graduation"
+                            <input type="number" wire:model="educationForm.year_of_graduation" placeholder="2000"
                                 class="rounded-lg border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-primary focus:border-primary">
                             @error('educationForm.year_of_graduation')
                                 <span class="text-red-500 text-xs">{{ $message }}</span>
