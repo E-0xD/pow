@@ -22,8 +22,8 @@ class EducationSection extends Component
     protected $rules = [
         'educationForm.school' => 'required|string|max:255',
         'educationForm.degree' => 'required|string|max:255',
-        'educationForm.year_of_admission' => 'required|min:1901|max:2155',
-        'educationForm.year_of_graduation' => 'nullable|min:1901|max:2155|gte:educationForm.year_of_admission'
+        'educationForm.year_of_admission' => 'required|',
+        'educationForm.year_of_graduation' => 'nullable'
     ];
 
     public function mount(Portfolio $portfolio)
