@@ -16,7 +16,7 @@
                             <p class="text-gray-600 dark:text-gray-400 text-sm">
                                 {{ $experience['company'] ?? '' }} —
                                 {{ $experience['start_date'] ?? '' }}
-                                @if($experience['end_date'])
+                                @if($experience['end_date'] != null)
                                     to {{ $experience['end_date'] }}
                                 @endisset
                             </p>
