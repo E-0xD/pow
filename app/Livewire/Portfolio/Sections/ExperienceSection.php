@@ -23,7 +23,7 @@ class ExperienceSection extends Component
     protected $rules = [    
         'experienceForm.company' => 'required|string|max:255',
         'experienceForm.position' => 'required|string|max:255',
-        'experienceForm.start_date' => 'required|date',
+        'experienceForm.start_date' => 'required',
         'experienceForm.end_date' => 'nullable',
         'experienceForm.description' => 'nullable|string|max:1000'
     ];
@@ -41,8 +41,8 @@ class ExperienceSection extends Component
                 'id' => $exp->id,
                 'company' => $exp->company,
                 'position' => $exp->position,
-                'start_date' => $exp->start_date instanceof Carbon ? $exp->start_date->format('Y-m-d') : $exp->start_date,
-                'end_date' => $exp->end_date instanceof Carbon ? $exp->end_date->format('Y-m-d') : $exp->end_date,
+                'start_date' => $exp->start_date,
+                'end_date' => $exp->end_date,
                 'description' => $exp->description
             ];
         })->values()->toArray();
