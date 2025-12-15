@@ -15,9 +15,9 @@
                             </h3>
                             <p class="text-gray-600 dark:text-gray-400 text-sm">
                                 {{ $experience['company'] ?? '' }} —
-                                {{ Carbon\Carbon::parse($experience['start_date']) ?? '' }}
+                                {{ $experience['start_date'] ?? '' }}
                                 @isset($experience['end_date'])
-                                    to {{ Carbon\Carbon::parse($experience['end_date']) }}
+                                    to {{ $experience['end_date'] }}
                                 @endisset
                             </p>
                         </div>
