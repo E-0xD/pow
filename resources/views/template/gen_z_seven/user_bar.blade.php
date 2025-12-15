@@ -4,7 +4,7 @@
          @if ($portfolio->about->logo)
              <div class="img-style mb_16">
                  <img decoding="async" loading="lazy" src="{{ Storage::url($portfolio->about->logo) }}" width="314"
-                     height="314" alt="logo">
+                     height="314" alt="logo" style="height: 314; width:314">
              </div>
          @endif
          <div class="info">
