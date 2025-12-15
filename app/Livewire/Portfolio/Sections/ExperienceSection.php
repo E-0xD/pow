@@ -24,7 +24,7 @@ class ExperienceSection extends Component
         'experienceForm.company' => 'required|string|max:255',
         'experienceForm.position' => 'required|string|max:255',
         'experienceForm.start_date' => 'required|date',
-        'experienceForm.end_date' => 'nullable|date|after_or_equal:experienceForm.start_date',
+        'experienceForm.end_date' => 'nullable|after_or_equal:experienceForm.start_date',
         'experienceForm.description' => 'nullable|string|max:1000'
     ];
 
