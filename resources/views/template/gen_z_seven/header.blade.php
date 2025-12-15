@@ -1,9 +1,14 @@
   <div class="header position-sticky">
       <div class="header-sidebar style-horizontal bs-light-mode">
           <div class="box">
-              <div class="avatar">
-                  <img src="{{ $portfolio->about->logo ? Storage::url($portfolio->about->logo) :asset(config('app.favicon')) }}" width="68" height="68" alt="avatar">
-              </div>
+             <div class="avatar rounded-circle overflow-hidden" style="width:68px; height:68px;">
+    <img
+        src="{{ $portfolio->about->logo ? Storage::url($portfolio->about->logo) : asset(config('app.favicon')) }}"
+        alt="avatar"
+        class="w-100 h-100 object-fit-cover"
+    >
+</div>
+
               <div class="info">
                   <h6 class="font-4 mb_4"> {{ ucFirst($portfolio->about->name) }}</h6>
                   <div class="text-label text-uppercase fw-6 text_primary-color font-3  letter-spacing-1">
