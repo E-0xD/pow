@@ -22,7 +22,7 @@ class EducationSection extends Component
     protected $rules = [
         'educationForm.school' => 'required|string|max:255',
         'educationForm.degree' => 'required|string|max:255',
-        'educationForm.year_of_admission' => 'required|',
+        'educationForm.year_of_admission' => 'required',
         'educationForm.year_of_graduation' => 'nullable'
     ];
 
