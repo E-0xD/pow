@@ -1,0 +1,30 @@
+<div id="education" class="section-resume spacing-1 section">
+    <div class="heading-section mb_44">
+        <div class="tag-heading text-uppercase text-label font-3 letter-spacing-1 mb_30">
+            Degrees and Certifications
+        </div>
+        <h3 class="text_white fw-5 split-text effect-blur-fade">Education</h3>
+    </div>
+    <div class="effect-line-hover">
+        @foreach ($portfolio->educationRecords as $education)
+            <div class="wrap-education-item area-effect  scrolling-effect effectTop">
+                <span class="point"></span>
+                <div class="education-item">
+                    <div class="content">
+                        <h5 class="font-4 mb_4"><a href="#contact" class="link">{{ $education->degree }}</a>
+                        </h5>
+                        <span class="text-body-1 font-3">{{ $education->school }}</span>
+                    </div>
+                    <div class="date text-caption-1 text_white font-3">
+                        {{ $education->year_of_admission->format('Y') }} -
+                        {{ $education->year_of_graduation ? $education->year_of_graduation->format('Y') : 'Present' }}
+                    </div>
+                    <div class="item-shape spotlight">
+                        <img src="{{ asset('template_assets/gen_z_seven/images/item/small-comet.webp') }}"
+                            loading="lazy" decoding="async" alt="item">
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    </div>
+</div>

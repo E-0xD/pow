@@ -7,23 +7,32 @@
                 <span class="text-2xl font-black text-primary">POW</span>
             </div>
             <div class="flex flex-col gap-2">
-                <a @class(["flex items-center gap-3 px-3 py-2 rounded-lg",
-                    'bg-primary/10 dark:bg-primary/20 text-primary dark:text-white' => request()->routeIs('user.dashboard'),
-                    'hover:bg-gray-100 dark:hover:bg-white/10 text-[#1F2937] dark:text-gray-300' => ! request()->routeIs('user.dashboard')
+                <a @class([
+                    'flex items-center gap-3 px-3 py-2 rounded-lg',
+                    'bg-primary/10 dark:bg-primary/20 text-primary dark:text-white' => request()->routeIs(
+                        'user.dashboard'),
+                    'hover:bg-gray-100 dark:hover:bg-white/10 text-[#1F2937] dark:text-gray-300' => !request()->routeIs(
+                        'user.dashboard'),
                 ]) href="{{ route('user.dashboard') }}">
                     <span class="material-symbols-outlined text-2xl">dashboard</span>
                     <p class="text-sm font-bold leading-normal">Dashboard</p>
                 </a>
-                <a @class(["flex items-center gap-3 px-3 py-2 rounded-lg",
-                    'dark:bg-primary/20 text-primary dark:text-white bg-primary/10' => request()->routeIs('user.portfolio.*'),
-                    'hover:bg-gray-100 dark:hover:bg-white/10 text-[#1F2937] dark:text-gray-300' => ! request()->routeIs('user.portfolio.*')
+                <a @class([
+                    'flex items-center gap-3 px-3 py-2 rounded-lg',
+                    'dark:bg-primary/20 text-primary dark:text-white bg-primary/10' => request()->routeIs(
+                        'user.portfolio.*'),
+                    'hover:bg-gray-100 dark:hover:bg-white/10 text-[#1F2937] dark:text-gray-300' => !request()->routeIs(
+                        'user.portfolio.*'),
                 ]) href="{{ route('user.portfolio.index') }}">
                     <span class="material-symbols-outlined !font-bold">image</span>
                     <p class="text-sm font-medium leading-normal">My Portfolios</p>
                 </a>
-                <a @class(["flex items-center gap-3 px-3 py-2 rounded-lg",
-                    'dark:bg-primary/20 text-primary dark:text-white bg-primary/10' => request()->routeIs('user.messages.*'),
-                    'hover:bg-gray-100 dark:hover:bg-white/10 text-[#1F2937] dark:text-gray-300' => ! request()->routeIs('user.messages.*')
+                <a @class([
+                    'flex items-center gap-3 px-3 py-2 rounded-lg',
+                    'dark:bg-primary/20 text-primary dark:text-white bg-primary/10' => request()->routeIs(
+                        'user.messages.*'),
+                    'hover:bg-gray-100 dark:hover:bg-white/10 text-[#1F2937] dark:text-gray-300' => !request()->routeIs(
+                        'user.messages.*'),
                 ]) href="{{ route('user.messages.index') }}">
                     <span class="material-symbols-outlined">
                         mail
@@ -31,24 +40,42 @@
                     <p class="text-sm font-medium leading-normal">Inbox</p>
                 </a>
                 @if (Auth::user()->affiliate)
-                <a @class(["flex items-center gap-3 px-3 py-2 rounded-lg",
-                    'dark:bg-primary/20 text-primary dark:text-white bg-primary/10' => request()->routeIs('user.affiliate.*'),
-                    'hover:bg-gray-100 dark:hover:bg-white/10 text-[#1F2937] dark:text-gray-300' => ! request()->routeIs('user.affiliate.*')
-                ]) href="{{ route('user.affiliate.index') }}">
-                    <span class="material-symbols-outlined">
-                        network_node
-                    </span>
-                    <p class="text-sm font-medium leading-normal">Affiliate</p>
-                </a>
+                    <a @class([
+                        'flex items-center gap-3 px-3 py-2 rounded-lg',
+                        'dark:bg-primary/20 text-primary dark:text-white bg-primary/10' => request()->routeIs(
+                            'user.affiliate.*'),
+                        'hover:bg-gray-100 dark:hover:bg-white/10 text-[#1F2937] dark:text-gray-300' => !request()->routeIs(
+                            'user.affiliate.*'),
+                    ]) href="{{ route('user.affiliate.index') }}">
+                        <span class="material-symbols-outlined">
+                            network_node
+                        </span>
+                        <p class="text-sm font-medium leading-normal">Affiliate</p>
+                    </a>
                 @endif
             </div>
         </div>
 
         <div class="flex flex-col gap-4">
             <div class="flex flex-col gap-1">
-                <a @class(["flex items-center gap-3 px-3 py-2 rounded-lg",
-                    'dark:bg-primary/20 text-primary dark:text-white bg-primary/10' => request()->routeIs('user.profile.*'),
-                    'hover:bg-gray-100 dark:hover:bg-white/10 text-[#1F2937] dark:text-gray-300' => ! request()->routeIs('user.profile.*')
+                @if (Auth::user()->role->value == 'admin')
+                    <a @class([
+                        'flex items-center gap-3 px-3 py-2 rounded-lg',
+                        'dark:bg-primary/20 text-primary dark:text-white bg-primary/10' => request()->routeIs(
+                            'admin.user.*'),
+                        'hover:bg-gray-100 dark:hover:bg-white/10 text-[#1F2937] dark:text-gray-300' => !request()->routeIs(
+                            'admin.user.*'),
+                    ]) href="{{ route('user.dashboard') }}">
+                        <span class="material-symbols-outlined text-2xl">admin_panel_settings</span>
+                        <p class="text-sm font-medium leading-normal">Admin</p>
+                    </a>
+                @endif
+                <a @class([
+                    'flex items-center gap-3 px-3 py-2 rounded-lg',
+                    'dark:bg-primary/20 text-primary dark:text-white bg-primary/10' => request()->routeIs(
+                        'user.profile.*'),
+                    'hover:bg-gray-100 dark:hover:bg-white/10 text-[#1F2937] dark:text-gray-300' => !request()->routeIs(
+                        'user.profile.*'),
                 ]) href="{{ route('user.profile.edit') }}">
                     <span class="material-symbols-outlined text-2xl">settings</span>
                     <p class="text-sm font-medium leading-normal">Settings</p>

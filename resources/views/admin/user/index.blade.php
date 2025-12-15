@@ -12,17 +12,25 @@
         </div>
         <!-- Filters -->
         <div class="bg-white dark:bg-[#20152d] rounded-xl p-4 mb-6">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div class="col-span-1 md:col-span-2">
+            <form method="GET" action="{{ route('admin.user.index') }}" class="grid grid-cols-3 md:grid-cols-3 gap-4">
+                <div class="col-span-2 md:col-span-10">
                     <label class="relative">
                         <span
                             class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500">search</span>
-                        <input
+                        <input name="q"
                             class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-gray-900 dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border-gray-300 dark:border-gray-700 bg-background-light dark:bg-background-dark h-11 placeholder:text-gray-400 dark:placeholder:text-gray-500 pl-10 pr-4 text-sm font-normal"
-                            placeholder="Search by name or email..." value="" />
+                            placeholder="Search by name or email..." value="{{ request()->q }}" />
                     </label>
+
                 </div>
-            </div>
+
+                <button type="submit"
+                    class="col-span-1 md:col-span-1 flex items-center justify-center gap-2 min-w-[84px] cursor-pointer overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 focus:ring-2 focus:ring-primary/50">
+                    <span class="material-symbols-outlined text-base">search</span>
+                    <span class="hidden md:inline truncate">Search</span>
+                </button>
+
+            </form>
         </div>
         <!-- Users Table -->
         <div class="grid grid-cols-1 ">
@@ -75,6 +83,9 @@
                 </table>
             </div>
         </div>
+
+        <x-pagination :paginator="$users" />
+
     </div>
 
 </x-layouts.app>

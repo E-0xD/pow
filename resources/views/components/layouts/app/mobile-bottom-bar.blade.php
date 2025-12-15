@@ -60,4 +60,15 @@
         <span class="material-symbols-outlined text-2xl">settings</span>
         <span class="text-xs font-medium">Settings</span>
     </a>
+
+    <a href="{{ route('admin.metrics.index') }}" @class([
+        'flex flex-col items-center rounded-2xl px-3 py-1',
+        'dark:bg-primary/20 text-primary dark:text-white bg-primary/10' => request()->routeIs(
+            'admin.metrics.index'),
+        'hover:bg-gray-100 dark:hover:bg-white/10 text-[#1F2937] dark:text-gray-300' => !request()->routeIs(
+            'admin.metrics.index'),
+    ])>
+        <span class="material-symbols-outlined text-2xl">admin_panel_settings</span>
+        <span class="text-xs font-medium">Admin</span>
+    </a>
 </nav>

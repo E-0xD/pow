@@ -47,8 +47,8 @@
                     'dark:bg-primary/20 text-primary dark:text-white bg-primary/10' => request()->routeIs('admin.user.*'),
                     'hover:bg-gray-100 dark:hover:bg-white/10 text-[#1F2937] dark:text-gray-300' => ! request()->routeIs('admin.user.*')
                 ]) href="{{ route('admin.user.index') }}">
-                    <span class="material-symbols-outlined text-2xl">admin_panel_settings</span>
-                    <p class="text-sm font-medium leading-normal">Admin</p>
+                    <span class="material-symbols-outlined text-2xl">view_cozy</span>
+                    <p class="text-sm font-medium leading-normal">POW</p>
                 </a>
 
                 <form action="{{ route('logout') }}" method="post">

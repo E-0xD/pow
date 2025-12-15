@@ -28,7 +28,7 @@ class DashboardController extends Controller
         $visitsData = $user->portfolioVisitsCountLastDays(30);
 
         $totalPortfolio = $user->portfolios()->count();
-        $notifications = (new NotificationService())->getUserNotifications($user);
+        $notifications = (new NotificationService())->getUserNotifications($user, 3);
 
         $unreadMessagesCount = PortfolioMessage::whereHas('portfolio', function ($q) use ($user) {
             $q->where('user_id', $user->id);

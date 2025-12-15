@@ -1,0 +1,68 @@
+<div id="about" class="section-about v3 spacing-1 section">
+    <div>
+        <div class="heading-section mb_45">
+            <div class="tag-heading text-uppercase text-label font-3 letter-spacing-1 mb_32">
+                About
+            </div>
+            <div class="title-border-shape">
+                <h4 class="animationtext clip "><span class="tf-text s1 cd-words-wrapper text_primary-color">
+                        <span class="item-text is-visible">{{ ucFirst($portfolio->about->brief) ?? 'N/A' }}</span>
+                    </span> </h4>
+                <div class="shape">
+                    <span class="shape-1"></span>
+                    <span class="shape-2"></span>
+                    <span class="shape-3"></span>
+                    <span class="shape-4"></span>
+                </div>
+                <div class="line">
+                    <span class="line-horizontal horizontal-1"></span>
+                    <span class="line-horizontal horizontal-2"></span>
+                    <span class="line-vertical vertical-1"></span>
+                    <span class="line-vertical vertical-2"></span>
+                </div>
+            </div>
+        </div>
+        <h1 class="title mb_16 split-text effect-blur-fade">
+           {{ucFirst($portfolio->about->name)}}
+        </h1>
+        <p class="text_muted-color font-3 mb_43 split-text split-lines-transform">
+            {{ $portfolio->about->description }}</p>
+        <div class="wrap-counter tf-grid-layout md-col-3">
+            <div class="counter-item bs-light-mode">
+                <div class="counter-number h2 text_white mb_7">
+                    <div class="odometer" data-number="{{ $years_of_experience }}">{{ $years_of_experience }}</div>
+                    <span class="sub">+</span>
+                </div>
+
+                <p class="text-body-1 text_muted-color font-3">Years of Experience</p>
+                <div class="item-shape">
+                    <img src="{{ asset('template_assets/gen_z_seven/images/item/small-comet.webp') }}" loading="lazy"
+                        decoding="async" alt="item">
+                </div>
+            </div>
+            <div class="counter-item bs-light-mode">
+                <div class="counter-number h2 text_white mb_7">
+                    <div class="odometer" data-number="{{$portfolio->educationRecords->count()}}">{{$portfolio->educationRecords->count()}}</div>
+                    <span class="sub">+</span>
+                </div>
+                <p class="text-body-1 text_muted-color font-3">Certificates</p>
+                <div class="item-shape">
+                    <img src="{{ asset('template_assets/gen_z_seven/images/item/small-comet.webp') }}" loading="lazy"
+                        decoding="async" alt="item">
+                </div>
+            </div>
+            <div class="counter-item bs-light-mode">
+                <div class="counter-number h2 text_white mb_7">
+                    <div class="odometer" data-number="  {{ $portfolio->projects->count() ?? 1 }}">{{ $portfolio->projects->count() ?? 1 }}</div>
+                    {{-- <span class="sub">k</span> --}}
+                    <span class="sub">+</span>
+                </div>
+                <p class="text-body-1 text_muted-color font-3">Projects Completed</p>
+                <div class="item-shape">
+                    <img src="{{ asset('template_assets/gen_z_seven/images/item/small-comet.webp') }}" loading="lazy"
+                        decoding="async" alt="item">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

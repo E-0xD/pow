@@ -29,4 +29,4 @@ Route::prefix('user')->name('user.')->middleware(['waitlist', 'auth', 'ensure.ac
 
 Route::view('waitlist', 'user.other.waitlist')->middleware('auth')->name('user.waitlist');
 
-Route::view('gen_z_seven', 'template.gen_z_seven.index');
+Route::view('gen_z_seven', 'template.gen_z_seven.preview')->name('preview.gen_z_seven');

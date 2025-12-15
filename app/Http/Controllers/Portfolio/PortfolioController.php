@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\SendPortfolioMessage;
 use App\Models\Portfolio;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+
 
 class PortfolioController extends Controller
 {
@@ -38,7 +40,28 @@ class PortfolioController extends Controller
         ]);
 
 
-        return view($portfolio->template->file_path, compact('portfolio'));
+        // Get earliest & latest dates safely
+        $earliest = $portfolio->experiences->min('start_date');
+        $latest   = $portfolio->experiences->max('end_date');
+
+        if ($earliest && $latest) {
+            // Convert to Carbon
+            $start = Carbon::parse($earliest);
+            $end   = Carbon::parse($latest);
+
+            // Calculate total days
+            $days = $start->diffInDays($end);
+
+            // Convert days → years (365) and round to nearest integer
+            $years_of_experience = round($days / 365);
+
+            // Enforce minimum of 1 year
+            $years_of_experience = max(1, $years_of_experience);
+        } else {
+            $years_of_experience = 1; // fallback
+        }
+
+        return view($portfolio->template->file_path, compact('portfolio', 'years_of_experience'));
     }
 
     /**
@@ -47,7 +70,7 @@ class PortfolioController extends Controller
     public function storeMessage(SendPortfolioMessage $request, $portfolio_slug)
     {
         $portfolio = Portfolio::where('slug', $portfolio_slug)->firstOrFail();
-        
+
 
         $portfolio->messages()->create($request->validated());
 
@@ -56,6 +79,4 @@ class PortfolioController extends Controller
             'message' => 'Your message has been sent successfully!'
         ]);
     }
-
-
 }
