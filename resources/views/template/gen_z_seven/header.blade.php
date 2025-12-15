@@ -2,7 +2,7 @@
       <div class="header-sidebar style-horizontal bs-light-mode">
           <div class="box">
               <div class="avatar">
-                  <img src="{{ asset(config('app.favicon')) }}" width="68" height="68" alt="avatar">
+                  <img src="{{ $portfolio->about->logo ? Storage::url($portfolio->about->logo) :asset(config('app.favicon')) }}" width="68" height="68" alt="avatar">
               </div>
               <div class="info">
                   <h6 class="font-4 mb_4"> {{ ucFirst($portfolio->about->name) }}</h6>
