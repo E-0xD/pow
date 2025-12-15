@@ -64,7 +64,7 @@
                         </div>
 
                         <div class="flex flex-col gap-2">
-                            <label class="text-sm font-medium text-gray-700 dark:text-gray-300">Start Date</label>
+                            <label class="text-sm font-medium text-gray-700 dark:text-gray-300">Start Year</label>
                             <input type="number" wire:model="experienceForm.start_date" placeholder="2000"
                                 class="rounded-lg border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-primary focus:border-primary">
                             @error('experienceForm.start_date')
@@ -73,7 +73,7 @@
                         </div>
 
                         <div class="flex flex-col gap-2">
-                            <label class="text-sm font-medium text-gray-700 dark:text-gray-300">End Date</label>
+                            <label class="text-sm font-medium text-gray-700 dark:text-gray-300">End year</label>
                             <input type="number" wire:model="experienceForm.end_date" placeholder="2025"
                                 class="rounded-lg border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-primary focus:border-primary">
                             @error('experienceForm.end_date')
