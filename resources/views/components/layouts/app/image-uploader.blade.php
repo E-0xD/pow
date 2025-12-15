@@ -19,8 +19,8 @@
         @if ($old)
             <img src="{{ Storage::url($old) }}" id="{{ $inputId }}-preview"
                 class="w-full h-full object-cover rounded-xl" />
-        @elseif($model && $model instanceof \Livewire\TemporaryUploadedFile)
-            <img src="{{ $model->temporaryUrl() }}" id="{{ $inputId }}-preview"
+        @elseif ($model instanceof \Livewire\TemporaryUploadedFile)
+            <img src="{{ asset(ltrim($model->temporaryUrl(), '/')) }}" id="{{ $inputId }}-preview"
                 class="w-full h-full object-cover rounded-xl" />
         @else
             <div class="flex flex-col items-center justify-center pt-5 pb-6">
