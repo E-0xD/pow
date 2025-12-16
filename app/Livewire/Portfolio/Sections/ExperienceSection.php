@@ -74,10 +74,7 @@ class ExperienceSection extends Component
     {
         if (!$startDate) return '';
 
-        $start = Carbon::parse($startDate)->format('m/Y');
-        $end = $endDate ? Carbon::parse($endDate)->format('m/Y') : '';
-
-        return $end ? "{$start} - {$end}" : $start;
+        return $endDate ? "{$startDate} - {$endDate}" : $startDate;
     }
 
     private function parseEmploymentPeriod($employmentPeriod)
