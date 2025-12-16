@@ -81,9 +81,9 @@
                         </div>
 
                         <div class="flex flex-col gap-2 md:col-span-2">
-                            <label class="text-sm font-medium text-gray-700 dark:text-gray-300">Thumbnail</label>
-                            <input type="file" wire:model="projectForm.thumbnail_path"
-                                class="rounded-lg border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-primary focus:border-primary">
+                            <x-layouts.app.image-uploader name="projectForm.thumbnail_path" model="projectForm.thumbnail_path"
+                                placeholder-icon="build" placeholder-text="Project Thumbnail" height="h-48 sm:h-64" />
+
                             @error('projectForm.thumbnail_path')
                                 <span class="text-red-500 text-xs">{{ $message }}</span>
                             @enderror
@@ -170,7 +170,8 @@
             class="border border-gray-200 dark:border-gray-800 rounded-xl p-4 bg-gray-50 dark:bg-gray-900/40 shadow-sm mt-2">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div class="flex flex-col gap-2">
-                    <label class="text-sm font-medium text-gray-700 dark:text-gray-300">Project Title</label>
+                    <label class="text-sm font-medium text-gray-700 dark:text-gray-300">Project Title <span
+                            class="text-red-500">*</span></label>
                     <input type="text" wire:model="projectForm.title"
                         class="rounded-lg border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-primary focus:border-primary">
                     @error('projectForm.title')
@@ -188,7 +189,8 @@
                 </div>
 
                 <div class="flex flex-col gap-2 md:col-span-2">
-                    <label class="text-sm font-medium text-gray-700 dark:text-gray-300">Brief Description</label>
+                    <label class="text-sm font-medium text-gray-700 dark:text-gray-300">Brief Description <span
+                            class="text-red-500">*</span></label>
                     <textarea wire:model="projectForm.brief_description" rows="3"
                         class="rounded-lg border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-primary focus:border-primary"></textarea>
                     @error('projectForm.brief_description')
@@ -199,7 +201,8 @@
                 <div class="flex flex-col gap-2 md:col-span-2">
 
                     <x-layouts.app.image-uploader name="projectForm.thumbnail_path" model="projectForm.thumbnail_path"
-                        placeholder-icon="person" placeholder-text="Project Thumbnail" height="h-48 sm:h-64" />
+                        placeholder-icon="build" placeholder-text="Project Thumbnail" height="h-48 sm:h-64" />
+
                     @error('projectForm.thumbnail_path')
                         <span class="text-red-500 text-xs">{{ $message }}</span>
                     @enderror

@@ -14,16 +14,32 @@ class EducationSection extends Component
     public $educationForm = [
         'school' => '',
         'degree' => '',
-        'year_of_admission' => '',
-        'year_of_graduation' => '',
-
+        'education_period' => '',
     ];
 
     protected $rules = [
         'educationForm.school' => 'required|string|max:255',
         'educationForm.degree' => 'required|string|max:255',
-        'educationForm.year_of_admission' => 'required',
-        'educationForm.year_of_graduation' => 'nullable'
+        'educationForm.education_period' => 'required|string'
+    ];
+
+    protected $messages = [
+        'educationForm.school.required' => 'School name is required.',
+        'educationForm.school.string' => 'School name must be text.',
+        'educationForm.school.max' => 'School name cannot exceed 255 characters.',
+
+        'educationForm.degree.required' => 'Degree is required.',
+        'educationForm.degree.string' => 'Degree must be text.',
+        'educationForm.degree.max' => 'Degree cannot exceed 255 characters.',
+
+        'educationForm.education_period.required' => 'Education period is required.',
+        'educationForm.education_period.string' => 'Please enter a valid education period.',
+    ];
+
+    protected $validationAttributes = [
+        'educationForm.school' => 'school name',
+        'educationForm.degree' => 'degree',
+        'educationForm.education_period' => 'education period',
     ];
 
     public function mount(Portfolio $portfolio)
@@ -39,10 +55,35 @@ class EducationSection extends Component
                 'id' => $edu->id,
                 'school' => $edu->school,
                 'degree' => $edu->degree,
-                'year_of_admission' => $edu->year_of_admission,
-                'year_of_graduation' => $edu->year_of_graduation,
+                'education_period' => $this->formatEducationPeriod($edu->year_of_admission, $edu->year_of_graduation),
             ];
         })->toArray();
+    }
+
+    private function formatEducationPeriod($admission, $graduation)
+    {
+        if (!$admission) return '';
+
+        return $graduation ? "{$admission} - {$graduation}" : $admission;
+    }
+
+    private function parseEducationPeriod($period)
+    {
+        $period = str_replace(' ', '', $period);
+
+        if (strpos($period, '-') !== false) {
+            [$start, $end] = explode('-', $period);
+
+            return [
+                'year_of_admission' => $start,
+                'year_of_graduation' => $end
+            ];
+        } else {
+            return [
+                'year_of_admission' => $period,
+                'year_of_graduation' => null
+            ];
+        }
     }
 
     public function addEducation()
@@ -51,8 +92,7 @@ class EducationSection extends Component
         $this->educationForm = [
             'school' => '',
             'degree' => '',
-            'year_of_admission' => '',
-            'year_of_graduation' => '',
+            'education_period' => '',
         ];
     }
 
@@ -64,8 +104,7 @@ class EducationSection extends Component
         $this->educationForm = [
             'school' => $education['school'] ?? '',
             'degree' => $education['degree'] ?? '',
-            'year_of_admission' => $education['year_of_admission'] ?? '',
-            'year_of_graduation' => $education['year_of_graduation'] ?? '',
+            'education_period' => $education['education_period'] ?? '',
         ];
     }
 
@@ -77,13 +116,15 @@ class EducationSection extends Component
         try {
             DB::beginTransaction();
 
+            $dates = $this->parseEducationPeriod($this->educationForm['education_period']);
+
             if ($this->editingEducationIndex === 'new') {
                
                 $newEducation = $this->portfolio->educationRecords()->create([
                     'school' => $this->educationForm['school'],
                     'degree' => $this->educationForm['degree'],
-                    'year_of_admission' => $this->educationForm['year_of_admission'],
-                    'year_of_graduation' => $this->educationForm['year_of_graduation'],
+                    'year_of_admission' => $dates['year_of_admission'],
+                    'year_of_graduation' => $dates['year_of_graduation'],
                 ]);
 
                
@@ -100,8 +141,8 @@ class EducationSection extends Component
                     ->update([
                         'school' => $this->educationForm['school'],
                         'degree' => $this->educationForm['degree'],
-                        'year_of_admission' => $this->educationForm['year_of_admission'],
-                        'year_of_graduation' => $this->educationForm['year_of_graduation'],
+                        'year_of_admission' => $dates['year_of_admission'],
+                        'year_of_graduation' => $dates['year_of_graduation'],
                     ]);
 
                 $this->education[$this->editingEducationIndex] = array_merge(
@@ -144,9 +185,7 @@ class EducationSection extends Component
         $this->educationForm = [
             'school' => '',
             'degree' => '',
-            'year_of_admission' => '',
-            'year_of_graduation' => '',
-            'description' => ''
+            'education_period' => ''
         ];
         $this->resetErrorBag();
     }

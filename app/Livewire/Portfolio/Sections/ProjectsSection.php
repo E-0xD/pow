@@ -34,6 +34,29 @@ class ProjectsSection extends Component
         'projectForm.skills' => 'array',
     ];
 
+    protected $messages = [
+        'projectForm.title.required' => 'Project title is required.',
+        'projectForm.title.string' => 'Project title must be text.',
+        'projectForm.title.max' => 'Project title cannot exceed 255 characters.',
+
+        'projectForm.brief_description.required' => 'Brief description is required.',
+        'projectForm.brief_description.string' => 'Brief description must be text.',
+        'projectForm.brief_description.max' => 'Brief description cannot exceed 500 characters.',
+
+        'projectForm.project_link.url' => 'Project link must be a valid URL.',
+        'projectForm.project_link.max' => 'Project link cannot exceed 255 characters.',
+
+        'projectForm.skills.array' => 'Skills must be a valid list.',
+    ];
+
+    protected $validationAttributes = [
+        'projectForm.title' => 'project title',
+        'projectForm.brief_description' => 'brief description',
+        'projectForm.project_link' => 'project link',
+        'projectForm.thumbnail_path' => 'thumbnail',
+        'projectForm.skills' => 'skills',
+    ];
+
     public function mount(Portfolio $portfolio)
     {
         $this->portfolio = $portfolio;

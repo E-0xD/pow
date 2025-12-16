@@ -15,10 +15,7 @@
                             </h3>
                             <p class="text-gray-600 dark:text-gray-400 text-sm">
                                 {{ $edu['school'] ?? '' }} —
-                                {{ $edu['year_of_admission'] ?? '' }}
-                                @if (!empty($edu['year_of_graduation']))
-                                    to {{ $edu['year_of_graduation'] }}
-                                @endif
+                                {{ $edu['education_period'] ?? '' }}
                             </p>
                         </div>
                         <div class="flex items-center gap-2">
@@ -46,7 +43,7 @@
                 @if ($editingEducationIndex === $index)
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                         <div class="flex flex-col gap-2">
-                            <label class="text-sm font-medium text-gray-700 dark:text-gray-300">School</label>
+                            <label class="text-sm font-medium text-gray-700 dark:text-gray-300">School <span class="text-red-500">*</span></label>
                             <input type="text" wire:model="educationForm.school"
                                 class="rounded-lg border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-primary focus:border-primary">
                             @error('educationForm.school')
@@ -55,7 +52,7 @@
                         </div>
 
                         <div class="flex flex-col gap-2">
-                            <label class="text-sm font-medium text-gray-700 dark:text-gray-300">Degree</label>
+                            <label class="text-sm font-medium text-gray-700 dark:text-gray-300">Degree <span class="text-red-500">*</span></label>
                             <input type="text" wire:model="educationForm.degree"
                                 class="rounded-lg border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-primary focus:border-primary">
                             @error('educationForm.degree')
@@ -63,24 +60,9 @@
                             @enderror
                         </div>
 
-                        <div class="flex flex-col gap-2">
-                            <label class="text-sm font-medium text-gray-700 dark:text-gray-300">Year of
-                                Admission</label>
-                            <input type="number" wire:model="educationForm.year_of_admission" placeholder="Example : 2000"
-                                class="rounded-lg border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-primary focus:border-primary">
-                            @error('educationForm.year_of_admission')
-                                <span class="text-red-500 text-xs">{{ $message }}</span>
-                            @enderror
-                        </div>
-
-                        <div class="flex flex-col gap-2">
-                            <label class="text-sm font-medium text-gray-700 dark:text-gray-300">Year of
-                                Graduation</label>
-                            <input type="number" wire:model="educationForm.year_of_graduation" placeholder="Example : {{date('Y')}}"
-                                class="rounded-lg border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-primary focus:border-primary">
-                            @error('educationForm.year_of_graduation')
-                                <span class="text-red-500 text-xs">{{ $message }}</span>
-                            @enderror
+                        <div class="md:col-span-2 flex flex-col gap-2">
+                            <x-date-picker required=TRUE, label="Education Period" wireModel="educationForm.education_period"
+                                mode="month-range" />
                         </div>
                     </div>
 
@@ -105,7 +87,7 @@
             class="border border-gray-200 dark:border-gray-800 rounded-xl p-4 bg-gray-50 dark:bg-gray-900/40 shadow-sm">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div class="flex flex-col gap-2">
-                    <label class="text-sm font-medium text-gray-700 dark:text-gray-300">School</label>
+                    <label class="text-sm font-medium text-gray-700 dark:text-gray-300">School <span class="text-red-500">*</span></label>
                     <input type="text" wire:model="educationForm.school"
                         class="rounded-lg border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-primary focus:border-primary">
                     @error('educationForm.school')
@@ -114,7 +96,7 @@
                 </div>
 
                 <div class="flex flex-col gap-2">
-                    <label class="text-sm font-medium text-gray-700 dark:text-gray-300">Degree</label>
+                    <label class="text-sm font-medium text-gray-700 dark:text-gray-300">Degree <span class="text-red-500">*</span></label>
                     <input type="text" wire:model="educationForm.degree"
                         class="rounded-lg border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-primary focus:border-primary">
                     @error('educationForm.degree')
@@ -122,22 +104,9 @@
                     @enderror
                 </div>
 
-                <div class="flex flex-col gap-2">
-                    <label class="text-sm font-medium text-gray-700 dark:text-gray-300">Year of Admission</label>
-                    <input type="number" wire:model="educationForm.year_of_admission" placeholder="Example : 2000"
-                        class="rounded-lg border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-primary focus:border-primary">
-                    @error('educationForm.year_of_admission')
-                        <span class="text-red-500 text-xs">{{ $message }}</span>
-                    @enderror
-                </div>
-
-                <div class="flex flex-col gap-2">
-                    <label class="text-sm font-medium text-gray-700 dark:text-gray-300">Year of Graduation</label>
-                    <input type="number" wire:model="educationForm.year_of_graduation" placeholder="Example : {{date('Y')}}"
-                        class="rounded-lg border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-primary focus:border-primary">
-                    @error('educationForm.year_of_graduation')
-                        <span class="text-red-500 text-xs">{{ $message }}</span>
-                    @enderror
+                <div class="md:col-span-2 flex flex-col gap-2">
+                    <x-date-picker required=TRUE, label="Education Period" wireModel="educationForm.education_period"
+                        mode="month-range" />
                 </div>
 
             </div>
