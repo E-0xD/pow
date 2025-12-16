@@ -16,165 +16,139 @@
                             <p class="text-gray-600 dark:text-gray-400 text-sm">
                                 {{ $experience['company'] ?? '' }} —
                                 {{ $experience['start_date'] ?? '' }}
-                                @if($experience['end_date'] != null)
+                                @if ($experience['end_date'] != null)
                                     to {{ $experience['end_date'] }}
                                 @endisset
-                            </p>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <button type="button" wire:click="editExperience({{ $index }})"
-                                class="flex items-center gap-1 text-primary hover:text-primary/80 text-sm font-medium">
-                                <span class="material-symbols-outlined text-base">edit</span>
-                                <span class="hidden lg:inline">Edit</span>
-                            </button>
-                            <button type="button" wire:click="deleteExperience({{ $index }})"
-                                class="flex items-center gap-1 text-red-500 hover:text-red-400 text-sm font-medium">
-                                <span class="material-symbols-outlined text-base">delete</span>
-                                <span class="hidden lg:inline">Delete</span>
-                            </button>
-                        </div>
-
-                    </div>
-                    @if (!empty($experience['description']))
-                        <p class="text-gray-700 dark:text-gray-300 text-sm mt-2">
-                            {{ $experience['description'] }}
                         </p>
-                    @endif
-                @endif
-
-                <!-- Edit Form -->
-                @if ($editingExperienceIndex === $index)
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-                        <div class="flex flex-col gap-2">
-                            <label class="text-sm font-medium text-gray-700 dark:text-gray-300">Company</label>
-                            <input type="text" wire:model="experienceForm.company"
-                                class="rounded-lg border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-primary focus:border-primary">
-                            @error('experienceForm.company')
-                                <span class="text-red-500 text-xs">{{ $message }}</span>
-                            @enderror
-                        </div>
-
-                        <div class="flex flex-col gap-2">
-                            <label class="text-sm font-medium text-gray-700 dark:text-gray-300">Position</label>
-                            <input type="text" wire:model="experienceForm.position"
-                                class="rounded-lg border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-primary focus:border-primary">
-                            @error('experienceForm.position')
-                                <span class="text-red-500 text-xs">{{ $message }}</span>
-                            @enderror
-                        </div>
-
-                        <div class="flex flex-col gap-2">
-                            <label class="text-sm font-medium text-gray-700 dark:text-gray-300">Start Year</label>
-                            <input type="number" wire:model="experienceForm.start_date" placeholder="Example : 2000"
-                                class="rounded-lg border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-primary focus:border-primary">
-                            @error('experienceForm.start_date')
-                                <span class="text-red-500 text-xs">{{ $message }}</span>
-                            @enderror
-                        </div>
-
-                        <div class="flex flex-col gap-2">
-                            <label class="text-sm font-medium text-gray-700 dark:text-gray-300">End year</label>
-                            <input type="number" wire:model="experienceForm.end_date" placeholder="Example : {{date('Y')}}"
-                                class="rounded-lg border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-primary focus:border-primary">
-                            @error('experienceForm.end_date')
-                                <span class="text-red-500 text-xs">{{ $message }}</span>
-                            @enderror
-                        </div>
-
-                        <div class="md:col-span-2 flex flex-col gap-2">
-                            <label class="text-sm font-medium text-gray-700 dark:text-gray-300">Description</label>
-                            <textarea wire:model="experienceForm.description" rows="3"
-                                class="rounded-lg border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-primary focus:border-primary"></textarea>
-                            @error('experienceForm.description')
-                                <span class="text-red-500 text-xs">{{ $message }}</span>
-                            @enderror
-                        </div>
                     </div>
-
-                    <div class="flex justify-end gap-2 mt-4">
-                        <button type="button" wire:click="cancelEditExperience"
-                            class="px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 text-sm font-medium">
-                            Cancel
+                    <div class="flex items-center gap-2">
+                        <button type="button" wire:click="editExperience({{ $index }})"
+                            class="flex items-center gap-1 text-primary hover:text-primary/80 text-sm font-medium">
+                            <span class="material-symbols-outlined text-base">edit</span>
+                            <span class="hidden lg:inline">Edit</span>
                         </button>
-                        <button type="button" wire:click="saveExperience"
-                            class="px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary/90 text-sm font-semibold">
-                            Save
+                        <button type="button" wire:click="deleteExperience({{ $index }})"
+                            class="flex items-center gap-1 text-red-500 hover:text-red-400 text-sm font-medium">
+                            <span class="material-symbols-outlined text-base">delete</span>
+                            <span class="hidden lg:inline">Delete</span>
                         </button>
                     </div>
+
+                </div>
+                @if (!empty($experience['description']))
+                    <p class="text-gray-700 dark:text-gray-300 text-sm mt-2">
+                        {{ $experience['description'] }}
+                    </p>
                 @endif
+            @endif
+
+            <!-- Edit Form -->
+            @if ($editingExperienceIndex === $index)
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                    <div class="flex flex-col gap-2">
+                        <label class="text-sm font-medium text-gray-700 dark:text-gray-300">Company<span class="text-red-500">*</span></label>
+                        <input type="text" wire:model="experienceForm.company"
+                            class="rounded-lg border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-primary focus:border-primary">
+                        @error('experienceForm.company')
+                            <span class="text-red-500 text-xs">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    <div class="flex flex-col gap-2">
+                        <label class="text-sm font-medium text-gray-700 dark:text-gray-300">Position<span class="text-red-500">*</span></label>
+                        <input type="text" wire:model="experienceForm.position"
+                            class="rounded-lg border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-primary focus:border-primary">
+                        @error('experienceForm.position')
+                            <span class="text-red-500 text-xs">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    <div class="md:col-span-2 flex flex-col gap-2">
+                        <x-date-picker required=TRUE, label="Employment Period" wireModel="experienceForm.employment_period"
+                            mode="month-range" />
+                    </div>
+
+                    <div class="md:col-span-2 flex flex-col gap-2">
+                        <label class="text-sm font-medium text-gray-700 dark:text-gray-300">Description</label>
+                        <textarea wire:model="experienceForm.description" rows="3"
+                            class="rounded-lg border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-primary focus:border-primary"></textarea>
+                        @error('experienceForm.description')
+                            <span class="text-red-500 text-xs">{{ $message }}</span>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="flex justify-end gap-2 mt-4">
+                    <button type="button" wire:click="cancelEditExperience"
+                        class="px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 text-sm font-medium">
+                        Cancel
+                    </button>
+                    <button type="button" wire:click="saveExperience"
+                        class="px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary/90 text-sm font-semibold">
+                        Save
+                    </button>
+                </div>
+            @endif
+        </div>
+    @endforeach
+</div>
+
+<!-- Add New Experience -->
+@if ($editingExperienceIndex === 'new')
+    <div
+        class="border border-gray-200 dark:border-gray-800 rounded-xl p-4 bg-gray-50 dark:bg-gray-900/40 shadow-sm">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="flex flex-col gap-2">
+                <label class="text-sm font-medium text-gray-700 dark:text-gray-300">Company<span class="text-red-500">*</span></label>
+                <input type="text" wire:model="experienceForm.company"
+                    class="rounded-lg border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-primary focus:border-primary">
+                @error('experienceForm.company')
+                    <span class="text-red-500 text-xs">{{ $message }}</span>
+                @enderror
             </div>
-        @endforeach
-    </div>
 
-    <!-- Add New Experience -->
-    @if ($editingExperienceIndex === 'new')
-        <div
-            class="border border-gray-200 dark:border-gray-800 rounded-xl p-4 bg-gray-50 dark:bg-gray-900/40 shadow-sm">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="flex flex-col gap-2">
-                    <label class="text-sm font-medium text-gray-700 dark:text-gray-300">Company</label>
-                    <input type="text" wire:model="experienceForm.company"
-                        class="rounded-lg border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-primary focus:border-primary">
-                    @error('experienceForm.company')
-                        <span class="text-red-500 text-xs">{{ $message }}</span>
-                    @enderror
-                </div>
-
-                <div class="flex flex-col gap-2">
-                    <label class="text-sm font-medium text-gray-700 dark:text-gray-300">Position</label>
-                    <input type="text" wire:model="experienceForm.position"
-                        class="rounded-lg border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-primary focus:border-primary">
-                    @error('experienceForm.position')
-                        <span class="text-red-500 text-xs">{{ $message }}</span>
-                    @enderror
-                </div>
-
-                <div class="flex flex-col gap-2">
-                    <label class="text-sm font-medium text-gray-700 dark:text-gray-300">Start Year</label>
-                    <input type="number" wire:model="experienceForm.start_date" placeholder="Example : 2000"
-                        class="rounded-lg border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-primary focus:border-primary">
-                    @error('experienceForm.start_date')
-                        <span class="text-red-500 text-xs">{{ $message }}</span>
-                    @enderror
-                </div>
-
-                <div class="flex flex-col gap-2">
-                    <label class="text-sm font-medium text-gray-700 dark:text-gray-300">End Year</label>
-                    <input type="number" wire:model="experienceForm.end_date" placeholder="Example : {{date('Y')}}"
-                        class="rounded-lg border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-primary focus:border-primary">
-                    @error('experienceForm.end_date')
-                        <span class="text-red-500 text-xs">{{ $message }}</span>
-                    @enderror
-                </div>
-
-                <div class="md:col-span-2 flex flex-col gap-2">
-                    <label class="text-sm font-medium text-gray-700 dark:text-gray-300">Description</label>
-                    <textarea wire:model="experienceForm.description" rows="3"
-                        class="rounded-lg border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-primary focus:border-primary"></textarea>
-                    @error('experienceForm.description')
-                        <span class="text-red-500 text-xs">{{ $message }}</span>
-                    @enderror
-                </div>
+            <div class="flex flex-col gap-2">
+                <label class="text-sm font-medium text-gray-700 dark:text-gray-300">Position<span class="text-red-500">*</span></label>
+                <input type="text" wire:model="experienceForm.position"
+                    class="rounded-lg border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-primary focus:border-primary">
+                @error('experienceForm.position')
+                    <span class="text-red-500 text-xs">{{ $message }}</span>
+                @enderror
             </div>
 
-            <div class="flex justify-end gap-2 mt-4">
-                <button type="button" wire:click="cancelEditExperience"
-                    class="px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 text-sm font-medium">
-                    Cancel
-                </button>
-                <button type="button" wire:click="saveExperience"
-                    class="px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary/90 text-sm font-semibold">
-                    Save
-                </button>
+            <div class="md:col-span-2 flex flex-col gap-2">
+                <x-date-picker required=TRUE, label="Employment Period" wireModel="experienceForm.employment_period"
+                    mode="month-range" />
+            </div>
+
+            <div class="md:col-span-2 flex flex-col gap-2">
+                <label class="text-sm font-medium text-gray-700 dark:text-gray-300">Description</label>
+                <textarea wire:model="experienceForm.description" rows="3"
+                    class="rounded-lg border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-primary focus:border-primary"></textarea>
+                @error('experienceForm.description')
+                    <span class="text-red-500 text-xs">{{ $message }}</span>
+                @enderror
             </div>
         </div>
-    @endif
 
-    @if ($editingExperienceIndex !== 'new')
-        <button type="button" wire:click="addNewExperience"
-            class="mt-2 flex items-center gap-2 min-w-[84px] cursor-pointer justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary/90 text-sm font-bold leading-normal transition-colors hover:bg-primary/20 dark:hover:bg-primary/30">
-            <span class="material-symbols-outlined text-base">add</span>
-            <span>Add New Experience</span>
-        </button>
-    @endif
+        <div class="flex justify-end gap-2 mt-4">
+            <button type="button" wire:click="cancelEditExperience"
+                class="px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 text-sm font-medium">
+                Cancel
+            </button>
+            <button type="button" wire:click="saveExperience"
+                class="px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary/90 text-sm font-semibold">
+                Save
+            </button>
+        </div>
+    </div>
+@endif
+
+@if ($editingExperienceIndex !== 'new')
+    <button type="button" wire:click="addNewExperience"
+        class="mt-2 flex items-center gap-2 min-w-[84px] cursor-pointer justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary/90 text-sm font-bold leading-normal transition-colors hover:bg-primary/20 dark:hover:bg-primary/30">
+        <span class="material-symbols-outlined text-base">add</span>
+        <span>Add New Experience</span>
+    </button>
+@endif
 </section>

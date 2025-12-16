@@ -15,17 +15,38 @@ class ExperienceSection extends Component
     public $experienceForm = [
         'company' => '',
         'position' => '',
-        'start_date' => '',
-        'end_date' => '',
-        'description' => ''
+        'description' => '',
+        'employment_period' => ''
     ];
 
-    protected $rules = [    
+    protected $rules = [
         'experienceForm.company' => 'required|string|max:255',
         'experienceForm.position' => 'required|string|max:255',
-        'experienceForm.start_date' => 'required',
-        'experienceForm.end_date' => 'nullable',
+        'experienceForm.employment_period' => 'required|string',
         'experienceForm.description' => 'nullable|string|max:1000'
+    ];
+
+    protected $messages = [
+        'experienceForm.company.required' => 'Company name is required.',
+        'experienceForm.company.string' => 'Company name must be text.',
+        'experienceForm.company.max' => 'Company name cannot exceed 255 characters.',
+
+        'experienceForm.position.required' => 'Job position is required.',
+        'experienceForm.position.string' => 'Job position must be text.',
+        'experienceForm.position.max' => 'Job position cannot exceed 255 characters.',
+
+        'experienceForm.employment_period.required' => 'Employment period is required.',
+        'experienceForm.employment_period.string' => 'Please enter a valid employment period.',
+
+        'experienceForm.description.string' => 'Description must be text.',
+        'experienceForm.description.max' => 'Description cannot exceed 1000 characters.',
+    ];
+
+    protected $validationAttributes = [
+        'experienceForm.company' => 'company name',
+        'experienceForm.position' => 'job position',
+        'experienceForm.employment_period' => 'employment period',
+        'experienceForm.description' => 'description',
     ];
 
     public function mount(Portfolio $portfolio)
@@ -43,10 +64,44 @@ class ExperienceSection extends Component
                 'position' => $exp->position,
                 'start_date' => $exp->start_date,
                 'end_date' => $exp->end_date,
+                'employment_period' => $this->formatEmploymentPeriod($exp->start_date, $exp->end_date),
                 'description' => $exp->description
             ];
         })->values()->toArray();
     }
+
+    private function formatEmploymentPeriod($startDate, $endDate)
+    {
+        if (!$startDate) return '';
+
+        $start = Carbon::parse($startDate)->format('m/Y');
+        $end = $endDate ? Carbon::parse($endDate)->format('m/Y') : '';
+
+        return $end ? "{$start} - {$end}" : $start;
+    }
+
+    private function parseEmploymentPeriod($employmentPeriod)
+    {
+        // Remove spaces and split by dash
+        $period = str_replace(' ', '', $employmentPeriod);
+
+        if (strpos($period, '-') !== false) {
+            // Range format: MM/YYYY - MM/YYYY
+            [$start, $end] = explode('-', $period);
+
+            return [
+                'start_date' => $start,
+                'end_date' => $end
+            ];
+        } else {
+            // Single date format: MM/YYYY
+            return [
+                'start_date' => $period,
+                'end_date' => null
+            ];
+        }
+    }
+
 
     public function addNewExperience()
     {
@@ -54,8 +109,7 @@ class ExperienceSection extends Component
         $this->experienceForm = [
             'company' => '',
             'position' => '',
-            'start_date' => '',
-            'end_date' => '',
+            'employment_period' => '',
             'description' => ''
         ];
     }
@@ -64,12 +118,11 @@ class ExperienceSection extends Component
     {
         $this->editingExperienceIndex = $index;
         $experience = $this->experiences[$index];
-        
+
         $this->experienceForm = [
             'company' => $experience['company'] ?? '',
             'position' => $experience['position'] ?? '',
-            'start_date' => $experience['start_date'] ?? '',
-            'end_date' => $experience['end_date'] ?? '',
+            'employment_period' => $experience['employment_period'] ?? '',
             'description' => $experience['description'] ?? ''
         ];
     }
@@ -81,36 +134,45 @@ class ExperienceSection extends Component
         try {
             DB::beginTransaction();
 
-            if ($this->editingExperienceIndex === 'new') {
-                $newExperience = $this->portfolio->experiences()->create([
-                    'company' => $this->experienceForm['company'],
-                    'position' => $this->experienceForm['position'],
-                    'start_date' => $this->experienceForm['start_date'],
-                    'end_date' => $this->experienceForm['end_date'],
-                    'description' => $this->experienceForm['description']
-                ]);
+            // Parse employment period into start_date and end_date
+            $dates = $this->parseEmploymentPeriod($this->experienceForm['employment_period']);
 
-                $this->experiences[] = array_merge(
-                    $this->experienceForm,
-                    ['id' => $newExperience->id]
-                );
+            $data = [
+                'company' => $this->experienceForm['company'],
+                'position' => $this->experienceForm['position'],
+                'start_date' => $dates['start_date'],
+                'end_date' => $dates['end_date'],
+                'description' => $this->experienceForm['description']
+            ];
+
+            if ($this->editingExperienceIndex === 'new') {
+                $newExperience = $this->portfolio->experiences()->create($data);
+
+                $this->experiences[] = [
+                    'id' => $newExperience->id,
+                    'company' => $data['company'],
+                    'position' => $data['position'],
+                    'start_date' => $data['start_date'],
+                    'end_date' => $data['end_date'],
+                    'employment_period' => $this->experienceForm['employment_period'],
+                    'description' => $data['description']
+                ];
             } else {
                 $experienceId = $this->experiences[$this->editingExperienceIndex]['id'];
-                
+
                 $this->portfolio->experiences()
                     ->where('id', $experienceId)
-                    ->update([
-                        'company' => $this->experienceForm['company'],
-                        'position' => $this->experienceForm['position'],
-                        'start_date' => $this->experienceForm['start_date'],
-                        'end_date' => $this->experienceForm['end_date'],
-                        'description' => $this->experienceForm['description']
-                    ]);
+                    ->update($data);
 
-                $this->experiences[$this->editingExperienceIndex] = array_merge(
-                    $this->experienceForm,
-                    ['id' => $experienceId]
-                );
+                $this->experiences[$this->editingExperienceIndex] = [
+                    'id' => $experienceId,
+                    'company' => $data['company'],
+                    'position' => $data['position'],
+                    'start_date' => $data['start_date'],
+                    'end_date' => $data['end_date'],
+                    'employment_period' => $this->experienceForm['employment_period'],
+                    'description' => $data['description']
+                ];
             }
 
             DB::commit();
@@ -118,7 +180,7 @@ class ExperienceSection extends Component
             $this->dispatch('sectionSaved');
         } catch (\Exception $e) {
             DB::rollBack();
-            session()->flash('error', 'Failed to save experience.');
+            session()->flash('error', 'Failed to save experience: ' . $e->getMessage());
         }
     }
 
@@ -126,13 +188,13 @@ class ExperienceSection extends Component
     {
         try {
             DB::beginTransaction();
-            
+
             $experienceId = $this->experiences[$index]['id'];
             $this->portfolio->experiences()->where('id', $experienceId)->delete();
-            
+
             unset($this->experiences[$index]);
             $this->experiences = array_values($this->experiences);
-            
+
             DB::commit();
             $this->dispatch('sectionSaved');
         } catch (\Exception $e) {
@@ -147,8 +209,7 @@ class ExperienceSection extends Component
         $this->experienceForm = [
             'company' => '',
             'position' => '',
-            'start_date' => '',
-            'end_date' => '',
+            'employment_period' => '',
             'description' => ''
         ];
         $this->resetErrorBag();

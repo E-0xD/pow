@@ -11,8 +11,8 @@ return new class extends Migration
         Schema::create('experiences', function (Blueprint $table) {
             $table->id();
             $table->foreignId('portfolio_id')->constrained()->cascadeOnDelete();
-            $table->date('start_date');
-            $table->date('end_date')->nullable();
+            $table->string('start_date');
+            $table->string('end_date')->nullable();
             $table->string('company');
             $table->string('position');
             $table->longText('description');
