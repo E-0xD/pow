@@ -395,6 +395,7 @@ chmod +x queue-monitor.sh
 -   The script should live in your project root (same directory as `artisan`).
 -   You can edit it to customize queue behavior if needed.
 -   Check `storage/logs/queue-monitor.log` to confirm restarts if needed.
+-   To run coomposer commands on the server /opt/cpanel/ea-php84/root/usr/bin/php -d allow_url_fopen=On composer.phar (if your Ci/Cd pipeline is githug and you are on a cpanel shared hosting)
 
 ---
 

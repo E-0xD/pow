@@ -1,0 +1,168 @@
+Uri: https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Saira+Condensed:wght@300;400;500;600;700;800;900&display=swap
+File Name: C:\Downloaded Web Sites\nightfolio.netlify.app\css2
+Content Type: text/css
+
+Uri: https://fonts.gstatic.com/s/poppins/v24/pxiByp8kv8JHgFVrLCz7V1s.ttf
+File Name: C:\Downloaded Web Sites\nightfolio.netlify.app\s\poppins\v24\pxiByp8kv8JHgFVrLCz7V1s.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/poppins/v24/pxiByp8kv8JHgFVrLDz8V1s.ttf
+File Name: C:\Downloaded Web Sites\nightfolio.netlify.app\s\poppins\v24\pxiByp8kv8JHgFVrLDz8V1s.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/poppins/v24/pxiByp8kv8JHgFVrLEj6V1s.ttf
+File Name: C:\Downloaded Web Sites\nightfolio.netlify.app\s\poppins\v24\pxiByp8kv8JHgFVrLEj6V1s.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/poppins/v24/pxiByp8kv8JHgFVrLGT9V1s.ttf
+File Name: C:\Downloaded Web Sites\nightfolio.netlify.app\s\poppins\v24\pxiByp8kv8JHgFVrLGT9V1s.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/poppins/v24/pxiEyp8kv8JHgFVrFJA.ttf
+File Name: C:\Downloaded Web Sites\nightfolio.netlify.app\s\poppins\v24\pxiEyp8kv8JHgFVrFJA.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/sairacondensed/v12/EJRLQgErUN8XuHNEtX81i9TmEkrnBc1g8A.ttf
+File Name: C:\Downloaded Web Sites\nightfolio.netlify.app\s\sairacondensed\v12\EJRLQgErUN8XuHNEtX81i9TmEkrnBc1g8A.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/sairacondensed/v12/EJRLQgErUN8XuHNEtX81i9TmEkrnCclg8A.ttf
+File Name: C:\Downloaded Web Sites\nightfolio.netlify.app\s\sairacondensed\v12\EJRLQgErUN8XuHNEtX81i9TmEkrnCclg8A.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/sairacondensed/v12/EJRLQgErUN8XuHNEtX81i9TmEkrnfc9g8A.ttf
+File Name: C:\Downloaded Web Sites\nightfolio.netlify.app\s\sairacondensed\v12\EJRLQgErUN8XuHNEtX81i9TmEkrnfc9g8A.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/sairacondensed/v12/EJRLQgErUN8XuHNEtX81i9TmEkrnGc5g8A.ttf
+File Name: C:\Downloaded Web Sites\nightfolio.netlify.app\s\sairacondensed\v12\EJRLQgErUN8XuHNEtX81i9TmEkrnGc5g8A.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/sairacondensed/v12/EJRLQgErUN8XuHNEtX81i9TmEkrnIcxg8A.ttf
+File Name: C:\Downloaded Web Sites\nightfolio.netlify.app\s\sairacondensed\v12\EJRLQgErUN8XuHNEtX81i9TmEkrnIcxg8A.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/sairacondensed/v12/EJRLQgErUN8XuHNEtX81i9TmEkrnUchg8A.ttf
+File Name: C:\Downloaded Web Sites\nightfolio.netlify.app\s\sairacondensed\v12\EJRLQgErUN8XuHNEtX81i9TmEkrnUchg8A.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/sairacondensed/v12/EJROQgErUN8XuHNEtX81i9TmEkrfpQ.ttf
+File Name: C:\Downloaded Web Sites\nightfolio.netlify.app\s\sairacondensed\v12\EJROQgErUN8XuHNEtX81i9TmEkrfpQ.ttf
+Content Type: font/ttf
+
+Uri: https://nightfolio.netlify.app/
+File Name: C:\Downloaded Web Sites\nightfolio.netlify.app\index.htm
+Content Type: text/html
+
+Uri: https://nightfolio.netlify.app/pages/home-1
+File Name: C:\Downloaded Web Sites\nightfolio.netlify.app\pages\home-1.html
+Content Type: text/html
+
+Uri: https://nightfolio.netlify.app/pages/home-2
+File Name: C:\Downloaded Web Sites\nightfolio.netlify.app\pages\home-2.html
+Content Type: text/html
+
+Uri: https://nightfolio.netlify.app/pages/home-3
+File Name: C:\Downloaded Web Sites\nightfolio.netlify.app\pages\home-3.html
+Content Type: text/html
+
+Uri: https://nightfolio.netlify.app/public/cv.pdf
+File Name: C:\Downloaded Web Sites\nightfolio.netlify.app\public\cv.pdf
+Content Type: application/pdf
+
+Uri: https://nightfolio.netlify.app/public/favicon.ico
+File Name: C:\Downloaded Web Sites\nightfolio.netlify.app\public\favicon.ico
+Content Type: image/vnd.microsoft.icon
+
+Uri: https://nightfolio.netlify.app/public/images/about.jpg
+File Name: C:\Downloaded Web Sites\nightfolio.netlify.app\public\images\about.jpg
+Content Type: image/jpeg
+
+Uri: https://nightfolio.netlify.app/public/images/hero.jpg
+File Name: C:\Downloaded Web Sites\nightfolio.netlify.app\public\images\hero.jpg
+Content Type: image/jpeg
+
+Uri: https://nightfolio.netlify.app/public/images/preview/1.jpg
+File Name: C:\Downloaded Web Sites\nightfolio.netlify.app\public\images\preview\1.jpg
+Content Type: image/jpeg
+
+Uri: https://nightfolio.netlify.app/public/images/preview/2.jpg
+File Name: C:\Downloaded Web Sites\nightfolio.netlify.app\public\images\preview\2.jpg
+Content Type: image/jpeg
+
+Uri: https://nightfolio.netlify.app/public/images/preview/3.jpg
+File Name: C:\Downloaded Web Sites\nightfolio.netlify.app\public\images\preview\3.jpg
+Content Type: image/jpeg
+
+Uri: https://nightfolio.netlify.app/public/images/preview/overview.jpg
+File Name: C:\Downloaded Web Sites\nightfolio.netlify.app\public\images\preview\overview.jpg
+Content Type: image/jpeg
+
+Uri: https://nightfolio.netlify.app/public/images/tools/gsap.svg
+File Name: C:\Downloaded Web Sites\nightfolio.netlify.app\public\images\tools\gsap.svg
+Content Type: image/svg+xml
+
+Uri: https://nightfolio.netlify.app/public/images/tools/html.svg
+File Name: C:\Downloaded Web Sites\nightfolio.netlify.app\public\images\tools\html.svg
+Content Type: image/svg+xml
+
+Uri: https://nightfolio.netlify.app/public/images/tools/js.svg
+File Name: C:\Downloaded Web Sites\nightfolio.netlify.app\public\images\tools\js.svg
+Content Type: image/svg+xml
+
+Uri: https://nightfolio.netlify.app/public/images/tools/php.svg
+File Name: C:\Downloaded Web Sites\nightfolio.netlify.app\public\images\tools\php.svg
+Content Type: image/svg+xml
+
+Uri: https://nightfolio.netlify.app/public/images/tools/tailwind.svg
+File Name: C:\Downloaded Web Sites\nightfolio.netlify.app\public\images\tools\tailwind.svg
+Content Type: image/svg+xml
+
+Uri: https://nightfolio.netlify.app/public/svgs/arrow-down-left.svg
+File Name: C:\Downloaded Web Sites\nightfolio.netlify.app\public\svgs\arrow-down-left.svg
+Content Type: image/svg+xml
+
+Uri: https://nightfolio.netlify.app/public/svgs/arrow-down-right.svg
+File Name: C:\Downloaded Web Sites\nightfolio.netlify.app\public\svgs\arrow-down-right.svg
+Content Type: image/svg+xml
+
+Uri: https://nightfolio.netlify.app/src/css/components.css
+File Name: C:\Downloaded Web Sites\nightfolio.netlify.app\src\css\components.css
+Content Type: text/css
+
+Uri: https://nightfolio.netlify.app/src/dist/globals.css
+File Name: C:\Downloaded Web Sites\nightfolio.netlify.app\src\dist\globals.css
+Content Type: text/css
+
+Uri: https://nightfolio.netlify.app/src/js/gsap.js
+File Name: C:\Downloaded Web Sites\nightfolio.netlify.app\src\js\gsap.js
+Content Type: application/javascript
+
+Uri: https://nightfolio.netlify.app/src/js/lenis.js
+File Name: C:\Downloaded Web Sites\nightfolio.netlify.app\src\js\lenis.js
+Content Type: application/javascript
+
+Uri: https://nightfolio.netlify.app/src/js/magnetic.js
+File Name: C:\Downloaded Web Sites\nightfolio.netlify.app\src\js\magnetic.js
+Content Type: application/javascript
+
+Uri: https://nightfolio.netlify.app/src/js/main.js
+File Name: C:\Downloaded Web Sites\nightfolio.netlify.app\src\js\main.js
+Content Type: application/javascript
+
+Uri: https://nightfolio.netlify.app/src/js/utils.js
+File Name: C:\Downloaded Web Sites\nightfolio.netlify.app\src\js\utils.js
+Content Type: application/javascript
+
+Uri: https://nightfolio.netlify.app/src/js/vendor/gsap.min.js
+File Name: C:\Downloaded Web Sites\nightfolio.netlify.app\src\js\vendor\gsap.min.js
+Content Type: application/javascript
+
+Uri: https://nightfolio.netlify.app/src/js/vendor/lenis.min.js
+File Name: C:\Downloaded Web Sites\nightfolio.netlify.app\src\js\vendor\lenis.min.js
+Content Type: application/javascript
+
+Uri: https://nightfolio.netlify.app/src/js/vendor/scrollTrigger.min.js
+File Name: C:\Downloaded Web Sites\nightfolio.netlify.app\src\js\vendor\scrollTrigger.min.js
+Content Type: application/javascript
+
