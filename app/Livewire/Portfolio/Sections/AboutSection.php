@@ -26,7 +26,7 @@ class AboutSection extends Component
         'about.name' => 'required|string|max:255',
         'about.logo' => 'nullable|image|max:10240',
         'about.brief' => 'required|string|max:255',
-        'about.description' => 'required|string|max:1000',
+        'about.description' => 'required|string|max:5000',
     ];
 
     public function mount(Portfolio $portfolio)
