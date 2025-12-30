@@ -19,7 +19,9 @@
                        </div>
                    </a>
                    <h5 class=" title font-4 text_white text-break"> <a href="#"
-                           class="link">{{ $project->brief_description }}</a>
+                           class="link">{!! e(
+                            ucFirst($project->brief_description)
+                           ) !!}</a>
                    </h5>
                    <div class="item-shape">
                        <img src="{{ asset('template_assets/gen_z_seven/images/item/small-comet.png') }}" alt="item">
