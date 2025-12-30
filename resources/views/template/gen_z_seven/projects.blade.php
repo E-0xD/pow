@@ -21,11 +21,7 @@
                    <h5 class=" title font-4 text_white text-break"> <a href="{{ $project->project_link }}"
                            class="link">{{ formatText($project->brief_description) }}</a>
                    </h5>
-                   @foreach ($project->skills as $skill)
-                       <div class="tag font-3 text-label text-uppercase fw-6 letter-spacing-1">
-                           {{ $skill->title }}
-                       </div>
-                   @endforeach
+                   
                    <div class="item-shape">
                        <img src="{{ asset('template_assets/gen_z_seven/images/item/small-comet.png') }}" alt="item">
                    </div>
