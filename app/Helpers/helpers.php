@@ -143,7 +143,7 @@ if (!function_exists('formatText')) {
     function formatText($text)
     {
         return new HtmlString(
-            e(ucfirst($text))
+            nl2br(e(ucfirst($text)))
         );
     }
 }
