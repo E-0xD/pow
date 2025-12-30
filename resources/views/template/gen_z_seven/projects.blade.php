@@ -8,7 +8,7 @@
        <div class="tabs-content-wrap">
            @foreach ($portfolio->projects as $project)
                <div class="portfolio-item element">
-                   <a href="{{ $project->project_link }}" data-fancybox="gallery" class="img-style">
+                   <a href="{{ $project->project_link }}"  class="img-style">
                        @if ($project->thumbnail_path)
                            <img decoding="async" loading="lazy" src="{{ Storage::url($project->thumbnail_path) }}"
                                width="690" height="388" alt="portfolio">
@@ -18,10 +18,8 @@
                            {{ $project->title }}
                        </div>
                    </a>
-                   <h5 class=" title font-4 text_white text-break"> <a href="#"
-                           class="link">{!! e(
-                            ucFirst($project->brief_description)
-                           ) !!}</a>
+                   <h5 class=" title font-4 text_white text-break"> <a href="{{ $project->project_link }}"
+                           class="link">{{formatText($project->brief_description)}}</a>
                    </h5>
                    <div class="item-shape">
                        <img src="{{ asset('template_assets/gen_z_seven/images/item/small-comet.png') }}" alt="item">

@@ -16,7 +16,7 @@
                         </h5>
                         <span class="text-body-1 font-3">{{ ucFirst($experience->company) }}</span>
                         <p class="text-body-1 font-3">
-                            {!! e(ucFirst($experience->description)) !!}</p>
+                            {{formatText($experience->description)}}</p>
                     </div>
                     <div class="date text-caption-1 text_white font-3">
                         {{ $experience->start_date }} -

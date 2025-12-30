@@ -1,7 +1,10 @@
 <?php
 
+use Illuminate\Support\HtmlString;
+
 if (!function_exists('getContactLink')) {
-    function getContactLink($title, $value) {
+    function getContactLink($title, $value)
+    {
         // Trim whitespace
         $value = trim($value);
         if (empty($value)) return '#';
@@ -133,5 +136,14 @@ if (!function_exists('getContactLink')) {
                 // For websites, assume value is already a URL
                 return $value;
         }
+    }
+}
+
+if (!function_exists('formatText')) {
+    function formatText($text)
+    {
+        return new HtmlString(
+            nl2br(e(ucfirst($text)))
+        );
     }
 }

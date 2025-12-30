@@ -6,7 +6,7 @@
             </div>
             <div class="title-border-shape">
                 <h4 class="animationtext clip "><span class="tf-text s1 cd-words-wrapper text_primary-color">
-                        <span class="item-text is-visible"> {!! e(ucFirst($portfolio->about->brief)) ?? 'N/A' !!}</span>
+                        <span class="item-text is-visible"> {{formatText($portfolio->about->brief)}}</span>
                     </span> </h4>
                 <div class="shape">
                     <span class="shape-1"></span>
@@ -26,9 +26,7 @@
             {{ ucFirst($portfolio->about->name) }}
         </h1>
         <p class="text_muted-color font-3 mb_43 split-text split-lines-transform">
-            {!! e(
-                ucFirst($portfolio->about->description)
-            ) !!}</p>
+            {{formatText($portfolio->about->description)}}</p>
         <div class="wrap-counter tf-grid-layout md-col-3">
             <div class="counter-item bs-light-mode">
                 <div class="counter-number h2 text_white mb_7">
