@@ -21,7 +21,7 @@
            
              <ul class="list-icon d-flex">
                  @foreach ($portfolio->contactMethods as $contactMethod)
-                     <li><a href="{{ $contactMethod->value }}">{!! $contactMethod->contactMethod->logo !!}</a></li>
+                     <li><a href="{{ getContactLink($contactMethod->value) }}">{!! $contactMethod->contactMethod->logo !!}</a></li>
                  @endforeach
              </ul>
          </div>
