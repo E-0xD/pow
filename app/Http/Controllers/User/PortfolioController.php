@@ -21,7 +21,7 @@ class PortfolioController extends Controller
             ->portfolios()
             ->with('about')
             ->latest()
-            ->paginate(10);
+            ->paginate(9);
 
         return view('user.portfolio.index', compact('portfolios'));
     }

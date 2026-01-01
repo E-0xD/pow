@@ -8,6 +8,7 @@ use App\Http\Controllers\Payment\Processors\NowPaymentController;
 use App\Models\Plan;
 use App\Models\PortfolioSubscription;
 use App\Models\Transaction;
+use App\Services\CouponService;
 use App\Services\EmailService;
 use App\Services\MessageService;
 use Carbon\Carbon;
@@ -20,12 +21,14 @@ class NowPaymentValidationController extends Controller
     protected $nowpayment;
     protected $emailService;
     protected $messageService;
+    protected $couponService;
 
     public function __construct()
     {
         $this->emailService = new EmailService();
         $this->messageService = new MessageService(new Agent());
         $this->nowpayment = new NowPaymentController();
+        $this->couponService = new CouponService();
     }
 
     /**
@@ -70,6 +73,13 @@ class NowPaymentValidationController extends Controller
                     'purchased_at' => now(),
                     'expires_at' => Carbon::now()->addDays((int) $plan->duration),
                 ]);
+
+                // Apply coupon benefits if any
+                $couponCode = $transaction->meta['coupon_code'] ?? null;
+                if ($couponCode) {
+                    $coupon = $this->couponService->findValidCoupon($couponCode);
+                    $this->couponService->applyCouponBenefitsToSubscription($coupon, $portfolioSubscription);
+                }
 
                 $message = $this->messageService->getPaymentSuccessMessage($portfolioSubscription->user, $portfolioSubscription->transaction->amount, $portfolioSubscription->transaction->reference,  $portfolioSubscription->portfolio->title);
 

@@ -115,16 +115,17 @@
                                 <hr class="my-2 border-dashed border-gray-200 dark:border-white/20" />
                                 <div class="flex justify-between">
                                     <span>Subtotal</span>
-                                    <span>${{ number_format($selectedPlan['price'], 2) }}</span>
+                                    <span>${{ number_format($this->finalPrice, 2) }}</span>
                                 </div>
 
-                                <div class="flex justify-between">
+                                {{-- <div class="flex justify-between">
                                     <span>Tax (0%)</span>
                                     <span>$0</span>
-                                </div>
+                                </div> --}}
+
                                 <div class="flex justify-between text-base font-bold text-[#140d1b] dark:text-white">
                                     <span>Total</span>
-                                    <span>${{ number_format($selectedPlan['price'], 2) }}</span>
+                                    <span>${{ number_format($this->finalPrice, 2) }}</span>
                                 </div>
                                 <div
                                     class="mt-2 flex items-center justify-between text-xs text-gray-500 dark:text-gray-400">
@@ -134,21 +135,31 @@
 
                             </div>
                             <div class="mt-6 flex gap-2">
-                                <input
+                                <input wire:model="couponCode"
                                     class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-sm text-[#140d1b] dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-[#dbcfe7] dark:border-white/20 bg-background-light dark:bg-background-dark/80 focus:border-primary/80 h-11 placeholder:text-[#734c9a] dark:placeholder:text-white/40 px-3"
                                     placeholder="Promo Code" />
-                                <button
+                                <button wire:click="applyCoupon"
                                     class="flex h-11 cursor-pointer items-center justify-center rounded-lg bg-primary/10 dark:bg-primary/20 px-4 text-sm font-bold text-primary dark:text-white transition-colors hover:bg-primary/20 dark:hover:bg-primary/30">
                                     Apply
                                 </button>
                             </div>
+                            @if ($appliedCoupon)
+                                <div class="text-primary w-full text-sm mt-2">
+                                    {{ $appliedCoupon->type->message($appliedCoupon->discount_value ?? $appliedCoupon->months_value) }}
+                                </div>
+                            @endif
+                            @if ($couponError)
+                                <div class="mt-2 text-red-500 text-sm">
+                                    {{ $couponError }}
+                                </div>
+                            @endif
                         </div>
                         <!-- Pay Button & Security Footer -->
                         <div
                             class="sticky bottom-0 bg-background-light dark:bg-background-dark/80 backdrop-blur-sm p-4 mt-auto">
                             <button type="button" wire:click="pay"
                                 class="h-14 w-full rounded-xl bg-primary text-lg font-bold text-white shadow-lg shadow-primary/30 transition-transform hover:scale-[1.02] active:scale-[0.98]">
-                                Pay ${{ number_format($selectedPlan['price'], 2) }}
+                                Pay ${{ number_format($this->finalPrice, 2) }}
                             </button>
                             <div
                                 class="mt-4 flex items-center justify-center gap-2 text-xs text-gray-500 dark:text-gray-400">

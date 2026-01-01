@@ -20,7 +20,9 @@ class PortfolioSubscription extends Model
         'purchased_at',
         'expires_at',
         'status',
-        'transaction_id'
+        'transaction_id',
+        'processor_subscription_code',
+        'processor_email_token'
     ];
 
     protected $casts = [

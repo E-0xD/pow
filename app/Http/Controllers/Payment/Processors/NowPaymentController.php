@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Log;
 
 class NowPaymentController extends Controller
 {
-    public function process($amount, $successUrl, $cancelUrl)
+    public function process($amount, $successUrl, $cancelUrl, $couponCode = null)
     {
 
         try {

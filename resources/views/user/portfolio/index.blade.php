@@ -45,7 +45,7 @@
                 'icon' => '<span class=\'material-symbols-outlined\'>add_circle</span>',
             ]" />
 
-        @if ($portfolios->count())
+        @if ($portfolios->count() > 0)
 
             <!-- ImageGrid -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
@@ -120,6 +120,8 @@
                     </div>
                 @endforeach
             </div>
+
+            <x-pagination :paginator="$portfolios"/>
         @else
             <div class="flex flex-col items-center justify-center gap-6 mt-16 text-center">
                 <div class="text-primary">
