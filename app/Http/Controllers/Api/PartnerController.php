@@ -30,7 +30,7 @@ class PartnerController extends Controller
             $validator = Validator::make($request->all(), [
                 'name' => 'required|string|max:255',
                 'email' => 'required|string|email|max:255|unique:users',
-                'password' => 'required|string|min:8',
+                'password' => 'required|string',
             ]);
 
             if ($validator->fails()) {
@@ -71,7 +71,6 @@ class PartnerController extends Controller
                 to: $user,
                 subject: $message['subject'],
                 payload: $message['payload'],
-                queue: false
             );
 
             return response()->json([
