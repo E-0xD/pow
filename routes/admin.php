@@ -10,11 +10,13 @@ use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::domain('admin.' . parse_url(config('app.url'), PHP_URL_HOST))->name('admin.')->middleware(['auth', 'ensure.admin', 'ensure.active'])->group(function () {
+    Route::get('/', [MetricsController::class, 'index'])->name('metrics.index');
+    Route::get('/features', [\App\Http\Controllers\Admin\DashboardController::class, 'features'])->name('features.index');
+    
     Route::resource('template', TemplateController::class);
     Route::resource('user', UserController::class)->except(['edit']);
     Route::resource('coupon', CouponController::class);
     Route::resource('partner', PartnerController::class);
-    Route::get('/', [MetricsController::class, 'index'])->name('metrics.index');
 
     // Affiliate Management
     Route::resource('affiliate', AffiliateController::class)->except(['create', 'show', 'store']);
