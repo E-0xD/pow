@@ -8,48 +8,20 @@
 
             <div class="flex flex-col gap-2">
                 <a @class(["flex items-center gap-3 px-3 py-2 rounded-lg",
-                    'bg-primary/10 dark:bg-primary/20 text-primary dark:text-white' => request()->routeIs('admin.metrics.*'),
-                    'hover:bg-gray-100 dark:hover:bg-white/10 text-[#1F2937] dark:text-gray-300' => ! request()->routeIs('admin.metrics.*')
-                ]) href="{{ route('admin.metrics.index') }}">
-                    <span class="material-symbols-outlined text-2xl">insights</span>
-                    <p class="text-sm font-bold leading-normal">Metrics</p>
+                    'bg-primary/10 dark:bg-primary/20 text-primary dark:text-white' => request()->routeIs('admin.index'),
+                    'hover:bg-gray-100 dark:hover:bg-white/10 text-[#1F2937] dark:text-gray-300' => ! request()->routeIs('admin.index')
+                ]) href="{{ route('admin.index') }}">
+                    <span class="material-symbols-outlined text-2xl">space_dashboard</span>
+                    <p class="text-sm font-bold leading-normal">Controls</p>
                 </a>
 
-                <a @class(["flex items-center gap-3 px-3 py-2 rounded-lg",
-                    'dark:bg-primary/20 text-primary dark:text-white bg-primary/10' => request()->routeIs('admin.user.*'),
-                    'hover:bg-gray-100 dark:hover:bg-white/10 text-[#1F2937] dark:text-gray-300' => ! request()->routeIs('admin.user.*')
-                ]) href="{{ route('admin.user.index') }}">
-                    <span class="material-symbols-outlined">people</span>
-                    <p class="text-sm font-medium leading-normal">Manage Users</p>
-                </a>
-
-                <a @class(["flex items-center gap-3 px-3 py-2 rounded-lg",
-                    'dark:bg-primary/20 text-primary dark:text-white bg-primary/10' => request()->routeIs('admin.affiliate.*'),
-                    'hover:bg-gray-100 dark:hover:bg-white/10 text-[#1F2937] dark:text-gray-300' => ! request()->routeIs('admin.affiliate.*')
-                ]) href="{{ route('admin.affiliate.index') }}">
-                    <span class="material-symbols-outlined">network_node</span>
-                    <p class="text-sm font-medium leading-normal">Affiliates</p>
-                </a>
-
-                <a @class(["flex items-center gap-3 px-3 py-2 rounded-lg",
-                    'dark:bg-primary/20 text-primary dark:text-white bg-primary/10' => request()->routeIs('admin.template.*'),
-                    'hover:bg-gray-100 dark:hover:bg-white/10 text-[#1F2937] dark:text-gray-300' => ! request()->routeIs('admin.template.*')
-                ]) href="{{ route('admin.template.index') }}">
-                    <span class="material-symbols-outlined">view_quilt</span>
-                    <p class="text-sm font-medium leading-normal">Templates</p>
-                </a>
+               
             </div>
         </div>
 
         <div class="flex flex-col gap-4">
             <div class="flex flex-col gap-1">
-                <a @class(["flex items-center gap-3 px-3 py-2 rounded-lg",
-                    'dark:bg-primary/20 text-primary dark:text-white bg-primary/10' => request()->routeIs('user.dashboard'),
-                    'hover:bg-gray-100 dark:hover:bg-white/10 text-[#1F2937] dark:text-gray-300' => ! request()->routeIs('user.dashboard')
-                ]) href="{{ route('user.dashboard') }}">
-                    <span class="material-symbols-outlined text-2xl">view_cozy</span>
-                    <p class="text-sm font-medium leading-normal">POW</p>
-                </a>
+               
 
                 <form action="{{ route('logout') }}" method="post">
                     @csrf
