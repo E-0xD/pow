@@ -85,6 +85,11 @@ class User extends Authenticatable
         return $this->hasOne(Affiliate::class, 'user_id');
     }
 
+    public function partners()
+    {
+        return $this->belongsToMany(Partner::class, 'partner_users')->withTimestamps();
+    }
+
     public function referredBy()
     {
         return $this->belongsTo(self::class, 'referred_by');

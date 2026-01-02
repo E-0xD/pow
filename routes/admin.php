@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AffiliateController;
 use App\Http\Controllers\Admin\CouponController;
 use App\Http\Controllers\Admin\MetricsController;
+use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Admin\PortfolioSubscriptionController;
 use App\Http\Controllers\Admin\TemplateController;
 use App\Http\Controllers\Admin\UserController;
@@ -12,6 +13,7 @@ Route::domain('admin.' . parse_url(config('app.url'), PHP_URL_HOST))->name('admi
     Route::resource('template', TemplateController::class);
     Route::resource('user', UserController::class)->except(['edit']);
     Route::resource('coupon', CouponController::class);
+    Route::resource('partner', PartnerController::class);
     Route::get('/', [MetricsController::class, 'index'])->name('metrics.index');
 
     // Affiliate Management

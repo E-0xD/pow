@@ -1,0 +1,90 @@
+<x-layouts.app>
+
+    <div class="mx-auto max-w-7xl">
+        <!-- PageHeading -->
+        <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+            <h1 class="text-gray-900 dark:text-white text-3xl font-bold leading-tight tracking-tight">Manage Partners</h1>
+            <a href="{{ route('admin.partner.create') }}"
+                class="flex items-center justify-center gap-2 min-w-[84px] cursor-pointer overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 focus:ring-2 focus:ring-primary/50">
+                <span class="material-symbols-outlined text-base">add</span>
+                <span class="truncate">Add New Partner</span>
+            </a>
+        </div>
+
+        <!-- Stats -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div class="bg-white dark:bg-[#20152d] rounded-xl p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-gray-600 dark:text-gray-400">Total Partners</p>
+                        <p class="text-3xl font-bold text-gray-900 dark:text-white">{{ $partners->count() }}</p>
+                    </div>
+                    <div class="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
+                        <span class="material-symbols-outlined text-blue-600 dark:text-blue-400">group</span>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white dark:bg-[#20152d] rounded-xl p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-gray-600 dark:text-gray-400">Total Users from Partners</p>
+                        <p class="text-3xl font-bold text-gray-900 dark:text-white">{{ $totalUsers }}</p>
+                    </div>
+                    <div class="p-3 bg-green-100 dark:bg-green-900/30 rounded-lg">
+                        <span class="material-symbols-outlined text-green-600 dark:text-green-400">person_add</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Partners Table -->
+        <div class="grid grid-cols-1 ">
+            <div class="bg-white dark:bg-[#20152d] rounded-xl overflow-x-auto">
+                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700/20 dark:text-gray-400">
+                        <tr>
+                            <th class="px-6 py-3" scope="col">Name</th>
+                            <th class="px-6 py-3" scope="col">Email</th>
+                            <th class="px-6 py-3" scope="col">Users Created</th>
+                            <th class="px-6 py-3" scope="col">Created At</th>
+                            <th class="px-6 py-3" scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($partners as $partner)
+                            <tr class="bg-white dark:bg-[#20152d] border-b dark:border-gray-700/50 hover:bg-gray-50 dark:hover:bg-gray-800/20">
+                                <th class="flex items-center px-6 py-4 text-gray-900 dark:text-white whitespace-nowrap" scope="row">
+                                    <div class="pl-3">
+                                        <div class="text-base font-semibold">{{ $partner->name }}</div>
+                                    </div>
+                                </th>
+                                <td class="px-6 py-4">{{ $partner->email }}</td>
+                                <td class="px-6 py-4">{{ $partner->users_count }}</td>
+                                <td class="px-6 py-4">{{ $partner->created_at?->format('M d, Y') }}</td>
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center space-x-2">
+                                        <a href="{{ route('admin.partner.show', $partner) }}"
+                                            class="p-1 text-gray-500 rounded hover:bg-gray-100 dark:hover:bg-gray-700"><span
+                                                class="material-symbols-outlined text-lg">visibility</span></a>
+                                        <a href="{{ route('admin.partner.edit', $partner) }}"
+                                            class="p-1 text-blue-500 rounded hover:bg-blue-100 dark:hover:bg-blue-900/50"><span
+                                                class="material-symbols-outlined text-lg">edit</span></a>
+                                        <form action="{{ route('admin.partner.destroy', $partner) }}" method="post"
+                                            onsubmit="return confirm('Delete partner?');">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit"
+                                                class="p-1 text-red-500 rounded hover:bg-red-100 dark:hover:bg-red-900/50"><span
+                                                    class="material-symbols-outlined text-lg">delete</span></button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</x-layouts.app>

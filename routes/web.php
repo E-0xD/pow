@@ -10,6 +10,7 @@ require __DIR__ . '/payment.php';
 require __DIR__ . '/api.php';
 require __DIR__ . '/user.php';
 require __DIR__ . '/auth.php';
+require __DIR__ . '/services.php';
 
 Route::middleware(['capture.affiliate'])->group(function () {
   Route::view('/', 'guest.welcome')->name('guest.welcome');

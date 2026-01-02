@@ -171,7 +171,7 @@ class MessageService
                 'outroLines' => [
                     'If you have any trouble, reply to this email or contact our support team.'
                 ],
-                 'actionText' => 'Reset Password',
+                'actionText' => 'Reset Password',
                 'actionUrl' => $resetLink,
                 'signature' => '— The ' . config('app.name') . ' Team',
                 'company' => config('app.name'),
@@ -207,6 +207,43 @@ class MessageService
                 'actionUrl' => route('user.dashboard'),
                 'outroLines' => [
                     'If you have any questions, reply to this email or contact our support team.'
+                ],
+                'signature' => '— The ' . config('app.name') . ' Team',
+                'company' => config('app.name'),
+            ]
+        ];
+    }
+
+    public function getPartnerRegisterMessage($user, $partner): array
+    {
+        $introLines = [
+            'Welcome! Through our partnership with ' . $partner->name . ', you now have access to powerful portfolio and digital proof-of-work tools.',
+            'You\'ve just taken an important step toward building your professional presence — a dedicated space where you can showcase your skills, projects, and accomplishments with confidence.',
+            'With ' . config('app.name') . ', creating and sharing a compelling portfolio is effortless. Your entire professional story, accessible through one simple link.',
+        ];
+
+        if (config('app.status') == 'waitlist') {
+            $introLines[] = 'We\'re currently in early access and launching publicly soon. As a ' . $partner->name . ' user, you\'ll be getting priority access to the full platform when we launch.';
+        }
+
+        $introLines = array_merge($introLines, [
+            'Our mission: help you stand out, build credibility, and unlock new opportunities. Have ideas for features you\'d love to see? We genuinely want to hear from you.',
+            'Here\'s to creating something meaningful — and to your next breakthrough moment.',
+            'Start exploring the tools now available to you through the ' . $partner->name . ' and ' . config('app.name') . ' partnership.',
+        ]);
+
+        return [
+            'subject' => 'Welcome to ' . config('app.name') . ' - Account Created via ' . $partner->name,
+            'payload' => [
+                'title' => 'Welcome to ' . config('app.name'),
+                'name' => $user->name,
+                'greeting' => 'Hi ' . $user->name . ',',
+                'introLines' => $introLines,
+                'actionText' => 'Sign In to Your Account',
+                'actionUrl' => route('login'),
+                'outroLines' => [
+                    'Your account credentials are ready to use. If you have any questions about your account or ' . $partner->name . '\'s services, please contact our support team.',
+                    'Thank you for joining ' . config('app.name') . ' through ' . $partner->name . '!'
                 ],
                 'signature' => '— The ' . config('app.name') . ' Team',
                 'company' => config('app.name'),
