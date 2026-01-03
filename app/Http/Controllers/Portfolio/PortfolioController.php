@@ -61,7 +61,7 @@ class PortfolioController extends Controller
             $years_of_experience = 1; // fallback
         }
 
-        return view($portfolio->template->file_path, compact('portfolio', 'years_of_experience'));
+        return view($portfolio->template->file_path.'.index', compact('portfolio', 'years_of_experience'));
     }
 
     /**
