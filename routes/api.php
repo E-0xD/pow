@@ -14,7 +14,7 @@ Route::prefix('sandbox')->group(function () {
     Route::post('test-create-user', [SandboxController::class, 'testCreateUser']);
 
     // API Sandbox
-    Route::view('/', 'api-sandbox')->name('api.sandbox');
+    Route::view('/', 'api.sandbox')->name('api.sandbox');
 });
 
-Route::view('documentation', 'api-documentation')->name('api.documentation');
+Route::view('documentation', 'api.documentation')->name('api.documentation');
