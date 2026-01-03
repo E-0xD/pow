@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Enums\UserStatus;
 use App\Http\Controllers\Controller;
 use App\Models\Partner;
 use App\Models\User;
@@ -61,6 +62,9 @@ class PartnerController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
+                'status' => config('app.status') === 'waitlist'
+                        ? UserStatus::WAITLIST
+                        : UserStatus::ACTIVE,
             ]);
 
             $partner->users()->attach($user);
