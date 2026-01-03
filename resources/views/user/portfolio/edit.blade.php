@@ -17,7 +17,9 @@
         </div>
 
         <div class="mt-8 space-y-10">
-            <form action="{{ route('user.portfolio.update', $portfolio) }}" method="POST" enctype="multipart/form-data" class="space-y-10">
+            <section>
+            <form action="{{ route('user.portfolio.update', $portfolio) }}" method="POST" enctype="multipart/form-data"
+                class="space-y-10">
                 @csrf
                 @method('PUT')
                 <!-- General Section -->
@@ -246,12 +248,207 @@
                     <span class="truncate">Save Changes</span>
                 </button>
             </form>
+            </section>
+
+            <section class="mt-8">
+                <!-- PageHeading -->
+                <div class="flex flex-wrap justify-between gap-4 mb-8 w-full">
+                    <div class="flex flex-col gap-2 w-full pb-4 border-b border-gray-200 dark:border-gray-700">
+                        <h2
+                            class="text-text-primary dark:text-white text-xl font-bold leading-tight tracking-tight ">
+                            Billing &amp; Subscription
+                        </h2>
+                        <p class="text-[#756189] dark:text-gray-400 text-base font-normal leading-normal">
+                            Manage your plan, payment details, and view
+                            your invoice history.
+                        </p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Left Column -->
+                    <div class="lg:col-span-2 flex flex-col gap-8">
+                        <!-- Your Plan Section -->
+                        <div>
+                            <h2
+                                class="text-[#141118] dark:text-white text-xl md:text-[22px] font-bold leading-tight tracking-[-0.015em] px-1 pb-3">
+                                Your Plan
+                            </h2>
+                            <div
+                                class="p-6 @container bg-white dark:bg-background-dark/50 rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.05)] dark:shadow-none border border-gray-200 dark:border-gray-800">
+                                <div
+                                    class="flex flex-col items-stretch justify-start @lg:flex-row @lg:items-start gap-6">
+                                    <div class="flex w-full min-w-72 grow flex-col items-stretch justify-center gap-4">
+                                        <div class="flex items-center justify-between">
+                                            <p
+                                                class="text-lg font-bold leading-tight tracking-[-0.015em] text-primary dark:text-primary-400">
+                                                Pro Plan
+                                            </p>
+                                            <div class="flex items-center gap-2">
+                                                <button
+                                                    class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-transparent text-[#756189] dark:text-gray-400 border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 text-sm font-medium leading-normal">
+                                                    Cancel
+                                                </button>
+                                                <button
+                                                    class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-primary text-white text-sm font-medium leading-normal hover:bg-primary/90">
+                                                    Upgrade Plan
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="flex flex-col gap-2">
+                                            <p
+                                                class="text-[#756189] dark:text-gray-400 text-base font-normal leading-normal">
+                                                Our most popular plan
+                                                for professionals.
+                                                Includes up to 10
+                                                portfolios.
+                                            </p>
+                                            <p
+                                                class="text-[#756189] dark:text-gray-400 text-base font-normal leading-normal">
+                                                Next payment of
+                                                <span class="font-medium text-[#141118] dark:text-white">$49.00</span>
+                                                on
+                                                <span class="font-medium text-[#141118] dark:text-white">July 15,
+                                                    2024.</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Payment Details Section -->
+                        <div>
+                            <h2
+                                class="text-[#141118] dark:text-white text-xl md:text-[22px] font-bold leading-tight tracking-[-0.015em] px-1 pb-3">
+                                Payment Details
+                            </h2>
+                            <div
+                                class="p-6 bg-white dark:bg-background-dark/50 rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.05)] dark:shadow-none border border-gray-200 dark:border-gray-800">
+                                <div class="flex flex-wrap items-center justify-between gap-4">
+                                    <div class="flex items-center gap-4">
+                                        <img class="h-8" data-alt="Visa card logo"
+                                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmHcxkmeVK3N4jPkY-l5273f-AGjUd3Nn_e1fuFv4sH94mT1Njibn12ng4di5pPiXI1zFM_yfIkhIUCvHUf6KMJhufS4nNYjE95RbySQDEiqaP3Nr7rtj4xNEArzKWYxPTuaQPa3bmTSIIkZGmX45j7AH2DbMv8F9w_1CGpcG2dNGPsCDC0nOSUPVgHu-YtCKGB5QDHBHBxut-GWOPaJDE1NoI4XXyhK8ZTJx1K1tr40qAHTdhnaiinixRsvTL2gMZ3ePx9FG5Nb8" />
+                                        <div class="flex flex-col">
+                                            <p class="text-[#141118] dark:text-white font-medium">
+                                                Visa ending in 1234
+                                            </p>
+                                            <p class="text-[#756189] dark:text-gray-400 text-sm">
+                                                Expires 06/2026
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <button
+                                        class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-transparent text-[#756189] dark:text-gray-400 border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 text-sm font-medium leading-normal">
+                                        Update
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Right Column -->
+                    <div class="lg:col-span-1 flex flex-col gap-8">
+                        <!-- Invoice History -->
+                        <div>
+                            <h2
+                                class="text-[#141118] dark:text-white text-xl md:text-[22px] font-bold leading-tight tracking-[-0.015em] px-1 pb-3">
+                                Invoices
+                            </h2>
+                            <div
+                                class="bg-white dark:bg-background-dark/50 rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.05)] dark:shadow-none border border-gray-200 dark:border-gray-800 overflow-hidden">
+                                <ul class="divide-y divide-gray-200 dark:divide-gray-800">
+                                    <li
+                                        class="p-4 flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors duration-150">
+                                        <div class="flex flex-col">
+                                            <p class="font-medium text-[#141118] dark:text-white">
+                                                June 2024
+                                            </p>
+                                            <p class="text-sm text-[#756189] dark:text-gray-400">
+                                                #INV-00123
+                                            </p>
+                                        </div>
+                                        <div class="flex items-center gap-4">
+                                            <p class="font-medium text-[#141118] dark:text-white">
+                                                $49.00
+                                            </p>
+                                            <a class="text-[#756189] dark:text-gray-400 hover:text-primary dark:hover:text-white"
+                                                href="#">
+                                                <span class="material-symbols-outlined">download</span>
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li
+                                        class="p-4 flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors duration-150">
+                                        <div class="flex flex-col">
+                                            <p class="font-medium text-[#141118] dark:text-white">
+                                                May 2024
+                                            </p>
+                                            <p class="text-sm text-[#756189] dark:text-gray-400">
+                                                #INV-00122
+                                            </p>
+                                        </div>
+                                        <div class="flex items-center gap-4">
+                                            <p class="font-medium text-[#141118] dark:text-white">
+                                                $49.00
+                                            </p>
+                                            <a class="text-[#756189] dark:text-gray-400 hover:text-primary dark:hover:text-white"
+                                                href="#">
+                                                <span class="material-symbols-outlined">download</span>
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li
+                                        class="p-4 flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors duration-150">
+                                        <div class="flex flex-col">
+                                            <p class="font-medium text-[#141118] dark:text-white">
+                                                April 2024
+                                            </p>
+                                            <p class="text-sm text-[#756189] dark:text-gray-400">
+                                                #INV-00121
+                                            </p>
+                                        </div>
+                                        <div class="flex items-center gap-4">
+                                            <p class="font-medium text-[#141118] dark:text-white">
+                                                $49.00
+                                            </p>
+                                            <a class="text-[#756189] dark:text-gray-400 hover:text-primary dark:hover:text-white"
+                                                href="#">
+                                                <span class="material-symbols-outlined">download</span>
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li
+                                        class="p-4 flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors duration-150">
+                                        <div class="flex flex-col">
+                                            <p class="font-medium text-[#141118] dark:text-white">
+                                                March 2024
+                                            </p>
+                                            <p class="text-sm text-[#756189] dark:text-gray-400">
+                                                #INV-00120
+                                            </p>
+                                        </div>
+                                        <div class="flex items-center gap-4">
+                                            <p class="font-medium text-[#141118] dark:text-white">
+                                                $49.00
+                                            </p>
+                                            <a class="text-[#756189] dark:text-gray-400 hover:text-primary dark:hover:text-white"
+                                                href="#">
+                                                <span class="material-symbols-outlined">download</span>
+                                            </a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <!-- Advanced Section -->
             <section>
                 <h2
                     class="text-text-primary dark:text-white text-xl font-bold leading-tight tracking-tight pb-4 border-b border-gray-200 dark:border-gray-700">
                     Advanced
                 </h2>
+
                 @if (0 != 0)
                     <div
                         class="mt-6 bg-background-light dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6">
