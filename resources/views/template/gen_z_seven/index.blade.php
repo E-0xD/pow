@@ -7,10 +7,7 @@
     <head>
         <!-- Basic Page Needs -->
         <meta charset="utf-8">
-        <!--[if IE ]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/><![endif]-->
-        <title>{{ config('app.name') }} - Personal Portfolio Resume</title>
-
-        <meta name="author" content="themesflat.com">
+       
 
         <!-- Mobile Specific Metas -->
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -33,9 +30,7 @@
         <link rel="stylesheet" type="text/css"
             href="{{ asset('template_assets/gen_z_seven/icons/icomoon/style.css') }}">
 
-        <!-- Favicon and Touch Icons  -->
-        <link rel="shortcut icon" href="{{ 'template_assets/gen_z_seven/images/logo/favicon.svg' }}">
-        <link rel="apple-touch-icon-precomposed" href="{{ 'template_assets/gen_z_seven/images/logo/favicon.svg' }}">
+             @include('partials.template-meta')
     </head>
 
     <body>
