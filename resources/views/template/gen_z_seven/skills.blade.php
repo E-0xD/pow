@@ -24,5 +24,23 @@
              </div>
          </div>
      @endforeach
+     @foreach ($portfolio->skills->where(fn($skill) => $skill->type->value == 'soft')->values() as $index => $skill)
+         <div class="service-item area-effect scrolling-effect effectBottom">
+             <div class="content-inner d-flex align-items-center justify-content-between">
+                 <div class="d-flex align-items-center content">
+                     <span class="number text-label text_muted-color font-3">
+                         {{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}/
+                     </span>
+                     <h5 class="text_white font-4">
+                         <a href="#contact" class="link">{{ ucfirst($skill->title) }}</a>
+                     </h5>
+                 </div>
+             </div>
+
+             <div class="img-hover">
+                 {!! $skill->logo !!}
+             </div>
+         </div>
+     @endforeach
 
  </div>
