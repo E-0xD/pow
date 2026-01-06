@@ -16,7 +16,7 @@
          </h3>
 
      </div>
-     <form class="form-contact bs-light-mode">
+     <form class="form-contact bs-light-mode" method="POST" action="{{route('portfolio.message.store')}}">
          <div class="heading-title d-flex justify-content-between align-items-center mb_32">
            
              <ul class="list-icon d-flex">
