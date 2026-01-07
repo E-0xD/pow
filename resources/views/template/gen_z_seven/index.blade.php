@@ -21,8 +21,6 @@
         <link rel="stylesheet" type="text/css"
             href="{{ asset('template_assets/gen_z_seven/css/jquery.fancybox.min.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('template_assets/gen_z_seven/css/styles.css') }}">
-
-        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
         <!-- Font -->
         <link rel="stylesheet" href="{{ asset('template_assets/gen_z_seven/font/fonts.css') }}">
 

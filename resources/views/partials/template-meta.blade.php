@@ -27,3 +27,5 @@
 <meta name="twitter:description" content="{{ $portfolio->meta_description ?? config('app.desc') }}">
 <meta name="twitter:image"
     content="{{ $portfolio->favicon ? Storage::url($portfolio->favicon) : asset(config('app.logo')) }}">
+
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
