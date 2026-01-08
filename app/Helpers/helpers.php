@@ -147,3 +147,14 @@ if (!function_exists('formatText')) {
         );
     }
 }
+
+if(!function_exists('tagsStringToArray')){
+    function tagsStringToArray($string)
+    {
+        if (empty($string)) {
+            return [];
+        }
+        
+        return array_map('trim', explode(',', $string));
+    }
+}

@@ -36,7 +36,7 @@ class TemplateController extends Controller
             'portfolio_id' => 1,
             'name' => 'John Doe',
             'brief' => 'Full Stack Developer',
-            'description' => 'I\'m a passionate developer with 5+ years of experience building web applications.',
+            'description' => 'I\'m a passionate developer with 5+ years of experience building web applications. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio nisi ea fugiat assumenda vero cumque exercitationem sapiente voluptates non soluta expedita, deserunt ullam porro aliquam unde officiis nulla tenetur quo quisquam doloribus dolor? Illo quod excepturi repellat consequuntur, fugiat ipsum adipisci accusamus libero possimus! Eos unde corrupti libero amet repudiandae, vero itaque vitae minus sit, quisquam consectetur dignissimos ea sed cupiditate veritatis aspernatur nemo velit maxime temporibus. Nulla voluptas porro rerum corrupti nisi ipsa consectetur aspernatur non ducimus et ipsum sint, repudiandae iste. Eveniet, veritatis provident! Magni sunt nobis, molestias vitae aperiam, ab odio iusto id quas, sint voluptates eaque?',
             'logo' => 'portfolios\demo\1.jpg',
         ]);
         $portfolio->setRelation('about', $about);

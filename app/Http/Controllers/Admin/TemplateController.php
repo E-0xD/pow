@@ -31,6 +31,8 @@ class TemplateController extends Controller
                 $data['thumbnail_path'] = $request->file('thumbnail')->store('templates', 'public');
             }
 
+            $data['tags'] = tagsStringToArray($data['tags']);
+
             Template::create($data);
 
             return redirect()->route('admin.template.index')
@@ -71,13 +73,14 @@ class TemplateController extends Controller
                 $data['thumbnail_path'] = $request->file('thumbnail')->store('templates', 'public');
             }
 
+            $data['tags'] = tagsStringToArray($data['tags']);
+
             $template->update($data);
 
             return redirect()->route('admin.template.index')->with([
                 'type' => 'success',
                 'message' => 'Template updated successfully!'
             ]);
-
         } catch (\Throwable $th) {
             Log::error($th);
             return redirect()->route('admin.template.index')

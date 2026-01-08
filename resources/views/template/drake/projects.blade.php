@@ -10,7 +10,7 @@
 
             <div class="row portfolio-items">
                 @foreach ($portfolio->projects as $project)
-                    <div class="col-md-12 scroll-animation" data-animation="fade_from_bottom">
+                    <div class="col-md-12z scroll-animation" data-animation="fade_from_bottom">
                         <div class="portfolio-item portfolio-full">
                             <div class="portfolio-item-inner">
                                 <a href="{{ $project->project_link }}" data-lightbox="example-1">
