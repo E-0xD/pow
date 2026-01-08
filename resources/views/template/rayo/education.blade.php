@@ -47,8 +47,8 @@
                                     </div>
                                     <div class="col-12 col-md-6 col-xl-2 mxd-grid-item no-margin">
                                         <div class="mxd-projects-list__product anim-uni-in-up">
-                                            <p> {{ $education->year_of_admission }} -
-                                                {{ $education->year_of_graduation ? $education->year_of_graduation : 'Present' }}</p>
+                                            <p> {{ formatMonthYear($education->year_of_admission) }} -
+                                                {{ $education->year_of_graduation ? formatMonthYear($education->year_of_graduation) : 'Present' }}</p>
 
                                         </div>
                                     </div>

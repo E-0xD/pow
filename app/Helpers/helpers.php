@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Support\HtmlString;
 
 if (!function_exists('getContactLink')) {
@@ -156,5 +157,20 @@ if(!function_exists('tagsStringToArray')){
         }
         
         return array_map('trim', explode(',', $string));
+    }
+}
+
+if(!function_exists('formatMonthYear')){
+    function formatMonthYear($date)
+    {
+        if (empty($date)) {
+            return '';
+        }
+        
+        try {
+            return Carbon::createFromFormat('m/Y', $date)->format('F Y');
+        } catch (\Exception $e) {
+            return $date;
+        }
     }
 }

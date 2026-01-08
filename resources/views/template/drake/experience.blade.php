@@ -11,8 +11,8 @@
              <div class="resume-timeline">
                  @foreach ($portfolio->experiences as $experience)
                      <div class="item scroll-animation" data-animation="fade_from_right">
-                         <span class="date">{{ $experience->start_date }} -
-                             {{ $experience->end_date ? $experience->end_date : 'Present' }}</span>
+                         <span class="date">{{ formatMonthYear($experience->start_date) }} -
+                             {{ $experience->end_date ? formatMonthYear($experience->end_date) : 'Present' }}</span>
                          <h2>{{ ucFirst($experience->position) }}</h2>
                          <p>{{ ucFirst($experience->company) }}</p>
                          <p>{{ formatText($experience->description) }}</p>

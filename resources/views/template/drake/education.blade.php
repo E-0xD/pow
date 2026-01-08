@@ -11,7 +11,7 @@
             <div class="resume-timeline">
                 @foreach ($portfolio->educationRecords as $education)
                     <div class="item scroll-animation" data-animation="fade_from_right">
-                        <span class="date">{{ $education->year_of_admission }} - {{ $education->year_of_graduation ? $education->year_of_graduation : 'Present' }}</span>
+                        <span class="date">{{ formatMonthYear($education->year_of_admission) }} - {{ $education->year_of_graduation ? formatMonthYear($education->year_of_graduation) : 'Present' }}</span>
                         <h2>{{ $education->degree }}</h2>
                         <p>{{ $education->school }}</p>
                     </div>

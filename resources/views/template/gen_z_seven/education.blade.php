@@ -16,8 +16,8 @@
                         <span class="text-body-1 font-3">{{ $education->school }}</span>
                     </div>
                     <div class="date text-caption-1 text_white font-3">
-                        {{ $education->year_of_admission }} -
-                        {{ $education->year_of_graduation ? $education->year_of_graduation : 'Present' }}
+                        {{ formatMonthYear($education->year_of_admission) }} -
+                        {{ $education->year_of_graduation ? formatMonthYear($education->year_of_graduation) : 'Present' }}
                     </div>
                     <div class="item-shape spotlight">
                         <img src="{{ asset('template_assets/gen_z_seven/images/item/small-comet.webp') }}"

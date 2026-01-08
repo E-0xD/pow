@@ -19,8 +19,8 @@
                             {{formatText($experience->description)}}</p>
                     </div>
                     <div class="date text-caption-1 text_white font-3">
-                        {{ $experience->start_date }} -
-                        {{ $experience->end_date ? $experience->end_date : 'Present' }}
+                        {{ formatMonthYear($experience->start_date) }} -
+                        {{ $experience->end_date ? formatMonthYear($experience->end_date) : 'Present' }}
                     </div>
                     <div class="item-shape spotlight">
                         <img src="{{ asset('template_assets/gen_z_seven/images/item/small-comet.webp') }}"

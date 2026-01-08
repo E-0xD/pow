@@ -59,8 +59,8 @@
                                     </div>
                                     <div class="col-12 col-md-6 col-xl-2 mxd-grid-item no-margin">
                                         <div class="mxd-projects-list__product anim-uni-in-up">
-                                            <p> {{ $experience->start_date }} -
-                                                {{ $experience->end_date ? $experience->end_date : 'Present' }}</p>
+                                            <p> {{ formatMonthYear($experience->start_date) }} -
+                                                {{ $experience->end_date ? formatMonthYear($experience->end_date) : 'Present' }}</p>
 
                                         </div>
                                     </div>
