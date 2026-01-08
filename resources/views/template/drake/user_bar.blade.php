@@ -9,7 +9,7 @@
     <p class="copyright">{{ $portfolio->about->brief }}</p>
     <ul class="social-profile d-flex align-items-center flex-wrap justify-content-center">
          @foreach ($portfolio->contactMethods as $contactMethod)
-             <li><a href="{{ getContactLink($contactMethod->contactMethod->title, $contactMethod->value) }}">{!! $contactMethod->contactMethod->logo !!}</a></li>
+             <li><a class="d-flex align-items-center justify-content-center" href="{{ getContactLink($contactMethod->contactMethod->title, $contactMethod->value) }}">{!! $contactMethod->contactMethod->logo !!}</a></li>
          @endforeach
     </ul>
      @if ($portfolio->accept_messages)
