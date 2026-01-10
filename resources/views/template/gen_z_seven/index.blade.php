@@ -7,7 +7,6 @@
     <head>
         <!-- Basic Page Needs -->
         <meta charset="utf-8">
-       
 
         <!-- Mobile Specific Metas -->
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -28,7 +27,7 @@
         <link rel="stylesheet" type="text/css"
             href="{{ asset('template_assets/gen_z_seven/icons/icomoon/style.css') }}">
 
-             @include('partials.template-meta')
+        @include('partials.template-meta')
     </head>
 
     <body>
@@ -36,8 +35,7 @@
         <div id="wrapper" class="bg_dark counter-scroll">
 
             <video class="body-overlay" muted="" autoplay="" loop="" playsinline="">
-                <source
-                    src="{{ asset('template_assets/gen_z_seven/video/Particles-Slowly-Moving-In-Cyberspace.mp4') }}"
+                <source src="{{ asset('template_assets/gen_z_seven/video/Particles-Slowly-Moving-In-Cyberspace.mp4') }}"
                     type="video/mp4">
             </video>
 
@@ -55,27 +53,7 @@
                             <!-- End user-bar -->
 
                             @foreach ($portfolio->sectionOrders->sortBy('position') as $sectionOrder)
-                                @switch($sectionOrder->section_id)
-                                    @case('about')
-                                        @include('template.gen_z_seven.about')
-                                    @break
-
-                                    @case('experience')
-                                        @include('template.gen_z_seven.experience')
-                                    @break
-
-                                    @case('education')
-                                        @include('template.gen_z_seven.education')
-                                    @break
-
-                                    @case('skills')
-                                        @include('template.gen_z_seven.skills')
-                                    @break
-
-                                    @case('projects')
-                                        @include('template.gen_z_seven.projects')
-                                    @break
-                                @endswitch
+                                @includeIf("template.gen_z_seven.{$sectionOrder->section_id}")
                             @endforeach
 
                             @if ($portfolio->accept_messages)

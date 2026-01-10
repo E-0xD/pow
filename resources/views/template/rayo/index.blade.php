@@ -31,29 +31,9 @@
         <main id="mxd-page-content" class="mxd-page-content">
 
             @foreach ($portfolio->sectionOrders->sortBy('position') as $sectionOrder)
-                @switch($sectionOrder->section_id)
-                    @case('about')
-                        @include('template.rayo.about')
-                    @break
-
-                    @case('experience')
-                        @include('template.rayo.experience')
-                    @break
-
-                    @case('education')
-                        @include('template.rayo.education')
-                    @break
-
-                    @case('skills')
-                        @include('template.rayo.skills')
-                    @break
-
-                    @case('projects')
-                        @include('template.rayo.projects')
-                    @break
-                @endswitch
+                @includeIf("template.rayo.{$sectionOrder->section_id}")
             @endforeach
-
+            
         </main>
         <!-- Page Content End -->
 

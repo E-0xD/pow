@@ -42,33 +42,13 @@
                     @include('template.drake.user_bar')
 
                     @foreach ($portfolio->sectionOrders->sortBy('position') as $sectionOrder)
-                        @switch($sectionOrder->section_id)
-                            @case('about')
-                                @include('template.drake.about')
-                            @break
-
-                            @case('experience')
-                                @include('template.drake.experience')
-                            @break
-
-                            @case('education')
-                                @include('template.drake.education')
-                            @break
-
-                            @case('skills')
-                                @include('template.drake.skills')
-                            @break
-
-                            @case('projects')
-                                @include('template.drake.projects')
-                            @break
-                        @endswitch
+                        @includeIf("template.drake.{$sectionOrder->section_id}")
                     @endforeach
 
                     @if ($portfolio->accept_messages)
                         @include('template.drake.message')
                     @endif
-                    
+
                 </div>
             </div>
         </main>
