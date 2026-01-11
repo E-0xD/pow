@@ -2,7 +2,7 @@
     <div
         class="relative flex h-auto min-h-screen w-full flex-col items-center justify-center bg-background-light group/design-root dark:bg-background-dark p-4 sm:p-6 lg:p-8">
 
-        <div class="w-full max-w-md rounded-xl p-8 shadow-sm bg-white dark:bg-zinc-900  sm:p-10">
+        <div class="w-full max-w-md rounded-xl p-8 dark:bg-zinc-900  sm:p-10">
             <div class="flex flex-col items-center">
 
                 <h1

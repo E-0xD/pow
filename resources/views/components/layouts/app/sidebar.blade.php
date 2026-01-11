@@ -3,8 +3,8 @@
     class="hidden md:flex fixed left-0 top-0 w-64 h-[100dvh] bg-white dark:bg-[#110A19] border-r border-[#E5E7EB] dark:border-white/10 flex-col shrink-0">
     <div class="flex h-full max-h-full flex-col justify-between p-4">
         <div class="flex flex-col gap-4">
-            <div class="flex items-center gap-3 p-2">
-                <span class="text-2xl font-black text-primary">POW</span>
+            <div class="flex items-center gap-3 p-2 flex justify-center align-center">
+                <img src="{{asset(config('app.logo'))}}" class="w-5/12" alt="" srcset="">
             </div>
             <div class="flex flex-col gap-2">
                 <a @class([
@@ -58,18 +58,7 @@
 
         <div class="flex flex-col gap-4">
             <div class="flex flex-col gap-1">
-                @if (Auth::user()->role->value == 'admin')
-                    <a @class([
-                        'flex items-center gap-3 px-3 py-2 rounded-lg',
-                        'dark:bg-primary/20 text-primary dark:text-white bg-primary/10' => request()->routeIs(
-                            'admin.metrics.index'),
-                        'hover:bg-gray-100 dark:hover:bg-white/10 text-[#1F2937] dark:text-gray-300' => !request()->routeIs(
-                            'admin.metrics.index'),
-                    ]) href="{{ route('admin.metrics.index') }}">
-                        <span class="material-symbols-outlined text-2xl">admin_panel_settings</span>
-                        <p class="text-sm font-medium leading-normal">Admin</p>
-                    </a>
-                @endif
+            
                 <a @class([
                     'flex items-center gap-3 px-3 py-2 rounded-lg',
                     'dark:bg-primary/20 text-primary dark:text-white bg-primary/10' => request()->routeIs(

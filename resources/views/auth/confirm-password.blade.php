@@ -4,7 +4,7 @@
         class="relative flex min-h-screen w-full flex-col items-center justify-center bg-background-light dark:bg-background-dark p-4 sm:p-6 lg:p-8">
         <div class="w-full max-w-md">
             <div
-                class="flex flex-col items-center rounded-xl bg-white dark:bg-zinc-900 shadow-md border border-gray-200 dark:border-zinc-800 p-8 sm:p-10">
+                class="flex flex-col items-center rounded-xl dark:bg-zinc-900 dark:border-zinc-800 p-8 sm:p-10">
 
                 <h3 class="text-[#111827] dark:text-white text-2xl font-bold text-center pb-4">Confirm your password</h3>
 
