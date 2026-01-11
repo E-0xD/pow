@@ -149,28 +149,41 @@ if (!function_exists('formatText')) {
     }
 }
 
-if(!function_exists('tagsStringToArray')){
+if (!function_exists('tagsStringToArray')) {
     function tagsStringToArray($string)
     {
         if (empty($string)) {
             return [];
         }
-        
+
         return array_map('trim', explode(',', $string));
     }
 }
 
-if(!function_exists('formatMonthYear')){
+if (!function_exists('formatMonthYear')) {
     function formatMonthYear($date)
     {
         if (empty($date)) {
             return '';
         }
-        
+
         try {
             return Carbon::createFromFormat('m/Y', $date)->format('F Y');
         } catch (\Exception $e) {
             return $date;
         }
+    }
+}
+
+
+if (! function_exists('alert')) {
+    function alert(string $type, string $message): void
+    {
+        $allowed = ['info', 'error', 'success'];
+
+        session()->flash('alert', [
+            'type' => in_array($type, $allowed, true) ? $type : 'info',
+            'message' => $message,
+        ]);
     }
 }
