@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Enums\TemplateStatus;
+use App\Enums\UserRole;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PortfolioCreateRequest;
 use App\Http\Requests\PortfolioUpdateRequest;
@@ -12,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
+
 
 class PortfolioController extends Controller
 {
@@ -29,22 +31,34 @@ class PortfolioController extends Controller
     public function create()
     {
 
-        $templates = Template::where('status', TemplateStatus::PUBLISHED)->get();
+        if (Auth::user()->role == UserRole::ADMIN) {
+            $templates = Template::all();
+        } else {
+            $templates = Template::where('status', TemplateStatus::PUBLISHED)->get();
+        }
 
         return view('user.portfolio.create', compact('templates'));
     }
 
     public function store(PortfolioCreateRequest $request)
     {
-        $data = $request->validated();
 
-        $portfolio = Auth::user()->portfolios()->create($data);
+        try {
+            $data = $request->validated();
 
-        return redirect()->route('payment.checkout', $portfolio->uid)
-            ->with([
-                'type' => 'info',
-                'message' => 'Select a Plan and start proving your work'
-            ]);
+            Auth::user()->portfolios()->create($data);
+
+            alert(type: 'success', message: 'Portfolio created successfully. Personalize it to showcase your work and skills');
+
+            return redirect()->route('user.portfolio.index');
+
+        } catch (\Throwable $th) {
+
+            Log::error($th);
+            alert(type: 'error', message: 'An error occurred while creating your portfolio. Try again shortly');
+            return redirect()->route('user.portfolio.index');
+
+        }
     }
 
     public function show(Portfolio $portfolio)
@@ -73,21 +87,16 @@ class PortfolioController extends Controller
 
             $portfolio->update($data);
 
-            return redirect()->route('user.portfolio.edit', $portfolio)
-                ->with(
-                    [
-                        'type' => 'success',
-                        'message' => 'Portfolio updated successfully!'
-                    ]
-                );
-        } catch (\Exception $e) {
-            Log::error($e);
-            return back()
-                ->withInput()
-                ->with([
-                    'type' => 'error',
-                    'message' => 'Could not update portfolio, try again later!'
-                ]);
+            alert(type: 'success', message: 'Portfolio updated successfully!');
+
+            return redirect()->route('user.portfolio.edit', $portfolio);
+
+        } catch (\Throwable $th) {
+
+            Log::error($th);
+            alert(type: 'error', message: 'An error occurred while updating your portfolio. Try again shortly');
+            return redirect()->route('user.portfolio.index');
+
         }
     }
 
@@ -101,19 +110,15 @@ class PortfolioController extends Controller
 
             $portfolio->delete();
 
-            return redirect()->route('user.portfolio.index')
-                ->with(
-                    [
-                        'type' => 'success',
-                        'message' => 'Portfolio deleted successfully.'
-                    ]
-                );
+            alert(type: 'success', message: 'Portfolio deleted successfully.');
+            return redirect()->route('user.portfolio.index');
+
         } catch (\Throwable $th) {
+
             Log::error($th);
-            return back()->with([
-                'type' => 'error',
-                'message' => 'Could not delete portfolio, try again later!'
-            ]);
+            alert(type: 'error', message: 'An error occurred while deleting your portfolio. Try again shortly');
+            return redirect()->route('user.portfolio.index');
+            
         }
     }
 
@@ -124,104 +129,112 @@ class PortfolioController extends Controller
 
     public function analytics(Portfolio $portfolio)
     {
-        $thirtyDaysAgo = now()->subDays(30);
-        $sixtyDaysAgo = now()->subDays(60);
 
-        // Current period stats
-        $totalVisits = $portfolio->visits()
-            ->where('created_at', '>=', $thirtyDaysAgo)
-            ->count();
+        try {
 
-        $totalClicks = $portfolio->clicks()
-            ->where('created_at', '>=', $thirtyDaysAgo)
-            ->count();
+            $thirtyDaysAgo = now()->subDays(30);
+            $sixtyDaysAgo = now()->subDays(60);
 
-        $totalMessages = $portfolio->messages()
-            ->where('created_at', '>=', $thirtyDaysAgo)
-            ->count();
-
-        // Previous period stats for growth calculation
-        $previousVisits = $portfolio->visits()
-            ->whereBetween('created_at', [$sixtyDaysAgo, $thirtyDaysAgo])
-            ->count();
-
-        $previousClicks = $portfolio->clicks()
-            ->whereBetween('created_at', [$sixtyDaysAgo, $thirtyDaysAgo])
-            ->count();
-
-        // Calculate growth rates for each metric
-        $calculateGrowthRate = function ($current, $previous) {
-            if ($previous === 0) {
-                return $current > 0 ? 100 : 0;
-            }
-            return (($current - $previous) / $previous) * 100;
-        };
-
-        $visitsGrowthRate = $calculateGrowthRate($totalVisits, $previousVisits);
-        $clicksGrowthRate = $calculateGrowthRate($totalClicks, $previousClicks);
-
-        // Get previous period messages
-        $previousMessages = $portfolio->messages()
-            ->whereBetween('created_at', [$sixtyDaysAgo, $thirtyDaysAgo])
-            ->count();
-        $messagesGrowthRate = $calculateGrowthRate($totalMessages, $previousMessages);
-
-        // Calculate total engagement and growth rate
-        $currentEngagement = $totalVisits + $totalClicks;
-        $previousEngagement = $previousVisits + $previousClicks;
-        $engagementGrowthRate = $calculateGrowthRate($currentEngagement, $previousEngagement);
-
-        // Get traffic sources with color mapping
-        $trafficSources = $portfolio->trafficSources()
-            ->where('date', '>=', $thirtyDaysAgo)
-            ->selectRaw('source, SUM(visits_count) as total')
-            ->groupBy('source')
-            ->get();
-
-        $colors = [
-            'direct' => '#50E3C2',
-            'google' => '#4A90E2',
-            'facebook' => '#BD10E0',
-            'twitter' => '#1DA1F2',
-            'linkedin' => '#0077B5',
-            'other' => '#FFC700'
-        ];
-
-        $stats = [
-            'total_visits' => $totalVisits,
-            'total_clicks' => $totalClicks,
-            'total_messages' => $totalMessages,
-            'visits_growth_rate' => $visitsGrowthRate,
-            'clicks_growth_rate' => $clicksGrowthRate,
-            'messages_growth_rate' => $messagesGrowthRate,
-            'total_engagement' => $currentEngagement,
-            'engagement_growth_rate' => $engagementGrowthRate,
-            'traffic_sources' => $trafficSources->map(function ($source) use ($colors) {
-                return [
-                    'source' => $source->source,
-                    'total' => $source->total,
-                    'color' => $colors[$source->source] ?? $colors['other']
-                ];
-            }),
-            'top_pages' => $portfolio->visits()
+            // Current period stats
+            $totalVisits = $portfolio->visits()
                 ->where('created_at', '>=', $thirtyDaysAgo)
-                ->selectRaw('page_url, COUNT(*) as views')
-                ->groupBy('page_url')
-                ->orderByDesc('views')
-                ->limit(5)
-                ->get(),
-            'daily_engagement' => $portfolio->visits()
-                ->where('created_at', '>=', $thirtyDaysAgo)
-                ->selectRaw('DATE(created_at) as date, COUNT(*) as visits')
-                ->groupBy('date')
-                ->orderBy('date')
-                ->get()
-        ];
+                ->count();
 
-        return view('user.portfolio.analytics', [
-            'stats' => $stats,
-            'portfolio' => $portfolio,
-            'colors' => $colors
-        ]);
+            $totalClicks = $portfolio->clicks()
+                ->where('created_at', '>=', $thirtyDaysAgo)
+                ->count();
+
+            $totalMessages = $portfolio->messages()
+                ->where('created_at', '>=', $thirtyDaysAgo)
+                ->count();
+
+            // Previous period stats for growth calculation
+            $previousVisits = $portfolio->visits()
+                ->whereBetween('created_at', [$sixtyDaysAgo, $thirtyDaysAgo])
+                ->count();
+
+            $previousClicks = $portfolio->clicks()
+                ->whereBetween('created_at', [$sixtyDaysAgo, $thirtyDaysAgo])
+                ->count();
+
+            // Calculate growth rates for each metric
+            $calculateGrowthRate = function ($current, $previous) {
+                if ($previous === 0) {
+                    return $current > 0 ? 100 : 0;
+                }
+                return (($current - $previous) / $previous) * 100;
+            };
+
+            $visitsGrowthRate = $calculateGrowthRate($totalVisits, $previousVisits);
+            $clicksGrowthRate = $calculateGrowthRate($totalClicks, $previousClicks);
+
+            // Get previous period messages
+            $previousMessages = $portfolio->messages()
+                ->whereBetween('created_at', [$sixtyDaysAgo, $thirtyDaysAgo])
+                ->count();
+            $messagesGrowthRate = $calculateGrowthRate($totalMessages, $previousMessages);
+
+            // Calculate total engagement and growth rate
+            $currentEngagement = $totalVisits + $totalClicks;
+            $previousEngagement = $previousVisits + $previousClicks;
+            $engagementGrowthRate = $calculateGrowthRate($currentEngagement, $previousEngagement);
+
+            // Get traffic sources with color mapping
+            $trafficSources = $portfolio->trafficSources()
+                ->where('date', '>=', $thirtyDaysAgo)
+                ->selectRaw('source, SUM(visits_count) as total')
+                ->groupBy('source')
+                ->get();
+
+            $colors = [
+                'direct' => '#50E3C2',
+                'google' => '#4A90E2',
+                'facebook' => '#BD10E0',
+                'twitter' => '#1DA1F2',
+                'linkedin' => '#0077B5',
+                'other' => '#FFC700'
+            ];
+
+            $stats = [
+                'total_visits' => $totalVisits,
+                'total_clicks' => $totalClicks,
+                'total_messages' => $totalMessages,
+                'visits_growth_rate' => $visitsGrowthRate,
+                'clicks_growth_rate' => $clicksGrowthRate,
+                'messages_growth_rate' => $messagesGrowthRate,
+                'total_engagement' => $currentEngagement,
+                'engagement_growth_rate' => $engagementGrowthRate,
+                'traffic_sources' => $trafficSources->map(function ($source) use ($colors) {
+                    return [
+                        'source' => $source->source,
+                        'total' => $source->total,
+                        'color' => $colors[$source->source] ?? $colors['other']
+                    ];
+                }),
+                'top_pages' => $portfolio->visits()
+                    ->where('created_at', '>=', $thirtyDaysAgo)
+                    ->selectRaw('page_url, COUNT(*) as views')
+                    ->groupBy('page_url')
+                    ->orderByDesc('views')
+                    ->limit(5)
+                    ->get(),
+                'daily_engagement' => $portfolio->visits()
+                    ->where('created_at', '>=', $thirtyDaysAgo)
+                    ->selectRaw('DATE(created_at) as date, COUNT(*) as visits')
+                    ->groupBy('date')
+                    ->orderBy('date')
+                    ->get()
+            ];
+
+            return view('user.portfolio.analytics', [
+                'stats' => $stats,
+                'portfolio' => $portfolio,
+                'colors' => $colors
+            ]);
+        } catch (\Throwable $th) {
+            Log::error($th);
+            alert(type: 'error', message: 'An error occurred while getting your portfolio analytics. Try again shortly');
+            return redirect()->route('user.portfolio.index');
+        }
     }
 }

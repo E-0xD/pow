@@ -1,6 +1,5 @@
 <x-layouts.app>
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8" x-data="templateSelector()"
-        @show-modal.window="showModal($event.detail)">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8"">
 
         <!-- Progress Bar -->
         <div class="flex flex-col gap-6">
@@ -64,7 +63,7 @@
                                 @foreach ($template->tags as $tag)
                                     <span
                                         class="text-xs font-semibold text-primary bg-primary/10 px-2 py-1 rounded-full">
-                                        {{ $tag }}
+                                        {{ ucfirst($tag) }}
                                     </span>
                                 @endforeach
                             </div>

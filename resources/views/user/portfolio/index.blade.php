@@ -77,7 +77,7 @@
                             </d>
 
                             <div class="mt-auto flex justify-around items-center w-full gap-2">
-                                @if ($portfolio->activeSubscription)
+                                
                                     <a href="{{ route('user.portfolio.customize', $portfolio->uid) }}"
                                         class="flex flex-1 items-center justify-center py-2 px-3 text-sm font-semibold rounded-lg 
                                     bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
@@ -102,16 +102,7 @@
                                         bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
                                         <span class="material-symbols-outlined text-base">share</span>
                                     </button>
-                                @else
-                                    <a href="{{ route('payment.checkout', $portfolio->uid) }}"
-                                        class="flex flex-1 items-center justify-center py-2 px-3 text-sm font-semibold rounded-lg 
-                                    bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
-                                        <span class="text-base flex justify-center align-center gap-2">
-                                            <span class="material-symbols-outlined">account_balance_wallet</span>
-                                            Complete Payment
-                                        </span>
-                                    </a>
-                                @endif
+                              
 
                             </div>
 
