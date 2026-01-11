@@ -1,0 +1,1380 @@
+Uri: https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css
+File Name: C:\Downloaded Web Sites\up2client.com\ajax\libs\font-awesome\6.4.2\css\all.min.css
+Content Type: text/css
+
+Uri: https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/webfonts/fa-brands-400.ttf
+File Name: C:\Downloaded Web Sites\up2client.com\ajax\libs\font-awesome\6.4.2\webfonts\fa-brands-400.ttf
+Content Type: application/octet-stream
+
+Uri: https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/webfonts/fa-brands-400.woff2
+File Name: C:\Downloaded Web Sites\up2client.com\ajax\libs\font-awesome\6.4.2\webfonts\fa-brands-400.woff2
+Content Type: application/octet-stream
+
+Uri: https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/webfonts/fa-regular-400.ttf
+File Name: C:\Downloaded Web Sites\up2client.com\ajax\libs\font-awesome\6.4.2\webfonts\fa-regular-400.ttf
+Content Type: application/octet-stream
+
+Uri: https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/webfonts/fa-regular-400.woff2
+File Name: C:\Downloaded Web Sites\up2client.com\ajax\libs\font-awesome\6.4.2\webfonts\fa-regular-400.woff2
+Content Type: application/octet-stream
+
+Uri: https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/webfonts/fa-solid-900.ttf
+File Name: C:\Downloaded Web Sites\up2client.com\ajax\libs\font-awesome\6.4.2\webfonts\fa-solid-900.ttf
+Content Type: application/octet-stream
+
+Uri: https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/webfonts/fa-solid-900.woff2
+File Name: C:\Downloaded Web Sites\up2client.com\ajax\libs\font-awesome\6.4.2\webfonts\fa-solid-900.woff2
+Content Type: application/octet-stream
+
+Uri: https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/webfonts/fa-v4compatibility.ttf
+File Name: C:\Downloaded Web Sites\up2client.com\ajax\libs\font-awesome\6.4.2\webfonts\fa-v4compatibility.ttf
+Content Type: application/octet-stream
+
+Uri: https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/webfonts/fa-v4compatibility.woff2
+File Name: C:\Downloaded Web Sites\up2client.com\ajax\libs\font-awesome\6.4.2\webfonts\fa-v4compatibility.woff2
+Content Type: application/octet-stream
+
+Uri: https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.6.0/remixicon.css
+File Name: C:\Downloaded Web Sites\up2client.com\ajax\libs\remixicon\3.6.0\remixicon.css
+Content Type: text/css
+
+Uri: https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.6.0/remixicon.eot?t=1701175860820
+File Name: C:\Downloaded Web Sites\up2client.com\ajax\libs\remixicon\3.6.0\remixicon.eot
+Content Type: application/octet-stream
+
+Uri: https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.6.0/remixicon.svg?t=1701175860820
+File Name: C:\Downloaded Web Sites\up2client.com\ajax\libs\remixicon\3.6.0\remixicon.svg
+Content Type: image/svg+xml
+
+Uri: https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.6.0/remixicon.ttf?t=1701175860820
+File Name: C:\Downloaded Web Sites\up2client.com\ajax\libs\remixicon\3.6.0\remixicon.ttf
+Content Type: application/octet-stream
+
+Uri: https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.6.0/remixicon.woff2?t=1701175860820
+File Name: C:\Downloaded Web Sites\up2client.com\ajax\libs\remixicon\3.6.0\remixicon.woff2
+Content Type: application/octet-stream
+
+Uri: https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.6.0/remixicon.woff?t=1701175860820
+File Name: C:\Downloaded Web Sites\up2client.com\ajax\libs\remixicon\3.6.0\remixicon.woff
+Content Type: application/octet-stream
+
+Uri: https://fonts.gstatic.com/s/kodchasan/v17/1cX0aUPOAJv9sG4I-DJee1KQhuCp.woff2
+File Name: C:\Downloaded Web Sites\up2client.com\s\kodchasan\v17\1cX0aUPOAJv9sG4I-DJee1KQhuCp.woff2
+Content Type: font/woff2
+
+Uri: https://fonts.gstatic.com/s/kodchasan/v17/1cX0aUPOAJv9sG4I-DJee1KQieCp7eM.woff2
+File Name: C:\Downloaded Web Sites\up2client.com\s\kodchasan\v17\1cX0aUPOAJv9sG4I-DJee1KQieCp7eM.woff2
+Content Type: font/woff2
+
+Uri: https://fonts.gstatic.com/s/kodchasan/v17/1cX0aUPOAJv9sG4I-DJee1KQiOCp7eM.woff2
+File Name: C:\Downloaded Web Sites\up2client.com\s\kodchasan\v17\1cX0aUPOAJv9sG4I-DJee1KQiOCp7eM.woff2
+Content Type: font/woff2
+
+Uri: https://fonts.gstatic.com/s/kodchasan/v17/1cX0aUPOAJv9sG4I-DJee1KQkuCp7eM.woff2
+File Name: C:\Downloaded Web Sites\up2client.com\s\kodchasan\v17\1cX0aUPOAJv9sG4I-DJee1KQkuCp7eM.woff2
+Content Type: font/woff2
+
+Uri: https://fonts.gstatic.com/s/kodchasan/v17/1cX0aUPOAJv9sG4I-DJeM1SQhuCp.woff2
+File Name: C:\Downloaded Web Sites\up2client.com\s\kodchasan\v17\1cX0aUPOAJv9sG4I-DJeM1SQhuCp.woff2
+Content Type: font/woff2
+
+Uri: https://fonts.gstatic.com/s/kodchasan/v17/1cX0aUPOAJv9sG4I-DJeM1SQieCp7eM.woff2
+File Name: C:\Downloaded Web Sites\up2client.com\s\kodchasan\v17\1cX0aUPOAJv9sG4I-DJeM1SQieCp7eM.woff2
+Content Type: font/woff2
+
+Uri: https://fonts.gstatic.com/s/kodchasan/v17/1cX0aUPOAJv9sG4I-DJeM1SQiOCp7eM.woff2
+File Name: C:\Downloaded Web Sites\up2client.com\s\kodchasan\v17\1cX0aUPOAJv9sG4I-DJeM1SQiOCp7eM.woff2
+Content Type: font/woff2
+
+Uri: https://fonts.gstatic.com/s/kodchasan/v17/1cX0aUPOAJv9sG4I-DJeM1SQkuCp7eM.woff2
+File Name: C:\Downloaded Web Sites\up2client.com\s\kodchasan\v17\1cX0aUPOAJv9sG4I-DJeM1SQkuCp7eM.woff2
+Content Type: font/woff2
+
+Uri: https://fonts.gstatic.com/s/kodchasan/v17/1cX0aUPOAJv9sG4I-DJeV1WQhuCp.woff2
+File Name: C:\Downloaded Web Sites\up2client.com\s\kodchasan\v17\1cX0aUPOAJv9sG4I-DJeV1WQhuCp.woff2
+Content Type: font/woff2
+
+Uri: https://fonts.gstatic.com/s/kodchasan/v17/1cX0aUPOAJv9sG4I-DJeV1WQieCp7eM.woff2
+File Name: C:\Downloaded Web Sites\up2client.com\s\kodchasan\v17\1cX0aUPOAJv9sG4I-DJeV1WQieCp7eM.woff2
+Content Type: font/woff2
+
+Uri: https://fonts.gstatic.com/s/kodchasan/v17/1cX0aUPOAJv9sG4I-DJeV1WQiOCp7eM.woff2
+File Name: C:\Downloaded Web Sites\up2client.com\s\kodchasan\v17\1cX0aUPOAJv9sG4I-DJeV1WQiOCp7eM.woff2
+Content Type: font/woff2
+
+Uri: https://fonts.gstatic.com/s/kodchasan/v17/1cX0aUPOAJv9sG4I-DJeV1WQkuCp7eM.woff2
+File Name: C:\Downloaded Web Sites\up2client.com\s\kodchasan\v17\1cX0aUPOAJv9sG4I-DJeV1WQkuCp7eM.woff2
+Content Type: font/woff2
+
+Uri: https://fonts.gstatic.com/s/kodchasan/v17/1cXxaUPOAJv9sG4I-DJWh3GFucE.woff2
+File Name: C:\Downloaded Web Sites\up2client.com\s\kodchasan\v17\1cXxaUPOAJv9sG4I-DJWh3GFucE.woff2
+Content Type: font/woff2
+
+Uri: https://fonts.gstatic.com/s/kodchasan/v17/1cXxaUPOAJv9sG4I-DJWhnGFucE.woff2
+File Name: C:\Downloaded Web Sites\up2client.com\s\kodchasan\v17\1cXxaUPOAJv9sG4I-DJWhnGFucE.woff2
+Content Type: font/woff2
+
+Uri: https://fonts.gstatic.com/s/kodchasan/v17/1cXxaUPOAJv9sG4I-DJWiHGF.woff2
+File Name: C:\Downloaded Web Sites\up2client.com\s\kodchasan\v17\1cXxaUPOAJv9sG4I-DJWiHGF.woff2
+Content Type: font/woff2
+
+Uri: https://fonts.gstatic.com/s/kodchasan/v17/1cXxaUPOAJv9sG4I-DJWnHGFucE.woff2
+File Name: C:\Downloaded Web Sites\up2client.com\s\kodchasan\v17\1cXxaUPOAJv9sG4I-DJWnHGFucE.woff2
+Content Type: font/woff2
+
+Uri: https://up2client.com/envato/olivia/preview/
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\index.htm
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/assets/css/boostrap.min.css
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\assets\css\boostrap.min.css
+Content Type: text/css
+
+Uri: https://up2client.com/envato/olivia/preview/assets/css/media_query.css
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\assets\css\media_query.css
+Content Type: text/css
+
+Uri: https://up2client.com/envato/olivia/preview/assets/css/style.css
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\assets\css\style.css
+Content Type: text/css
+
+Uri: https://up2client.com/envato/olivia/preview/assets/css/swap.css
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\assets\css\swap.css
+Content Type: text/css
+
+Uri: https://up2client.com/envato/olivia/preview/assets/images/favicon.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\assets\images\favicon.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/assets/images/features_img1.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\assets\images\features_img1.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/assets/images/features_img2.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\assets\images\features_img2.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/assets/images/features_img3.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\assets\images\features_img3.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/assets/images/features_img4.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\assets\images\features_img4.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/assets/images/features_img5.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\assets\images\features_img5.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/assets/images/features_img6.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\assets\images\features_img6.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/assets/images/features_img7.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\assets\images\features_img7.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/assets/images/features_img8.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\assets\images\features_img8.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/assets/images/logo.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\assets\images\logo.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/assets/images/olivia_multi_page1.jpg
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\assets\images\olivia_multi_page1.jpg
+Content Type: image/jpeg
+
+Uri: https://up2client.com/envato/olivia/preview/assets/images/olivia_multi_page2.jpg
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\assets\images\olivia_multi_page2.jpg
+Content Type: image/jpeg
+
+Uri: https://up2client.com/envato/olivia/preview/assets/images/olivia_multi_page3.jpg
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\assets\images\olivia_multi_page3.jpg
+Content Type: image/jpeg
+
+Uri: https://up2client.com/envato/olivia/preview/assets/images/olivia_multi_page4.jpg
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\assets\images\olivia_multi_page4.jpg
+Content Type: image/jpeg
+
+Uri: https://up2client.com/envato/olivia/preview/assets/images/olivia_multi_page5.jpg
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\assets\images\olivia_multi_page5.jpg
+Content Type: image/jpeg
+
+Uri: https://up2client.com/envato/olivia/preview/assets/images/olivia_multi_page6.jpg
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\assets\images\olivia_multi_page6.jpg
+Content Type: image/jpeg
+
+Uri: https://up2client.com/envato/olivia/preview/assets/images/olivia_multi_page7.jpg
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\assets\images\olivia_multi_page7.jpg
+Content Type: image/jpeg
+
+Uri: https://up2client.com/envato/olivia/preview/assets/images/olivia_multi_page8.jpg
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\assets\images\olivia_multi_page8.jpg
+Content Type: image/jpeg
+
+Uri: https://up2client.com/envato/olivia/preview/assets/images/olivia_one_page1.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\assets\images\olivia_one_page1.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/assets/images/olivia_one_page10.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\assets\images\olivia_one_page10.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/assets/images/olivia_one_page11.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\assets\images\olivia_one_page11.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/assets/images/olivia_one_page12.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\assets\images\olivia_one_page12.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/assets/images/olivia_one_page2.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\assets\images\olivia_one_page2.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/assets/images/olivia_one_page3.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\assets\images\olivia_one_page3.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/assets/images/olivia_one_page4.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\assets\images\olivia_one_page4.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/assets/images/olivia_one_page5.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\assets\images\olivia_one_page5.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/assets/images/olivia_one_page6.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\assets\images\olivia_one_page6.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/assets/images/olivia_one_page7.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\assets\images\olivia_one_page7.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/assets/images/olivia_one_page8.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\assets\images\olivia_one_page8.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/assets/images/olivia_one_page9.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\assets\images\olivia_one_page9.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/assets/images/responsive_img.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\assets\images\responsive_img.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/assets/javascript/jquery.min.js
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\assets\javascript\jquery.min.js
+Content Type: application/javascript
+
+Uri: https://up2client.com/envato/olivia/preview/assets/javascript/script.js
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\assets\javascript\script.js
+Content Type: application/javascript
+
+Uri: https://up2client.com/envato/olivia/preview/assets/javascript/TweenMax.js
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\assets\javascript\TweenMax.js
+Content Type: application/javascript
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/css/about.css
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\css\about.css
+Content Type: text/css
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/css/aos.css
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\css\aos.css
+Content Type: text/css
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/css/blog.css
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\css\blog.css
+Content Type: text/css
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/css/boostrap.min.css
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\css\boostrap.min.css
+Content Type: text/css
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/css/contact.css
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\css\contact.css
+Content Type: text/css
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/css/magnific-popup.min.css
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\css\magnific-popup.min.css
+Content Type: text/css
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/css/media_query.css
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\css\media_query.css
+Content Type: text/css
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/css/portfolio.css
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\css\portfolio.css
+Content Type: text/css
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/css/resume.css
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\css\resume.css
+Content Type: text/css
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/css/services.css
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\css\services.css
+Content Type: text/css
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/css/skills.css
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\css\skills.css
+Content Type: text/css
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/css/slick.css
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\css\slick.css
+Content Type: text/css
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/css/style.css
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\css\style.css
+Content Type: text/css
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/css/swap.css
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\css\swap.css
+Content Type: text/css
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/css/testimonials.css
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\css\testimonials.css
+Content Type: text/css
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/about_icon.svg
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\about_icon.svg
+Content Type: image/svg+xml
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/android.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\android.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/apple.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\apple.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/blog_icon.svg
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\blog_icon.svg
+Content Type: image/svg+xml
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/blog_img1.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\blog_img1.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/blog_img2.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\blog_img2.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/blog_img3.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\blog_img3.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/blog_img4.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\blog_img4.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/blog_img5.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\blog_img5.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/blog_img6.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\blog_img6.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/blog_pop_up.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\blog_pop_up.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/blog_slider_img1.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\blog_slider_img1.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/blog_slider_img2.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\blog_slider_img2.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/blog_slider_img3.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\blog_slider_img3.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/blog_slider_img4.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\blog_slider_img4.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/bootstrap.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\bootstrap.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/check.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\check.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/circular_text.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\circular_text.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/city_3Dview.jpg
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\city_3Dview.jpg
+Content Type: image/jpeg
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/collan.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\collan.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/contact.svg
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\contact.svg
+Content Type: image/svg+xml
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/contact_icon.svg
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\contact_icon.svg
+Content Type: image/svg+xml
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/content_img.jpg
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\content_img.jpg
+Content Type: image/jpeg
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/crypto_app_img.jpg
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\crypto_app_img.jpg
+Content Type: image/jpeg
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/css.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\css.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/down_arrow.svg
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\down_arrow.svg
+Content Type: image/svg+xml
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/envato.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\envato.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/favicon.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\favicon.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/figma.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\figma.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/flutter.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\flutter.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/food_app.jpg
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\food_app.jpg
+Content Type: image/jpeg
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/framer.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\framer.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/gallery_img1.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\gallery_img1.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/gallery_img2.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\gallery_img2.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/gallery_img3.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\gallery_img3.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/gallery_img4.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\gallery_img4.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/gallery_img5.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\gallery_img5.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/gmail.svg
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\gmail.svg
+Content Type: image/svg+xml
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/home_icon.svg
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\home_icon.svg
+Content Type: image/svg+xml
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/html.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\html.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/kotline.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\kotline.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/logo.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\logo.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/map.svg
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\map.svg
+Content Type: image/svg+xml
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/marketing.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\marketing.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/pocket_fm.jpg
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\pocket_fm.jpg
+Content Type: image/jpeg
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/portfolio_big_img.jpg
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\portfolio_big_img.jpg
+Content Type: image/jpeg
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/portfolio_icon.svg
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\portfolio_icon.svg
+Content Type: image/svg+xml
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/project_sub_images1.jpg
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\project_sub_images1.jpg
+Content Type: image/jpeg
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/project_sub_images2.jpg
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\project_sub_images2.jpg
+Content Type: image/jpeg
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/rating.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\rating.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/resume_icon.svg
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\resume_icon.svg
+Content Type: image/svg+xml
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/services_icon.svg
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\services_icon.svg
+Content Type: image/svg+xml
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/shopping_bag.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\shopping_bag.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/skills_icon.svg
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\skills_icon.svg
+Content Type: image/svg+xml
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/slider_img1.jpg
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\slider_img1.jpg
+Content Type: image/jpeg
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/slider_img2.jpg
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\slider_img2.jpg
+Content Type: image/jpeg
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/slider_img3.jpg
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\slider_img3.jpg
+Content Type: image/jpeg
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/slider_img4.jpg
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\slider_img4.jpg
+Content Type: image/jpeg
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/slider_img5.jpg
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\slider_img5.jpg
+Content Type: image/jpeg
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/testimonial_icon.svg
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\testimonial_icon.svg
+Content Type: image/svg+xml
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/testimonial_img.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\testimonial_img.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/testimonial_img2.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\testimonial_img2.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/testimonial_img3.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\testimonial_img3.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/testimonial_img4.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\testimonial_img4.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/testimonial_img5.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\testimonial_img5.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/twitter.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\twitter.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/ux.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\ux.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/web.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\web.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/wordpress.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\wordpress.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/images/zelt.jpg
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\images\zelt.jpg
+Content Type: image/jpeg
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/javascript/aos.js
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\javascript\aos.js
+Content Type: application/javascript
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/javascript/bootstrap.bundle.min.js
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\javascript\bootstrap.bundle.min.js
+Content Type: application/javascript
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/javascript/box_particle_animation/box_particle.js
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\javascript\box_particle_animation\box_particle.js
+Content Type: application/javascript
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/javascript/circle_progress.js
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\javascript\circle_progress.js
+Content Type: application/javascript
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/javascript/cursor.js
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\javascript\cursor.js
+Content Type: application/javascript
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/javascript/dot_particle_animation/dot_particle.js
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\javascript\dot_particle_animation\dot_particle.js
+Content Type: application/javascript
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/javascript/jquery.min.js
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\javascript\jquery.min.js
+Content Type: application/javascript
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/javascript/magnific_popup/magnific-popup.min.js
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\javascript\magnific_popup\magnific-popup.min.js
+Content Type: application/javascript
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/javascript/magnific_popup/magnific-script.js.js
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\javascript\magnific_popup\magnific-script.js.js
+Content Type: application/javascript
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/javascript/ripples_animation/ripples.js
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\javascript\ripples_animation\ripples.js
+Content Type: application/javascript
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/javascript/script.js
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\javascript\script.js
+Content Type: application/javascript
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/javascript/slick.min.js
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\javascript\slick.min.js
+Content Type: application/javascript
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/javascript/spider_animation/spider_animation.js
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\javascript\spider_animation\spider_animation.js
+Content Type: application/javascript
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/assets/video/video.mp4
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\assets\video\video.mp4
+Content Type: video/mp4
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_box_rain/about.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_box_rain\about.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_box_rain/blog.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_box_rain\blog.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_box_rain/contact.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_box_rain\contact.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_box_rain/index.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_box_rain\index.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_box_rain/portfolio.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_box_rain\portfolio.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_box_rain/resume.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_box_rain\resume.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_box_rain/services.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_box_rain\services.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_box_rain/skills.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_box_rain\skills.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_box_rain/testimonials.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_box_rain\testimonials.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_circuler_bubbles/about.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_circuler_bubbles\about.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_circuler_bubbles/blog.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_circuler_bubbles\blog.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_circuler_bubbles/contact.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_circuler_bubbles\contact.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_circuler_bubbles/index.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_circuler_bubbles\index.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_circuler_bubbles/portfolio.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_circuler_bubbles\portfolio.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_circuler_bubbles/resume.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_circuler_bubbles\resume.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_circuler_bubbles/services.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_circuler_bubbles\services.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_circuler_bubbles/skills.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_circuler_bubbles\skills.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_circuler_bubbles/testimonials.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_circuler_bubbles\testimonials.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_dot_balls/about.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_dot_balls\about.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_dot_balls/blog.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_dot_balls\blog.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_dot_balls/contact.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_dot_balls\contact.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_dot_balls/index.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_dot_balls\index.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_dot_balls/portfolio.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_dot_balls\portfolio.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_dot_balls/resume.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_dot_balls\resume.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_dot_balls/services.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_dot_balls\services.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_dot_balls/skills.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_dot_balls\skills.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_dot_balls/testimonials.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_dot_balls\testimonials.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_grayscale/about.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_grayscale\about.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_grayscale/blog.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_grayscale\blog.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_grayscale/contact.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_grayscale\contact.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_grayscale/index.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_grayscale\index.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_grayscale/portfolio.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_grayscale\portfolio.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_grayscale/resume.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_grayscale\resume.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_grayscale/services.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_grayscale\services.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_grayscale/skills.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_grayscale\skills.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_grayscale/testimonials.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_grayscale\testimonials.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_slider/about.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_slider\about.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_slider/blog.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_slider\blog.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_slider/contact.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_slider\contact.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_slider/index.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_slider\index.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_slider/portfolio.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_slider\portfolio.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_slider/resume.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_slider\resume.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_slider/services.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_slider\services.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_slider/skills.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_slider\skills.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_slider/testimonials.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_slider\testimonials.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_spider/about.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_spider\about.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_spider/blog.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_spider\blog.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_spider/contact.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_spider\contact.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_spider/index.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_spider\index.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_spider/portfolio.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_spider\portfolio.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_spider/resume.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_spider\resume.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_spider/services.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_spider\services.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_spider/skills.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_spider\skills.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_spider/testimonials.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_spider\testimonials.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_video/about.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_video\about.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_video/blog.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_video\blog.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_video/contact.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_video\contact.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_video/index.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_video\index.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_video/portfolio.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_video\portfolio.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_video/resume.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_video\resume.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_video/services.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_video\services.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_video/skills.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_video\skills.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_video/testimonials.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_video\testimonials.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_water_animation/about.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_water_animation\about.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_water_animation/blog.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_water_animation\blog.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_water_animation/contact.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_water_animation\contact.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_water_animation/index.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_water_animation\index.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_water_animation/portfolio.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_water_animation\portfolio.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_water_animation/resume.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_water_animation\resume.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_water_animation/services.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_water_animation\services.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_water_animation/skills.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_water_animation\skills.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/multi_page_design/olivia_multipage_water_animation/testimonials.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\multi_page_design\olivia_multipage_water_animation\testimonials.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/css/boostrap.min.css
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\css\boostrap.min.css
+Content Type: text/css
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/css/magnific-popup.min.css
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\css\magnific-popup.min.css
+Content Type: text/css
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/css/media_query.css
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\css\media_query.css
+Content Type: text/css
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/css/slick.css
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\css\slick.css
+Content Type: text/css
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/css/style.css
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\css\style.css
+Content Type: text/css
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/css/swap.css
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\css\swap.css
+Content Type: text/css
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/about_icon.svg
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\about_icon.svg
+Content Type: image/svg+xml
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/android.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\android.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/apple.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\apple.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/bank_app.jpg
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\bank_app.jpg
+Content Type: image/jpeg
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/blog_icon.svg
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\blog_icon.svg
+Content Type: image/svg+xml
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/blog_img1.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\blog_img1.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/blog_img2.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\blog_img2.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/blog_img3.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\blog_img3.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/blog_img4.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\blog_img4.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/blog_img5.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\blog_img5.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/blog_img6.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\blog_img6.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/blog_pop_up.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\blog_pop_up.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/blog_slider_img1.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\blog_slider_img1.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/blog_slider_img2.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\blog_slider_img2.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/blog_slider_img3.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\blog_slider_img3.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/blog_slider_img4.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\blog_slider_img4.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/bootstrap.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\bootstrap.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/check.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\check.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/circular_text.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\circular_text.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/city_3Dview.jpg
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\city_3Dview.jpg
+Content Type: image/jpeg
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/collan.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\collan.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/contact.svg
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\contact.svg
+Content Type: image/svg+xml
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/contact_icon.svg
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\contact_icon.svg
+Content Type: image/svg+xml
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/content_img.jpg
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\content_img.jpg
+Content Type: image/jpeg
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/crypto_app_img.jpg
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\crypto_app_img.jpg
+Content Type: image/jpeg
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/css.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\css.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/down_arrow.svg
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\down_arrow.svg
+Content Type: image/svg+xml
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/envato.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\envato.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/favicon.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\favicon.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/figma.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\figma.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/flutter.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\flutter.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/food_app.jpg
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\food_app.jpg
+Content Type: image/jpeg
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/framer.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\framer.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/gallery_img1.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\gallery_img1.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/gallery_img2.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\gallery_img2.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/gallery_img3.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\gallery_img3.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/gallery_img4.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\gallery_img4.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/gallery_img5.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\gallery_img5.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/gmail.svg
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\gmail.svg
+Content Type: image/svg+xml
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/home_icon.svg
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\home_icon.svg
+Content Type: image/svg+xml
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/html.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\html.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/kotline.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\kotline.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/line-menu.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\line-menu.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/logo.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\logo.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/map.svg
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\map.svg
+Content Type: image/svg+xml
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/marketing.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\marketing.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/olivia-img.jpg
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\olivia-img.jpg
+Content Type: image/jpeg
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/pocket_fm.jpg
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\pocket_fm.jpg
+Content Type: image/jpeg
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/portfolio_big_img.jpg
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\portfolio_big_img.jpg
+Content Type: image/jpeg
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/portfolio_icon.svg
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\portfolio_icon.svg
+Content Type: image/svg+xml
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/project_sub_images1.jpg
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\project_sub_images1.jpg
+Content Type: image/jpeg
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/project_sub_images2.jpg
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\project_sub_images2.jpg
+Content Type: image/jpeg
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/rating.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\rating.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/resume_icon.svg
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\resume_icon.svg
+Content Type: image/svg+xml
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/services_icon.svg
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\services_icon.svg
+Content Type: image/svg+xml
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/shopping_bag.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\shopping_bag.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/skills_icon.svg
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\skills_icon.svg
+Content Type: image/svg+xml
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/testimonial_icon.svg
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\testimonial_icon.svg
+Content Type: image/svg+xml
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/testimonial_img.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\testimonial_img.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/testimonial_img2.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\testimonial_img2.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/testimonial_img3.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\testimonial_img3.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/testimonial_img4.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\testimonial_img4.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/testimonial_img5.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\testimonial_img5.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/twitter.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\twitter.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/ux.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\ux.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/web.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\web.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/images/wordpress.png
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\images\wordpress.png
+Content Type: image/png
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/javascript/bootstrap.bundle.min.js
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\javascript\bootstrap.bundle.min.js
+Content Type: application/javascript
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/javascript/box_up_down/box_bg_animation.js
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\javascript\box_up_down\box_bg_animation.js
+Content Type: application/javascript
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/javascript/bubble_rain_animation/bubbles_rain.js.js
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\javascript\bubble_rain_animation\bubbles_rain.js.js
+Content Type: application/javascript
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/javascript/circle3D_animation/circle3d.js
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\javascript\circle3D_animation\circle3d.js
+Content Type: application/javascript
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/javascript/circle3D_animation/three.min.js
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\javascript\circle3D_animation\three.min.js
+Content Type: application/javascript
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/javascript/cursor.js
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\javascript\cursor.js
+Content Type: application/javascript
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/javascript/dot_particle_animation/dot_particle.js
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\javascript\dot_particle_animation\dot_particle.js
+Content Type: application/javascript
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/javascript/hexagon_animation/hexagon.js
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\javascript\hexagon_animation\hexagon.js
+Content Type: application/javascript
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/javascript/hexagon_animation/particles.min.js
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\javascript\hexagon_animation\particles.min.js
+Content Type: application/javascript
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/javascript/jquery.min.js
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\javascript\jquery.min.js
+Content Type: application/javascript
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/javascript/magnific-popup.min.js
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\javascript\magnific-popup.min.js
+Content Type: application/javascript
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/javascript/net_animation/net_animation.js
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\javascript\net_animation\net_animation.js
+Content Type: application/javascript
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/javascript/progresscircle.js
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\javascript\progresscircle.js
+Content Type: application/javascript
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/javascript/ring_animation/ring_bg_animation.js
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\javascript\ring_animation\ring_bg_animation.js
+Content Type: application/javascript
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/javascript/script.js
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\javascript\script.js
+Content Type: application/javascript
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/javascript/slick.min.js
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\javascript\slick.min.js
+Content Type: application/javascript
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/javascript/spider_animation/spider_animation.js
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\javascript\spider_animation\spider_animation.js
+Content Type: application/javascript
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/javascript/stright_line_animation/stright_line.js
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\javascript\stright_line_animation\stright_line.js
+Content Type: application/javascript
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/assets/video/video2.mp4
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\assets\video\video2.mp4
+Content Type: video/mp4
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/olivia_3D_circle_video/index.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\olivia_3D_circle_video\index.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/olivia_big_small_bubbls/index.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\olivia_big_small_bubbls\index.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/olivia_box_design/index.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\olivia_box_design\index.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/olivia_box_up_down/index.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\olivia_box_up_down\index.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/olivia_bubbls_rain/index.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\olivia_bubbls_rain\index.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/olivia_dots_cursor_move/index.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\olivia_dots_cursor_move\index.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/olivia_hexagon_shap/index.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\olivia_hexagon_shap\index.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/olivia_net/index.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\olivia_net\index.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/olivia_ring_animation/index.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\olivia_ring_animation\index.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/olivia_slides/index.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\olivia_slides\index.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/olivia_spider/index.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\olivia_spider\index.html
+Content Type: text/html
+
+Uri: https://up2client.com/envato/olivia/preview/one_page_design/olivia_stright_line/index.html
+File Name: C:\Downloaded Web Sites\up2client.com\envato\olivia\preview\one_page_design\olivia_stright_line\index.html
+Content Type: text/html
+
