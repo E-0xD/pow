@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('portfolio_subscriptions', function (Blueprint $table) {
+        Schema::table('user_subscriptions', function (Blueprint $table) {
             $table->string('processor_subscription_code')->nullable();
             $table->string('processor_email_token')->nullable();
         });
@@ -22,7 +22,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('portfolio_subscriptions', function (Blueprint $table) {
+        Schema::table('user_subscriptions', function (Blueprint $table) {
             $table->dropColumn(['processor_subscription_code', 'processor_email_token']);
         });
     }

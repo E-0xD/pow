@@ -20,7 +20,7 @@ class PaystackController extends Controller
         $this->couponService = new CouponService();
     }
 
-    public function process($subscription_id, $plan, $successUrl, $cancelUrl, $couponCode = null)
+    public function process($plan, $successUrl, $cancelUrl, $couponCode = null)
     {
         try {
             $amount = ($plan->price * 1500) * 100; // Convert to kobo
@@ -28,15 +28,17 @@ class PaystackController extends Controller
             $freeMonths = 0;
             $extraMonths = 0;
 
+           
             if ($couponCode) {
-                $coupon = $this->couponService->findValidCoupon($couponCode);
-                if ($coupon) {
-                    $applied = $this->couponService->applyCouponToPlan($coupon, $plan);
+              $applied = $this->couponService->applyCouponToPlan($couponCode, $plan);
+                if ($applied['valid']) {
                     $amount = ($applied['discounted_price'] * 1500) * 100;
                     $extraMonths = $applied['extra_months'];
                     $freeMonths = $applied['free_months'];
                 }
             }
+
+          
 
             // For free months, charge minimum 50 NGN and don't use Paystack trial
             if ($freeMonths > 0) {
@@ -45,11 +47,11 @@ class PaystackController extends Controller
             }
 
             $payload = [
-                'email' => Str::random(8) . '-' . Auth::user()->email,
+                'email' => Auth::user()->email,
                 'amount' => (int) $amount,
                 'callback_url' => $successUrl,
                 'metadata' => [
-                    'subscription_id' => $subscription_id,
+                    'user_id' => Auth::id(),
                     'cancel_url' => $cancelUrl,
                     'coupon_code' => $couponCode,
                     'plan_code' => $plan->paystack_plan_code,

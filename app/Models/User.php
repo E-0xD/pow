@@ -100,6 +100,11 @@ class User extends Authenticatable
         return $this->hasMany(Transaction::class);
     }
 
+    public function subscriptions()
+    {
+        return $this->hasMany(UserSubscription::class);
+    }
+
     /**
      * Notifications received by the user (pivot contains read state)
      */

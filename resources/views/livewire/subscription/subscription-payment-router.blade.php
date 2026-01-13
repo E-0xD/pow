@@ -1,3 +1,111 @@
+{{-- <div class="subscription-payment-container">
+    <h2 class="text-2xl font-bold mb-6">Choose Your Plan</h2>
+
+    <!-- Billing Cycle Toggle -->
+    <div class="flex gap-4 mb-8">
+        <button wire:click="updateBillingCycle('monthly')" 
+                class="{{ $selectedBillingCycle === 'monthly' ? 'bg-blue-600 text-white' : 'bg-gray-200' }} px-4 py-2 rounded">
+            Monthly
+        </button>
+        <button wire:click="updateBillingCycle('yearly')" 
+                class="{{ $selectedBillingCycle === 'yearly' ? 'bg-blue-600 text-white' : 'bg-gray-200' }} px-4 py-2 rounded">
+            Yearly
+        </button>
+    </div>
+
+    <!-- Plans Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+        @forelse($plans as $tier => $cycles)
+            @php $plan = $cycles[$selectedBillingCycle] ?? null; @endphp
+            @if ($plan)
+                <div class="border rounded-lg p-6 {{ $selectedPlan?->id === $plan->id ? 'border-blue-600 bg-blue-50' : '' }}">
+                    <h3 class="text-xl font-semibold mb-2">{{ $plan->name }}</h3>
+                    <p class="text-gray-600 mb-4">{{ $plan->description }}</p>
+                    
+                    @if ($plan->price)
+                        <div class="mb-4">
+                            <span class="text-3xl font-bold">${{ $plan->price }}</span>
+                            <span class="text-gray-600">/{{ $selectedBillingCycle }}</span>
+                        </div>
+                    @else
+                        <div class="mb-4 text-2xl font-bold text-green-600">Free</div>
+                    @endif
+
+                    <button wire:click="selectPlan('{{ $tier }}')" 
+                            class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">
+                        Select Plan
+                    </button>
+                </div>
+            @endif
+        @empty
+            <p>No plans available</p>
+        @endforelse
+    </div>
+
+    <!-- Selected Plan Details -->
+    @if ($selectedPlan)
+        <div class="border-t pt-6">
+            <h3 class="text-xl font-semibold mb-4">Selected Plan: {{ $selectedPlan->name }}</h3>
+
+            <!-- Coupon Code -->
+            <div class="mb-6">
+                <label class="block text-sm font-medium mb-2">Coupon Code (Optional)</label>
+                <div class="flex gap-2">
+                    <input type="text" wire:model="couponCode" placeholder="Enter coupon code"
+                           class="flex-1 border rounded px-3 py-2">
+                    <button wire:click="applyCoupon" class="bg-gray-600 text-white px-4 py-2 rounded">
+                        Apply
+                    </button>
+                </div>
+                @if ($couponError)
+                    <p class="text-red-600 text-sm mt-2">{{ $couponError }}</p>
+                @endif
+                @if ($appliedCoupon)
+                    <p class="text-green-600 text-sm mt-2">Coupon applied! Discount applied.</p>
+                @endif
+            </div>
+
+            <!-- Price Summary -->
+            <div class="bg-gray-50 p-4 rounded mb-6">
+                <div class="flex justify-between mb-2">
+                    <span>Plan Price:</span>
+                    <span>${{ $selectedPlan->price }}</span>
+                </div>
+                @if ($appliedCoupon)
+                    <div class="flex justify-between mb-2 text-green-600">
+                        <span>Discount:</span>
+                        <span>-{{ $appliedCoupon->discount }}%</span>
+                    </div>
+                @endif
+                <div class="border-t pt-2 flex justify-between font-bold text-lg">
+                    <span>Total:</span>
+                    <span>${{ number_format($finalPrice, 2) }}</span>
+                </div>
+            </div>
+
+            <!-- Payment Method -->
+            <div class="mb-6">
+                <label class="block text-sm font-medium mb-2">Payment Method</label>
+                <select wire:model="paymentMethod" class="w-full border rounded px-3 py-2">
+                    <option value="paystack">Paystack</option>
+                    <option value="nowpayment">NowPayment</option>
+                    <option value="polar">Polar</option>
+                </select>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex gap-4">
+                <button wire:click="removeSelectedPlan" class="px-6 py-2 border rounded hover:bg-gray-50">
+                    Cancel
+                </button>
+                <button wire:click="pay" class="flex-1 bg-green-600 text-white py-2 rounded hover:bg-green-700">
+                    Pay Now
+                </button>
+            </div>
+        </div>
+    @endif
+</div> --}}
+
 <div>
 
     {{-- select plan  --}}
@@ -13,17 +121,52 @@
                     plan to get started with your portfolio. Cancel anytime.</p>
             </div>
 
+            <div class="flex flex-col items-center gap-2 w-full max-w-md">
+                <div
+                    class="flex w-full max-w-xs items-center justify-center rounded-full bg-primary/10 dark:bg-primary/20 p-1">
+                    <button wire:click="updateBillingCycle('monthly')"
+                        class="
+                            flex cursor-pointer h-full flex-1 items-center justify-center overflow-hidden rounded-full
+                            px-2 py-1.5 text-sm font-medium transition-all duration-300
+
+                            {{ $selectedBillingCycle == 'monthly'
+                                ? 'bg-white dark:bg-background-dark shadow-soft text-text-light dark:text-text-dark'
+                                : 'text-text-muted-light dark:text-text-muted-dark' }}
+                        ">
+                        <span class="truncate">Monthly</span>
+                    </button>
+
+                    <button wire:click="updateBillingCycle('yearly')"
+                        class="
+                            flex cursor-pointer h-full flex-1 items-center justify-center overflow-hidden rounded-full
+                            px-2 py-1.5 text-sm font-medium transition-all duration-300
+
+                            {{ $selectedBillingCycle === 'yearly'
+                            ? 'bg-white dark:bg-background-dark shadow-soft text-text-light dark:text-text-dark'
+                            : 'text-text-muted-light dark:text-text-muted-dark' }}
+                        ">
+                        <span class="truncate">Yearly</span>
+                    </button>
+
+                </div>
+
+            </div>
+
             <!-- PricingCards -->
-            <div class="grid w-full grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 justify-center">
+            <div
+                class="mt-6 grid w-full gap-6
+           grid-cols-1
+           sm:[grid-template-columns:repeat(auto-fit,minmax(0,1fr))]">
                 <!-- Card 1: Free -->
-                @foreach ($plans as $plan)
-                    <div wire:click="selectPlan({{ $plan->id }})"
-                        class="flex flex-1 flex-col gap-6 rounded-xl border border-solid border-border-light dark:border-border-dark bg-white dark:bg-background-dark/50 p-6 shadow-soft hover:shadow-soft-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer">
+                @forelse($plans as $tier => $cycles)
+                    @php $plan = $cycles[$selectedBillingCycle] ?? null; @endphp
+                    <div wire:click="selectPlan('{{ $tier }}')"
+                        class="flex flex-col gap-6 rounded-xl border border-border-light dark:border-border-dark bg-white dark:bg-background-dark/50 p-6 shadow-soft hover:shadow-soft-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer">
                         <div class="flex flex-col gap-2">
 
                             <p class="flex items-baseline gap-1">
-                                <span class="text-4xl font-black tracking-tight">${{ $plan->price }}</span>
-                                <span class="text-base font-bold text-text-muted-light dark:text-text-muted-dark">/
+                                <span class="text-4xl font-black tracking-tight">${{ $plan->price ?? 0 }}</span>
+                                <span class="text-base font-bold text-text-muted-light dark:text-text-muted-dark">
                                     {{ $plan->name }}</span>
                             </p>
                             <p class="text-sm text-text-muted-light dark:text-text-muted-dark">{{ $plan->description }}
@@ -35,16 +178,38 @@
                         </button>
                         <div class="flex flex-col gap-3 pt-2 border-t border-border-light dark:border-border-dark">
 
-                            @foreach ($plan->benefits as $benefit)
+                            @foreach ($plan->benefits as $key => $value)
+                                @php
+                                    // Format the title
+                                    $label = Str::of($key)->replace('_', ' ')->title();
+
+                                    // Decide icon + color
+                                    $isEnabled = $value !== false && $value !== 0;
+                                    $display = ucfirst($value);
+
+                                @endphp
+
                                 <div class="flex items-center gap-3 text-sm">
-                                    <span class="material-symbols-outlined text-primary text-base">check_circle</span> 1
-                                    {{ $benefit }}
+                                    <span
+                                        class="material-symbols-outlined text-base
+                                        {{ $isEnabled ? 'text-primary' : 'text-red-500' }}">
+                                        {{ $isEnabled ? 'check_circle' : 'cancel' }}
+                                    </span>
+
+                                    <span class="{{ $isEnabled ? '' : 'line-through opacity-60' }}">
+                                        {{ $label }}
+                                        @if (!is_bool($value))
+                                            <span class="font-semibold">({{ $display }})</span>
+                                        @endif
+                                    </span>
                                 </div>
                             @endforeach
 
                         </div>
                     </div>
-                @endforeach
+                @empty
+                    <p>No plans available</p>
+                @endforelse
 
             </div>
         </div>
@@ -75,24 +240,7 @@
                         </header>
 
                         <!-- Payment Method Section -->
-                        <div class="flex flex-col items-center gap-2 w-full max-w-md">
-                            <div
-                                class="flex w-full max-w-xs items-center justify-center rounded-full bg-primary/10 dark:bg-primary/20 p-1">
-                                <label
-                                    class="flex cursor-pointer h-full flex-1 items-center justify-center overflow-hidden rounded-full px-2 py-1.5 has-[:checked]:bg-white dark:has-[:checked]:bg-background-dark has-[:checked]:shadow-soft text-text-muted-light dark:text-text-muted-dark has-[:checked]:text-text-light dark:has-[:checked]:text-text-dark text-sm font-medium transition-all duration-300">
-                                    <span class="truncate">Pay with Card</span>
-                                    <input checked class="invisible w-0" wire:model="paymentMethod" name="paymentMethod"
-                                        value="paystack" type="radio" value="monthly" />
-                                </label>
-                                <label
-                                    class="flex cursor-pointer h-full flex-1 items-center justify-center overflow-hidden rounded-full px-2 py-1.5 has-[:checked]:bg-white dark:has-[:checked]:bg-background-dark has-[:checked]:shadow-soft text-text-muted-light dark:text-text-muted-dark has-[:checked]:text-text-light dark:has-[:checked]:text-text-dark text-sm font-medium transition-all duration-300">
-                                    <span class="truncate">Pay with Crypto</span>
-                                    <input class="invisible w-0" wire:model="paymentMethod" name="paymentMethod"
-                                        value="nowpayment" type="radio" value="yearly" />
-                                </label>
-                            </div>
-
-                        </div>
+                       
 
                         <!-- Order Summary Card -->
                         <div

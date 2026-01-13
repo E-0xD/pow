@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Enums\BillingCycle;
+use App\Models\Plan;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class PlanSeeder extends Seeder
@@ -14,38 +14,122 @@ class PlanSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('plans')->insert([
+        $plans = [
+            // Free Tier
             [
-                'uid' => '3dfb57ab-91c9-46e8-b1fd-fe76d9208a82',
-                'price' => 50.00,
-                'name' => 'Yearly',
-                'description' => 'Access all premium features for a full year.',
-                'benefits' => json_encode([
-                    'Unlimited portfolio templates',
-                    'Priority support',
-                    'Advanced analytics',
-                    'Custom domain connection'
-                ]),
-                'paystack_plan_code' => 'PLN_tfkihoy29c8v65s',
-                'duration' => 365,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'uid' => '45edfe7b-7ad8-4578-9b6c-2be022b8bc4b',
-                'price' => 5.00,
-                'name' => 'Monthly',
-                'description' => 'Access all premium features for a month.',
-                'benefits' => json_encode([
-                    'Unlimited portfolio templates',
-                    'Priority support',
-                    'Basic analytics'
-                ]),
-                'paystack_plan_code' => 'PLN_2yxk0odys330i9h',
+                'uid' => Str::uuid(),
+                'tier' => 'free',
+                'name' => 'Free',
+                'description' => 'Perfect for getting started',
+                'price' => null,
+                'billing_cycle' => BillingCycle::MONTHLY,
+                'interval_days' => 30,
+                'benefits' => config('plans.tiers.free.features'),
                 'duration' => 30,
-                'created_at' => now(),
-                'updated_at' => now(),
+                'is_active' => true,
             ],
-        ]);
+            [
+                'uid' => Str::uuid(),
+                'tier' => 'free',
+                'name' => 'Free',
+                'description' => 'Perfect for getting started',
+                'price' => null,
+                'billing_cycle' =>  BillingCycle::YEARLY,
+                'interval_days' => 30,
+                'benefits' => config('plans.tiers.free.features'),
+                'duration' => 365,
+                'is_active' => true,
+            ],
+
+            // Basic Plans
+            [
+                'uid' => Str::uuid(),
+                'tier' => 'basic',
+                'name' => 'Basic - Monthly',
+                'description' => 'For professionals building their presence',
+                'price' => 29.99,
+                'billing_cycle' => BillingCycle::MONTHLY,
+                'interval_days' => 30,
+                'benefits' => config('plans.tiers.basic.features'),
+                'duration' => 30,
+                'is_active' => true, 
+            ],
+            [
+                'uid' => Str::uuid(),
+                'tier' => 'basic',
+                'name' => 'Basic - Yearly',
+                'description' => 'For professionals building their presence',
+                'price' => 299.99,
+                'billing_cycle' =>  BillingCycle::YEARLY,
+                'interval_days' => 365,
+                'benefits' => config('plans.tiers.basic.features'),
+                'duration' => 365,
+                'is_active' => true,
+            ],
+
+            // Pro Plans
+            [
+                'uid' => Str::uuid(),
+                'tier' => 'pro',
+                'name' => 'Pro - Monthly',
+                'description' => 'For growing teams and businesses',
+                'price' => 79.99,
+                'billing_cycle' => BillingCycle::MONTHLY,
+                'interval_days' => 30,
+                'benefits' => config('plans.tiers.pro.features'),
+                'duration' => 30,
+                'is_active' => true,
+            ],
+            [
+                'uid' => Str::uuid(),
+                'tier' => 'pro',
+                'name' => 'Pro - Yearly',
+                'description' => 'For growing teams and businesses',
+                'price' => 799.99,
+                'billing_cycle' =>  BillingCycle::YEARLY,
+                'interval_days' => 365,
+                'benefits' => config('plans.tiers.pro.features'),
+                'duration' => 365,
+                'is_active' => true,
+            ],
+
+            // Enterprise Plans
+            [
+                'uid' => Str::uuid(),
+                'tier' => 'enterprise',
+                'name' => 'Enterprise - Monthly',
+                'description' => 'Custom solutions for large organizations',
+                'price' => 299.99,
+                'billing_cycle' => BillingCycle::MONTHLY,
+                'interval_days' => 30,
+                'benefits' => config('plans.tiers.enterprise.features'),
+                'duration' => 30,
+                'is_active' => true,
+            ],
+            [
+                'uid' => Str::uuid(),
+                'tier' => 'enterprise',
+                'name' => 'Enterprise - Yearly',
+                'description' => 'Custom solutions for large organizations',
+                'price' => 2999.99,
+                'billing_cycle' =>  BillingCycle::YEARLY,
+                'interval_days' => 365,
+                'benefits' => config('plans.tiers.enterprise.features'),
+                'duration' => 365,
+                'is_active' => true,
+            ],
+        ];
+
+        foreach ($plans as $plan) {
+            Plan::updateOrCreate(
+                [
+                    'tier' => $plan['tier'],
+                    'billing_cycle' => $plan['billing_cycle'],
+                ],
+                $plan
+            );
+        }
+
+        $this->command->info('Plans seeded successfully');
     }
 }

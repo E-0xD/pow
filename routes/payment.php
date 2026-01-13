@@ -1,15 +1,18 @@
 <?php
 
-use App\Http\Controllers\Payment\Processors\PaystackController;
 use App\Http\Controllers\Payment\Validation\NowPaymentValidationController;
+use App\Http\Controllers\Payment\Webhooks\PaystackWebhookController;
 use App\Livewire\Payment\PaymentRouter;
+use App\Livewire\Subscription\SubscriptionPaymentRouter;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('checkout/{portfolio}', PaymentRouter::class)->name('payment.checkout');
+    // Account subscription payment routes
+    Route::get('subscription', SubscriptionPaymentRouter::class)->name('subscription.checkout');
 
     Route::get('nowpayment/validate', NowPaymentValidationController::class)->name('nowpayment.validate');
 
-    // Route::post('/paystack/process', [PaystackSubscriptionController::class, 'process']);
-    Route::get('paystack/validate', [PaystackController::class, 'validate'])->name('paystack.validate');
 });
+
+// Webhook routes (no auth required)
+Route::post('webhook/paystack', PaystackWebhookController::class)->name('paystack.webhook');

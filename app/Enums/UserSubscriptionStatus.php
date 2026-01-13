@@ -2,7 +2,7 @@
 
 namespace App\Enums;
 
-enum PortfolioSubscriptionStatus: string
+enum UserSubscriptionStatus: string
 {
     case PENDING = 'pending';
     case ACTIVE = 'active';

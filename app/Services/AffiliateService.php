@@ -5,7 +5,7 @@ namespace App\Services;
 use App\Models\Affiliate;
 use App\Models\Transaction;
 use App\Models\User;
-use App\Models\PortfolioSubscription;
+use App\Models\UserSubscription;
 use App\Enums\NotificationType;
 use App\Services\NotificationService;
 use Illuminate\Support\Facades\Log;
@@ -19,7 +19,7 @@ class AffiliateService
     /**
      * Credit commission for a subscription (first subscription by referred user only)
      */
-    public function creditCommissionForSubscription(PortfolioSubscription $subscription): ?Transaction
+    public function creditCommissionForSubscription(UserSubscription $subscription): ?Transaction
     {
         $referredUser = $subscription->user;
         if (!$referredUser || !$referredUser->referred_by) return null;

@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Payment\Webhooks;
 
-use App\Enums\PortfolioSubscriptionStatus;
+use App\Enums\UserSubscriptionStatus;
 use App\Http\Controllers\Controller;
-use App\Models\Plan;
-use App\Models\PortfolioSubscription;
-use App\Services\CouponService;
+use App\Livewire\Subscription\SubscriptionStatus;
+use App\Models\UserSubscription;
 use App\Services\EmailService;
 use App\Services\MessageService;
 use Illuminate\Http\Request;
@@ -20,13 +19,11 @@ class PaystackWebhookController extends Controller
 {
     protected $emailService;
     protected $messageService;
-    protected $couponService;
 
     public function __construct()
     {
         $this->emailService = new EmailService();
         $this->messageService = new MessageService(new Agent());
-        $this->couponService = new CouponService();
     }
 
     public function __invoke(Request $request)
@@ -38,124 +35,181 @@ class PaystackWebhookController extends Controller
             $event = $data['event'] ?? null;
             $payload = $data['data'] ?? [];
 
-            Log::info($event);
-
-            if ($event == 'charge.success') {
+            if ($event == 'charge.success' && !isset($payload['plan']['id'])) {
                 $this->handleChargeSuccess($payload);
-            };
+            }
 
             if ($event == 'subscription.create') {
-
                 $this->handleSubscriptionActivation($payload);
             }
 
-
-            // 'subscription.enable'
-            // 'invoice.payment_failed'
-            // subscription.disable
-
-
             return response()->json(['status' => 'ok'], Response::HTTP_OK);
         } catch (\Throwable $th) {
-            Log::error($th->getMessage(), ['exception' => $th]);
+            Log::error('Paystack webhook error: ' . $th->getMessage());
             return response()->json(['status' => 'ok'], Response::HTTP_OK);
         }
     }
 
     /**
-     * Handle one-time charge success (discounted/one-time payments)
+     * Handle charge success - both initial purchase and renewals
+     * Creates recurring subscription if coupon was applied (charge-only scenario)
+     * Also manages subscription statuses: cancels active, fails other pending
      */
     protected function handleChargeSuccess(array $payload)
     {
-        $subscriptionId = $payload['metadata']['subscription_id'] ?? null;
-
-        if (!$subscriptionId) {
-            Log::warning('No subscription ID found in charge.success metadata.');
-            return response()->json(['status' => 'ok'], Response::HTTP_OK);
-        }
-
-        $portfolioSubscription = PortfolioSubscription::find($subscriptionId);
-
-        if (!$portfolioSubscription) {
-            Log::warning("PortfolioSubscription {$subscriptionId} not found.");
-            return response()->json(['status' => 'ok'], Response::HTTP_OK);
-        }
-
+        $email = $payload['customer']['email'] ?? null;
+        $userId = $payload['metadata']['user_id'] ?? null;
+        $planCode = $payload['metadata']['plan_code'] ?? null;
         $freeMonths = (int) ($payload['metadata']['free_months'] ?? 0);
         $extraMonths = (int) ($payload['metadata']['extra_months'] ?? 0);
 
+        if (!$email || !$userId) {
+            Log::warning('Missing required data in charge.success', [
+                'email' => $email,
+                'user_id' => $userId
+            ]);
+            return;
+        }
+
+        // Get latest pending subscription for this user
+        $subscription = UserSubscription::where('user_id', $userId)
+            ->where('status', UserSubscriptionStatus::PENDING)
+            ->latest('id')
+            ->first();
+
+        // If no pending subscription, get the latest one
+        if (!$subscription) {
+            $subscription = UserSubscription::where('user_id', $userId)
+                ->latest('id')
+                ->first();
+        }
+
+        // Cancel any active subscriptions for this user
+        UserSubscription::where('user_id', $userId)
+            ->where('status', UserSubscriptionStatus::ACTIVE)
+            ->update(['status' => UserSubscriptionStatus::CANCELLED]);
+
+        // Mark any other pending subscriptions as failed
+        UserSubscription::where('user_id', $userId)
+            ->where('status', UserSubscriptionStatus::PENDING)
+            ->where('id', '!=', $subscription?->id)
+            ->update(['status' => UserSubscriptionStatus::FAILED]);
+
+        if (!$subscription) {
+            Log::warning("UserSubscription not found for user {$userId}");
+            return;
+        }
 
         // Update transaction status
-        if ($portfolioSubscription->transaction) {
-            $portfolioSubscription->transaction->update(['status' => 'Successful']);
+        if ($subscription->transaction) {
+            $subscription->transaction->update(['status' => 'Successful']);
         }
 
-        $portfolioSubscription->update([
-            'processor_email_token' => $payload['customer']['email']
+        $subscription->update([
+            'processor_email_token' => $email
         ]);
 
-        // Create recurring subscription if this was a discounted payment
-
-        if (!array_key_exists('plan_code', $payload['plan'])) {
-            $this->createRecurringSubscription($payload, $freeMonths, $extraMonths);
+        // If coupon was applied, plan_code won't be in the charge payload
+        // Create delayed recurring subscription to start after free/extra months
+        if ($planCode && ($freeMonths > 0 || $extraMonths > 0)) {
+            $this->createRecurringSubscription(
+                $payload,
+                $planCode,
+                $freeMonths,
+                $extraMonths
+            );
         }
 
-        // Send success email
-        $this->sendPaymentSuccessEmail($portfolioSubscription);
-
-        Log::info("Charge successful for PortfolioSubscription {$subscriptionId}");
+        Log::info("Charge successful for user {$userId}");
     }
 
     /**
-     * Handle subscription activation events (create/enable)
+     * Handle subscription activation - triggered after initial charge or Paystack subscription created
+     * Also manages subscription statuses: cancels active, fails other pending
      */
     protected function handleSubscriptionActivation(array $payload)
     {
+        $email = $payload['customer']['email'] ?? null;
+        $subscriptionCode = $payload['subscription_code'] ?? null;
+        $nextPaymentDate = $payload['next_payment_date'] ?? null;
 
-        $customerEmail = $payload['customer']['email'] ?? null;
-
-        if (!$customerEmail) {
-            Log::warning('No email ID found in subscription event metadata.');
-            return response()->json(['status' => 'ok'], Response::HTTP_OK);
+        if (!$email || !$subscriptionCode) {
+            Log::warning('Missing required data in subscription.create', [
+                'email' => $email,
+                'subscription_code' => $subscriptionCode
+            ]);
+            return;
         }
 
-        $portfolioSubscription = PortfolioSubscription::where('processor_email_token', $customerEmail)->first();
-        if (!$portfolioSubscription) {
-            Log::warning("PortfolioSubscription not found.");
-            return response()->json(['status' => 'ok'], Response::HTTP_OK);
+        // Find latest PENDING subscription first
+        $subscription = UserSubscription::where('processor_email_token', $email)
+            ->where('status', UserSubscriptionStatus::PENDING)
+            ->latest('id')
+            ->first();
+
+        // If no pending subscription found, try other methods
+        if (!$subscription) {
+            $subscription = UserSubscription::where('processor_email_token', $email)
+                ->orWhere(function ($query) use ($email) {
+                    $query->whereHas('user', function ($q) use ($email) {
+                        $q->where('email', $email);
+                    });
+                })
+                ->latest('id')
+                ->first();
         }
 
+        if ($subscription) {
+            // Cancel any active subscriptions for this user
+            UserSubscription::where('user_id', $subscription->user_id)
+                ->where('status', UserSubscriptionStatus::ACTIVE)
+                ->update(['status' => UserSubscriptionStatus::CANCELLED]);
 
-        // Update subscription with Paystack subscription details
-        $portfolioSubscription->update([
-            'status' => PortfolioSubscriptionStatus::ACTIVE,
+            // Mark any other pending subscriptions as failed
+            UserSubscription::where('user_id', $subscription->user_id)
+                ->where('status', UserSubscriptionStatus::PENDING)
+                ->where('id', '!=', $subscription->id)
+                ->update(['status' => UserSubscriptionStatus::FAILED]);
+        }
+
+        if (!$subscription) {
+            Log::warning("UserSubscription not found for email {$email}");
+            return;
+        }
+
+        // Calculate expiration date from next payment date
+        $expiresAt = $nextPaymentDate ? Carbon::parse($nextPaymentDate) : now()->addMonth();
+
+        // Update subscription with Paystack details
+        $subscription->update([
+            'status' => UserSubscriptionStatus::ACTIVE,
             'purchased_at' => now(),
-            'expires_at' => Carbon::parse($payload['next_payment_date']),
-            'processor_subscription_code' => $payload['subscription_code'] ?? null,
-            'processor_email_token' => $payload['email_token'] ?? null
+            'expires_at' => $expiresAt,
+            'processor_subscription_code' => $subscriptionCode,
+            'processor_email_token' => $email
         ]);
 
-
-        // Update transaction status
-        if ($portfolioSubscription->transaction) {
-            $portfolioSubscription->transaction->update(['status' => 'Successful']);
+        if ($subscription->transaction) {
+            $subscription->transaction->update(['status' => 'Successful']);
         }
 
-
-        Log::info("Subscription activated via Paystack subscription.");
+        Log::info("Subscription activated for user {$subscription->user_id}", [
+            'expires_at' => $expiresAt,
+            'subscription_code' => $subscriptionCode
+        ]);
     }
 
     /**
-     * Create a recurring subscription with delayed start date
+     * Create delayed recurring subscription (for coupon scenarios)
+     * Starts after initial charge + free/extra months
      */
     protected function createRecurringSubscription(
         array $payload,
+        string $planCode,
         int $freeMonths,
         int $extraMonths
     ) {
         $planDuration = (int) ($payload['metadata']['plan_duration'] ?? 30);
-
-
         $startDays = $planDuration;
 
         if ($freeMonths > 0) {
@@ -166,49 +220,27 @@ class PaystackWebhookController extends Controller
             $startDays += $extraMonths * 30;
         }
 
-        Log::info("Calculated subscription start days: {$startDays}");
-
         $subscriptionStartDate = now()->addDays($startDays);
-        $ISOstartDate = $subscriptionStartDate->toIso8601String();
-
-        Log::info("Subscription start date: {$ISOstartDate}");
 
         $subPayload = [
             'customer' => $payload['customer']['customer_code'],
-            'plan' => $payload['metadata']['plan_code'],
-            'start_date' => $ISOstartDate,
+            'plan' => $planCode,
+            'start_date' => $subscriptionStartDate->toIso8601String(),
         ];
 
-        $subResponse = Http::withToken(config('paystack.secret'))->post(config('paystack.url') . 'subscription', $subPayload);
+        $response = Http::withToken(config('paystack.secret'))
+            ->post(config('paystack.url') . 'subscription', $subPayload);
 
-        Log::info('Subscription creation request sent');
-
-        if ($subResponse->successful()) {
-            Log::info('Subscription creation request successful');
+        if ($response->successful()) {
+            Log::info('Recurring subscription created successfully', [
+                'subscription_code' => $response->json('data.subscription_code'),
+                'start_date' => $subscriptionStartDate
+            ]);
         } else {
             Log::error('Failed to create recurring subscription', [
-                'response' => $subResponse->json() ?: [],
+                'response' => $response->json(),
                 'payload' => $subPayload
             ]);
         }
-    }
-
-    /**
-     * Send payment success email to user
-     */
-    protected function sendPaymentSuccessEmail(PortfolioSubscription $portfolioSubscription)
-    {
-        $message = $this->messageService->getPaymentSuccessMessage(
-            $portfolioSubscription->user,
-            $portfolioSubscription->transaction->amount,
-            $portfolioSubscription->transaction->reference,
-            $portfolioSubscription->portfolio->title
-        );
-
-        $this->emailService->send(
-            $portfolioSubscription->user->email,
-            $message['subject'],
-            $message['payload']
-        );
     }
 }
