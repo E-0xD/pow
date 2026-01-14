@@ -51,7 +51,7 @@ class PaystackWebhookController extends Controller
     }
 
     /**
-     * Handle charge success - both initial purchase and renewals
+     * Handle charge success - initial purchase
      * Creates recurring subscription if coupon was applied (charge-only scenario)
      * Also manages subscription statuses: cancels active, fails other pending
      */
