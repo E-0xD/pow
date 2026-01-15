@@ -45,7 +45,7 @@
                     @elseif($transaction->status === 'pending')
                         <span class="material-symbols-outlined text-6xl text-yellow-500">schedule</span>
                     @elseif($transaction->status === 'refunded')
-                        <span class="material-symbols-outlined text-6xl text-blue-500">refund</span>
+                        <span class="material-symbols-outlined text-6xl text-blue-500">replay</span>
                     @else
                         <span class="material-symbols-outlined text-6xl text-red-500">cancel</span>
                     @endif
@@ -56,7 +56,7 @@
         <!-- Headline -->
         <h1
             class="text-[#140d1b] dark:text-white text-3xl font-extrabold leading-tight tracking-tight pt-10 pb-2 text-center">
-            Invoice #{{ str_pad($transaction->id, 5, '0', STR_PAD_LEFT) }}</h1>
+            Invoice #{{ $transaction->reference }}</h1>
 
         <!-- Body Text -->
         <p class="text-[#734c9a] dark:text-gray-400 text-base font-normal leading-normal text-center pb-8">
@@ -149,7 +149,7 @@
                     <p class="text-[#734c9a] dark:text-gray-400 text-sm font-normal leading-normal">
                         Date</p>
                     <p class="text-[#140d1b] dark:text-gray-200 text-sm font-semibold leading-normal text-right">
-                        {{ $transaction->created_at->format('M d, Y \a\t H:i A') }}
+                        {{ $transaction->created_at->format('M d, Y \a\t H:i A') }} UTC +0
                     </p>
                 </div>
             </div>
