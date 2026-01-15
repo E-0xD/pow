@@ -1,10 +1,10 @@
 <x-layouts.app>
     <div class="mx-auto max-w-7xl">
         <div class="flex justify-between items-center mb-6">
-            <h1 class="text-text-light dark:text-text-dark text-3xl lg:text-4xl font-black tracking-tighter">Features</h1>
-            <a href="{{ route('admin.feature.create') }}"
+            <h1 class="text-text-light dark:text-text-dark text-3xl lg:text-4xl font-black tracking-tighter">Tiers</h1>
+            <a href="{{ route('admin.tier.create') }}"
                 class="bg-primary hover:opacity-90 text-text-dark font-bold py-2 px-4 rounded">
-                Create Feature
+                Create Tier
             </a>
         </div>
 
@@ -15,31 +15,37 @@
                         <tr>
                             <th class="px-6 py-3" scope="col">Name</th>
                             <th class="px-6 py-3" scope="col">Slug</th>
-                            <th class="px-6 py-3" scope="col">Type</th>
+                            <th class="px-6 py-3" scope="col">Features</th>
                             <th class="px-6 py-3" scope="col">Description</th>
                             <th class="px-6 py-3" scope="col">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($features as $feature)
+                        @forelse ($tiers as $tier)
                             <tr class="bg-card-light dark:bg-card-dark border-b border-border-light dark:border-border-dark hover:bg-background-light dark:hover:bg-background-dark/20">
                                 <td class="px-6 py-4 font-medium text-text-light dark:text-text-dark whitespace-nowrap">
-                                    {{ $feature->name }}</td>
+                                    {{ $tier->name }}</td>
                                 <td class="px-6 py-4 text-text-light dark:text-text-dark">
-                                    <code class="text-xs bg-background-light dark:bg-background-dark px-2 py-1 rounded">{{ $feature->slug }}</code>
+                                    <code class="text-xs bg-background-light dark:bg-background-dark px-2 py-1 rounded">{{ $tier->slug }}</code>
                                 </td>
                                 <td class="px-6 py-4 text-text-light dark:text-text-dark">
-                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-primary/20 text-primary">
-                                        {{ ucfirst($feature->type) }}
-                                    </span>
+                                    <div class="flex flex-wrap gap-1">
+                                        @forelse ($tier->features as $feature)
+                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-primary/20 text-primary">
+                                                {{ $feature->name }}
+                                            </span>
+                                        @empty
+                                            <span class="text-subtle-light dark:text-subtle-dark">-</span>
+                                        @endforelse
+                                    </div>
                                 </td>
                                 <td class="px-6 py-4 text-text-light dark:text-text-dark text-xs max-w-xs truncate">
-                                    {{ $feature->description ?? '-' }}
+                                    {{ $tier->description ?? '-' }}
                                 </td>
                                 <td class="px-6 py-4 font-medium">
-                                    <a href="{{ route('admin.feature.edit', $feature) }}"
+                                    <a href="{{ route('admin.tier.edit', $tier) }}"
                                         class="text-primary hover:opacity-80 mr-3">Edit</a>
-                                    <form method="POST" action="{{ route('admin.feature.destroy', $feature) }}"
+                                    <form method="POST" action="{{ route('admin.tier.destroy', $tier) }}"
                                         class="inline">
                                         @csrf
                                         @method('DELETE')
@@ -51,7 +57,7 @@
                         @empty
                             <tr class="bg-card-light dark:bg-card-dark border-b border-border-light dark:border-border-dark">
                                 <td colspan="5" class="px-6 py-4 text-center text-subtle-light dark:text-subtle-dark">
-                                    No features found. <a href="{{ route('admin.feature.create') }}" class="text-primary hover:opacity-80">Create one</a>
+                                    No tiers found. <a href="{{ route('admin.tier.create') }}" class="text-primary hover:opacity-80">Create one</a>
                                 </td>
                             </tr>
                         @endforelse
@@ -60,6 +66,6 @@
             </div>
         </div>
 
-        {{ $features->links() }}
+        {{ $tiers->links() }}
     </div>
 </x-layouts.app>

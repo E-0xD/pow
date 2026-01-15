@@ -12,26 +12,26 @@ class Plan extends Model
 
     protected $fillable = [
         'uid',
-        'tier',
+        'tier_id',
         'price',
         'name',
         'description',
-        'benefits',
-        'duration',
         'billing_cycle',
-        'interval_days',
+        'duration',
         'is_active',
         'paystack_plan_code',
     ];
 
     protected $casts = [
-        'benefits' => 'array',
         'duration' => 'integer',
-        'interval_days' => 'integer',
         'is_active' => 'boolean',
         'billing_cycle' => BillingCycle::class,
     ];
 
+    public function tier()
+    {
+        return $this->belongsTo(Tier::class);
+    }
 
     public function userSubscriptions()
     {
@@ -39,37 +39,19 @@ class Plan extends Model
     }
 
     /**
-     * Get plan configuration from config/plans.php
-     */
-    public function getConfig()
-    {
-        return config("plans.tiers.{$this->tier}");
-    }
-
-    /**
      * Check if user has a specific feature for this plan tier
      */
     public function hasFeature(string $feature): bool
     {
-        $config = $this->getConfig();
-        return $config['features'][$feature] ?? false;
+        return $this->tier?->hasFeature($feature) ?? false;
     }
 
     /**
      * Get a feature limit/value for this plan tier
      */
-    public function getFeatureLimit(string $feature): int|bool
+    public function getFeatureLimit(string $feature): int|string|bool|null
     {
-        $config = $this->getConfig();
-        return $config['features'][$feature] ?? null;
-    }
-
-    /**
-     * Check if this is a paid plan
-     */
-    public function isPaid(): bool
-    {
-        return $this->getConfig()['is_paid'] ?? false;
+        return $this->tier?->getFeatureValue($feature);
     }
 
     /**
@@ -78,14 +60,6 @@ class Plan extends Model
     public function scopeActive($query)
     {
         return $query->where('is_active', true);
-    }
-
-    /**
-     * Scope to get plans by tier
-     */
-    public function scopeByTier($query, string $tier)
-    {
-        return $query->where('tier', $tier);
     }
 
     /**

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('user_subscriptions', function (Blueprint $table) {
             if (!Schema::hasColumn('user_subscriptions', 'billing_cycle')) {
-                $table->string('billing_cycle')->default('monthly')->after('user_id');
+                $table->string('billing_cycle')->default('monthly');
             }
         });
     }

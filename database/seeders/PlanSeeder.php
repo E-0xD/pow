@@ -47,24 +47,26 @@ class PlanSeeder extends Seeder
                 'tier' => 'basic',
                 'name' => 'Basic - Monthly',
                 'description' => 'For professionals building their presence',
-                'price' => 29.99,
+                'price' => 5,
                 'billing_cycle' => BillingCycle::MONTHLY,
                 'interval_days' => 30,
                 'benefits' => config('plans.tiers.basic.features'),
                 'duration' => 30,
-                'is_active' => true, 
+                'is_active' => true,
+                'paystack_plan_code' => 'PLN_tfkihoy29c8v65s',
             ],
             [
                 'uid' => Str::uuid(),
                 'tier' => 'basic',
                 'name' => 'Basic - Yearly',
                 'description' => 'For professionals building their presence',
-                'price' => 299.99,
+                'price' => 50,
                 'billing_cycle' =>  BillingCycle::YEARLY,
                 'interval_days' => 365,
                 'benefits' => config('plans.tiers.basic.features'),
                 'duration' => 365,
                 'is_active' => true,
+                'paystack_plan_code' => 'PLN_2yxk0odys330i9h',
             ],
 
             // Pro Plans
@@ -78,7 +80,7 @@ class PlanSeeder extends Seeder
                 'interval_days' => 30,
                 'benefits' => config('plans.tiers.pro.features'),
                 'duration' => 30,
-                'is_active' => true,
+                'is_active' => false,
             ],
             [
                 'uid' => Str::uuid(),
@@ -90,7 +92,7 @@ class PlanSeeder extends Seeder
                 'interval_days' => 365,
                 'benefits' => config('plans.tiers.pro.features'),
                 'duration' => 365,
-                'is_active' => true,
+                'is_active' => false,
             ],
 
             // Enterprise Plans
@@ -104,7 +106,7 @@ class PlanSeeder extends Seeder
                 'interval_days' => 30,
                 'benefits' => config('plans.tiers.enterprise.features'),
                 'duration' => 30,
-                'is_active' => true,
+                'is_active' => false,
             ],
             [
                 'uid' => Str::uuid(),
@@ -116,7 +118,7 @@ class PlanSeeder extends Seeder
                 'interval_days' => 365,
                 'benefits' => config('plans.tiers.enterprise.features'),
                 'duration' => 365,
-                'is_active' => true,
+                'is_active' => false,
             ],
         ];
 
