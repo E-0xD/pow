@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CouponRequest;
 use App\Models\Coupon;
 use App\Models\Plan;
+use Illuminate\Support\Facades\Log;
 
 class CouponController extends Controller
 {
@@ -25,8 +26,15 @@ class CouponController extends Controller
 
     public function store(CouponRequest $request)
     {
-        Coupon::create($request->validated());
-        return redirect()->route('admin.coupon.index')->with(['type' => 'success', 'message' => 'Coupon created successfully.']);
+        try {
+            Coupon::create($request->validated());
+            alert(type: 'success', message: 'Coupon created successfully.');
+            return redirect()->route('admin.coupon.index');
+        } catch (\Throwable $th) {
+            Log::error($th);
+            alert(type: 'error', message: 'Failed to create coupon.');
+            return back();
+        }
     }
 
     public function edit(Coupon $coupon)
@@ -38,13 +46,27 @@ class CouponController extends Controller
 
     public function update(CouponRequest $request, Coupon $coupon)
     {
-        $coupon->update($request->validated());
-        return redirect()->route('admin.coupon.index')->with(['type' => 'success', 'message' => 'Coupon updated successfully.']);
+        try {
+            $coupon->update($request->validated());
+            alert(type: 'success', message: 'Coupon updated successfully.');
+            return redirect()->route('admin.coupon.index');
+        } catch (\Throwable $th) {
+            Log::error($th);
+            alert(type: 'error', message: 'Failed to update coupon.');
+            return back();
+        }
     }
 
     public function destroy(Coupon $coupon)
     {
-        $coupon->delete();
-        return redirect()->route('admin.coupon.index')->with(['type' => 'success', 'message' => 'Coupon deleted successfully.']);;
+        try {
+            $coupon->delete();
+            alert(type: 'success', message: 'Coupon deleted successfully.');
+            return redirect()->route('admin.coupon.index');
+        } catch (\Throwable $th) {
+            Log::error($th);
+            alert(type: 'error', message: 'Failed to delete coupon.');
+            return back();
+        }
     }
 }

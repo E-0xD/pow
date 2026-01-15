@@ -45,10 +45,12 @@ class UserController extends Controller
             $user->status = $data['status'];
             $user->save();
 
-            return redirect()->route('admin.user.show', $user)->with(['type' => 'success', 'message' => 'User updated.']);
-        } catch (\Throwable $e) {
-            Log::error($e);
-            return back()->withInput()->with(['type' => 'error', 'message' => 'Failed to update user.']);
+            alert(type: 'success', message: 'User updated.');
+            return redirect()->route('admin.user.show', $user);
+        } catch (\Throwable $th) {
+            Log::error($th);
+            alert(type: 'error', message: 'Failed to update user.');
+            return back()->withInput();
         }
     }
 
@@ -56,10 +58,12 @@ class UserController extends Controller
     {
         try {
             $user->delete();
-            return redirect()->route('admin.user.index')->with(['type' => 'success', 'message' => 'User deleted.']);
-        } catch (\Throwable $e) {
-            Log::error($e);
-            return back()->with(['type' => 'error', 'message' => 'Failed to delete user.']);
+            alert(type: 'success', message: 'User deleted.');
+            return redirect()->route('admin.user.index');
+        } catch (\Throwable $th) {
+            Log::error($th);
+            alert(type: 'error', message: 'Failed to delete user.');
+            return back();
         }
     }
 }

@@ -56,17 +56,20 @@ class AffiliateController extends Controller
     {
         try {
             if ($user->affiliate()->exists()) {
-                return back()->with(['type' => 'error', 'message' => 'User is already an affiliate.']);
+                alert(type: 'error', message: 'User is already an affiliate.');
+                return back();
             }
 
             $user->affiliate()->create([
                 'commission_rate' => $request->commission_rate,
             ]);
 
-            return back()->with(['type' => 'success', 'message' => 'User made affiliate successfully.']);
-        } catch (\Throwable $e) {
-            Log::error($e);
-            return back()->withInput()->with(['type' => 'error', 'message' => 'Failed to create affiliate.']);
+            alert(type: 'success', message: 'User made affiliate successfully.');
+            return back();
+        } catch (\Throwable $th) {
+            Log::error($th);
+            alert(type: 'error', message: 'Failed to create affiliate.');
+            return back()->withInput();
         }
     }
 
@@ -86,10 +89,12 @@ class AffiliateController extends Controller
 
         try {
             $affiliate->update($data);
-            return redirect()->route('admin.affiliate.index')->with(['type' => 'success', 'message' => 'Affiliate updated.']);
-        } catch (\Throwable $e) {
-            Log::error($e);
-            return back()->withInput()->with(['type' => 'error', 'message' => 'Failed to update affiliate.']);
+            alert(type: 'success', message: 'Affiliate updated.');
+            return redirect()->route('admin.affiliate.index');
+        } catch (\Throwable $th) {
+            Log::error($th);
+            alert(type: 'error', message: 'Failed to update affiliate.');
+            return back()->withInput();
         }
     }
 
@@ -97,10 +102,12 @@ class AffiliateController extends Controller
     {
         try {
             $affiliate->delete();
-            return redirect()->route('admin.affiliate.index')->with(['type' => 'success', 'message' => 'Affiliate removed.']);
-        } catch (\Throwable $e) {
-            Log::error($e);
-            return back()->with(['type' => 'error', 'message' => 'Failed to remove affiliate.']);
+            alert(type: 'success', message: 'Affiliate removed.');
+            return redirect()->route('admin.affiliate.index');
+        } catch (\Throwable $th) {
+            Log::error($th);
+            alert(type: 'error', message: 'Failed to remove affiliate.');
+            return back();
         }
     }
 
@@ -142,10 +149,12 @@ class AffiliateController extends Controller
                 );
             });
 
-            return back()->with(['type' => 'success', 'message' => 'Payout processed successfully.']);
-        } catch (\Throwable $e) {
-            Log::error($e);
-            return back()->with(['type' => 'error', 'message' => 'Failed to process payout.']);
+            alert(type: 'success', message: 'Payout processed successfully.');
+            return back();
+        } catch (\Throwable $th) {
+            Log::error($th);
+            alert(type: 'error', message: 'Failed to process payout.');
+            return back();
         }
     }
 }

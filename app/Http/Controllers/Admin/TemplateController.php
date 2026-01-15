@@ -35,18 +35,12 @@ class TemplateController extends Controller
 
             Template::create($data);
 
-            return redirect()->route('admin.template.index')
-                ->with([
-                    'type' => 'success',
-                    'message' => 'Template created successfully!'
-                ]);
+            alert(type: 'success', message: 'Template created successfully');
+            return redirect()->route('admin.template.index');
         } catch (\Throwable $th) {
             Log::error($th);
-            return redirect()->route('admin.template.index')
-                ->with([
-                    'type' => 'error',
-                    'message' => 'An error occurred while creating template'
-                ]);
+            alert(type: 'error', message: 'Failed to create template.');
+            return redirect()->route('admin.template.index');
         }
     }
 
@@ -77,17 +71,12 @@ class TemplateController extends Controller
 
             $template->update($data);
 
-            return redirect()->route('admin.template.index')->with([
-                'type' => 'success',
-                'message' => 'Template updated successfully!'
-            ]);
+            alert(type: 'success', message: 'Template updated successfully!');
+            return redirect()->route('admin.template.index');
         } catch (\Throwable $th) {
             Log::error($th);
-            return redirect()->route('admin.template.index')
-                ->with([
-                    'type' => 'error',
-                    'message' => 'An error occurred while updating template'
-                ]);
+            alert(type: 'error', message: 'Failed to update template.');
+            return redirect()->route('admin.template.index');
         }
     }
 
@@ -100,18 +89,12 @@ class TemplateController extends Controller
 
             $template->delete();
 
-            return redirect()->route('admin.template.index')
-                ->with([
-                    'type' => 'success',
-                    'message' => 'Template Deleted successfully!'
-                ]);
+            alert(type: 'success', message: 'Template deleted successfully.');
+            return redirect()->route('admin.template.index');
         } catch (\Throwable $th) {
             Log::error($th);
-            return redirect()->route('admin.template.index')
-                ->with([
-                    'type' => 'error',
-                    'message' => 'An error occurred while deleting template'
-                ]);
+            alert(type: 'error', message: 'Failed to delete template.');
+            return redirect()->route('admin.template.index');
         }
     }
 }

@@ -37,12 +37,12 @@ class PortfolioSubscriptionController extends Controller
             $subscription->status = $data['status'];
             $subscription->save();
 
-            return redirect()->route('admin.user.show', $portfolio->user)
-                ->with(['type' => 'success', 'message' => 'Subscription updated successfully.']);
-        } catch (\Throwable $e) {
-            Log::error($e);
-            return back()->withInput()
-                ->with(['type' => 'error', 'message' => 'Failed to update subscription.']);
+            alert(type: 'success', message: 'Subscription updated successfully.');
+            return redirect()->route('admin.user.show', $portfolio->user);
+        } catch (\Throwable $th) {
+            Log::error($th);
+            alert(type: 'error', message: 'Failed to update subscription.');
+            return back()->withInput();
         }
     }
 }

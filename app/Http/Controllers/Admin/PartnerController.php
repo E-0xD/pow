@@ -8,6 +8,7 @@ use App\Http\Requests\UpdatePartnerRequest;
 use App\Models\Partner;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Log;
 
 class PartnerController extends Controller
 {
@@ -35,13 +36,20 @@ class PartnerController extends Controller
      */
     public function store(StorePartnerRequest $request)
     {
-        Partner::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'api_key' => Str::random(64),
-        ]);
+        try {
+            Partner::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'api_key' => Str::random(64),
+            ]);
 
-        return redirect()->route('admin.partner.index')->with('success', 'Partner created successfully.');
+            alert(type: 'success', message: 'Partner created successfully.');
+            return redirect()->route('admin.partner.index');
+        } catch (\Throwable $th) {
+            Log::error($th);
+            alert(type: 'error', message: 'Failed to create partner.');
+            return back();
+        }
     }
 
     /**
@@ -66,9 +74,16 @@ class PartnerController extends Controller
      */
     public function update(UpdatePartnerRequest $request, Partner $partner)
     {
-        $partner->update($request->only(['name', 'email']));
+        try {
+            $partner->update($request->only(['name', 'email']));
 
-        return redirect()->route('admin.partner.index')->with('success', 'Partner updated successfully.');
+            alert(type: 'success', message: 'Partner updated successfully.');
+            return redirect()->route('admin.partner.index');
+        } catch (\Throwable $th) {
+            Log::error($th);
+            alert(type: 'error', message: 'Failed to update partner.');
+            return back();
+        }
     }
 
     /**
@@ -76,8 +91,15 @@ class PartnerController extends Controller
      */
     public function destroy(Partner $partner)
     {
-        $partner->delete();
+        try {
+            $partner->delete();
 
-        return redirect()->route('admin.partner.index')->with('success', 'Partner deleted successfully.');
+            alert(type: 'success', message: 'Partner deleted successfully.');
+            return redirect()->route('admin.partner.index');
+        } catch (\Throwable $th) {
+            Log::error($th);
+            alert(type: 'error', message: 'Failed to delete partner.');
+            return back();
+        }
     }
 }
