@@ -17,11 +17,11 @@
                  <span>Security</span>
              </a>
 
-             <button class="flex flex-col items-center hover:text-primary">
+             <a href="{{ route('user.subscription.manage') }}" class="flex flex-col items-center hover:text-primary">
                  <span class="material-symbols-outlined text-2xl">subscriptions</span>
                  <span class="text-sm mt-1">Subscription</span>
-             </button>
-             
+             </a>
+
              <form method="POST" action="{{ route('logout') }}">
                  @csrf
                  <button type="submit"

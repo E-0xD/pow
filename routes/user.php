@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\User\AffiliateController;
 use App\Http\Controllers\User\DashboardController;
+use App\Http\Controllers\User\InvoiceController;
 use App\Http\Controllers\User\PortfolioController;
 use App\Http\Controllers\User\TemplateController;
 use App\Livewire\Portfolio\Builder\PortfolioBuilder;
@@ -10,6 +11,7 @@ use App\Livewire\Message\View;
 use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
+use App\Livewire\Settings\Subscription;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('user')->name('user.')->middleware(['waitlist', 'auth', 'ensure.active', 'message.owner', 'portfolio.owner', 'portfolio.editable'])->group(function () {
@@ -24,7 +26,8 @@ Route::prefix('user')->name('user.')->middleware(['waitlist', 'auth', 'ensure.ac
     Route::get('messages', Messages::class)->name('messages.index');
     Route::get('messages/{message}', View::class)->name('messages.show');
 
-
+    Route::get('invoice/{reference}', [InvoiceController::class, 'show'])->name('invoice.show');
+    
     Route::resource('affiliate', AffiliateController::class)->middleware('ensure.affiliate');
 
     Route::redirect('settings', 'settings/profile');
@@ -32,6 +35,7 @@ Route::prefix('user')->name('user.')->middleware(['waitlist', 'auth', 'ensure.ac
     Route::get('settings/profile', Profile::class)->name('profile.edit');
     Route::get('settings/password', Password::class)->name('user-password.edit');
     Route::get('settings/appearance', Appearance::class)->name('appearance.edit');
+    Route::get('settings/subscription', Subscription::class)->name('subscription.manage');
 
     Route::get('template/{template}/preview', TemplateController::class)->name('template.preview');
 });

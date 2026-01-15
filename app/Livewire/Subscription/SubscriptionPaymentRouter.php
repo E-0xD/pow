@@ -206,6 +206,7 @@ class SubscriptionPaymentRouter extends Component
                 'payable_type' => Plan::class,
                 'payable_id' => $this->selectedPlan->id,
                 'meta' => [
+                    'original_price' => $this->selectedPlan->price,
                     'coupon_code' => $couponCode,
                     'subscription_type' => 'account',
                     'billing_cycle' => $this->selectedBillingCycle,
@@ -229,7 +230,7 @@ class SubscriptionPaymentRouter extends Component
             // Process payment with gateway
             $response = $this->paystack->process(
                 $this->selectedPlan,
-                route('user.dashboard'),
+                route('user.invoice.show', $transaction->reference),
                 route('user.dashboard'),
                 $this->appliedCoupon
             );
