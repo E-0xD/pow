@@ -3,18 +3,13 @@
 namespace App\Livewire\Subscription;
 
 use App\Enums\BillingCycle;
-use App\Http\Controllers\Payment\Processors\NowPaymentController;
 use App\Http\Controllers\Payment\Processors\PaystackController;
-use App\Http\Controllers\Payment\Processors\PolarController;
-use App\Models\Coupon;
 use App\Models\Plan;
-use App\Models\UserSubscription;
 use App\Models\Transaction;
 use App\Services\CouponService;
 use App\Services\EmailService;
 use App\Services\MessageService;
 use App\Services\SubscriptionService;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -61,19 +56,19 @@ class SubscriptionPaymentRouter extends Component
      */
     public function loadAvailablePlans()
     {
-        $allPlans = Plan::active()->get();
+        $allPlans = Plan::active()->with('tier')->get();
 
         $organized = [];
         foreach ($allPlans as $plan) {
-            $tier = $plan->tier;
+            $tierName = $plan->tier?->name;
             $cycle = $plan->billing_cycle->value;
 
-            if (!isset($organized[$tier])) {
-                $organized[$tier] = [];
+            if (!isset($organized[$tierName])) {
+                $organized[$tierName] = [];
             }
 
-            if (!isset($organized[$tier][$cycle])) {
-                $organized[$tier][$cycle] = $plan;
+            if (!isset($organized[$tierName][$cycle])) {
+                $organized[$tierName][$cycle] = $plan;
             }
         }
 
@@ -83,11 +78,18 @@ class SubscriptionPaymentRouter extends Component
     /**
      * Select a plan tier
      */
-    public function selectPlan($tier)
+    public function selectPlan($tierName)
     {
-        $plan = Plan::where('tier', $tier)
+        $tier = \App\Models\Tier::where('name', $tierName)->first();
+        
+        if (!$tier) {
+            return;
+        }
+
+        $plan = Plan::where('tier_id', $tier->id)
             ->where('billing_cycle', BillingCycle::from($this->selectedBillingCycle))
             ->active()
+            ->with('tier.features')
             ->first();
 
         if ($plan) {

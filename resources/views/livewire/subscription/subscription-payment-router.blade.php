@@ -1,111 +1,3 @@
-{{-- <div class="subscription-payment-container">
-    <h2 class="text-2xl font-bold mb-6">Choose Your Plan</h2>
-
-    <!-- Billing Cycle Toggle -->
-    <div class="flex gap-4 mb-8">
-        <button wire:click="updateBillingCycle('monthly')" 
-                class="{{ $selectedBillingCycle === 'monthly' ? 'bg-blue-600 text-white' : 'bg-gray-200' }} px-4 py-2 rounded">
-            Monthly
-        </button>
-        <button wire:click="updateBillingCycle('yearly')" 
-                class="{{ $selectedBillingCycle === 'yearly' ? 'bg-blue-600 text-white' : 'bg-gray-200' }} px-4 py-2 rounded">
-            Yearly
-        </button>
-    </div>
-
-    <!-- Plans Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-        @forelse($plans as $tier => $cycles)
-            @php $plan = $cycles[$selectedBillingCycle] ?? null; @endphp
-            @if ($plan)
-                <div class="border rounded-lg p-6 {{ $selectedPlan?->id === $plan->id ? 'border-blue-600 bg-blue-50' : '' }}">
-                    <h3 class="text-xl font-semibold mb-2">{{ $plan->name }}</h3>
-                    <p class="text-gray-600 mb-4">{{ $plan->description }}</p>
-                    
-                    @if ($plan->price)
-                        <div class="mb-4">
-                            <span class="text-3xl font-bold">${{ $plan->price }}</span>
-                            <span class="text-gray-600">/{{ $selectedBillingCycle }}</span>
-                        </div>
-                    @else
-                        <div class="mb-4 text-2xl font-bold text-green-600">Free</div>
-                    @endif
-
-                    <button wire:click="selectPlan('{{ $tier }}')" 
-                            class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">
-                        Select Plan
-                    </button>
-                </div>
-            @endif
-        @empty
-            <p>No plans available</p>
-        @endforelse
-    </div>
-
-    <!-- Selected Plan Details -->
-    @if ($selectedPlan)
-        <div class="border-t pt-6">
-            <h3 class="text-xl font-semibold mb-4">Selected Plan: {{ $selectedPlan->name }}</h3>
-
-            <!-- Coupon Code -->
-            <div class="mb-6">
-                <label class="block text-sm font-medium mb-2">Coupon Code (Optional)</label>
-                <div class="flex gap-2">
-                    <input type="text" wire:model="couponCode" placeholder="Enter coupon code"
-                           class="flex-1 border rounded px-3 py-2">
-                    <button wire:click="applyCoupon" class="bg-gray-600 text-white px-4 py-2 rounded">
-                        Apply
-                    </button>
-                </div>
-                @if ($couponError)
-                    <p class="text-red-600 text-sm mt-2">{{ $couponError }}</p>
-                @endif
-                @if ($appliedCoupon)
-                    <p class="text-green-600 text-sm mt-2">Coupon applied! Discount applied.</p>
-                @endif
-            </div>
-
-            <!-- Price Summary -->
-            <div class="bg-gray-50 p-4 rounded mb-6">
-                <div class="flex justify-between mb-2">
-                    <span>Plan Price:</span>
-                    <span>${{ $selectedPlan->price }}</span>
-                </div>
-                @if ($appliedCoupon)
-                    <div class="flex justify-between mb-2 text-green-600">
-                        <span>Discount:</span>
-                        <span>-{{ $appliedCoupon->discount }}%</span>
-                    </div>
-                @endif
-                <div class="border-t pt-2 flex justify-between font-bold text-lg">
-                    <span>Total:</span>
-                    <span>${{ number_format($finalPrice, 2) }}</span>
-                </div>
-            </div>
-
-            <!-- Payment Method -->
-            <div class="mb-6">
-                <label class="block text-sm font-medium mb-2">Payment Method</label>
-                <select wire:model="paymentMethod" class="w-full border rounded px-3 py-2">
-                    <option value="paystack">Paystack</option>
-                    <option value="nowpayment">NowPayment</option>
-                    <option value="polar">Polar</option>
-                </select>
-            </div>
-
-            <!-- Action Buttons -->
-            <div class="flex gap-4">
-                <button wire:click="removeSelectedPlan" class="px-6 py-2 border rounded hover:bg-gray-50">
-                    Cancel
-                </button>
-                <button wire:click="pay" class="flex-1 bg-green-600 text-white py-2 rounded hover:bg-green-700">
-                    Pay Now
-                </button>
-            </div>
-        </div>
-    @endif
-</div> --}}
-
 <div>
 
     {{-- select plan  --}}
@@ -178,15 +70,11 @@
                         </button>
                         <div class="flex flex-col gap-3 pt-2 border-t border-border-light dark:border-border-dark">
 
-                            @foreach ($plan->benefits as $key => $value)
+                            @forelse ($plan->tier->features as $feature)
                                 @php
-                                    // Format the title
-                                    $label = Str::of($key)->replace('_', ' ')->title();
-
-                                    // Decide icon + color
-                                    $isEnabled = $value !== false && $value !== 0;
-                                    $display = ucfirst($value);
-
+                                    $value = $feature->pivot->value;
+                                    $isEnabled = $value !== false && $value !== 0 && $value !== 'false';
+                                    $isBooleanType = $feature->type === 'boolean';
                                 @endphp
 
                                 <div class="flex items-center gap-3 text-sm">
@@ -197,13 +85,15 @@
                                     </span>
 
                                     <span class="{{ $isEnabled ? '' : 'line-through opacity-60' }}">
-                                        {{ $label }}
-                                        @if (!is_bool($value))
-                                            <span class="font-semibold">({{ $display }})</span>
+                                        {{ $feature->name }}
+                                        @if (!$isBooleanType && $isEnabled)
+                                            <span class="font-semibold">({{ $value }})</span>
                                         @endif
                                     </span>
                                 </div>
-                            @endforeach
+                            @empty
+                                <p class="text-xs text-text-muted-light dark:text-text-muted-dark">No features</p>
+                            @endforelse
 
                         </div>
                     </div>
