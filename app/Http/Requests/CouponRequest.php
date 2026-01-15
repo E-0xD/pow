@@ -24,7 +24,7 @@ class CouponRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'code' => 'required|string|unique:coupons,code,' . $this->route('coupon'),
+            'code' => 'required|string|unique:coupons,code,' . $this->route('coupon')?->id,
             'type' => ['required', new Enum(CouponType::class)],
             'discount_value' => 'nullable|numeric|min:0|max:100|required_if:type,' . CouponType::PLAN_DISCOUNT->value . ',' . CouponType::GLOBAL_DISCOUNT->value,
             'months_value' => 'nullable|integer|min:1|required_if:type,' . CouponType::FREE_MONTHS->value . ',' . CouponType::EXTRA_MONTHS->value,
