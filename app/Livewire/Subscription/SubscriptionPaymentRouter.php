@@ -86,7 +86,7 @@ class SubscriptionPaymentRouter extends Component
      */
     public function selectPlan($tierName)
     {
-        
+
         $tier = Tier::where('name', $tierName)->first();
 
         if (!$tier) {
@@ -99,9 +99,9 @@ class SubscriptionPaymentRouter extends Component
             ->with('tier.features')
             ->first();
 
-            if ($plan->id == $this->currentPlan->plan_id) {
-                return;
-            }
+        if ($plan->id == $this->currentPlan->plan_id) {
+            return;
+        }
 
         if ($plan) {
             $this->selectedPlan = $plan;
@@ -236,8 +236,6 @@ class SubscriptionPaymentRouter extends Component
                 'transaction_id' => $transaction->id,
             ]);
 
-            DB::commit();
-
             // Process payment with gateway
             $response = $this->paystack->process(
                 $this->selectedPlan,
@@ -258,6 +256,8 @@ class SubscriptionPaymentRouter extends Component
                 'processor_reference' => $data['data']['transaction_id'] ?? null
             ]);
 
+            DB::commit();
+            
             // Store processor subscription code if returned
             if (isset($data['data']['subscription_code'])) {
                 $userSubscription->update([
