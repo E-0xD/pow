@@ -53,6 +53,13 @@
             "npm install",
             "npm run build"
         ],
+        "update-on-server": [
+            "/opt/cpanel/ea-php84/root/usr/bin/php -d allow_url_fopen=On composer.phar install",
+            "/opt/cpanel/ea-php84/root/usr/bin/php -d allow_url_fopen=On composer.phar dump-autoload",
+            "@php artisan migrate",
+            "npm install",
+            "npm run build"
+        ],
         "dev": [
             "Composer\\Config::disableProcessTimeout",
             "npx concurrently -c \"#93c5fd,#c4b5fd,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1\" \"npm run dev\" --names='server,queue,vite'"
