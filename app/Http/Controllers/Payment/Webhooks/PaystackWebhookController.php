@@ -6,6 +6,7 @@ use App\Enums\TransactionStatus;
 use App\Enums\UserSubscriptionStatus;
 use App\Http\Controllers\Controller;
 use App\Livewire\Subscription\SubscriptionStatus;
+use App\Models\User;
 use App\Models\UserSubscription;
 use App\Services\EmailService;
 use App\Services\MessageService;
@@ -130,35 +131,30 @@ class PaystackWebhookController extends Controller
      */
     protected function handleSubscriptionActivation(array $payload)
     {
-        $email = $payload['customer']['email'] ?? null;
+        $emailToken = $payload['email_token'] ?? null;
         $subscriptionCode = $payload['subscription_code'] ?? null;
         $nextPaymentDate = $payload['next_payment_date'] ?? null;
 
-        if (!$email || !$subscriptionCode) {
+        if (!$emailToken || !$subscriptionCode) {
             Log::warning('Missing required data in subscription.create', [
-                'email' => $email,
+                'emailToken' => $emailToken,
                 'subscription_code' => $subscriptionCode
             ]);
             return;
         }
 
-        // Find latest PENDING subscription first
-        $subscription = UserSubscription::where('processor_email_token', $email)
+
+        $user = User::where('email', $payload['customer']['email'])->first();
+
+        if (!$user) {
+            Log::warning($user . 'user not found');
+            return null;
+        }
+
+        $subscription = $user->subscriptions()
             ->where('status', UserSubscriptionStatus::PENDING)
             ->latest('id')
             ->first();
-
-        // If no pending subscription found, try other methods
-        if (!$subscription) {
-            $subscription = UserSubscription::where('processor_email_token', $email)
-                ->orWhere(function ($query) use ($email) {
-                    $query->whereHas('user', function ($q) use ($email) {
-                        $q->where('email', $email);
-                    });
-                })
-                ->latest('id')
-                ->first();
-        }
 
         if ($subscription) {
             // Cancel any active subscriptions for this user
@@ -174,7 +170,7 @@ class PaystackWebhookController extends Controller
         }
 
         if (!$subscription) {
-            Log::warning("UserSubscription not found for email {$email}");
+            Log::warning("UserSubscription not found for email {$emailToken}");
             return;
         }
 
@@ -187,7 +183,7 @@ class PaystackWebhookController extends Controller
             'purchased_at' => now(),
             'expires_at' => $expiresAt,
             'processor_subscription_code' => $subscriptionCode,
-            'processor_email_token' => $email
+            'processor_email_token' => $emailToken
         ]);
 
         if ($subscription->transaction) {
