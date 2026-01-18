@@ -54,7 +54,7 @@
                     @php $plan = $cycles[$selectedBillingCycle] ?? null; @endphp
                     <div
                         class="relative flex flex-col gap-6 rounded-xl border border-border-light dark:border-border-dark bg-white dark:bg-background-dark/50 p-6 shadow-soft hover:shadow-soft-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer">
-                        @if ($currentPlan->plan_id == $plan->id)
+                        @if ($currentPlan?->plan_id == $plan->id)
                             <span class="absolute top-4 right-4 rounded-full px-3 py-1 text-xs font-bold bg-primary/10 text-primary dark:bg-primary/20">
                                 Current Plan
                             </span>
@@ -71,7 +71,7 @@
                             </p>
                         </div>
 
-                        @if ($currentPlan->plan_id == $plan->id)
+                        @if ($currentPlan?->plan_id == $plan->id)
                             <div
                                 class="flex w-full cursor-pointer items-center  overflow-hidden rounded-lg h-10 px-4 text-primary text-sm font-bold transition-colors">
                                 <span class="">

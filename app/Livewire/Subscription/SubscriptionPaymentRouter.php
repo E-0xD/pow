@@ -99,7 +99,7 @@ class SubscriptionPaymentRouter extends Component
             ->with('tier.features')
             ->first();
 
-        if ($plan->id == $this->currentPlan->plan_id) {
+        if ($plan->id == $this->currentPlan?->plan_id) {
             return;
         }
 

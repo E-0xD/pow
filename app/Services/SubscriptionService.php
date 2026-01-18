@@ -293,4 +293,34 @@ class SubscriptionService
                 ->count(),
         ];
     }
+
+    public function revertToFreeWhenError(User $user){
+        // Mark all pending subscriptions as failed
+        $user->subscriptions()
+            ->where('status', UserSubscriptionStatus::PENDING)
+            ->update([
+                'status' => UserSubscriptionStatus::FAILED,
+            ]);
+
+        // Get the free plan
+        $freePlan = Plan::where('price', null)
+            ->where('billing_cycle', BillingCycle::YEARLY)
+            ->first();
+
+        if ($freePlan) {
+            // Create and activate a free subscription for the user
+            $freeSubscription = $this->createSubscription(
+                $user,
+                $freePlan,
+                BillingCycle::YEARLY
+            );
+
+            $this->activateSubscription($user, $freeSubscription);
+
+            Log::info("User reverted to free plan after error", [
+                'user_id' => $user->id,
+                'free_subscription_id' => $freeSubscription->id,
+            ]);
+        }
+    }
 }

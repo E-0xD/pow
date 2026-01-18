@@ -62,7 +62,7 @@ class RegisterController extends Controller
                 'user_id' => $user->id,
                 'billing_cycle' => BillingCycle::YEARLY,
                 'purchased_at' => now(),
-                'expires_at' => null,
+                'expires_at' => now()->addDays(BillingCycle::YEARLY->durationInDays()),
                 'status' => UserSubscriptionStatus::ACTIVE,
                 'processor_subscription_code' => null,
                 'processor_email_token' => null,

@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Jenssegers\Agent\Agent;
 
@@ -106,7 +107,7 @@ class MessageService
         ];
     }
 
-    public function getPaymentFailedMessage($user, $amount, $reference, $portfolioName): array
+    public function getPaymentFailedMessage(User $user, $amount, $reference, $portfolioName): array
     {
         return [
             'subject' => 'Payment Failed',
@@ -128,7 +129,7 @@ class MessageService
         ];
     }
 
-    public function getPaymentSuccessMessage($user, $amount, $reference, $portfolioName): array
+    public function getPaymentSuccessMessage(User $user, $amount, $reference, $portfolioName): array
     {
         return [
             'subject' => 'Payment Successful',
@@ -155,7 +156,7 @@ class MessageService
     /**
      * Get password reset message
      */
-    public function getPasswordResetMessage($user, $resetLink): array
+    public function getPasswordResetMessage(User $user, $resetLink): array
     {
         return [
             'subject' => 'Reset Your Password',
@@ -190,7 +191,7 @@ class MessageService
     /**
      * Get password reset success message
      */
-    public function getPasswordResetSuccessMessage($user): array
+    public function getPasswordResetSuccessMessage(User $user): array
     {
         return [
             'subject' => 'Your Password Has Been Reset',
@@ -214,7 +215,7 @@ class MessageService
         ];
     }
 
-    public function getPartnerRegisterMessage($user, $partner): array
+    public function getPartnerRegisterMessage(User $user, $partner): array
     {
         $introLines = [
             'Welcome! Through our partnership with ' . $partner->name . ', you now have access to powerful portfolio and digital proof-of-work tools.',
@@ -244,6 +245,144 @@ class MessageService
                 'outroLines' => [
                     'Your account credentials are ready to use. If you have any questions about your account or ' . $partner->name . '\'s services, please contact our support team.',
                     'Thank you for joining ' . config('app.name') . ' through ' . $partner->name . '!'
+                ],
+                'signature' => '— The ' . config('app.name') . ' Team',
+                'company' => config('app.name'),
+            ]
+        ];
+    }
+
+    /**
+     * Get subscription cancelled message
+     */
+    public function getSubscriptionCancelledMessage(User $user, $planName): array
+    {
+        return [
+            'subject' => 'Your ' . config('app.name') . ' Subscription Has Been Cancelled',
+            'payload' => [
+                'title' => 'Subscription Cancelled',
+                'name' => $user->name,
+                'greeting' => 'Hi ' . $user->name . ',',
+                'introLines' => [
+                    'Your subscription to the **' . $planName . '** plan has been cancelled effective immediately.',
+                    'You\'ll retain access to your portfolio and existing content until the end of your current billing period.',
+                    'If you cancel due to any concerns or if there\'s something we can improve, we\'d love to hear your feedback.'
+                ],
+                'actionText' => 'Explore Plans',
+                'actionUrl' => route('subscription.checkout'),
+                'outroLines' => [
+                    'We hope to see you back soon! If you have any questions, feel free to reply to this email.'
+                ],
+                'signature' => '— The ' . config('app.name') . ' Team',
+                'company' => config('app.name'),
+            ]
+        ];
+    }
+
+    /**
+     * Get subscription renewed message
+     */
+    public function getSubscriptionRenewedMessage(User $user, $planName, $amount, $nextBillingDate): array
+    {
+        return [
+            'subject' => 'Your ' . config('app.name') . ' Subscription Has Been Renewed',
+            'payload' => [
+                'title' => 'Subscription Renewed Successfully',
+                'name' => $user->name,
+                'greeting' => 'Hi ' . $user->name . ',',
+                'introLines' => [
+                    'Great news! Your subscription to the **' . $planName . '** plan has been successfully renewed.',
+                    'You\'ve been charged $' . number_format($amount, 2) . '.',
+                    'Your next billing date is **' . $nextBillingDate . '**.',
+                    'Continue enjoying all the premium features and tools available on your plan.'
+                ],
+                'actionText' => 'Go to Dashboard',
+                'actionUrl' => route('user.dashboard'),
+                'outroLines' => [
+                    'Thank you for continuing your subscription with us. If you need any assistance, reply to this email.'
+                ],
+                'signature' => '— The ' . config('app.name') . ' Team',
+                'company' => config('app.name'),
+            ]
+        ];
+    }
+
+    /**
+     * Get subscription reactivated message
+     */
+    public function getSubscriptionReactivatedMessage(User $user, $planName): array
+    {
+        return [
+            'subject' => 'Your ' . config('app.name') . ' Subscription Has Been Reactivated',
+            'payload' => [
+                'title' => 'Subscription Reactivated',
+                'name' => $user->name,
+                'greeting' => 'Welcome back, ' . $user->name . '!',
+                'introLines' => [
+                    'Your subscription to the **' . $planName . '** plan has been reactivated.',
+                    'You now have full access to all premium features and your portfolio is live.',
+                    'We\'re excited to have you back! Continue building and sharing your digital proof of work.'
+                ],
+                'actionText' => 'Go to Dashboard',
+                'actionUrl' => route('user.dashboard'),
+                'outroLines' => [
+                    'If you have any questions or need assistance, feel free to reach out. We\'re here to help!'
+                ],
+                'signature' => '— The ' . config('app.name') . ' Team',
+                'company' => config('app.name'),
+            ]
+        ];
+    }
+
+    /**
+     * Get subscription cancellation failed message
+     */
+    public function getSubscriptionCancellationFailedMessage(User $user): array
+    {
+        return [
+            'subject' => 'Unable to Cancel Your ' . config('app.name') . ' Subscription',
+            'payload' => [
+                'title' => 'Subscription Cancellation Failed',
+                'name' => $user->name,
+                'greeting' => 'Hi ' . $user->name . ',',
+                'introLines' => [
+                    'We attempted to cancel your subscription but the process failed.',
+                    'This could be due to a temporary issue with our payment processor.',
+                    'Your subscription remains active and will continue to operate normally.',
+                    'We recommend trying to cancel again through your account settings or contacting our support team for assistance.'
+                ],
+                'actionText' => 'Try Again',
+                'actionUrl' => route('subscription.checkout'),
+                'outroLines' => [
+                    'If you continue to experience issues, please reply to this email and our team will help resolve this immediately.'
+                ],
+                'signature' => '— The ' . config('app.name') . ' Team',
+                'company' => config('app.name'),
+            ]
+        ];
+    }
+
+    /**
+     * Get subscription activation failed message
+     */
+    public function getSubscriptionActivationFailedMessage(User $user): array
+    {
+        return [
+            'subject' => 'Unable to Activate Your Subscription',
+            'payload' => [
+                'title' => 'Subscription Activation Failed',
+                'name' => $user->name,
+                'greeting' => 'Hi ' . $user->name . ',',
+                'introLines' => [
+                    'We were unable to activate your subscription to your requestetd plan.',
+                    'This could be due to a payment processing issue or a temporary system error.',
+                    'Your premium features may be temporarily unavailable.',
+                    'Our team is looking into this. Please try again or contact us for immediate support.'
+                ],
+               'actionText' => 'Try Again Shortly',
+                'actionUrl' => route('subscription.checkout'),
+                'outroLines' => [
+                    'We apologize for the inconvenience. Reply to this email or reach out to our support team, and we\'ll get your subscription activated right away.'
                 ],
                 'signature' => '— The ' . config('app.name') . ' Team',
                 'company' => config('app.name'),

@@ -187,3 +187,15 @@ if (! function_exists('alert')) {
         ]);
     }
 }
+
+if (! function_exists('formatDateToISO')) {
+    function formatDateToISO(string $date, ?string $time = null): string
+    {
+        $datetime = $time
+            ? "{$date} {$time}"
+            : $date;
+
+        return Carbon::parse($datetime)->toIso8601String();
+    }
+}
+

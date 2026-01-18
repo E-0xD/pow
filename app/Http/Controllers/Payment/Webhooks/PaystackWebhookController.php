@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers\Payment\Webhooks;
 
+use App\Enums\BillingCycle;
 use App\Enums\TransactionStatus;
 use App\Enums\UserSubscriptionStatus;
 use App\Http\Controllers\Controller;
-use App\Livewire\Subscription\SubscriptionStatus;
+use App\Models\Plan;
 use App\Models\User;
 use App\Models\UserSubscription;
 use App\Services\EmailService;
 use App\Services\MessageService;
+use App\Services\SubscriptionService;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Jenssegers\Agent\Agent;
@@ -30,13 +32,14 @@ class PaystackWebhookController extends Controller
 
     public function __invoke(Request $request)
     {
+
+        $data = $request->json()->all();
+        Log::info('Paystack Webhook Received:', $data);
+
+        $event = $data['event'] ?? null;
+        $payload = $data['data'] ?? [];
+
         try {
-            $data = $request->json()->all();
-            Log::info('Paystack Webhook Received:', $data);
-
-            $event = $data['event'] ?? null;
-            $payload = $data['data'] ?? [];
-
             if ($event == 'charge.success' && !isset($payload['plan']['id'])) {
                 $this->handleChargeSuccess($payload);
             }
@@ -45,9 +48,23 @@ class PaystackWebhookController extends Controller
                 $this->handleSubscriptionActivation($payload);
             }
 
+            if ($event == 'subscription.not_renew') {
+                $this->handleCancelSubscription($payload);
+            }
+
             return response()->json(['status' => 'ok'], Response::HTTP_OK);
         } catch (\Throwable $th) {
-            Log::error('Paystack webhook error: ' . $th->getMessage());
+
+            Log::error('Paystack webhook error: ' . $th);
+
+
+            $user = User::where('email', $payload['customer']['email'])->first();
+
+            if ($user) {
+                app(new SubscriptionService())->revertToFreeWhenError($user);
+            }
+
+
             return response()->json(['status' => 'ok'], Response::HTTP_OK);
         }
     }
@@ -70,6 +87,9 @@ class PaystackWebhookController extends Controller
                 'email' => $email,
                 'user_id' => $userId
             ]);
+
+            throw new \Exception("Missing required data in charge.success", 1);
+
             return;
         }
 
@@ -131,6 +151,16 @@ class PaystackWebhookController extends Controller
      */
     protected function handleSubscriptionActivation(array $payload)
     {
+
+        $user = User::where('email', $payload['customer']['email'])->first();
+        $message = $this->messageService->getSubscriptionActivationFailedMessage($user);
+
+        if (!$user) {
+            Log::warning($user . 'user not found');
+            throw new \Exception("user not found", 1);
+            return null;
+        }
+
         $emailToken = $payload['email_token'] ?? null;
         $subscriptionCode = $payload['subscription_code'] ?? null;
         $nextPaymentDate = $payload['next_payment_date'] ?? null;
@@ -140,16 +170,18 @@ class PaystackWebhookController extends Controller
                 'emailToken' => $emailToken,
                 'subscription_code' => $subscriptionCode
             ]);
+
+            $this->emailService->send(
+                $user->email,
+                $message['subject'],
+                $message['payload']
+            );
+
+            throw new \Exception("Missing required data in subscription.create", 1);
+
             return;
         }
 
-
-        $user = User::where('email', $payload['customer']['email'])->first();
-
-        if (!$user) {
-            Log::warning($user . 'user not found');
-            return null;
-        }
 
         $subscription = $user->subscriptions()
             ->where('status', UserSubscriptionStatus::PENDING)
@@ -170,7 +202,15 @@ class PaystackWebhookController extends Controller
         }
 
         if (!$subscription) {
-            Log::warning("UserSubscription not found for email {$emailToken}");
+            Log::warning("User Subscription not found for email " . $payload['customer']['email']);
+
+            $this->emailService->send(
+                $user->email,
+                $message['subject'],
+                $message['payload']
+            );
+
+            throw new \Exception("User Subscription not found for email " . $payload['customer']['email'], 1);
             return;
         }
 
@@ -238,6 +278,47 @@ class PaystackWebhookController extends Controller
                 'response' => $response->json(),
                 'payload' => $subPayload
             ]);
+
+            throw new \Exception("Failed to create recurring subscription", 1);
         }
+    }
+
+    protected function handleCancelSubscription(array $payload)
+    {
+        $user = User::where('email', $payload['customer']['email'])->first();
+
+        if (!$user) {
+            Log::warning($user . 'user not found');
+            throw new \Exception("user not found", 1);
+            return null;
+        }
+
+        $subscription = $user->subscriptions()->where('status', UserSubscriptionStatus::ACTIVE)->latest()->first();
+
+        if (!$subscription) {
+            Log::warning("UserSubscription not found for email " . $payload['customer']['email']);
+            $message = $this->messageService->getSubscriptionCancellationFailedMessage($user);
+
+            $this->emailService->send(
+                $user->email,
+                $message['subject'],
+                $message['payload']
+            );
+
+            throw new \Exception("UserSubscription not found for email " . $payload['customer']['email'], 1);
+            return;
+        }
+
+        $subscription->update([
+            'status' => UserSubscriptionStatus::CANCELLED
+        ]);
+
+        $message = $this->messageService->getSubscriptionCancelledMessage($user, $subscription->plan->name);
+
+        $this->emailService->send(
+            $user->email,
+            $message['subject'],
+            $message['payload']
+        );
     }
 }
