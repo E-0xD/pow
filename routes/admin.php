@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\PlanController;
 use App\Http\Controllers\Admin\PortfolioSubscriptionController;
 use App\Http\Controllers\Admin\TemplateController;
 use App\Http\Controllers\Admin\TierController;
+use App\Http\Controllers\Admin\TransactionController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,6 +24,8 @@ Route::domain('admin.' . parse_url(config('app.url'), PHP_URL_HOST))->name('admi
     Route::resource('user', UserController::class)->except(['edit']);
     Route::resource('coupon', CouponController::class);
     Route::resource('partner', PartnerController::class);
+    Route::get('transaction', [TransactionController::class, 'index'])->name('transaction.index');
+    Route::patch('transaction/{transaction}/status', [TransactionController::class, 'updateStatus'])->name('transaction.updateStatus');
     
     // Tier, Feature & Plan Management
     Route::resource('feature', FeatureController::class);

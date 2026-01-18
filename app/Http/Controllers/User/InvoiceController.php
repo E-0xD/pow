@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Enums\TransactionStatus;
 use App\Http\Controllers\Controller;
 use App\Models\Transaction;
 use Illuminate\Support\Facades\Auth;
@@ -20,8 +21,9 @@ class InvoiceController extends Controller
     public function show(string $reference)
     {
         $transaction = $this->getTransactionByReference($reference);
+        $transactionStatus = TransactionStatus::class;
 
-        return view('user.invoice.show', compact('transaction'));
+        return view('user.invoice.show', compact('transaction', 'transactionStatus'));
     }
 
   

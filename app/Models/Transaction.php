@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\TransactionStatus;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -22,7 +23,8 @@ class Transaction extends Model
     ];
 
     protected $casts = [
-        'meta' => 'array'
+        'meta' => 'array',
+        'status' => TransactionStatus::class
     ];
 
     public function user()

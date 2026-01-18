@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Payment\Webhooks;
 
+use App\Enums\TransactionStatus;
 use App\Enums\UserSubscriptionStatus;
 use App\Http\Controllers\Controller;
 use App\Livewire\Subscription\SubscriptionStatus;
@@ -102,7 +103,7 @@ class PaystackWebhookController extends Controller
 
         // Update transaction status
         if ($subscription->transaction) {
-            $subscription->transaction->update(['status' => 'Successful']);
+            $subscription->transaction->update(['status' => TransactionStatus::SUCCESSFUL]);
         }
 
         $subscription->update([
@@ -190,7 +191,7 @@ class PaystackWebhookController extends Controller
         ]);
 
         if ($subscription->transaction) {
-            $subscription->transaction->update(['status' => 'Successful']);
+            $subscription->transaction->update(['status' => TransactionStatus::SUCCESSFUL]);
         }
 
         Log::info("Subscription activated for user {$subscription->user_id}", [

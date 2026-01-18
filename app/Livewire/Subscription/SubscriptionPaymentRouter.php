@@ -3,8 +3,11 @@
 namespace App\Livewire\Subscription;
 
 use App\Enums\BillingCycle;
+use App\Enums\TransactionStatus;
+use App\Enums\UserSubscriptionStatus;
 use App\Http\Controllers\Payment\Processors\PaystackController;
 use App\Models\Plan;
+use App\Models\Tier;
 use App\Models\Transaction;
 use App\Services\CouponService;
 use App\Services\EmailService;
@@ -35,6 +38,7 @@ class SubscriptionPaymentRouter extends Component
     protected $emailService;
     protected $messageService;
     protected $subscriptionService;
+    public $currentPlan;
 
     public function boot()
     {
@@ -49,6 +53,8 @@ class SubscriptionPaymentRouter extends Component
     {
         $this->user = Auth::user();
         $this->loadAvailablePlans();
+
+        $this->currentPlan = $this->user->subscriptions->where('status', UserSubscriptionStatus::ACTIVE)->first();
     }
 
     /**
@@ -80,8 +86,9 @@ class SubscriptionPaymentRouter extends Component
      */
     public function selectPlan($tierName)
     {
-        $tier = \App\Models\Tier::where('name', $tierName)->first();
         
+        $tier = Tier::where('name', $tierName)->first();
+
         if (!$tier) {
             return;
         }
@@ -91,6 +98,10 @@ class SubscriptionPaymentRouter extends Component
             ->active()
             ->with('tier.features')
             ->first();
+
+            if ($plan->id == $this->currentPlan->plan_id) {
+                return;
+            }
 
         if ($plan) {
             $this->selectedPlan = $plan;
@@ -200,7 +211,7 @@ class SubscriptionPaymentRouter extends Component
             $transaction = Transaction::create([
                 'user_id' => Auth::id(),
                 'amount' => $finalAmount,
-                'status' => 'pending',
+                'status' => TransactionStatus::PENDING,
                 'gateway' => $this->paymentMethod,
                 'reference' => 'SUB-' . uniqid(),
                 'payable_type' => Plan::class,

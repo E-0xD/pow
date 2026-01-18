@@ -66,6 +66,13 @@ class DashboardController extends Controller
                 'route' => 'admin.plan.index',
                 'description' => 'Manage subscription plans'
             ],
+            [
+                'name' => 'Transactions',
+                'icon' => 'receipt_long',
+                'route' => 'admin.transaction.index',
+                'description' => 'View and manage all transactions',
+            ],
+
         ];
 
 

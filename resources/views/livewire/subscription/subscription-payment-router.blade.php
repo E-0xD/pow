@@ -34,8 +34,8 @@
                             px-2 py-1.5 text-sm font-medium transition-all duration-300
 
                             {{ $selectedBillingCycle === 'yearly'
-                            ? 'bg-white dark:bg-background-dark shadow-soft text-text-light dark:text-text-dark'
-                            : 'text-text-muted-light dark:text-text-muted-dark' }}
+                                ? 'bg-white dark:bg-background-dark shadow-soft text-text-light dark:text-text-dark'
+                                : 'text-text-muted-light dark:text-text-muted-dark' }}
                         ">
                         <span class="truncate">Yearly</span>
                     </button>
@@ -52,8 +52,14 @@
                 <!-- Card 1: Free -->
                 @forelse($plans as $tier => $cycles)
                     @php $plan = $cycles[$selectedBillingCycle] ?? null; @endphp
-                    <div wire:click="selectPlan('{{ $tier }}')"
-                        class="flex flex-col gap-6 rounded-xl border border-border-light dark:border-border-dark bg-white dark:bg-background-dark/50 p-6 shadow-soft hover:shadow-soft-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer">
+                    <div
+                        class="relative flex flex-col gap-6 rounded-xl border border-border-light dark:border-border-dark bg-white dark:bg-background-dark/50 p-6 shadow-soft hover:shadow-soft-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer">
+                        @if ($currentPlan->plan_id == $plan->id)
+                            <span class="absolute top-4 right-4 rounded-full px-3 py-1 text-xs font-bold bg-primary/10 text-primary dark:bg-primary/20">
+                                Current Plan
+                            </span>
+                        @endif
+
                         <div class="flex flex-col gap-2">
 
                             <p class="flex items-baseline gap-1">
@@ -64,10 +70,22 @@
                             <p class="text-sm text-text-muted-light dark:text-text-muted-dark">{{ $plan->description }}
                             </p>
                         </div>
-                        <button
-                            class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary/10 dark:bg-primary/20 text-primary text-sm font-bold hover:bg-primary/20 dark:hover:bg-primary/30 transition-colors">
-                            <span class="truncate"> Get Started</span>
-                        </button>
+
+                        @if ($currentPlan->plan_id == $plan->id)
+                            <div
+                                class="flex w-full cursor-pointer items-center  overflow-hidden rounded-lg h-10 px-4 text-primary text-sm font-bold transition-colors">
+                                <span class="">
+                                    You’re currently subscribed to this plan, and all the benefits listed below are
+                                    active.
+                                </span>
+                            </div>
+                        @else
+                            <button wire:click="selectPlan('{{ $tier }}')"
+                                class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary/10 dark:bg-primary/20 text-primary text-sm font-bold hover:bg-primary/20 dark:hover:bg-primary/30 transition-colors">
+                                <span class="truncate"> Get Started</span>
+                            </button>
+                        @endif
+
                         <div class="flex flex-col gap-3 pt-2 border-t border-border-light dark:border-border-dark">
 
                             @forelse ($plan->tier->features as $feature)
@@ -130,7 +148,6 @@
                         </header>
 
                         <!-- Payment Method Section -->
-                       
 
                         <!-- Order Summary Card -->
                         <div

@@ -19,32 +19,32 @@
         <div class="flex w-full justify-center">
             <div class="relative flex h-48 w-48 items-center justify-center">
                 <div class="absolute inset-0 rounded-full 
-                    @if($transaction->status === 'successful')
+                    @if($transaction->status == $transactionStatus::SUCCESSFUL)
                         bg-green-500/10 dark:bg-green-500/20
-                    @elseif($transaction->status === 'pending')
+                    @elseif($transaction->status == $transactionStatus::PENDING)
                         bg-yellow-500/10 dark:bg-yellow-500/20
-                    @elseif($transaction->status === 'refunded')
+                    @elseif($transaction->status == $transactionStatus::REFUNDED)
                         bg-blue-500/10 dark:bg-blue-500/20
                     @else
                         bg-red-500/10 dark:bg-red-500/20
                     @endif"></div>
                 <div class="absolute inset-4 rounded-full 
-                    @if($transaction->status === 'successful')
+                    @if($transaction->status == $transactionStatus::SUCCESSFUL)
                         bg-green-500/10 dark:bg-green-500/20
-                    @elseif($transaction->status === 'pending')
+                    @elseif($transaction->status == $transactionStatus::PENDING)
                         bg-yellow-500/10 dark:bg-yellow-500/20
-                    @elseif($transaction->status === 'refunded')
+                    @elseif($transaction->status == $transactionStatus::REFUNDED)
                         bg-blue-500/10 dark:bg-blue-500/20
                     @else
                         bg-red-500/10 dark:bg-red-500/20
                     @endif"></div>
                 <div
                     class="relative flex h-28 w-28 items-center justify-center rounded-full bg-white dark:bg-[#2a1a3d] shadow-lg">
-                    @if($transaction->status === 'successful')
+                    @if($transaction->status == $transactionStatus::SUCCESSFUL)
                         <span class="material-symbols-outlined text-6xl text-green-500">check_circle</span>
-                    @elseif($transaction->status === 'pending')
+                    @elseif($transaction->status == $transactionStatus::PENDING)
                         <span class="material-symbols-outlined text-6xl text-yellow-500">schedule</span>
-                    @elseif($transaction->status === 'refunded')
+                    @elseif($transaction->status == 'refunded')
                         <span class="material-symbols-outlined text-6xl text-blue-500">replay</span>
                     @else
                         <span class="material-symbols-outlined text-6xl text-red-500">cancel</span>
@@ -77,16 +77,18 @@
                     <p class="text-[#734c9a] dark:text-gray-400 text-sm font-normal leading-normal">Status</p>
                     <p class="text-[#140d1b] dark:text-gray-200 text-sm font-semibold leading-normal text-right">
                         <span class="inline-block px-3 py-1 rounded-full text-xs font-medium
-                            @if($transaction->status === 'successful')
+
+                    
+                            @if($transaction->status == $transactionStatus::SUCCESSFUL)
                                 bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400
-                            @elseif($transaction->status === 'pending')
+                            @elseif($transaction->status == $transactionStatus::PENDING)
                                 bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400
-                            @elseif($transaction->status === 'refunded')
+                            @elseif($transaction->status == $transactionStatus::REFUNDED)
                                 bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400
                             @else
                                 bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400
                             @endif">
-                            {{ ucfirst($transaction->status) }}
+                            {{ $transaction->status->label() }}
                         </span>
                     </p>
                 </div>

@@ -7,6 +7,7 @@ use App\Models\Transaction;
 use App\Models\User;
 use App\Models\UserSubscription;
 use App\Enums\NotificationType;
+use App\Enums\TransactionStatus;
 use App\Services\NotificationService;
 use Illuminate\Support\Facades\Log;
 
@@ -51,7 +52,7 @@ class AffiliateService
         $tx = Transaction::create([
             'user_id' => $affiliateUser->id,
             'amount' => $commission,
-            'status' => 'successful',
+            'status' => TransactionStatus::SUCCESSFUL,
             'gateway' => 'affiliate',
             'reference' => 'commission',
             'payable_type' => User::class,
@@ -93,7 +94,7 @@ class AffiliateService
             $tx = Transaction::create([
                 'user_id' => $affiliate->user_id,
                 'amount' => $amount,
-                'status' => 'successful',
+                'status' => TransactionStatus::SUCCESSFUL,
                 'gateway' => 'affiliate_payout',
                 'reference' => 'payout',
                 'payable_type' => Affiliate::class,
