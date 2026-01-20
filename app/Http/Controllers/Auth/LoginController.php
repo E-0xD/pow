@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers\Auth;
 
-
+use App\Enums\BillingCycle;
 use App\Enums\NotificationType;
+use App\Enums\UserSubscriptionStatus;
 use App\Services\EmailService;
 use App\Services\MessageService;
 use App\Services\NotificationService;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
+use App\Models\Plan;
+use App\Models\UserSubscription;
 use Illuminate\Support\Facades\Log;
 use Jenssegers\Agent\Agent;
 use Illuminate\Http\Request;
@@ -44,12 +47,11 @@ class LoginController extends Controller
 
             if (Auth::attempt($request->only(['email', 'password']), $request->remember)) {
                 $request->session()->regenerate();
-            } else {    
+            } else {
                 return back()->withErrors([
                     'email' => 'The provided credentials do not match our records.',
                 ])->onlyInput('email');
             }
-
         } catch (\Throwable $th) {
             Log::error($th);
             return back()->withErrors([
@@ -69,6 +71,22 @@ class LoginController extends Controller
 
             $message = $this->messageService->getLoginMessage();
 
+            if (!Auth::user()->subscriptions->where('status', UserSubscriptionStatus::ACTIVE)->first()) {
+
+                $plan = Plan::where('price', null)->where('billing_cycle', BillingCycle::YEARLY)->first();
+
+                UserSubscription::create([
+                    'plan_id' => $plan->id,
+                    'user_id' => Auth::user()->id,
+                    'billing_cycle' => BillingCycle::YEARLY,
+                    'purchased_at' => now(),
+                    'expires_at' => now()->addDays(BillingCycle::YEARLY->durationInDays()),
+                    'status' => UserSubscriptionStatus::ACTIVE,
+                    'processor_subscription_code' => null,
+                    'processor_email_token' => null,
+                ]);
+            }
+            
             $this->emailService->send(
                 Auth::user()->email,
                 $message['subject'],
@@ -78,7 +96,7 @@ class LoginController extends Controller
             Log::error($th);
         }
 
-         return redirect()->intended(route('user.dashboard'));
+        return redirect()->intended(route('user.dashboard'));
     }
 
     public function logout(Request $request)
