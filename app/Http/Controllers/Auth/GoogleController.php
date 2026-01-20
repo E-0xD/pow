@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Enums\BillingCycle;
 use App\Enums\NotificationType;
 use App\Enums\UserStatus;
+use App\Enums\UserSubscriptionStatus;
 use App\Http\Controllers\Controller;
+use App\Models\Plan;
 use App\Models\User;
+use App\Models\UserSubscription;
 use App\Services\EmailService;
 use App\Services\MessageService;
 use App\Services\NotificationService;
@@ -77,7 +81,6 @@ class GoogleController extends Controller
                     $this->messageService->getRegisterNotification()
                 );
                 $message = $this->messageService->getRegisterMessage();
-
             } else {
 
                 $this->notificationService->sendToUser(
@@ -87,7 +90,6 @@ class GoogleController extends Controller
                     $this->messageService->getLoginNotification()
                 );
                 $message = $this->messageService->getLoginMessage();
-
             }
 
             $this->emailService->send(
@@ -95,6 +97,22 @@ class GoogleController extends Controller
                 $message['subject'],
                 $message['payload']
             );
+
+            if (!Auth::user()->subscriptions->where('status', UserSubscriptionStatus::ACTIVE)->first()) {
+
+                $plan = Plan::where('price', null)->where('billing_cycle', BillingCycle::YEARLY)->first();
+
+                UserSubscription::create([
+                    'plan_id' => $plan->id,
+                    'user_id' => Auth::user()->id,
+                    'billing_cycle' => BillingCycle::YEARLY,
+                    'purchased_at' => now(),
+                    'expires_at' => now()->addDays(BillingCycle::YEARLY->durationInDays()),
+                    'status' => UserSubscriptionStatus::ACTIVE,
+                    'processor_subscription_code' => null,
+                    'processor_email_token' => null,
+                ]);
+            }
 
             return redirect()->intended(route('user.dashboard'));
         } catch (\Throwable $th) {
