@@ -49,7 +49,17 @@
                                 <p class="text-xs text-subtle-light dark:text-subtle-dark mt-1">{{ $feature->description }}</p>
                                 <div class="mt-2">
                                     @if ($feature->type === 'boolean')
-                                        <!-- Boolean features don't need values -->
+                                        <div class="flex items-center">
+                                            <input type="hidden" name="features[{{ $feature->id }}][value]" value="0">
+                                            <input type="checkbox" 
+                                                name="features[{{ $feature->id }}][value]" 
+                                                id="switch_{{ $feature->id }}" 
+                                                value="1"
+                                                {{ $value == 1 ? 'checked' : '' }}
+                                                class="w-10 h-6 bg-primary/20 rounded-full appearance-none cursor-pointer transition-colors checked:bg-primary" 
+                                               />
+                                            
+                                        </div>
                                     @else
                                         <input type="text" 
                                             name="features[{{ $feature->id }}][value]"

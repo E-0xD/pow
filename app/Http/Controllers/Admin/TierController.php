@@ -32,8 +32,10 @@ class TierController extends Controller
             if ($request->has('features')) {
                 foreach ($request->features as $featureId => $featureData) {
                     if (!empty($featureData['enabled'])) {
+                        $feature = Feature::find($featureId);
+                        $value = $feature && $feature->type === 'boolean' ? ($featureData['value'] ?? 0) : ($featureData['value'] ?? null);
                         $tier->features()->attach($featureId, [
-                            'value' => $featureData['value'] ?? null,
+                            'value' => $value,
                         ]);
                     }
                 }
@@ -66,8 +68,10 @@ class TierController extends Controller
             if ($request->has('features')) {
                 foreach ($request->features as $featureId => $featureData) {
                     if (!empty($featureData['enabled'])) {
+                        $feature = Feature::find($featureId);
+                        $value = $feature && $feature->type === 'boolean' ? ($featureData['value'] ?? 0) : ($featureData['value'] ?? null);
                         $tier->features()->attach($featureId, [
-                            'value' => $featureData['value'] ?? null,
+                            'value' => $value,
                         ]);
                     }
                 }

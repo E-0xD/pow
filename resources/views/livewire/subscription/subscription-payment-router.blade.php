@@ -91,7 +91,7 @@
                             @forelse ($plan->tier->features as $feature)
                                 @php
                                     $value = $feature->pivot->value;
-                                    $isEnabled = $value !== false && $value !== 0 && $value !== 'false';
+                                    $isEnabled = $value != false && $value != 0 && $value != 'false';
                                     $isBooleanType = $feature->type === 'boolean';
                                 @endphp
 
