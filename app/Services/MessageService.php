@@ -129,21 +129,21 @@ class MessageService
         ];
     }
 
-    public function getPaymentSuccessMessage(User $user, $amount, $reference, $portfolioName): array
+    public function getPaymentSuccessMessage(User $user, $amount, $reference): array
     {
         return [
             'subject' => 'Payment Successful',
             'payload' => [
-                'title' => 'Payment Successful for ' . $portfolioName,
+                'title' => 'Payment Successful',
                 'name' => $user->name,
                 'greeting' => 'Congratulations ' . $user->name . '!',
                 'introLines' => [
                     'Your payment of $' . number_format($amount, 2) . ' (Ref: ' . $reference . ') was successful.',
-                    'Your portfolio — **' . $portfolioName . '** — has been upgraded and is now live with all your selected features.',
+                    'Your account has been upgraded and is now live with all your selected features.',
                     'We’re excited to see what you build next. Keep showing the world your proof of work!'
                 ],
-                'actionText' => 'View Portfolio',
-                'actionUrl' => route('user.portfolio.index', ['name' => $portfolioName]),
+                'actionText' => 'Explore features',
+                'actionUrl' => route('user.dashboard'),
                 'outroLines' => [
                     'If you have any feedback or run into an issue, reply to this email; we’d love to hear from you.'
                 ],

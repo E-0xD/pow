@@ -234,6 +234,14 @@ class PaystackWebhookController extends Controller
             'expires_at' => $expiresAt,
             'subscription_code' => $subscriptionCode
         ]);
+
+        $message = $this->messageService->getPaymentSuccessMessage($user, $subscription->transaction->amount, $subscription->transaction->reference);
+
+        $this->emailService->send(
+            $user->email,
+            $message['subject'],
+            $message['payload']
+        );
     }
 
     /**
