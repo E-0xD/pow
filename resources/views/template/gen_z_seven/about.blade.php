@@ -6,7 +6,7 @@
             </div>
             <div class="title-border-shape">
                 <h4 class="animationtext clip "><span class="tf-text s1 cd-words-wrapper text_primary-color">
-                        <span class="item-text is-visible"> {{formatText($portfolio->about->brief)}}</span>
+                        <span class="item-text is-visible"> {{ formatText($portfolio->about->brief) }}</span>
                     </span> </h4>
                 <div class="shape">
                     <span class="shape-1"></span>
@@ -26,28 +26,17 @@
             {{ ucFirst($portfolio->about->name) }}
         </h1>
         <p class="text_muted-color font-3 mb_43 split-text split-lines-transform">
-            {{formatText($portfolio->about->description)}}</p>
+            {{ formatText($portfolio->about->description) }}</p>
         <div class="wrap-counter tf-grid-layout md-col-3">
-            <div class="counter-item bs-light-mode">
-                <div class="counter-number h2 text_white mb_7">
-                    <div class="odometer" data-number="{{ $years_of_experience }}">{{ $years_of_experience }}</div>
-                    <span class="sub">+</span>
-                </div>
-
-                <p class="text-body-1 text_muted-color font-3">Years of Experience</p>
-                <div class="item-shape">
-                    <img src="{{ asset('template_assets/gen_z_seven/images/item/small-comet.webp') }}" loading="lazy"
-                        decoding="async" alt="item">
-                </div>
-            </div>
-            @if ($portfolio->educationRecords->count() > 0)
+            @if ($portfolio->about->years_of_experience != null)
                 <div class="counter-item bs-light-mode">
                     <div class="counter-number h2 text_white mb_7">
-                        <div class="odometer" data-number="{{ $portfolio->educationRecords->count() }}">
-                            {{ $portfolio->educationRecords->count() }}</div>
+                        <div class="odometer" data-number="{{ $portfolio->about->years_of_experience }}">
+                            {{ $portfolio->about->years_of_experience }}</div>
                         <span class="sub">+</span>
                     </div>
-                    <p class="text-body-1 text_muted-color font-3">Certificates</p>
+
+                    <p class="text-body-1 text_muted-color font-3">Years of Experience</p>
                     <div class="item-shape">
                         <img src="{{ asset('template_assets/gen_z_seven/images/item/small-comet.webp') }}"
                             loading="lazy" decoding="async" alt="item">
@@ -55,11 +44,11 @@
                 </div>
             @endif
 
-            @if ($portfolio->projects->count() > 0)
+            @if ($portfolio->about->total_projects_done != null)
                 <div class="counter-item bs-light-mode">
                     <div class="counter-number h2 text_white mb_7">
-                        <div class="odometer" data-number="  {{ $portfolio->projects->count() ?? 1 }}">
-                            {{ $portfolio->projects->count() ?? 1 }}</div>
+                        <div class="odometer" data-number="  {{ $portfolio->about->total_projects_done }}">
+                            {{ $portfolio->about->total_projects_done }}</div>
                         {{-- <span class="sub">k</span> --}}
                         <span class="sub">+</span>
                     </div>

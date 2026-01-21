@@ -9,7 +9,7 @@
                         <img src="{{ Storage::url($portfolio->about->logo) }}" alt="About Me">
                     </div>
                     <div class="infos">
-                      
+
                         <h1>{{ $portfolio->about->name }}</h1>
                         <p>{{ $portfolio->about->brief }}</p>
                         <a href="#" class="about-btn">
@@ -119,20 +119,19 @@
                             <img src="{{ asset('template_assets/gridx/images/bg1.png') }}" alt="BG"
                                 class="bg-img">
                             <div class="clients d-flex align-items-start gap-24 justify-content-center">
-                                <div class="client-item">
-                                    <h1>07</h1>
-                                    <p>Years <br>Experience</p>
-                                </div>
+                                @if ($portfolio->about->years_of_experience != null)
+                                    <div class="client-item">
+                                        <h1>{{ $portfolio->about->years_of_experience }}+</h1>
+                                        <p>Years <br>Experience</p>
+                                    </div>
+                                @endif
 
-                                <div class="client-item">
-                                    <h1>+125</h1>
-                                    <p>CLIENTS <br>WORLDWIDE</p>
-                                </div>
-
-                                <div class="client-item">
-                                    <h1>+210</h1>
-                                    <p>Total <br>Projects</p>
-                                </div>
+                                @if ($portfolio->about->total_projects_done != null)
+                                    <div class="client-item">
+                                        <h1>{{ $portfolio->about->total_projects_done }}+</h1>
+                                        <p>Total <br>Projects</p>
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>

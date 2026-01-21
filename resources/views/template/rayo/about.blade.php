@@ -22,19 +22,27 @@
                         </div>
                     </div>
                     <div class="hero-07-circle__container mobile-row hero-07-fade-out-scroll">
-                        <div class="hero-07-circle__item item-02 loading__item">
-                            <div class="mxd-counter small">
-                                <p id="years-of-experience" class="mxd-counter__number mxd-stats-number small">{{$years_of_experience}}
-                                </p>
-                                <p class="mxd-counter__descr t-140 t-bright t-small">Years of experience</p>
+                        @if ($portfolio->about->years_of_experience != null)
+                            <div class="hero-07-circle__item item-02 loading__item">
+
+                                <div class="mxd-counter small">
+                                    <p id="years-of-experience" class="mxd-counter__number mxd-stats-number small">
+                                        {{ $portfolio->about->years_of_experience }}
+                                    </p>
+                                    <p class="mxd-counter__descr t-140 t-bright t-small">Years of experience</p>
+                                </div>
+
                             </div>
-                        </div>
-                        <div class="hero-07-circle__item item-03 loading__item">
-                            <div class="mxd-counter small">
-                                <p id="stats-counter-2" class="mxd-counter__number mxd-stats-number small">{{$portfolio->educationRecords->count()}} </p>
-                                <p class="mxd-counter__descr t-140 t-bright t-small">Certificates</p>
+                        @endif
+                        @if ($portfolio->about->total_projects_done != null)
+                            <div class="hero-07-circle__item item-03 loading__item">
+                                <div class="mxd-counter small">
+                                    <p id="stats-counter-2" class="mxd-counter__number mxd-stats-number small">
+                                        {{ $portfolio->about->total_projects_done }} </p>
+                                    <p class="mxd-counter__descr t-140 t-bright t-small">Total Projects</p>
+                                </div>
                             </div>
-                        </div>
+                        @endif
                     </div>
                 </div>
                 <div class="mxd-hero-07__info loading__fade">
@@ -113,8 +121,9 @@
 </div>
 
 <script>
-    const statsCounter1 = new countUp.CountUp("years-of-experience", {{$years_of_experience}}, optionsPlus);
-    const statsCounter2 = new countUp.CountUp("stats-counter-2", {{$portfolio->educationRecords->count() }}, optionsPlus);
+    const statsCounter1 = new countUp.CountUp("years-of-experience", {{ $years_of_experience }}, optionsPlus);
+    const statsCounter2 = new countUp.CountUp("stats-counter-2", {{ $portfolio->educationRecords->count() }},
+        optionsPlus);
     statsCounter1.start();
     statsCounter2.start();
 </script>

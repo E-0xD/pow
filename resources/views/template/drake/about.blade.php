@@ -19,14 +19,16 @@
              </a>
 
              <div class="facts d-flex">
-                 <div class="left scroll-animation" data-animation="fade_from_left">
-                     <h1>{{ $years_of_experience }}+</h1>
-                     <p>Years of <br>Experience</p>
-                 </div>
-                 @if ($portfolio->educationRecords->count() > 0)
+                 @if ($portfolio->about->years_of_experience != null)
+                     <div class="left scroll-animation" data-animation="fade_from_left">
+                         <h1>{{ $portfolio->about->years_of_experience }}+</h1>
+                         <p>Years of <br>Experience</p>
+                     </div>
+                 @endif
+                 @if ($portfolio->about->total_projects_done != null)
                      <div class="right scroll-animation" data-animation="fade_from_right">
-                         <h1>{{ $portfolio->educationRecords->count() }}+</h1>
-                         <p>certificate gotten</p>
+                         <h1>{{ $portfolio->about->total_projects_done }}+</h1>
+                         <p>Total Projects Done</p>
                      </div>
                  @endif
              </div>

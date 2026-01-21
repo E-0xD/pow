@@ -40,30 +40,7 @@ class PortfolioController extends Controller
         ]);
 
 
-
-        // Get earliest & latest dates safely
-        $earliest = $portfolio->experiences->min('start_date');
-        $latest   = $portfolio->experiences->max('end_date');
-
-        if ($earliest && $latest) {
-
-            $start = Carbon::createFromFormat('m/Y', $earliest)->startOfMonth();
-            $end   = Carbon::createFromFormat('m/Y', $latest)->endOfMonth();
-
-            // Calculate total days
-            $days = $start->diffInDays($end);
-
-            // Convert days → years
-            $years_of_experience = round($days / 365);
-
-            // Enforce minimum of 1 year
-            $years_of_experience = max(1, $years_of_experience);
-        } else {
-            $years_of_experience = 1; // fallback
-        }
-
-
-        return view($portfolio->template->file_path . '.index', compact('portfolio', 'years_of_experience'));
+        return view($portfolio->template->file_path . '.index', compact('portfolio'));
     }
 
     /**
