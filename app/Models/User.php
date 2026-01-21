@@ -105,6 +105,11 @@ class User extends Authenticatable
         return $this->hasMany(UserSubscription::class);
     }
 
+    public function paystackCustomer()
+    {
+        return $this->hasOne(PaystackCustomer::class);
+    }
+
     /**
      * Notifications received by the user (pivot contains read state)
      */
