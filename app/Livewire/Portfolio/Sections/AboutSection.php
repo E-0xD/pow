@@ -92,7 +92,13 @@ class AboutSection extends Component
 
     public function save()
     {
-        $this->validate();
+        // Only validate logo if it's a newly uploaded file
+        $rules = $this->rules;
+        if (!($this->about['logo'] instanceof TemporaryUploadedFile)) {
+            unset($rules['about.logo']);
+        }
+        
+        $this->validate($rules);
 
         try {
             DB::beginTransaction();
