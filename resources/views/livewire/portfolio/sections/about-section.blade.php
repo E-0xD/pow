@@ -57,6 +57,26 @@
                     class="mt-1 text-gray-700 dark:text-gray-300 text-sm overflow-hidden text-ellipsis whitespace-nowrap lg:whitespace-normal">
                     {{ $about['description'] }}
                 </p>
+
+                <!-- Experience and Projects -->
+                @if ($about['years_of_experience'] || $about['total_projects_done'])
+                    <div class="mt-2 flex gap-4 text-sm">
+                        @if ($about['years_of_experience'])
+                            <span class="text-gray-600 dark:text-gray-400">
+                                <span
+                                    class="font-semibold text-gray-900 dark:text-white">{{ $about['years_of_experience'] }}</span>
+                                years exp.
+                            </span>
+                        @endif
+                        @if ($about['total_projects_done'])
+                            <span class="text-gray-600 dark:text-gray-400">
+                                <span
+                                    class="font-semibold text-gray-900 dark:text-white">{{ $about['total_projects_done'] }}</span>
+                                projects
+                            </span>
+                        @endif
+                    </div>
+                @endif
             </div>
 
         </div>
@@ -84,6 +104,33 @@
                         @error('about.brief') border-red-500 focus:ring-red-500 @else border-gray-300 dark:border-gray-700 @enderror
                         bg-background-light dark:bg-background-dark focus:outline-none focus:ring-2 focus:ring-primary/50" />
                     @error('about.brief')
+                        <span class="text-sm text-red-500 mt-1">{{ $message }}</span>
+                    @enderror
+                </label>
+            </div>
+
+            <!-- Years of Experience + Total Projects -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                <label class="flex flex-col">
+                    <p class="text-gray-800 dark:text-gray-200 text-base font-medium pb-2">Years of Experience</p>
+                    <input type="number" wire:model="about.years_of_experience" placeholder="5" min="0"
+                        max="100"
+                        class="form-input flex w-full rounded-lg h-11 sm:h-12 px-4 py-2 text-sm sm:text-base font-normal text-gray-900 dark:text-gray-100 border
+                        @error('about.years_of_experience') border-red-500 focus:ring-red-500 @else border-gray-300 dark:border-gray-700 @enderror
+                        bg-background-light dark:bg-background-dark focus:outline-none focus:ring-2 focus:ring-primary/50" />
+                    @error('about.years_of_experience')
+                        <span class="text-sm text-red-500 mt-1">{{ $message }}</span>
+                    @enderror
+                </label>
+
+                <label class="flex flex-col">
+                    <p class="text-gray-800 dark:text-gray-200 text-base font-medium pb-2">Total Projects Done</p>
+                    <input type="number" wire:model="about.total_projects_done" placeholder="42" min="0"
+                        max="9999"
+                        class="form-input flex w-full rounded-lg h-11 sm:h-12 px-4 py-2 text-sm sm:text-base font-normal text-gray-900 dark:text-gray-100 border
+                        @error('about.total_projects_done') border-red-500 focus:ring-red-500 @else border-gray-300 dark:border-gray-700 @enderror
+                        bg-background-light dark:bg-background-dark focus:outline-none focus:ring-2 focus:ring-primary/50" />
+                    @error('about.total_projects_done')
                         <span class="text-sm text-red-500 mt-1">{{ $message }}</span>
                     @enderror
                 </label>

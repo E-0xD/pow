@@ -19,6 +19,8 @@ class AboutSection extends Component
         'logo' => null,
         'brief' => '',
         'description' => '',
+        'years_of_experience' => '',
+        'total_projects_done' => '',
         'collapsed' => true,
     ];
 
@@ -27,6 +29,8 @@ class AboutSection extends Component
         'about.logo' => 'nullable|image|max:10240',
         'about.brief' => 'required|string|max:255',
         'about.description' => 'required|string|max:5000',
+        'about.years_of_experience' => 'nullable|integer|min:1|max:100',
+        'about.total_projects_done' => 'nullable|integer|min:1|max:9999',
     ];
 
     public function mount(Portfolio $portfolio)
@@ -43,6 +47,8 @@ class AboutSection extends Component
                 'logo' => $about->logo,
                 'brief' => $about->brief,
                 'description' => $about->description,
+                'years_of_experience' => $about->years_of_experience ?? 0,
+                'total_projects_done' => $about->total_projects_done ?? 0,
                 'collapsed' => true,
             ];
         }
@@ -71,6 +77,8 @@ class AboutSection extends Component
                 'logo' => null,
                 'brief' => '',
                 'description' => '',
+                'years_of_experience' => 0,
+                'total_projects_done' => 0,
                 'collapsed' => false,
             ];
 
@@ -93,6 +101,8 @@ class AboutSection extends Component
                 'name' => $this->about['name'],
                 'brief' => $this->about['brief'],
                 'description' => $this->about['description'],
+                'years_of_experience' => $this->about['years_of_experience'] ?? 0,
+                'total_projects_done' => $this->about['total_projects_done'] ?? 0,
             ];
 
             $aboutModel = $this->portfolio->about()->updateOrCreate(

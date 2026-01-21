@@ -14,7 +14,7 @@ use App\Livewire\Settings\Profile;
 use App\Livewire\Settings\Subscription;
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('user')->name('user.')->middleware(['waitlist', 'auth', 'ensure.active', 'message.owner', 'portfolio.owner', 'portfolio.editable'])->group(function () {
+Route::prefix('user')->name('user.')->middleware(['waitlist', 'auth', 'ensure.active', 'message.owner', 'portfolio.owner'])->group(function () {
     Route::get('dashboard', DashboardController::class)->name('dashboard');
 
     

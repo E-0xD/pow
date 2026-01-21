@@ -14,7 +14,9 @@ class About extends Model
         'name',
         'logo',
         'brief',
-        'description'
+        'description',
+        'years_of_experience',
+        'total_projects_done'
     ];
 
     public function portfolio(): BelongsTo
