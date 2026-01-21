@@ -19,7 +19,7 @@
             'user.portfolio.*'),
     ])>
         <span class="material-symbols-outlined text-2xl">image</span>
-        <span class="text-xs font-medium">Portfolio</span>
+        <span class="text-xs font-medium">My Portfolios</span>
     </a>
 
     <a href="{{ route('user.messages.index') }}" @class([

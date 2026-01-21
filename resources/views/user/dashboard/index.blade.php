@@ -2,14 +2,14 @@
     <div class="w-full max-w-7xl mx-auto">
         <!-- PageHeading -->
 
-        <x-layouts.app.page-heading 
-        title="Welcome back, {{ Auth::user()->name }}!"
-        subtitle="Here's a summary of all your portfolio activity." 
-        :link="[
+        <x-layouts.app.page-heading title="Welcome back, {{ Auth::user()->name }}!"
+            subtitle="Here's a summary of all your portfolio activity." :link="[
                 'url' => route('user.portfolio.create'),
                 'text' => 'Create New Portfolio',
                 'icon' => '<span class=\'material-symbols-outlined\'>add_circle</span>',
             ]" />
+
+        <x-subscribe-alert />
 
         <!-- Stats -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
