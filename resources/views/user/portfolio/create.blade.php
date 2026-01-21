@@ -71,7 +71,7 @@
 
                         <div class="flex gap-3 p-4 pt-0">
                             <!-- Preview -->
-                            <a href="{{route('user.template.preview', $template->uid)}}"
+                            <a href="{{route('user.template.preview', $template->uid)}}" target="_blank"
                                     class="flex-1 inline-flex items-center justify-center gap-2 rounded-lg
                                     border px-4 py-2 text-sm font-semibold transition
                                     bg-background-light
