@@ -244,7 +244,7 @@ class SubscriptionPaymentRouter extends Component
                 $this->appliedCoupon
             );
 
-            if ($response === null) {
+            if ($response == null) {
                 throw new \Exception('Payment gateway processing failed');
             }
 
@@ -257,7 +257,7 @@ class SubscriptionPaymentRouter extends Component
             ]);
 
             DB::commit();
-            
+
             // Store processor subscription code if returned
             if (isset($data['data']['subscription_code'])) {
                 $userSubscription->update([
@@ -282,6 +282,8 @@ class SubscriptionPaymentRouter extends Component
             if (isset($data['data']['invoice_url'])) {
                 $this->redirect($data['data']['invoice_url']);
             } else {
+                Log::error($response);
+                throw new \Exception('Payment gateway processing failed');
                 alert('error', 'Payment gateway did not return an invoice URL');
             }
         } catch (\Exception $e) {
