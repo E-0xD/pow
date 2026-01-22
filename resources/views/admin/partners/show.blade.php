@@ -4,7 +4,8 @@
         <!-- PageHeading -->
         <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
             <div>
-                <h1 class="text-gray-900 dark:text-white text-3xl font-bold leading-tight tracking-tight">{{ $partner->name }}</h1>
+                <h1 class="text-gray-900 dark:text-white text-3xl font-bold leading-tight tracking-tight">
+                    {{ $partner->name }}</h1>
                 <p class="text-gray-600 dark:text-gray-400">{{ $partner->email }}</p>
             </div>
             <a href="{{ route('admin.partner.edit', $partner) }}"
@@ -31,7 +32,8 @@
                 <div class="flex items-center justify-between">
                     <div>
                         <p class="text-sm font-medium text-gray-600 dark:text-gray-400">Created At</p>
-                        <p class="text-lg font-bold text-gray-900 dark:text-white">{{ $partner->created_at?->format('M d, Y') }}</p>
+                        <p class="text-lg font-bold text-gray-900 dark:text-white">
+                            {{ $partner->created_at?->format('M d, Y') }}</p>
                     </div>
                     <div class="p-3 bg-green-100 dark:bg-green-900/30 rounded-lg">
                         <span class="material-symbols-outlined text-green-600 dark:text-green-400">calendar_today</span>
@@ -52,37 +54,36 @@
         </div>
 
         <!-- Users Created by Partner -->
-        <div class="bg-white dark:bg-[#20152d] rounded-xl p-6">
-            <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Users Created by This Partner</h2>
-            @if($partner->users->count() > 0)
-                <div class="overflow-x-auto">
-                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700/20 dark:text-gray-400">
-                            <tr>
-                                <th class="px-6 py-3" scope="col">Name</th>
-                                <th class="px-6 py-3" scope="col">Email</th>
-                                <th class="px-6 py-3" scope="col">Created At</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($partner->users as $user)
-                                <tr class="bg-white dark:bg-[#20152d] border-b dark:border-gray-700/50 hover:bg-gray-50 dark:hover:bg-gray-800/20">
-                                    <th class="flex items-center px-6 py-4 text-gray-900 dark:text-white whitespace-nowrap" scope="row">
-                                        <div class="pl-3">
-                                            <div class="text-base font-semibold">{{ $user->name }}</div>
-                                        </div>
-                                    </th>
-                                    <td class="px-6 py-4">{{ $user->email }}</td>
-                                    <td class="px-6 py-4">{{ $user->created_at?->format('M d, Y') }}</td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            @else
+
+        @if ($partner->users->count() > 0)
+            <x-table.index>
+                <x-table.title>Users Created by This Partner</x-table.title>
+                <x-table.thead>
+                    <x-table.th>Name</x-table.th>
+                    <x-table.th>Email</x-table.th>
+                    <x-table.th>Created At</x-table.th>
+                </x-table.thead>
+                <x-table.tbody>
+                    @foreach ($partner->users as $user)
+                        <x-table.tr
+                            class="bg-white dark:bg-[#20152d] border-b dark:border-gray-700/50 hover:bg-gray-50 dark:hover:bg-gray-800/20">
+                            <x-table.td class="flex items-center text-gray-900 dark:text-white whitespace-nowrap">
+                                <div class="pl-3">
+                                    <div class="text-base font-semibold">{{ $user->name }}</div>
+                                </div>
+                            </x-table.td>
+                            <x-table.td>{{ $user->email }}</x-table.td>
+                            <x-table.td>{{ $user->created_at?->format('M d, Y') }}</x-table.td>
+                        </x-table.tr>
+                    @endforeach
+                </x-table.tbody>
+            </x-table.index>
+        @else
+            <div class="bg-white dark:bg-[#20152d] rounded-xl p-6">
                 <p class="text-gray-500 dark:text-gray-400">No users created by this partner yet.</p>
-            @endif
-        </div>
+            </div>
+        @endif
+
     </div>
 
 </x-layouts.app>

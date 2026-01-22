@@ -2,11 +2,10 @@
 
 namespace App\Http\Requests;
 
-use App\Enums\PortfolioSubscriptionStatus;
-use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rules\Enum;
 
-class AdminUpdatePortfolioSubscription extends FormRequest
+use Illuminate\Foundation\Http\FormRequest;
+
+class AdminUpdateUserPortfolio extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +23,7 @@ class AdminUpdatePortfolioSubscription extends FormRequest
     public function rules(): array
     {
         return [
-            'plan_id' => 'required|exists:plans,id',
-            'expires_at' => 'required|date|after:now',
-            'status' => ['required', 'string', new Enum(PortfolioSubscriptionStatus::class)],
+            'template_id' => ['required', 'exists:templates,id']
         ];
     }
 }

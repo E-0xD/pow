@@ -118,68 +118,46 @@
         </div>
 
         <!-- Portfolios Table -->
-        <div class="grid grid-cols-1 ">
-            <div class="bg-white dark:bg-card-dark rounded-xl overflow-x-auto">
-                <div class="p-6 border-b border-gray-200 dark:border-gray-700">
-                    <h3 class="text-lg font-semibold">User Portfolios</h3>
-                </div>
+        <x-table.index>
+            <x-table.title>User Portfolios</x-table.title>
 
-                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 overflow-x-auto">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700/20 dark:text-gray-400">
-                        <tr>
-                            <th class="px-6 py-3">Title</th>
-                            <th class="px-6 py-3">Template</th>
-                            <th class="px-6 py-3">Subscription</th>
-                            <th class="px-6 py-3">Status</th>
-                            <th class="px-6 py-3">Expires</th>
-                            <th class="px-6 py-3">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($portfolios as $portfolio)
-                            <tr
-                                class="bg-white dark:bg-[#20152d] border-b dark:border-gray-700/50 hover:bg-gray-50 dark:hover:bg-gray-800/20">
-                                <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">
-                                    {{ $portfolio->title }}
-                                </td>
-                                <td class="px-6 py-4">
-                                    {{ $portfolio->template?->title ?? 'N/A' }}
-                                </td>
-                                <td class="px-6 py-4">
-                                    {{ $portfolio->activeSubscription?->plan?->name ?? 'No active plan' }}
-                                </td>
-                                <td class="px-6 py-4">
-                                    @if ($portfolio->activeSubscription)
-                                        <span
-                                            class="px-2 py-1 text-xs rounded-full
-                                        @if ($portfolio->activeSubscription->status->value === 'active') bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300
-                                        @elseif($portfolio->activeSubscription->status->value === 'cancelled') bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300
-                                        @else bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300 @endif">
-                                            {{ ucfirst($portfolio->activeSubscription->status->value) }}
-                                        </span>
-                                    @else
-                                        <span
-                                            class="px-2 py-1 text-xs rounded-full bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300">
-                                            No subscription
-                                        </span>
-                                    @endif
-                                </td>
-                                <td class="px-6 py-4">
-                                    {{ $portfolio->activeSubscription?->expires_at?->format('M d, Y') ?? 'N/A' }}
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="flex items-center space-x-2">
-                                        <a href="{{ route('admin.portfolio.subscription.edit', $portfolio) }}"
-                                            class="p-1 text-gray-500 rounded hover:bg-gray-100 dark:hover:bg-gray-700">
-                                            <span class="material-symbols-outlined text-lg">edit</span>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-        </div>
+            <x-table.thead>
+                <x-table.th>Title</x-table.th>
+                <x-table.th>Template</x-table.th>
+                <x-table.th>Actions</x-table.th>
+            </x-table.thead>
+
+            <x-table.tbody>
+                @foreach ($portfolios as $portfolio)
+                    <x-table.tr
+                        class="bg-white dark:bg-[#20152d] border-b dark:border-gray-700/50 hover:bg-gray-50 dark:hover:bg-gray-800/20">
+                        <x-table.td class="font-medium text-gray-900 dark:text-white">
+                            {{ $portfolio->title }}
+                        </x-table.td>
+                        <x-table.td>
+                            {{ $portfolio->template?->title ?? 'N/A' }}
+                        </x-table.td>
+                        <x-table.td>
+                            <div class="flex items-center space-x-2">
+                                <a href="{{ route('admin.portfolio.edit', $portfolio) }}"
+                                    class="p-1 text-gray-500 rounded hover:bg-gray-100 dark:hover:bg-gray-700">
+                                    <span class="material-symbols-outlined text-lg">edit</span>
+                                </a>
+
+                                <form method="POST" action="{{ route('admin.portfolio.destroy', $portfolio) }}"
+                                    class="inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="text-background-danger hover:opacity-80"
+                                        onclick="return confirm('Are you sure?')">
+                                        <span class="material-symbols-outlined text-lg">delete</span>
+                                    </button>
+                                </form>
+                            </div>
+                        </x-table.td>
+                    </x-table.tr>
+                @endforeach
+            </x-table.tbody>
+        </x-table.index>
     </div>
 </x-layouts.app>

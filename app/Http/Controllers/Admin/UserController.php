@@ -28,7 +28,7 @@ class UserController extends Controller
     public function show(User $user)
     {
         $portfolios = $user->portfolios()
-            ->with(['activeSubscription.plan', 'template'])
+            ->with(['template'])
             ->latest()
             ->get();
             

@@ -1,0 +1,5 @@
+@props([])
+
+<tbody>
+    {{ $slot }}
+</tbody>

@@ -9,7 +9,7 @@ use App\Models\Portfolio;
 use App\Models\Transaction;
 use App\Models\PortfolioVisit;
 use App\Models\PortfolioMessage;
-use App\Models\PortfolioSubscription;
+use App\Models\UserSubscription;
 use Carbon\Carbon;
 
 class MetricsController extends Controller
@@ -44,6 +44,8 @@ class MetricsController extends Controller
         // === TOTALS (All-time for context) ===
         $totalUsers = User::count();
         $totalPortfolios = Portfolio::count();
+
+        
         $activePortfolios = Portfolio::whereHas('activeSubscription')->count();
 
         // === PERIOD-SPECIFIC METRICS ===
@@ -85,8 +87,8 @@ class MetricsController extends Controller
         }
 
         // Subscriptions during the period
-        $subsCurrent = PortfolioSubscription::whereBetween('purchased_at', [$start, $end])->count();
-        $subsPrev = PortfolioSubscription::whereBetween('purchased_at', [$prevStart, $prevEnd])->count();
+        $subsCurrent = UserSubscription::whereBetween('purchased_at', [$start, $end])->count();
+        $subsPrev = UserSubscription::whereBetween('purchased_at', [$prevStart, $prevEnd])->count();
 
         // Conversion rate: subscriptions / new signups during the period
         $conversionRate = $newUsers > 0 ? ($subsCurrent / $newUsers) * 100 : 0;
@@ -100,19 +102,19 @@ class MetricsController extends Controller
         }
 
         // Churn: subscriptions that expired/cancelled during the period
-        $churnCount = PortfolioSubscription::whereIn('status', ['cancelled', 'expired'])
+        $churnCount = UserSubscription::whereIn('status', ['cancelled', 'expired'])
             ->whereBetween('updated_at', [$start, $end])
             ->count();
 
-        $totalSubscriptionsDuringPeriod = PortfolioSubscription::where('purchased_at', '<=', $end)->count();
+        $totalSubscriptionsDuringPeriod = UserSubscription::where('purchased_at', '<=', $end)->count();
         $churnRate = $totalSubscriptionsDuringPeriod > 0 ? ($churnCount / $totalSubscriptionsDuringPeriod) * 100 : 0;
 
         // Previous period churn
-        $prevChurnCount = PortfolioSubscription::whereIn('status', ['cancelled', 'expired'])
+        $prevChurnCount = UserSubscription::whereIn('status', ['cancelled', 'expired'])
             ->whereBetween('updated_at', [$prevStart, $prevEnd])
             ->count();
             
-        $prevTotalSubscriptionsDuringPeriod = PortfolioSubscription::where('purchased_at', '<=', $prevEnd)->count();
+        $prevTotalSubscriptionsDuringPeriod = UserSubscription::where('purchased_at', '<=', $prevEnd)->count();
         $prevChurnRate = $prevTotalSubscriptionsDuringPeriod > 0 ? ($prevChurnCount / $prevTotalSubscriptionsDuringPeriod) * 100 : 0;
         
         $churnChange = 0;

@@ -38,53 +38,49 @@
         </div>
 
         <!-- Partners Table -->
-        <div class="grid grid-cols-1 ">
-            <div class="bg-white dark:bg-[#20152d] rounded-xl overflow-x-auto">
-                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700/20 dark:text-gray-400">
-                        <tr>
-                            <th class="px-6 py-3" scope="col">Name</th>
-                            <th class="px-6 py-3" scope="col">Email</th>
-                            <th class="px-6 py-3" scope="col">Users Created</th>
-                            <th class="px-6 py-3" scope="col">Created At</th>
-                            <th class="px-6 py-3" scope="col">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($partners as $partner)
-                            <tr class="bg-white dark:bg-[#20152d] border-b dark:border-gray-700/50 hover:bg-gray-50 dark:hover:bg-gray-800/20">
-                                <th class="flex items-center px-6 py-4 text-gray-900 dark:text-white whitespace-nowrap" scope="row">
-                                    <div class="pl-3">
-                                        <div class="text-base font-semibold">{{ $partner->name }}</div>
-                                    </div>
-                                </th>
-                                <td class="px-6 py-4">{{ $partner->email }}</td>
-                                <td class="px-6 py-4">{{ $partner->users_count }}</td>
-                                <td class="px-6 py-4">{{ $partner->created_at?->format('M d, Y') }}</td>
-                                <td class="px-6 py-4">
-                                    <div class="flex items-center space-x-2">
-                                        <a href="{{ route('admin.partner.show', $partner) }}"
-                                            class="p-1 text-gray-500 rounded hover:bg-gray-100 dark:hover:bg-gray-700"><span
-                                                class="material-symbols-outlined text-lg">visibility</span></a>
-                                        <a href="{{ route('admin.partner.edit', $partner) }}"
-                                            class="p-1 text-blue-500 rounded hover:bg-blue-100 dark:hover:bg-blue-900/50"><span
-                                                class="material-symbols-outlined text-lg">edit</span></a>
-                                        <form action="{{ route('admin.partner.destroy', $partner) }}" method="post"
-                                            onsubmit="return confirm('Delete partner?');">
-                                            @csrf
-                                            @method('delete')
-                                            <button type="submit"
-                                                class="p-1 text-red-500 rounded hover:bg-red-100 dark:hover:bg-red-900/50"><span
-                                                    class="material-symbols-outlined text-lg">delete</span></button>
-                                        </form>
-                                    </div>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-        </div>
+        <x-table.index>
+            <x-table.title>All Partners</x-table.title>
+            <x-table.thead>
+                <x-table.th>Name</x-table.th>
+                <x-table.th>Email</x-table.th>
+                <x-table.th>Users Created</x-table.th>
+                <x-table.th>Created At</x-table.th>
+                <x-table.th>Actions</x-table.th>
+            </x-table.thead>
+
+            <x-table.tbody>
+                @foreach ($partners as $partner)
+                    <x-table.tr class="bg-white dark:bg-[#20152d] border-b dark:border-gray-700/50 hover:bg-gray-50 dark:hover:bg-gray-800/20">
+                        <x-table.td class="flex items-center text-gray-900 dark:text-white whitespace-nowrap">
+                            <div class="pl-3">
+                                <div class="text-base font-semibold">{{ $partner->name }}</div>
+                            </div>
+                        </x-table.td>
+                        <x-table.td>{{ $partner->email }}</x-table.td>
+                        <x-table.td>{{ $partner->users_count }}</x-table.td>
+                        <x-table.td>{{ $partner->created_at?->format('M d, Y') }}</x-table.td>
+                        <x-table.td>
+                            <div class="flex items-center space-x-2">
+                                <a href="{{ route('admin.partner.show', $partner) }}"
+                                    class="p-1 text-gray-500 rounded hover:bg-gray-100 dark:hover:bg-gray-700"><span
+                                        class="material-symbols-outlined text-lg">visibility</span></a>
+                                <a href="{{ route('admin.partner.edit', $partner) }}"
+                                    class="p-1 text-blue-500 rounded hover:bg-blue-100 dark:hover:bg-blue-900/50"><span
+                                        class="material-symbols-outlined text-lg">edit</span></a>
+                                <form action="{{ route('admin.partner.destroy', $partner) }}" method="post"
+                                    onsubmit="return confirm('Delete partner?');">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit"
+                                        class="p-1 text-red-500 rounded hover:bg-red-100 dark:hover:bg-red-900/50"><span
+                                            class="material-symbols-outlined text-lg">delete</span></button>
+                                </form>
+                            </div>
+                        </x-table.td>
+                    </x-table.tr>
+                @endforeach
+            </x-table.tbody>
+        </x-table.index>
     </div>
 
 </x-layouts.app>

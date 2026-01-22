@@ -7,7 +7,7 @@ use App\Http\Controllers\Admin\FeatureController;
 use App\Http\Controllers\Admin\MetricsController;
 use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Admin\PlanController;
-use App\Http\Controllers\Admin\PortfolioSubscriptionController;
+use App\Http\Controllers\Admin\PortfolioTemplateController;
 use App\Http\Controllers\Admin\TemplateController;
 use App\Http\Controllers\Admin\TierController;
 use App\Http\Controllers\Admin\TransactionController;
@@ -26,7 +26,7 @@ Route::domain('admin.' . parse_url(config('app.url'), PHP_URL_HOST))->name('admi
     Route::resource('partner', PartnerController::class);
     Route::get('transaction', [TransactionController::class, 'index'])->name('transaction.index');
     Route::patch('transaction/{transaction}/status', [TransactionController::class, 'updateStatus'])->name('transaction.updateStatus');
-    
+
     // Tier, Feature & Plan Management
     Route::resource('feature', FeatureController::class);
     Route::resource('tier', TierController::class);
@@ -38,8 +38,5 @@ Route::domain('admin.' . parse_url(config('app.url'), PHP_URL_HOST))->name('admi
     Route::post('affiliate/{affiliate}/payout', [AffiliateController::class, 'processPayout'])->name('affiliate.payout');
 
     // Portfolio Subscription Management
-    Route::get('portfolio/{portfolio}/subscription/edit', [PortfolioSubscriptionController::class, 'edit'])
-        ->name('portfolio.subscription.edit');
-    Route::put('portfolio/{portfolio}/subscription', [PortfolioSubscriptionController::class, 'update'])
-        ->name('portfolio.subscription.update');
+    Route::resource('portfolio', PortfolioTemplateController::class)->only(['edit', 'update', 'destroy']);
 });
