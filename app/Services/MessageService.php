@@ -107,18 +107,18 @@ class MessageService
         ];
     }
 
-    public function getPaymentFailedMessage(User $user, $amount, $reference, $portfolioName): array
+    public function getPaymentFailedMessage(User $user, $amount, $reference): array
     {
         return [
             'subject' => 'Payment Failed',
             'payload' => [
-                'title' => 'Payment Failed for ' . $portfolioName,
+                'title' => 'Payment Failed',
                 'name' => $user->name,
                 'greeting' => 'Hi ' . $user->name . ',',
                 'introLines' => [
                     'We noticed that your payment of $' . number_format($amount, 2) . ' (Ref: ' . $reference . ') didn’t go through.',
                     'Sometimes this can happen due to network delays or an issue with your payment provider.',
-                    'You can try again or choose a different payment method to complete your upgrade for **' . $portfolioName . '**.'
+                    'You can try again or choose a different payment method to complete your upgrade for on your account'
                 ],
                 'outroLines' => [
                     'If you need assistance, feel free to reply to this email; we’re here to help.'
