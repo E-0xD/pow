@@ -14,7 +14,8 @@
             <h2 class="text-lg font-semibold text-text-light dark:text-text-dark mb-6">Summary</h2>
 
             <!-- Date Range Filter -->
-            <form method="GET" action="{{ route('admin.transaction.index') }}" class="mb-6 flex flex-col md:flex-row gap-4 items-start md:items-end">
+            <form method="GET" action="{{ route('admin.transaction.index') }}"
+                class="mb-6 flex flex-col md:flex-row gap-4 items-start md:items-end">
                 <div class="w-full md:w-auto">
                     <label class="block text-sm font-medium text-text-light dark:text-text-dark mb-2">From Date</label>
                     <input type="date" name="start_date" value="{{ request('start_date') }}"
@@ -70,7 +71,8 @@
         <!-- Filters & Search -->
         <div
             class="bg-card-light dark:bg-card-dark rounded-lg shadow-sm p-6 border border-border-light dark:border-border-dark mb-8">
-            <form method="GET" action="{{ route('admin.transaction.index') }}" class="flex flex-col md:flex-row gap-4">
+            <form method="GET" action="{{ route('admin.transaction.index') }}"
+                class="flex flex-col md:flex-row gap-4">
                 <!-- Search -->
                 <div class="w-full md:flex-1">
                     <input type="text" name="q" value="{{ request('q') }}"
@@ -165,6 +167,8 @@
                 @endforelse
             </x-table.tbody>
         </x-table.index>
+
+        <x-pagination :paginator="$transactions" />
 
     </div>
 </x-layouts.app>
