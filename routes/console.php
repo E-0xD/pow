@@ -8,3 +8,4 @@ Schedule::exec(base_path('queue-monitor.sh'))->everyMinute();
 Schedule::command('subscriptions:process-expired')->everySixHours();
 Schedule::command('auth:clear-resets')->everyFifteenMinutes();
 Schedule::command('transactions:mark-failed')->everyFifteenMinutes();
+Schedule::command('users:track-daily-activity')->everyTwoHours();

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Services\MetricsService;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Portfolio;
@@ -10,10 +11,18 @@ use App\Models\Transaction;
 use App\Models\PortfolioVisit;
 use App\Models\PortfolioMessage;
 use App\Models\UserSubscription;
+use App\Models\UserDailyActivity;
 use Carbon\Carbon;
 
 class MetricsController extends Controller
 {
+    protected MetricsService $metricsService;
+
+    public function __construct(MetricsService $metricsService)
+    {
+        $this->metricsService = $metricsService;
+    }
+
     /**
      * Display metrics for the selected period.
      */
@@ -41,105 +50,72 @@ class MetricsController extends Controller
         $prevStart = Carbon::now()->subDays($days * 2)->startOfDay();
         $prevEnd = Carbon::now()->subDays($days)->endOfDay();
 
-        // === TOTALS (All-time for context) ===
-        $totalUsers = User::count();
+        // === USER METRICS ===
+        $totalUsers = $this->metricsService->getTotalUsers();
+        $newUsers = $this->metricsService->getNewUsers($start, $end);
+        $prevNewUsers = $this->metricsService->getNewUsers($prevStart, $prevEnd);
+        
+        $dau = $this->metricsService->getDAU();
+        $wau = $this->metricsService->getWAU();
+        $mau = $this->metricsService->getMAU();
+
+        // Growth rates
+        $userGrowthRate = $this->metricsService->getUserGrowthRate($start, $end, $prevStart, $prevEnd);
+        
+        // Activation rate (portfolio creators)
+        $activationRate = $this->metricsService->getActivationRate($start, $end);
+        
+        // === REVENUE METRICS ===
+        $revenueCurrent = $this->metricsService->getTotalRevenue($start, $end);
+        $revenuePrev = $this->metricsService->getTotalRevenue($prevStart, $prevEnd);
+        $revenueGrowthRate = $this->metricsService->getRevenueGrowthRate($start, $end, $prevStart, $prevEnd);
+
+        // MRR / ARR
+        $mrr = $this->metricsService->getMRR();
+        $arr = $this->metricsService->getARR();
+
+        // ARPU
+        $arpu = $this->metricsService->getARPU($start, $end);
+        $prevArpu = $this->metricsService->getARPU($prevStart, $prevEnd);
+
+        // === RETENTION & CHURN ===
+        $retentionRate = $this->metricsService->getRetentionRate($start, $end, $prevStart, $prevEnd);
+        $churnRate = $this->metricsService->getChurnRate($start, $end);
+        $prevChurnRate = $this->metricsService->getChurnRate($prevStart, $prevEnd);
+
+        // === CONVERSION RATES ===
+        $portfolioConversionRate = $this->metricsService->getPortfolioConversionRate($start, $end);
+        $subscriptionConversionRate = $this->metricsService->getSubscriptionConversionRate($start, $end);
+
+        // === TIME TO VALUE ===
+        $avgPortfolioTTV = $this->metricsService->getAveragePortfolioTTV($start, $end);
+        $avgSubscriptionTTV = $this->metricsService->getAverageSubscriptionTTV($start, $end);
+
+        // === CUSTOMER LIFETIME VALUE ===
+        $topUsers = User::orderByDesc('created_at')->limit(100)->pluck('id');
+        $avgLTV = 0;
+        foreach ($topUsers as $userId) {
+            $avgLTV += $this->metricsService->getCustomerLifetimeValue($userId);
+        }
+        $avgLTV = $topUsers->count() > 0 ? $avgLTV / $topUsers->count() : 0;
+
+        // === COHORT RETENTION ===
+        $cohortRetention = $this->metricsService->getCohortRetention($prevStart, $prevEnd, 30);
+
+        // === PORTFOLIOS & ENGAGEMENT ===
         $totalPortfolios = Portfolio::count();
-
+        $newPortfolios = Portfolio::whereBetween('created_at', [$start, $end])->count();
         
-        $activePortfolios = Portfolio::whereHas('activeSubscription')->count();
-
-        // === PERIOD-SPECIFIC METRICS ===
-        
-        // New users during the period
-        $newUsers = User::whereBetween('created_at', [$start, $end])->count();
-        $prevNewUsers = User::whereBetween('created_at', [$prevStart, $prevEnd])->count();
-
-        // Revenue during the period (exclude affiliate payouts)
-        $revenueCurrent = (float) Transaction::where('status', 'successful')
-            ->whereBetween('created_at', [$start, $end])
-            ->where('gateway', '!=', 'affiliate_payout')
-            ->sum('amount');
-
-        $revenuePrev = (float) Transaction::where('status', 'successful')
-            ->whereBetween('created_at', [$prevStart, $prevEnd])
-            ->where('gateway', '!=', 'affiliate_payout')
-            ->sum('amount');
-
-        $totalProfit = $revenueCurrent; // Profit for the current period
-
-        // Revenue change percentage
-        $revenueChange = 0;
-        if ($revenuePrev > 0) {
-            $revenueChange = (($revenueCurrent - $revenuePrev) / $revenuePrev) * 100;
-        } elseif ($revenueCurrent > 0) {
-            $revenueChange = 100;
-        }
-
-        // LTV: Average revenue per new user during the period
-        $ltv = $newUsers > 0 ? ($revenueCurrent / $newUsers) : 0.0;
-        $prevLtv = $prevNewUsers > 0 ? ($revenuePrev / $prevNewUsers) : 0.0;
-        
-        $ltvChange = 0;
-        if ($prevLtv > 0) {
-            $ltvChange = (($ltv - $prevLtv) / $prevLtv) * 100;
-        } elseif ($ltv > 0) {
-            $ltvChange = 100;
-        }
-
-        // Subscriptions during the period
-        $subsCurrent = UserSubscription::whereBetween('purchased_at', [$start, $end])->count();
-        $subsPrev = UserSubscription::whereBetween('purchased_at', [$prevStart, $prevEnd])->count();
-
-        // Conversion rate: subscriptions / new signups during the period
-        $conversionRate = $newUsers > 0 ? ($subsCurrent / $newUsers) * 100 : 0;
-        $prevConversionRate = $prevNewUsers > 0 ? ($subsPrev / $prevNewUsers) * 100 : 0;
-        
-        $conversionChange = 0;
-        if ($prevConversionRate > 0) {
-            $conversionChange = (($conversionRate - $prevConversionRate) / $prevConversionRate) * 100;
-        } elseif ($conversionRate > 0) {
-            $conversionChange = 100;
-        }
-
-        // Churn: subscriptions that expired/cancelled during the period
-        $churnCount = UserSubscription::whereIn('status', ['cancelled', 'expired'])
-            ->whereBetween('updated_at', [$start, $end])
-            ->count();
-
-        $totalSubscriptionsDuringPeriod = UserSubscription::where('purchased_at', '<=', $end)->count();
-        $churnRate = $totalSubscriptionsDuringPeriod > 0 ? ($churnCount / $totalSubscriptionsDuringPeriod) * 100 : 0;
-
-        // Previous period churn
-        $prevChurnCount = UserSubscription::whereIn('status', ['cancelled', 'expired'])
-            ->whereBetween('updated_at', [$prevStart, $prevEnd])
-            ->count();
-            
-        $prevTotalSubscriptionsDuringPeriod = UserSubscription::where('purchased_at', '<=', $prevEnd)->count();
-        $prevChurnRate = $prevTotalSubscriptionsDuringPeriod > 0 ? ($prevChurnCount / $prevTotalSubscriptionsDuringPeriod) * 100 : 0;
-        
-        $churnChange = 0;
-        if ($prevChurnRate > 0) {
-            $churnChange = (($churnRate - $prevChurnRate) / $prevChurnRate) * 100;
-        } elseif ($churnRate > 0) {
-            $churnChange = 100;
-        }
-
-        // Engagement metrics during the period
         $visitsCount = PortfolioVisit::whereBetween('created_at', [$start, $end])->count();
-        $avgViewsPerUser = $newUsers > 0 ? ($visitsCount / $newUsers) : 0;
-
         $messagesCount = PortfolioMessage::whereBetween('created_at', [$start, $end])->count();
-        $portfoliosDuringPeriod = Portfolio::whereBetween('created_at', [$start, $end])->count();
-        $avgMessagesPerPortfolio = $portfoliosDuringPeriod > 0 ? ($messagesCount / $portfoliosDuringPeriod) : 0;
 
-        // Active portfolios purchased during the period
-        $activePortfoliosThisMonth = Portfolio::whereHas('activeSubscription', function ($q) use ($start, $end) {
-            $q->whereBetween('purchased_at', [$start, $end]);
-        })->count();
+        // === GEOGRAPHIC DATA ===
+        $usersByCountry = $this->metricsService->getUsersByCountry(10);
+        $usersByCity = $this->metricsService->getUsersByCity(null, 10);
+        $deviceBreakdown = $this->metricsService->getDeviceTypeBreakdown($start, $end);
+        $topCountries = $this->metricsService->getTopCountries(5);
 
         // === CHART DATA ===
-        
-        // Build labels (daily labels)
         $labels = [];
         for ($i = $days - 1; $i >= 0; $i--) {
             $labels[] = Carbon::now()->subDays($i)->format('Y-m-d');
@@ -160,9 +136,8 @@ class MetricsController extends Controller
             ->pluck('sum', 'date')
             ->toArray();
 
-        $affiliateConversions = Transaction::selectRaw("DATE(created_at) as date, count(*) as cnt")
-            ->where('gateway', 'affiliate')
-            ->whereBetween('created_at', [$start, $end])
+        $activeUsers = UserDailyActivity::selectRaw("date, count(distinct user_id) as cnt")
+            ->whereBetween('date', [$start->toDateString(), $end->toDateString()])
             ->groupBy('date')
             ->pluck('cnt', 'date')
             ->toArray();
@@ -170,11 +145,11 @@ class MetricsController extends Controller
         // Map data to labels
         $signupsData = [];
         $revenueData = [];
-        $affiliateData = [];
+        $activeUsersData = [];
         foreach ($labels as $date) {
             $signupsData[] = isset($signups[$date]) ? (int) $signups[$date] : 0;
             $revenueData[] = isset($revenue[$date]) ? (float) $revenue[$date] : 0.0;
-            $affiliateData[] = isset($affiliateConversions[$date]) ? (int) $affiliateConversions[$date] : 0;
+            $activeUsersData[] = isset($activeUsers[$date]) ? (int) $activeUsers[$date] : 0;
         }
 
         return view('admin.metrics.index', compact(
@@ -182,22 +157,43 @@ class MetricsController extends Controller
             'labels',
             'signupsData',
             'revenueData',
-            'affiliateData',
+            'activeUsersData',
+            // User metrics
             'totalUsers',
             'newUsers',
-            'activePortfolios',
-            'totalProfit',
-            'totalPortfolios',
-            'ltv',
-            'ltvChange',
+            'dau',
+            'wau',
+            'mau',
+            'userGrowthRate',
+            'activationRate',
+            // Revenue metrics
+            'revenueCurrent',
+            'revenueGrowthRate',
+            'mrr',
+            'arr',
+            'arpu',
+            // Retention metrics
+            'retentionRate',
             'churnRate',
-            'churnChange',
-            'conversionRate',
-            'conversionChange',
-            'avgViewsPerUser',
-            'avgMessagesPerPortfolio',
-            'activePortfoliosThisMonth',
-            'revenueChange'
+            // Conversion rates
+            'portfolioConversionRate',
+            'subscriptionConversionRate',
+            // Time to value
+            'avgPortfolioTTV',
+            'avgSubscriptionTTV',
+            // Cohort & LTV
+            'avgLTV',
+            'cohortRetention',
+            // Portfolio metrics
+            'totalPortfolios',
+            'newPortfolios',
+            'visitsCount',
+            'messagesCount',
+            // Geographic data
+            'usersByCountry',
+            'usersByCity',
+            'deviceBreakdown',
+            'topCountries'
         ));
     }
 }
