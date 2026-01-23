@@ -7,6 +7,7 @@ use App\Services\MetricsService;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Portfolio;
+use App\Models\Template;
 use App\Models\Transaction;
 use App\Models\PortfolioVisit;
 use App\Models\PortfolioMessage;
@@ -109,6 +110,24 @@ class MetricsController extends Controller
         $visitsCount = PortfolioVisit::whereBetween('created_at', [$start, $end])->count();
         $messagesCount = PortfolioMessage::whereBetween('created_at', [$start, $end])->count();
 
+        // === TEMPLATE STATISTICS ===
+        $templateStats = Template::withCount(['portfolios'])
+            ->with(['portfolios' => function ($query) use ($start, $end) {
+                $query->whereBetween('created_at', [$start, $end]);
+            }])
+            ->get()
+            ->map(function ($template) {
+                return [
+                    'id' => $template->id,
+                    'title' => $template->title,
+                    'overall_portfolios' => $template->portfolios_count,
+                    'period_portfolios' => $template->portfolios->count(),
+                ];
+            })
+            ->sortByDesc('overall_portfolios')
+            ->take(10)
+            ->values();
+
         // === GEOGRAPHIC DATA ===
         $usersByCountry = $this->metricsService->getUsersByCountry(10);
         $usersByCity = $this->metricsService->getUsersByCity(null, 10);
@@ -189,6 +208,8 @@ class MetricsController extends Controller
             'newPortfolios',
             'visitsCount',
             'messagesCount',
+            // Template metrics
+            'templateStats',
             // Geographic data
             'usersByCountry',
             'usersByCity',

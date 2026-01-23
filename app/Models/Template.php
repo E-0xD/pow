@@ -27,13 +27,18 @@ class Template extends Model
     protected static function boot()
     {
         parent::boot();
-        static::creating(function($portfolio){
+        static::creating(function ($portfolio) {
             $portfolio->uid = (string) Str::uuid();
         });
     }
 
     public function getRouteKeyName()
     {
-       return 'uid';   
+        return 'uid';
+    }
+
+    public function portfolios()
+    {
+        return $this->hasMany(Portfolio::class);
     }
 }

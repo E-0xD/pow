@@ -48,7 +48,7 @@
                     New Users</p>
                 <p class="text-text-light-primary dark:text-text-dark-primary tracking-tight text-3xl font-bold">
                     {{ number_format($newUsers ?? 0) }}</p>
-                <p class="text-positive text-sm font-medium leading-normal flex items-center">
+                <p class="{{ $userGrowthRate >= 0 ? 'text-[#078847]' : 'text-[#e74808]' }} text-sm font-medium leading-normal flex items-center">
                     <span
                         class="material-symbols-outlined text-base">{{ $userGrowthRate >= 0 ? 'arrow_upward' : 'arrow_downward' }}</span>{{ number_format(abs($userGrowthRate ?? 0), 1) }}%
                 </p>
@@ -59,7 +59,7 @@
                     MRR</p>
                 <p class="text-text-light-primary dark:text-text-dark-primary tracking-tight text-3xl font-bold">
                     ${{ number_format($mrr ?? 0, 0) }}</p>
-                <p class="text-positive text-sm font-medium leading-normal flex items-center">
+                <p class="{{ $revenueGrowthRate >= 0 ? 'text-[#078847]' : 'text-[#e74808]' }} text-sm font-medium leading-normal flex items-center">
                     <span
                         class="material-symbols-outlined text-base">{{ $revenueGrowthRate >= 0 ? 'arrow_upward' : 'arrow_downward' }}</span>{{ number_format(abs($revenueGrowthRate ?? 0), 1) }}%
                 </p>
@@ -371,6 +371,38 @@
     </div>
 </div>
 
+        <!-- Template Statistics -->
+        <div class="mt-8">
+            <x-table.index>
+                <x-table.title>Template Usage Statistics</x-table.title>
+                <x-table.thead>
+                    <x-table.th>Template</x-table.th>
+                    <x-table.th class="text-right">Overall Portfolios</x-table.th>
+                    <x-table.th class="text-right">Period Portfolios</x-table.th>
+                    <x-table.th class="text-right">% of Period</x-table.th>
+                </x-table.thead>
+                <x-table.tbody>
+                    @forelse($templateStats as $template)
+                        <x-table.tr>
+                            <x-table.td class="font-medium">{{ $template['title'] }}</x-table.td>
+                            <x-table.td class="text-right">{{ number_format($template['overall_portfolios']) }}</x-table.td>
+                            <x-table.td class="text-right font-semibold">{{ number_format($template['period_portfolios']) }}</x-table.td>
+                            <x-table.td class="text-right">
+                                @if($newPortfolios > 0)
+                                    {{ number_format(($template['period_portfolios'] / $newPortfolios) * 100, 1) }}%
+                                @else
+                                    0%
+                                @endif
+                            </x-table.td>
+                        </x-table.tr>
+                    @empty
+                        <x-table.tr>
+                            <x-table.td colspan="4" class="text-center">No template data available</x-table.td>
+                        </x-table.tr>
+                    @endforelse
+                </x-table.tbody>
+            </x-table.index>
+        </div>
 
         <!-- Cohort Retention Analysis -->
         <div class="mt-8">
