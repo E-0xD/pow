@@ -116,16 +116,38 @@
                     into your portfolio performance.</p>
             </div>
             <div class="flex gap-2 flex-wrap">
-                <button
-                    class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-primary/10 dark:bg-primary/20 px-4">
-                    <p class="text-primary text-sm font-medium leading-normal">Last 30 Days</p>
-                    <span class="material-symbols-outlined text-primary text-base">expand_more</span>
-                </button>
-                <button
+                <div class="relative group">
+                    <button
+                        class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-primary/10 dark:bg-primary/20 px-4 hover:bg-primary/20 dark:hover:bg-primary/30 transition-colors">
+                        <p class="text-primary text-sm font-medium leading-normal">{{ $periodLabel }}</p>
+                        <span class="material-symbols-outlined text-primary text-base">expand_more</span>
+                    </button>
+                    
+                    <!-- Dropdown Menu -->
+                    <div class="absolute right-0 mt-2 w-40 bg-card-light dark:bg-card-dark rounded-lg shadow-lg border border-border-light dark:border-border-dark opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
+                        <a href="{{ route('user.portfolio.analytics', ['portfolio' => $portfolio->uid, 'period' => 'daily']) }}"
+                            class="block px-4 py-3 text-sm font-medium text-text-light dark:text-text-dark hover:bg-primary/10 first:rounded-t-lg {{ $period === 'daily' ? 'bg-primary/10 text-primary' : '' }}">
+                            Daily
+                        </a>
+                        <a href="{{ route('user.portfolio.analytics', ['portfolio' => $portfolio->uid, 'period' => 'weekly']) }}"
+                            class="block px-4 py-3 text-sm font-medium text-text-light dark:text-text-dark hover:bg-primary/10 {{ $period === 'weekly' ? 'bg-primary/10 text-primary' : '' }}">
+                            Weekly
+                        </a>
+                        <a href="{{ route('user.portfolio.analytics', ['portfolio' => $portfolio->uid, 'period' => 'monthly']) }}"
+                            class="block px-4 py-3 text-sm font-medium text-text-light dark:text-text-dark hover:bg-primary/10 {{ $period === 'monthly' ? 'bg-primary/10 text-primary' : '' }}">
+                            Monthly
+                        </a>
+                        <a href="{{ route('user.portfolio.analytics', ['portfolio' => $portfolio->uid, 'period' => 'yearly']) }}"
+                            class="block px-4 py-3 text-sm font-medium text-text-light dark:text-text-dark hover:bg-primary/10 last:rounded-b-lg {{ $period === 'yearly' ? 'bg-primary/10 text-primary' : '' }}">
+                            Yearly
+                        </a>
+                    </div>
+                </div>
+                {{-- <button
                     class="flex min-w-[84px] cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-10 px-4 bg-card-light dark:bg-card-dark border border-border-light dark:border-border-dark text-text-light dark:text-text-dark text-sm font-bold leading-normal tracking-[0.015em] hover:bg-background-light dark:hover:bg-background-dark">
                     <span class="material-symbols-outlined text-base">download</span>
                     <span class="truncate">Export</span>
-                </button>
+                </button> --}}
             </div>
         </header>
         <!-- Stats Grid -->

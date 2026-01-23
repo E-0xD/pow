@@ -127,13 +127,43 @@ class PortfolioController extends Controller
         return view('user.portfolio.customize', compact('portfolio'));
     }
 
-    public function analytics(Portfolio $portfolio)
+    public function analytics(Portfolio $portfolio, Request $request)
     {
 
         try {
 
-            $thirtyDaysAgo = now()->subDays(30);
-            $sixtyDaysAgo = now()->subDays(60);
+            $period = $request->query('period', '30days');
+
+            // Determine the date range based on period
+            switch ($period) {
+                case 'daily':
+                    $daysBack = 1;
+                    $previousDaysBack = 2;
+                    $periodLabel = 'Today';
+                    break;
+                case 'weekly':
+                    $daysBack = 7;
+                    $previousDaysBack = 14;
+                    $periodLabel = 'Last 7 Days';
+                    break;
+                case 'monthly':
+                    $daysBack = 30;
+                    $previousDaysBack = 60;
+                    $periodLabel = 'Last 30 Days';
+                    break;
+                case 'yearly':
+                    $daysBack = 365;
+                    $previousDaysBack = 730;
+                    $periodLabel = 'Last Year';
+                    break;
+                default:
+                    $daysBack = 30;
+                    $previousDaysBack = 60;
+                    $periodLabel = 'Last 30 Days';
+            }
+
+            $thirtyDaysAgo = now()->subDays($daysBack);
+            $sixtyDaysAgo = now()->subDays($previousDaysBack);
 
             // Current period stats
             $totalVisits = $portfolio->visits()
@@ -229,7 +259,9 @@ class PortfolioController extends Controller
             return view('user.portfolio.analytics', [
                 'stats' => $stats,
                 'portfolio' => $portfolio,
-                'colors' => $colors
+                'colors' => $colors,
+                'period' => $period,
+                'periodLabel' => $periodLabel
             ]);
         } catch (\Throwable $th) {
             Log::error($th);
