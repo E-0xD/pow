@@ -74,10 +74,7 @@
                         @if ($currentPlan?->plan_id == $plan->id)
                             <div
                                 class="flex w-full cursor-pointer items-center  overflow-hidden rounded-lg h-10 px-4 text-primary text-sm font-bold transition-colors">
-                                <span class="">
-                                    You’re currently subscribed to this plan, and all the benefits listed below are
-                                    active.
-                                </span>
+                                
                             </div>
                         @else
                             <button wire:click="selectPlan('{{ $tier }}')"

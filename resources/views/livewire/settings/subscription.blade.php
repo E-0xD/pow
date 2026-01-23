@@ -1,5 +1,4 @@
-<main class="flex-1 p-6 sm:p-8 lg:p-10">
-    <div class="max-w-7xl mx-auto">
+<main class="gap-8 w-full">
 
         <x-layouts.app.page-heading title="Billing & Subscription"
             subtitle="Manage your plan, payment details, and view your invoice history." />
@@ -19,7 +18,7 @@
                         <div class="flex flex-col items-stretch justify-start lg:flex-row lg:items-start gap-6">
                             <div class="flex w-full min-w-72 grow flex-col items-stretch justify-center gap-4">
                                 @if ($userSubscription && $userSubscription->plan)
-                                    <div class="flex items-center justify-between">
+                                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-2">
                                         <p
                                             class="text-lg font-bold leading-tight tracking-[-0.015em] text-primary dark:text-primary-400">
                                             {{ $userSubscription->plan->name }}
@@ -153,5 +152,4 @@
             </div>
         </div>
 
-    </div>
 </main>
