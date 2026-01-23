@@ -118,7 +118,7 @@ class MessageService
                 'introLines' => [
                     'We noticed that your payment of $' . number_format($amount, 2) . ' (Ref: ' . $reference . ') didn’t go through.',
                     'Sometimes this can happen due to network delays or an issue with your payment provider.',
-                    'You can try again or choose a different payment method to complete your upgrade for on your account'
+                    'You can try again or choose a different payment method to complete the upgrade on your account'
                 ],
                 'outroLines' => [
                     'If you need assistance, feel free to reply to this email; we’re here to help.'
@@ -383,6 +383,34 @@ class MessageService
                 'actionUrl' => route('subscription.checkout'),
                 'outroLines' => [
                     'We apologize for the inconvenience. Reply to this email or reach out to our support team, and we\'ll get your subscription activated right away.'
+                ],
+                'signature' => '— The ' . config('app.name') . ' Team',
+                'company' => config('app.name'),
+            ]
+        ];
+    }
+
+    /**
+     * Get launch notification message for waitlist users
+     */
+    public function getLaunchEmailMessage(User $user): array
+    {
+        return [
+            'subject' => 'We\'ve Launched!',
+            'payload' => [
+                'title' => 'We\'ve Officially Launched!',
+                'name' => $user->name,
+                'greeting' => 'Hi ' . $user->name . '!',
+                'introLines' => [
+                    'We\'re thrilled to announce that ' . config('app.name') . ' has officially launched! We\'re excited to have you on board.',
+                    'Your account is now fully activated, and you can start creating and managing your portfolios right away. Showcase your skills, projects, and experience with confidence on a platform built just for you.',
+                    'Whether you\'re building your first portfolio or your tenth, we\'re here to help you tell your professional story in the most compelling way possible.',
+                    'Have a feature idea or something you\'d like to see? We\'d love to hear from you! Just reply to this email with your suggestions — your feedback helps us build the platform you need.'
+                ],
+                'actionText' => 'Create Your First Portfolio',
+                'actionUrl' => route('user.dashboard'),
+                'outroLines' => [
+                    'Thank you for believing in us from the beginning. Let\'s build something great together!'
                 ],
                 'signature' => '— The ' . config('app.name') . ' Team',
                 'company' => config('app.name'),
