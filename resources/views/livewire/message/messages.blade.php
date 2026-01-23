@@ -1,47 +1,48 @@
 
-<div class=" bg-surface-light dark:bg-surface-dark">
+<div class="w-full max-w-7xl mx-auto">
     <!-- PageHeading & ToolBar -->
     <x-layouts.app.page-heading 
         title="Your Portfolio Messages"
         subtitle="View and manage all messages and inquiries sent through your portfolios." 
     />
 
-    <div class="p-4 border-b border-border-light dark:border-border-dark flex justify-between">
-
-        <label class="flex flex-col w-full">
-            <div class="flex w-full flex-1 items-stretch rounded h-11">
-                <div
-                    class="text-text-secondary-light dark:text-text-secondary-dark flex bg-background-light dark:bg-background-dark items-center justify-center pl-3 rounded-l">
-                    <span class="material-symbols-outlined text-xl">search</span>
+      <div class="bg-white dark:bg-[#20152d] rounded-xl p-4 mb-6">
+        <div class="flex flex-col lg:flex-row gap-3">
+            <!-- Search Input -->
+            <label class="flex flex-col w-full lg:flex-1">
+                <div class="flex w-full flex-1 items-stretch rounded h-11">
+                    <div
+                        class="text-text-secondary-light dark:text-text-secondary-dark flex bg-background-light dark:bg-background-dark items-center justify-center pl-3 rounded-l">
+                        <span class="material-symbols-outlined text-xl">search</span>
+                    </div>
+                    <input wire:model.live="search"
+                        class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded text-text-primary-light dark:text-text-primary-dark focus:outline-0 focus:ring-0 border-none bg-background-light dark:bg-background-dark focus:border-none h-full placeholder:text-text-secondary-light dark:placeholder:text-text-secondary-dark px-2 rounded-l-none text-sm font-normal leading-normal"
+                        placeholder="Search messages..." />
                 </div>
-                <input wire:model.live="search"
-                    class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded text-text-primary-light dark:text-text-primary-dark focus:outline-0 focus:ring-0 border-none bg-background-light dark:bg-background-dark focus:border-none h-full placeholder:text-text-secondary-light dark:placeholder:text-text-secondary-dark px-2 rounded-l-none text-sm font-normal leading-normal"
-                    placeholder="Search messages..." />
+            </label>
+
+            <!-- Portfolio Filter Dropdown -->
+            <div class="relative w-full lg:w-64">
+                <select wire:model.live="selectedPortfolio"
+                    class="form-select w-full h-11 rounded bg-background-light dark:bg-background-dark text-text-primary-light dark:text-text-primary-dark border-none focus:outline-0 focus:ring-0 px-3 text-sm font-normal appearance-none cursor-pointer pr-10">
+                    <option value="">All Portfolios</option>
+                    @foreach ($this->portfolios as $portfolio)
+                        <option value="{{ $portfolio->id }}">
+                            {{ $portfolio->title }}
+                            @if ($portfolio->messages_count > 0)
+                                ({{ $portfolio->messages_count }})
+                            @endif
+                        </option>
+                    @endforeach
+                </select>
+                <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-text-secondary-light dark:text-text-secondary-dark">
+                    <span class="material-symbols-outlined text-xl">expand_more</span>
+                </div>
             </div>
-        </label>
-    </div>
-    <div class="p-4 border-b border-border-light dark:border-border-dark">
-        <div class="flex gap-2 pt-3 overflow-x-auto">
-            <button wire:click="setPortfolio()"
-                class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded {{ !$selectedPortfolio ? 'bg-primary/10 text-primary' : 'bg-background-light dark:bg-background-dark hover:bg-primary/10 hover:text-primary' }} px-3">
-                <p class="text-sm font-medium leading-normal">
-                    All Portfolios
-                </p>
-            </button>
-            @foreach ($this->portfolios as $portfolio)
-                <button wire:click="setPortfolio({{ $portfolio->id }})"
-                    class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded {{ $selectedPortfolio == $portfolio->id ? 'bg-primary/10 text-primary' : 'bg-background-light dark:bg-background-dark hover:bg-primary/10 hover:text-primary' }} px-3">
-                    <p class="text-sm font-medium leading-normal">
-                        {{ $portfolio->title }}
-                        @if ($portfolio->messages_count > 0)
-                            <span
-                                class="ml-1 text-xs bg-primary/20 px-1.5 py-0.5 rounded-full">{{ $portfolio->messages_count }}</span>
-                        @endif
-                    </p>
-                </button>
-            @endforeach
         </div>
     </div>
+
+
     <div class="flex-1 overflow-y-auto">
         @forelse($this->messages as $message)
             <a href="{{ route('user.messages.show', $message->uid) }}" @class([
