@@ -35,9 +35,7 @@
                         </option>
                     @endforeach
                 </select>
-                <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-text-secondary-light dark:text-text-secondary-dark">
-                    <span class="material-symbols-outlined text-xl">expand_more</span>
-                </div>
+               
             </div>
         </div>
     </div>
