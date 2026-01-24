@@ -4,6 +4,9 @@
 # Monitors the nightwatch agent by PID and restarts if not running
 # Run via cron: */5 * * * * /path/to/nightwatch-keeper.sh
 
+# Change to project directory
+cd "$(dirname "$0")" || exit 1
+
 PID_FILE="storage/.nightwatch.pid"
 LOG_FILE="storage/logs/nightwatch-monitor.log"
 
@@ -27,20 +30,21 @@ start_agent() {
     pkill -f "php artisan nightwatch:agent" 2>/dev/null
     sleep 1
     
-    # Start the agent in background and get its PID
-    nohup php artisan nightwatch:agent > /dev/null 2>&1 &
+    # Start the agent in background and capture error output
+    nohup php artisan nightwatch:agent >> "$LOG_FILE" 2>&1 &
     local new_pid=$!
     
     # Save the PID to file
     echo "$new_pid" > "$PID_FILE"
     
-    sleep 2
+    sleep 3
     
     if check_process_running "$new_pid"; then
         log_message "Agent started successfully (PID: $new_pid)"
         return 0
     else
-        log_message "Failed to start agent"
+        log_message "Failed to start agent (PID: $new_pid)"
+        log_message "Check if php/artisan commands are available"
         rm -f "$PID_FILE"
         return 1
     fi
