@@ -11,13 +11,21 @@
         <span class="text-xs font-medium">Controls</span>
     </a>
 
+    <a href="https://nightwatch.laravel.com/sign-in" target="_blank" @class([
+        'flex flex-col items-center rounded-lg px-3 py-1
+               hover:bg-gray-100 dark:hover:bg-white/10 text-[#1F2937] dark:text-gray-300',
+    ])>
+        <span class="material-symbols-outlined text-2xl">monitor_heart</span>
+        <span class="text-xs font-medium">Monitor</span>
+    </a>
+
     <form action="{{ route('logout') }}" method="post">
         @csrf
         <button
-            class="flex w-full items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 text-[#1F2937] dark:text-gray-300"
+            class="flex flex-col items-center rounded-lg px-3 py-1 hover:bg-gray-100 dark:hover:bg-white/10 text-[#1F2937] dark:text-gray-300"
             type="submit">
             <span class="material-symbols-outlined text-2xl">logout</span>
-            <p class="text-sm font-medium leading-normal">Log out</p>
+            <p class="text-xs font-medium">Log out</p>
         </button>
     </form>
 </nav>

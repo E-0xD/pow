@@ -388,6 +388,7 @@ To ensure the script is executable, run :
 
 ```bash
 chmod +x queue-monitor.sh
+chmod +x nightwatch-keeper.sh
 ```
 
 ### Notes
