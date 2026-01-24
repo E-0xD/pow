@@ -12,7 +12,7 @@
         "php": "^8.2",
         "jenssegers/agent": "*",
         "laravel/framework": "^12.0",
-        "laravel/nightwatch": "^1.18",
+        "laravel/nightwatch": "^1.22",
         "laravel/sanctum": "^4.0",
         "laravel/socialite": "^5.23",
         "laravel/tinker": "^2.10.1",
@@ -51,14 +51,16 @@
             "@php artisan key:generate",
             "@php artisan migrate --force",
             "npm install",
-            "npm run build"
+            "npm run build",
+            "chmod +x queue-monitor.sh",
+            "chmod +x nightwatch-keeper.sh"
         ],
         "update-on-server": [
             "/opt/cpanel/ea-php84/root/usr/bin/php -d allow_url_fopen=On composer.phar install",
             "/opt/cpanel/ea-php84/root/usr/bin/php -d allow_url_fopen=On composer.phar dump-autoload",
             "@php artisan migrate",
-            "npm install",
-            "npm run build"
+            "chmod +x queue-monitor.sh",
+            "chmod +x nightwatch-keeper.sh"
         ],
         "dev": [
             "Composer\\Config::disableProcessTimeout",
