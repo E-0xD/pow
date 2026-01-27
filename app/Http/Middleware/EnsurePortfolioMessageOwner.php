@@ -28,7 +28,7 @@ class EnsurePortfolioMessageOwner
         }
 
         // Ensure the message belongs to a portfolio owned by the user
-        if (!$message->portfolio || $message->portfolio->user_id !== $user->id) {
+        if (!$message->portfolio || $message->portfolio->user_id != $user->id) {
             abort(403, 'You do not have permission to view or edit this message.');
         }
 
