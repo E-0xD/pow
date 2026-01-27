@@ -34,7 +34,7 @@ class TrackDailyActiveUsers extends Command
         $this->agent = new Agent();
 
         // Get all active sessions from the last 24 hours
-        $sessions = DB::table('sessions')
+        $sessions = DB::table('sessions')->where('user_id', '!=', null)
             ->where('last_activity', '>=', now()->subDay()->timestamp)
             ->get();
 
