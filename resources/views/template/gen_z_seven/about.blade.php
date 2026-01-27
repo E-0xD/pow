@@ -33,6 +33,7 @@
                     <div class="counter-number h2 text_white mb_7">
                         <div class="odometer" data-number="{{ $portfolio->about->years_of_experience }}">
                             {{ $portfolio->about->years_of_experience }}</div>
+                            
                         <span class="sub">+</span>
                     </div>
 
