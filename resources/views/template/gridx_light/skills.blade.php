@@ -8,13 +8,15 @@
                     <h3>TECHNICAL SKILLS</h3>
 
                     <ul>
-                        @foreach ($portfolio->skills->where(fn($skill) => $skill->type->value == 'technical')->values() as $index => $skill)
-                            <li>
+                        @if (isset($portfolio->skills) && $portfolio->skills->count() > 0)
+                            @foreach ($portfolio->skills->where(fn($skill) => isset($skill->type) && ($skill->type->value ?? null) == 'technical')->values() as $index => $skill)
+                                <li>
 
-                                <h2>{{ ucfirst($skill->title) }}</h2>
+                                    <h2>{{ ucfirst($skill->title ?? 'N/A') }}</h2>
 
-                            </li>
-                        @endforeach
+                                </li>
+                            @endforeach
+                        @endif
                     </ul>
                 </div>
             </div>
@@ -24,13 +26,15 @@
                     <h3>SOFT SKILLS</h3>
 
                     <ul>
-                        @foreach ($portfolio->skills->where(fn($skill) => $skill->type->value == 'soft')->values() as $index => $skill)
-                            <li>
+                        @if (isset($portfolio->skills) && $portfolio->skills->count() > 0)
+                            @foreach ($portfolio->skills->where(fn($skill) => isset($skill->type) && ($skill->type->value ?? null) == 'soft')->values() as $index => $skill)
+                                <li>
 
-                                <h2>{{ ucfirst($skill->title) }}</h2>
+                                    <h2>{{ ucfirst($skill->title ?? 'N/A') }}</h2>
 
-                            </li>
-                        @endforeach
+                                </li>
+                            @endforeach
+                        @endif
                     </ul>
                 </div>
             </div>

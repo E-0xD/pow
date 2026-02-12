@@ -4,15 +4,17 @@
         <h3>EDUCATION</h3>
 
         <ul>
-            @foreach ($portfolio->educationRecords as $education)
-                <li>
-                    <p class="date">{{ formatMonthYear($education->year_of_admission) }} -
-                        {{ $education->year_of_graduation ? formatMonthYear($education->year_of_graduation) : 'Present' }}
-                    </p>
-                    <h2>{{ $education->degree }}</h2>
-                    <p class="type">{{ $education->school }}</p>
-                </li>
-            @endforeach
+            @if (isset($portfolio->educationRecords) && $portfolio->educationRecords->count() > 0)
+                @foreach ($portfolio->educationRecords as $education)
+                    <li>
+                        <p class="date">{{ formatMonthYear($education->year_of_admission ?? null) }} -
+                            {{ $education->year_of_graduation ? formatMonthYear($education->year_of_graduation) : 'Present' }}
+                        </p>
+                        <h2>{{ $education->degree ?? 'N/A' }}</h2>
+                        <p class="type">{{ $education->school ?? 'N/A' }}</p>
+                    </li>
+                @endforeach
+            @endif
         </ul>
     </div>
 </div>

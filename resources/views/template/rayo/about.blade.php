@@ -7,7 +7,7 @@
             <!-- bottom part -->
             <div class="mxd-hero-07__bottom">
                 <div class="mxd-hero-07__circle">
-                    @if ($portfolio->about->logo)
+                    @if (isset($portfolio->about) && ($portfolio->about->logo ?? null))
                         <div class="hero-07-circle__image hero-07-slide-out-scroll loading__item">
                             <img src="{{ Storage::url($portfolio->about->logo) }}" alt="Hero Image">
                         </div>
@@ -22,7 +22,7 @@
                         </div>
                     </div>
                     <div class="hero-07-circle__container mobile-row hero-07-fade-out-scroll">
-                        @if ($portfolio->about->years_of_experience != null)
+                        @if (isset($portfolio->about) && ($portfolio->about->years_of_experience ?? null) != null)
                             <div class="hero-07-circle__item item-02 loading__item">
 
                                 <div class="mxd-counter small">
@@ -34,7 +34,7 @@
 
                             </div>
                         @endif
-                        @if ($portfolio->about->total_projects_done != null)
+                        @if (isset($portfolio->about) && ($portfolio->about->total_projects_done ?? null) != null)
                             <div class="hero-07-circle__item item-03 loading__item">
                                 <div class="mxd-counter small">
                                     <p id="stats-counter-2" class="mxd-counter__number mxd-stats-number small">
@@ -48,22 +48,30 @@
                 <div class="mxd-hero-07__info loading__fade">
                     <div class="hero-07-info__container">
                         <div class="hero-07-info__descr">
-                            <p class="t-large t-medium t-140 t-bright">Hey! I'm
-                                {{ $portfolio->about->name }}.</p>
-                            <p class="t-large t-medium t-140 t-bright">{{ $portfolio->about->brief }}</p>
+                            @if (isset($portfolio->about) && ($portfolio->about->name ?? null))
+                                <p class="t-large t-medium t-140 t-bright">Hey! I'm
+                                    {{ $portfolio->about->name }}.</p>
+                            @endif
+                            @if (isset($portfolio->about) && ($portfolio->about->brief ?? null))
+                                <p class="t-large t-medium t-140 t-bright">{{ $portfolio->about->brief }}</p>
+                            @endif
                         </div>
                         <div class="hero-07-info__tags">
-                            @foreach ($portfolio->skills->where(fn($skill) => $skill->type->value == 'technical')->values() as $index => $skill)
-                                <span class="tag tag-default tag-outline-medium">{{ $skill->title }}</span>
-                            @endforeach
+                            @if (isset($portfolio->skills))
+                                @foreach ($portfolio->skills->where(fn($skill) => isset($skill->type) && ($skill->type->value ?? null) == 'technical')->values() as $index => $skill)
+                                    <span class="tag tag-default tag-outline-medium">{{ $skill->title ?? '' }}</span>
+                                @endforeach
+                            @endif
 
                         </div>
                     </div>
                     <div class="hero-07-info__container">
                         <div class="hero-07-info__tags right-align-desktop">
-                            @foreach ($portfolio->skills->where(fn($skill) => $skill->type->value == 'soft')->values() as $index => $skill)
-                                <span class="tag tag-default tag-outline-medium">{{ $skill->title }}</span>
-                            @endforeach
+                            @if (isset($portfolio->skills))
+                                @foreach ($portfolio->skills->where(fn($skill) => isset($skill->type) && ($skill->type->value ?? null) == 'soft')->values() as $index => $skill)
+                                    <span class="tag tag-default tag-outline-medium">{{ $skill->title ?? '' }}</span>
+                                @endforeach
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -92,8 +100,10 @@
                         <div class="col-12 col-xl-8 mxd-grid-item no-margin">
                             <div class="mxd-block__content">
                                 <div class="mxd-block__manifest anim-uni-in-up">
-                                    <p class="mxd-manifest mxd-manifest-l reveal-type">
-                                        {{ $portfolio->about->description }}</p>
+                                    @if (isset($portfolio->about) && ($portfolio->about->description ?? null))
+                                        <p class="mxd-manifest mxd-manifest-l reveal-type">
+                                            {{ $portfolio->about->description }}</p>
+                                    @endif
                                     {{-- <div class="mxd-manifest__controls anim-uni-in-up">
                                               <div class="mxd-btngroup centered">
                                                   <a class="btn btn-anim btn-default btn-accent slide-right-up"
@@ -120,10 +130,16 @@
     </div>
 </div>
 
-<script>
-    const statsCounter1 = new countUp.CountUp("years-of-experience", {{ $years_of_experience }}, optionsPlus);
-    const statsCounter2 = new countUp.CountUp("stats-counter-2", {{ $portfolio->educationRecords->count() }},
-        optionsPlus);
-    statsCounter1.start();
-    statsCounter2.start();
-</script>
+@if (isset($years_of_experience) || (isset($portfolio->educationRecords) && $portfolio->educationRecords->count() > 0))
+    <script>
+        @if (isset($years_of_experience))
+            const statsCounter1 = new countUp.CountUp("years-of-experience", {{ $years_of_experience }}, optionsPlus);
+            statsCounter1.start();
+        @endif
+        @if (isset($portfolio->educationRecords) && $portfolio->educationRecords->count() > 0)
+            const statsCounter2 = new countUp.CountUp("stats-counter-2", {{ $portfolio->educationRecords->count() }},
+                optionsPlus);
+            statsCounter2.start();
+        @endif
+    </script>
+@endif

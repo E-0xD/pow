@@ -6,25 +6,28 @@
         <h3 class="text_white fw-5 split-text effect-blur-fade">Education</h3>
     </div>
     <div class="effect-line-hover">
-        @foreach ($portfolio->educationRecords as $education)
-            <div class="wrap-education-item area-effect  scrolling-effect effectTop">
-                <span class="point"></span>
-                <div class="education-item">
-                    <div class="content">
-                        <h5 class="font-4 mb_4"><a href="#contact" class="link">{{ $education->degree }}</a>
-                        </h5>
-                        <span class="text-body-1 font-3">{{ $education->school }}</span>
-                    </div>
-                    <div class="date text-caption-1 text_white font-3">
-                        {{ formatMonthYear($education->year_of_admission) }} -
-                        {{ $education->year_of_graduation ? formatMonthYear($education->year_of_graduation) : 'Present' }}
-                    </div>
-                    <div class="item-shape spotlight">
-                        <img src="{{ asset('template_assets/gen_z_seven/images/item/small-comet.webp') }}"
-                            loading="lazy" decoding="async" alt="item">
+        @if (isset($portfolio->educationRecords) && $portfolio->educationRecords->count() > 0)
+            @foreach ($portfolio->educationRecords as $education)
+                <div class="wrap-education-item area-effect  scrolling-effect effectTop">
+                    <span class="point"></span>
+                    <div class="education-item">
+                        <div class="content">
+                            <h5 class="font-4 mb_4"><a href="#contact"
+                                    class="link">{{ $education->degree ?? 'N/A' }}</a>
+                            </h5>
+                            <span class="text-body-1 font-3">{{ $education->school ?? 'N/A' }}</span>
+                        </div>
+                        <div class="date text-caption-1 text_white font-3">
+                            {{ formatMonthYear($education->year_of_admission ?? null) }} -
+                            {{ $education->year_of_graduation ? formatMonthYear($education->year_of_graduation) : 'Present' }}
+                        </div>
+                        <div class="item-shape spotlight">
+                            <img src="{{ asset('template_assets/gen_z_seven/images/item/small-comet.webp') }}"
+                                loading="lazy" decoding="async" alt="item">
+                        </div>
                     </div>
                 </div>
-            </div>
-        @endforeach
+            @endforeach
+        @endif
     </div>
 </div>

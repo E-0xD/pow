@@ -9,27 +9,43 @@
             </div>
 
             <div class="row portfolio-items">
-                @foreach ($portfolio->projects as $project)
-                    <div class="col-md-12z scroll-animation" data-animation="fade_from_bottom">
-                        <div class="portfolio-item portfolio-full">
-                            <div class="portfolio-item-inner">
-                                <a href="{{ $project->project_link }}" data-lightbox="example-1">
-                                    <img src="{{ Storage::url($project->thumbnail_path) }}" alt="project">
-                                </a>
+                @if (isset($portfolio->projects) && $portfolio->projects->count() > 0)
+                    @foreach ($portfolio->projects as $project)
+                        <div class="col-md-12z scroll-animation" data-animation="fade_from_bottom">
+                            <div class="portfolio-item portfolio-full">
+                                <div class="portfolio-item-inner">
+                                    @if ($project->project_link ?? null)
+                                        <a href="{{ $project->project_link }}" data-lightbox="example-1">
+                                            @if ($project->thumbnail_path ?? null)
+                                                <img src="{{ Storage::url($project->thumbnail_path) }}" alt="project">
+                                            @endif
+                                        </a>
+                                    @endif
 
-                                <ul class="portfolio-categories">
-                                    @foreach ($project->skills as $skill)
-                                        <li>
-                                            <a href="">{{ $skill->title }}</a>
-                                        </li>
-                                    @endforeach
-                                </ul>
+                                    <ul class="portfolio-categories">
+                                        @if (isset($project->skills) && $project->skills->count() > 0)
+                                            @foreach ($project->skills as $skill)
+                                                <li>
+                                                    <a href="">{{ $skill->title ?? 'N/A' }}</a>
+                                                </li>
+                                            @endforeach
+                                        @endif
+                                    </ul>
+                                </div>
+                                <h2>
+                                    @if ($project->project_link ?? null)
+                                        <a href="{{ $project->project_link }}">{{ $project->title ?? 'N/A' }}</a>
+                                    @else
+                                        {{ $project->title ?? 'N/A' }}
+                                    @endif
+                                </h2>
+                                @if ($project->brief_description ?? null)
+                                    <p>{{ $project->brief_description }}</p>
+                                @endif
                             </div>
-                            <h2><a href="{{ $project->project_link }}">{{ $project->title }}</a></h2>
-                            <p>{{$project->brief_description}}</p>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                @endif
 
             </div>
 

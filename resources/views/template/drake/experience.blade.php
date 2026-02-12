@@ -9,15 +9,19 @@
              </div>
 
              <div class="resume-timeline">
-                 @foreach ($portfolio->experiences as $experience)
-                     <div class="item scroll-animation" data-animation="fade_from_right">
-                         <span class="date">{{ formatMonthYear($experience->start_date) }} -
-                             {{ $experience->end_date ? formatMonthYear($experience->end_date) : 'Present' }}</span>
-                         <h2>{{ ucFirst($experience->position) }}</h2>
-                         <p>{{ ucFirst($experience->company) }}</p>
-                         <p>{{ formatText($experience->description) }}</p>
-                     </div>
-                 @endforeach
+                 @if (isset($portfolio->experiences) && $portfolio->experiences->count() > 0)
+                     @foreach ($portfolio->experiences as $experience)
+                         <div class="item scroll-animation" data-animation="fade_from_right">
+                             <span class="date">{{ formatMonthYear($experience->start_date ?? null) }} -
+                                 {{ $experience->end_date ? formatMonthYear($experience->end_date) : 'Present' }}</span>
+                             <h2>{{ ucFirst($experience->position ?? 'N/A') }}</h2>
+                             <p>{{ ucFirst($experience->company ?? 'N/A') }}</p>
+                             @if ($experience->description ?? null)
+                                 <p>{{ formatText($experience->description) }}</p>
+                             @endif
+                         </div>
+                     @endforeach
+                 @endif
              </div>
 
          </div>

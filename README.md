@@ -399,6 +399,19 @@ chmod +x nightwatch-keeper.sh
 -   To run coomposer commands on the server /opt/cpanel/ea-php84/root/usr/bin/php -d allow_url_fopen=On composer.phar (if your Ci/Cd pipeline is githug and you are on a cpanel shared hosting)
 
 ---
+## Setup composer on server
+
+cd to project directory
+
+run 
+/opt/cpanel/ea-php84/root/usr/bin/php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+/opt/cpanel/ea-php84/root/usr/bin/php composer-setup.php
+/opt/cpanel/ea-php84/root/usr/bin/php -r "unlink('composer-setup.php');"
+
+to use it run 
+php composer.phar --command--
+
+---
 
 ## Development Notes
 

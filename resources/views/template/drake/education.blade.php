@@ -9,13 +9,16 @@
             </div>
 
             <div class="resume-timeline">
-                @foreach ($portfolio->educationRecords as $education)
-                    <div class="item scroll-animation" data-animation="fade_from_right">
-                        <span class="date">{{ formatMonthYear($education->year_of_admission) }} - {{ $education->year_of_graduation ? formatMonthYear($education->year_of_graduation) : 'Present' }}</span>
-                        <h2>{{ $education->degree }}</h2>
-                        <p>{{ $education->school }}</p>
-                    </div>
-                @endforeach
+                @if (isset($portfolio->educationRecords) && $portfolio->educationRecords->count() > 0)
+                    @foreach ($portfolio->educationRecords as $education)
+                        <div class="item scroll-animation" data-animation="fade_from_right">
+                            <span class="date">{{ formatMonthYear($education->year_of_admission ?? null) }} -
+                                {{ $education->year_of_graduation ? formatMonthYear($education->year_of_graduation) : 'Present' }}</span>
+                            <h2>{{ $education->degree ?? 'N/A' }}</h2>
+                            <p>{{ $education->school ?? 'N/A' }}</p>
+                        </div>
+                    @endforeach
+                @endif
             </div>
 
         </div>

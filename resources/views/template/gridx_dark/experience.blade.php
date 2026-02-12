@@ -4,15 +4,19 @@
         <h3>EXPERIENCE</h3>
 
         <ul>
-            @foreach ($portfolio->experiences as $experience)
-                <li>
-                    <p class="date">{{ formatMonthYear($experience->start_date) }} -
-                        {{ $experience->end_date ? formatMonthYear($experience->end_date) : 'Present' }}</p>
-                    <h2>{{ ucFirst($experience->position) }}</h2>
-                    <p class="type">{{ ucFirst($experience->company) }}</p>
-                    <p>{{ formatText($experience->description) }}</p>
-                </li>
-            @endforeach
+            @if (isset($portfolio->experiences) && $portfolio->experiences->count() > 0)
+                @foreach ($portfolio->experiences as $experience)
+                    <li>
+                        <p class="date">{{ formatMonthYear($experience->start_date ?? null) }} -
+                            {{ $experience->end_date ? formatMonthYear($experience->end_date) : 'Present' }}</p>
+                        <h2>{{ ucFirst($experience->position ?? 'N/A') }}</h2>
+                        <p class="type">{{ ucFirst($experience->company ?? 'N/A') }}</p>
+                        @if ($experience->description ?? null)
+                            <p>{{ formatText($experience->description) }}</p>
+                        @endif
+                    </li>
+                @endforeach
+            @endif
         </ul>
     </div>
 </div>

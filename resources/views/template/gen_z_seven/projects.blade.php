@@ -1,3 +1,4 @@
+@if (isset($portfolio->projects) && $portfolio->projects->count() > 0)
    <div id="projects" class="section-portfolio spacing-1 stack-element section">
        <div class="heading-section mb_42">
            <div class="tag-heading text-uppercase text-label font-3 letter-spacing-1 mb_34">
@@ -29,3 +30,4 @@
            @endforeach
        </div>
    </div>
+@endif
