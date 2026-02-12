@@ -5,13 +5,18 @@
                 <div class="about-me-box shadow-box">
                     <a class="overlay-link" href="about.html"></a>
                     <img src="{{ asset('template_assets/gridx/images/bg1.png') }}" alt="BG" class="bg-img">
-                    <div class="img-box">
-                        <img src="{{ Storage::url($portfolio->about->logo) }}" alt="About Me">
-                    </div>
+                    @if ($portfolio->about->logo)
+                        <div class="img-box">
+                            <img src="{{ Storage::url($portfolio->about->logo) }}" alt="About Me">
+                        </div>
+                    @endif
                     <div class="infos">
-                      
-                        <h1>{{ $portfolio->about->name }}</h1>
-                        <p>{{ $portfolio->about->brief }}</p>
+                        @if ($portfolio->about->name)
+                            <h1>{{ $portfolio->about->name }}</h1>
+                        @endif
+                        @if ($portfolio->about->brief)
+                            <p>{{ $portfolio->about->brief }}</p>
+                        @endif
                         <a href="#" class="about-btn">
                             <img src="{{ asset('template_assets/gridx/images/icon.svg') }}" alt="Button">
                         </a>
