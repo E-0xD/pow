@@ -15,7 +15,7 @@ class SendInterviewReminders extends Command
 
     public function handle(): int
     {
-        $now = Carbon::now('UTC');
+        $now = Carbon::now();
 
         $this->info('Checking for reminders to send at ' . $now->toDateTimeString() . ' UTC');
 
