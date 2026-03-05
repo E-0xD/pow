@@ -6,6 +6,7 @@ use App\Mail\InterviewInvitation;
 use App\Models\InterviewApplicant;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 
@@ -39,6 +40,7 @@ class ProcessInterviewApplicants extends Command
             $sheet = $spreadsheet->getActiveSheet();
             $rows = $sheet->toArray(null, true, true, true);
         } catch (\Exception $e) {
+            Log::error($e);
             $this->error('Failed to read xlsx: ' . $e->getMessage());
             return Command::FAILURE;
         }
