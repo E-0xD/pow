@@ -15,8 +15,8 @@ class ProcessInterviewApplicants extends Command
     protected $signature = 'interviews:process';
     protected $description = 'Read applicants from the uploaded xlsx and schedule interviews';
 
-    // Friday March 6, 2026 5:00 PM WAT (UTC+1 → 4:00 PM UTC)
-    private const FRIDAY_START = '2026-03-06 16:00:00';
+    // Friday March 6, 2026 4:00 PM WAT (UTC+1 → 3:00 PM UTC)
+    private const FRIDAY_START = '2026-03-06 15:00:00';
     // Saturday March 7, 2026 10:00 AM WAT (UTC+1 → 9:00 AM UTC)
     private const SATURDAY_START = '2026-03-07 09:00:00';
     // Friday 8:00 AM WAT cutoff (UTC+1 → 7:00 AM UTC)
