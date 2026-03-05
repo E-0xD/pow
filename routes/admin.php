@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AffiliateController;
 use App\Http\Controllers\Admin\CouponController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\FeatureController;
+use App\Http\Controllers\Admin\InterviewController;
 use App\Http\Controllers\Admin\MetricsController;
 use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Admin\PlanController;
@@ -39,4 +40,9 @@ Route::domain('admin.' . parse_url(config('app.url'), PHP_URL_HOST))->name('admi
 
     // Portfolio Subscription Management
     Route::resource('portfolio', PortfolioTemplateController::class)->only(['edit', 'update', 'destroy']);
+
+    // Interview Management
+    Route::get('/interviews', [InterviewController::class, 'index'])->name('interviews.index');
+    Route::post('/interviews/upload', [InterviewController::class, 'upload'])->name('interviews.upload');
+    Route::post('/interviews/process', [InterviewController::class, 'process'])->name('interviews.process');
 });

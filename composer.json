@@ -17,7 +17,8 @@
         "laravel/socialite": "^5.23",
         "laravel/tinker": "^2.10.1",
         "livewire/flux": "^2.1.1",
-        "livewire/volt": "^1.7.0"
+        "livewire/volt": "^1.7.0",
+        "phpoffice/phpspreadsheet": "^5.5"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
@@ -55,10 +56,15 @@
             "chmod +x queue-monitor.sh",
             "chmod +x nightwatch-keeper.sh"
         ],
-        "update-on-server": [
+        "production": [
             "/opt/cpanel/ea-php84/root/usr/bin/php -d allow_url_fopen=On composer.phar install",
             "/opt/cpanel/ea-php84/root/usr/bin/php -d allow_url_fopen=On composer.phar dump-autoload",
             "@php artisan migrate",
+            "@php artisan view:clear",
+            "@php artisan config:clear",
+            "@php artisan route:clear",
+            "@php artisan cache:clear",
+            "@php artisan optimize:clear",
             "chmod +x queue-monitor.sh",
             "chmod +x nightwatch-keeper.sh"
         ],

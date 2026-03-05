@@ -10,3 +10,5 @@ Schedule::command('subscriptions:process-expired')->everySixHours();
 Schedule::command('auth:clear-resets')->everyFifteenMinutes();
 Schedule::command('transactions:mark-failed')->everyFifteenMinutes();
 Schedule::command('users:track-daily-activity')->everyTwoHours();
+// Schedule::command('interviews:process')->everyFiveMinutes();
+Schedule::command('interviews:send-reminders')->everyMinute();

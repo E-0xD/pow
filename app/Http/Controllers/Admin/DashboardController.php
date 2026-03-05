@@ -72,7 +72,12 @@ class DashboardController extends Controller
                 'route' => 'admin.transaction.index',
                 'description' => 'View and manage all transactions',
             ],
-
+            [
+                'name' => 'Interviews',
+                'icon' => 'event_repeat',
+                'route' => 'admin.interviews.index',
+                'description' => 'Manage interviews'
+            ],
         ];
 
 
