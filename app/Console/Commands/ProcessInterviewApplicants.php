@@ -26,7 +26,7 @@ class ProcessInterviewApplicants extends Command
 
     public function handle(): int
     {
-        $filePath = public_path('interviews/applicants.xlsx');
+        $filePath = storage_path('app/public/interviews/applicants.xlsx');
 
         if (!file_exists($filePath)) {
             Log::error($filePath);
