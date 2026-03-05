@@ -31,14 +31,14 @@ class InterviewReminder extends Mailable
             ->with([
                 'greeting' => 'Hi ' . $this->applicant->full_name . ',',
                 'introLines' => [
-                    'This is a friendly reminder that your interview with the ' . config('app.name') . ' team is coming up in ' . $countdown . '!',
+                    'This is a friendly reminder that your interview with the ' . config('app.name') . ' team is coming up in ' . $countdown,
                 ],
                 'actionText' => 'Join Google Meet',
                 'actionUrl' => 'https://meet.google.com/xpj-dgkf-zjr',
                 'outroLines' => [
                     'Scheduled Time: ' . $formattedTime,
                     'Location: Google Meet (link above)',
-                    'Please make sure you are ready a few minutes early. We look forward to speaking with you!',
+                    'Please make sure you are ready a few minutes early. We look forward to speaking with you',
                 ],
                 'signature' => 'Best regards, The ' . config('app.name') . ' Team',
             ]);
