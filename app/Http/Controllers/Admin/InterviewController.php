@@ -44,7 +44,7 @@ class InterviewController extends Controller
         Artisan::call('interviews:process');
         $output = Artisan::output();
 
-        alert('success', 'Processing complete! ' . trim($output));
+        alert('success', 'Processing complete!');
 
         return redirect()->back();
     }

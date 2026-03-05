@@ -29,13 +29,12 @@ class InterviewInvitation extends Mailable
                 'greeting' => 'Hello, ' . $this->applicant->full_name,
                 'introLines' => [
                     'Thank you for applying to join the ' . config('app.name') . ' Volunteer Team! We are excited to invite you to a short interview.',
-                    'Your interview has been scheduled for:',
+                    'Your interview has been scheduled for'. $formattedTime,
                 ],
                 'actionText' => 'Join Google Meet',
                 'actionUrl' => 'https://meet.google.com/xpj-dgkf-zjr',
                 'outroLines' => [
-                    '📅 Date & Time: ' . $formattedTime,
-                    '📍 Location: Google Meet (link above)',
+                    'Location: Google Meet (link above)',
                     '💼 Role(s): ' . ($this->applicant->role ?: 'To be discussed'),
                     'Please be available 5 minutes before your scheduled time. If you have any questions, feel free to reply to this email.',
                 ],

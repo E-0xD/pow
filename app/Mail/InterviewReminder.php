@@ -36,8 +36,8 @@ class InterviewReminder extends Mailable
                 'actionText' => 'Join Google Meet',
                 'actionUrl' => 'https://meet.google.com/xpj-dgkf-zjr',
                 'outroLines' => [
-                    '📅 Scheduled Time: ' . $formattedTime,
-                    '📍 Location: Google Meet (link above)',
+                    'Scheduled Time: ' . $formattedTime,
+                    'Location: Google Meet (link above)',
                     'Please make sure you are ready a few minutes early. We look forward to speaking with you!',
                 ],
                 'signature' => 'Best regards, The ' . config('app.name') . ' Team',
