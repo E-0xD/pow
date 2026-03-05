@@ -29,6 +29,7 @@ class ProcessInterviewApplicants extends Command
         $filePath = public_path('interviews/applicants.xlsx');
 
         if (!file_exists($filePath)) {
+            Log::error($filePath);
             $this->error('No xlsx file found at: ' . $filePath);
             return Command::FAILURE;
         }
