@@ -31,7 +31,8 @@ class InterviewController extends Controller
             'file' => 'required|file|mimes:xlsx,xls',
         ]);
 
-        $request->file('file')->storeAs('interviews', 'applicants.xlsx');
+    
+        $request->file('file')->storeAs('interviews', 'applicants.xlsx', 'public');
 
         alert('success', 'File uploaded successfully! Processing will begin shortly.');
 
