@@ -2,13 +2,13 @@
   <div class="header position-sticky">
       <div class="header-sidebar style-horizontal bs-light-mode">
           <div class="box">
-            @if($portfolio->about->logo)
+            @isset($portfolio->about->logo)
                 
                 <div class="avatar rounded-circle overflow-hidden" style="width:68px; height:68px;">
                   <img src="{{Storage::url($portfolio->about->logo) }}"
                       alt="avatar" class="w-100 h-100 object-fit-cover">
               </div> 
-            @endif
+            @endisset
              
 
               <div class="info">
