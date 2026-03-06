@@ -41,9 +41,11 @@
 
                     @include('template.drake.user_bar')
 
-                    @foreach ($portfolio->sectionOrders->sortBy('position') as $sectionOrder)
-                        @includeIf("template.drake.{$sectionOrder->section_id}")
-                    @endforeach
+                    @if (isset($portfolio->sectionOrders))
+                        @foreach ($portfolio->sectionOrders->sortBy('position') as $sectionOrder)
+                            @includeIf("template.drake.{$sectionOrder->section_id}")
+                        @endforeach
+                    @endif
 
                     @if ($portfolio->accept_messages)
                         @include('template.drake.message')

@@ -22,11 +22,13 @@
          <div class="heading-title d-flex justify-content-between align-items-center mb_32">
 
              <ul class="list-icon d-flex">
-                 @foreach ($portfolio->contactMethods as $contactMethod)
-                     <li><a
-                             href="{{ getContactLink(title: $contactMethod->contactMethod->title, value: $contactMethod->value) }}">{!! $contactMethod->contactMethod->logo !!}</a>
-                     </li>
-                 @endforeach
+                 @if (isset($portfolio->contactMethods) && $portfolio->contactMethods->count() > 0)
+                     @foreach ($portfolio->contactMethods as $contactMethod)
+                         <li><a
+                                 href="{{ getContactLink(title: $contactMethod->contactMethod->title, value: $contactMethod->value) }}">{!! $contactMethod->contactMethod->logo !!}</a>
+                         </li>
+                     @endforeach
+                 @endif
              </ul>
          </div>
 
