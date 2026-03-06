@@ -24,14 +24,20 @@ class AboutSection extends Component
         'collapsed' => true,
     ];
 
-    protected $rules = [
-        'about.name' => 'required|string|max:255',
-        'about.logo' => 'nullable|image|max:10240',
-        'about.brief' => 'required|string|max:255',
-        'about.description' => 'required|string|max:5000',
-        'about.years_of_experience' => 'nullable|integer|min:1|max:100',
-        'about.total_projects_done' => 'nullable|integer|min:1|max:9999',
-    ];
+    protected function rules()
+    {
+        return [
+            'about.name' => 'required|string|max:255',
+            'about.logo' => $this->about['logo'] instanceof TemporaryUploadedFile
+                ? 'image|max:10240'
+                : 'nullable',
+            'nullable|image|max:10240',
+            'about.brief' => 'required|string|max:255',
+            'about.description' => 'required|string|max:5000',
+            'about.years_of_experience' => 'nullable|integer|min:1|max:100',
+            'about.total_projects_done' => 'nullable|integer|min:1|max:9999',
+        ];
+    }
 
     public function mount(Portfolio $portfolio)
     {
@@ -92,13 +98,8 @@ class AboutSection extends Component
 
     public function save()
     {
-        // Only validate logo if it's a newly uploaded file
-        $rules = $this->rules;
-        if (!($this->about['logo'] instanceof TemporaryUploadedFile)) {
-            unset($rules['about.logo']);
-        }
-        
-        $this->validate($rules);
+
+        $this->validate();
 
         try {
             DB::beginTransaction();

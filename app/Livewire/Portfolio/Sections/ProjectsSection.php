@@ -8,6 +8,7 @@ use App\Models\Portfolio;
 use App\Models\Skill;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
 class ProjectsSection extends Component
 {
@@ -26,13 +27,18 @@ class ProjectsSection extends Component
     public $projectSkillSearch = '';
     public $projectSkillSearchResults = [];
 
-    protected $rules = [
-        'projectForm.title' => 'required|string|max:255',
-        'projectForm.brief_description' => 'required|string|max:500',
-        'projectForm.project_link' => 'nullable|url|max:255',
-        'projectForm.thumbnail_path' => 'nullable',
-        'projectForm.skills' => 'array',
-    ];
+    protected function rules()
+    {
+        return [
+            'projectForm.title' => 'required|string|max:255',
+            'projectForm.brief_description' => 'required|string|max:500',
+            'projectForm.project_link' => 'nullable|url|max:255',
+            'projectForm.thumbnail_path' => $this->projectForm['thumbnail_path'] instanceof TemporaryUploadedFile
+                ? 'image|max:10240'
+                : 'nullable',
+            'projectForm.skills' => 'array',
+        ];
+    }
 
     protected $messages = [
         'projectForm.title.required' => 'Project title is required.',
@@ -47,6 +53,8 @@ class ProjectsSection extends Component
         'projectForm.project_link.max' => 'Project link cannot exceed 255 characters.',
 
         'projectForm.skills.array' => 'Skills must be a valid list.',
+        'projectForm.thumbnail_path.image' => 'The project thumbnail must be an image file (jpg, jpeg, png, gif, or webp).',
+        'projectForm.thumbnail_path.max' => 'The project thumbnail size cannot be larger than 10MB.',
     ];
 
     protected $validationAttributes = [
@@ -174,14 +182,6 @@ class ProjectsSection extends Component
     public function saveProject()
     {
         $this->validate();
-
-        // If a new file was uploaded (Livewire provides an UploadedFile), validate it's an image
-        if (!empty($this->projectForm['thumbnail_path']) && !is_string($this->projectForm['thumbnail_path'])) {
-            Validator::make(
-                ['projectForm.thumbnail_path' => $this->projectForm['thumbnail_path']],
-                ['projectForm.thumbnail_path' => 'image|max:10240']
-            )->validate();
-        }
 
         DB::beginTransaction();
         try {
