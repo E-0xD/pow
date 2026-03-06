@@ -4,14 +4,14 @@
         <img src="assets/images/logo.png" alt="Logo">
         <span class="designation">Framer Designer & Developer</span>
     </div> --}}
-        @if ($portfolio->about->logo ?? null)
+        @isset ($portfolio->about->logo)
             <img class="me" src="{{ Storage::url($portfolio->about->logo) }}" alt="Me">
-        @endif
-        <h2 class="email">{{ $portfolio->about->name ?? null }}</h2>
+        @endisset
+        <h2 class="email">{{ $portfolio->about->name }}</h2>
         {{-- <h2 class="address">Base in Los Angeles, CA</h2> --}}
-        @if ($portfolio->about->brief ?? null)
+        @isset ($portfolio->about->brief)
             <p class="copyright">{{ $portfolio->about->brief }}</p>
-        @endif
+        @endisset
         <ul class="social-profile d-flex align-items-center flex-wrap justify-content-center">
             @if (isset($portfolio->contactMethods) && $portfolio->contactMethods->count() > 0)
                 @foreach ($portfolio->contactMethods as $contactMethod)

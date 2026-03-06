@@ -5,11 +5,11 @@
                 <div data-aos="zoom-in">
                     <div class="about-image-box shadow-box">
                         <img src="{{ asset('template_assets/gridx/images/bg1.png') }}" alt="BG" class="bg-img">
-                        @if ($portfolio->about->logo ?? null)
+                        @isset ($portfolio->about->logo)
                             <div class="image-inner">
                                 <img src="{{ Storage::url($portfolio->about->logo) }}" alt="About Me">
                             </div>
-                        @endif
+                        @endisset
                     </div>
                 </div>
 
@@ -20,13 +20,13 @@
                     </h1>
                     <div class="about-details-inner shadow-box">
                         <img src="{{ asset('template_assets/gridx/images/icon2.png') }}" alt="Star">
-                        @if ($portfolio->about->name ?? null)
+                        @isset ($portfolio->about->name)
                             <h1>{{ $portfolio->about->name }}</h1>
-                        @endif
-                        @if ($portfolio->about->description ?? null)
+                        @endisset
+                        @isset ($portfolio->about->description)
                             <p>{{ formatText($portfolio->about->description) }}
                             </p>
-                        @endif
+                        @endisset
                     </div>
 
                 </div>

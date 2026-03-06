@@ -11,10 +11,10 @@
            @foreach ($portfolio->projects as $project)
                <div class="portfolio-item element">
                    <a href="{{ $project->project_link }}" class="img-style">
-                       @if ($project->thumbnail_path)
+                       @isset ($project->thumbnail_path)
                            <img decoding="async" loading="lazy" src="{{ Storage::url($project->thumbnail_path) }}"
                                width="690" height="388" alt="portfolio">
-                       @endif
+                       @endisset
 
                        <div class="tag font-3 text-label text-uppercase fw-6 letter-spacing-1">
                            {{ $project->title }}

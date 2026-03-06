@@ -3,7 +3,7 @@
 <title>{{ $portfolio->meta_title ?? config('app.name') }}</title>
 
 <meta name="description" content="{{ $portfolio->meta_description ?? config('app.desc') }}">
-<meta name="author" content="{{ $portfolio->about->name ?? config('app.name') }}">
+<meta name="author" content="{{ @isset($portfolio->about->name) ?? config('app.name') }}">
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
 <!-- Favicon -->

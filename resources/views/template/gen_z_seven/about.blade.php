@@ -7,9 +7,9 @@
                 </div>
                 <div class="title-border-shape">
                     <h4 class="animationtext clip "><span class="tf-text s1 cd-words-wrapper text_primary-color">
-                            @if ($portfolio->about->brief ?? null)
+                            @isset ($portfolio->about->brief)
                                 <span class="item-text is-visible"> {{ formatText($portfolio->about->brief) }}</span>
-                            @endif
+                            @endisset
                         </span> </h4>
                     <div class="shape">
                         <span class="shape-1"></span>
@@ -25,17 +25,17 @@
                     </div>
                 </div>
             </div>
-            @if ($portfolio->about->name ?? null)
+            @isset ($portfolio->about->name)
                 <h1 class="title mb_16 split-text effect-blur-fade">
                     {{ ucFirst($portfolio->about->name) }}
                 </h1>
-            @endif
-            @if ($portfolio->about->description ?? null)
+            @endisset
+            @isset ($portfolio->about->description)
                 <p class="text_muted-color font-3 mb_43 split-text split-lines-transform">
                     {{ formatText($portfolio->about->description) }}</p>
-            @endif
+            @endisset
             <div class="wrap-counter tf-grid-layout md-col-3">
-                @if (($portfolio->about->years_of_experience ?? null) != null)
+                @isset ($portfolio->about->years_of_experience)
                     <div class="counter-item bs-light-mode">
                         <div class="counter-number h2 text_white mb_7">
                             <div class="odometer" data-number="{{ $portfolio->about->years_of_experience }}">
@@ -50,9 +50,9 @@
                                 loading="lazy" decoding="async" alt="item">
                         </div>
                     </div>
-                @endif
+                @endisset
 
-                @if (($portfolio->about->total_projects_done ?? null) != null)
+                @isset ($portfolio->about->total_projects_done)
                     <div class="counter-item bs-light-mode">
                         <div class="counter-number h2 text_white mb_7">
                             <div class="odometer" data-number="  {{ $portfolio->about->total_projects_done }}">
@@ -66,7 +66,7 @@
                                 loading="lazy" decoding="async" alt="item">
                         </div>
                     </div>
-                @endif
+                @endisset
             </div>
         </div>
     </div>

@@ -7,11 +7,11 @@
             <!-- bottom part -->
             <div class="mxd-hero-07__bottom">
                 <div class="mxd-hero-07__circle">
-                    @if (isset($portfolio->about) && ($portfolio->about->logo ?? null))
+                    @isset ($portfolio->about->logo ?? null)
                         <div class="hero-07-circle__image hero-07-slide-out-scroll loading__item">
                             <img src="{{ Storage::url($portfolio->about->logo) }}" alt="Hero Image">
                         </div>
-                    @endif
+                    @endisset
 
                     <div class="hero-07-circle__container hero-07-fade-out-scroll">
                         <div class="hero-07-circle__item item-01 loading__item">
@@ -22,7 +22,7 @@
                         </div>
                     </div>
                     <div class="hero-07-circle__container mobile-row hero-07-fade-out-scroll">
-                        @if (isset($portfolio->about) && ($portfolio->about->years_of_experience ?? null) != null)
+                        @isset($portfolio->about->years_of_experience)
                             <div class="hero-07-circle__item item-02 loading__item">
 
                                 <div class="mxd-counter small">
@@ -33,8 +33,8 @@
                                 </div>
 
                             </div>
-                        @endif
-                        @if (isset($portfolio->about) && ($portfolio->about->total_projects_done ?? null) != null)
+                        @endisset
+                        @isset($portfolio->about->total_projects_done)
                             <div class="hero-07-circle__item item-03 loading__item">
                                 <div class="mxd-counter small">
                                     <p id="stats-counter-2" class="mxd-counter__number mxd-stats-number small">
@@ -42,36 +42,36 @@
                                     <p class="mxd-counter__descr t-140 t-bright t-small">Total Projects</p>
                                 </div>
                             </div>
-                        @endif
+                        @endisset
                     </div>
                 </div>
                 <div class="mxd-hero-07__info loading__fade">
                     <div class="hero-07-info__container">
                         <div class="hero-07-info__descr">
-                            @if (isset($portfolio->about) && ($portfolio->about->name ?? null))
+                            @isset($portfolio->about->name)
                                 <p class="t-large t-medium t-140 t-bright">Hey! I'm
                                     {{ $portfolio->about->name }}.</p>
-                            @endif
-                            @if (isset($portfolio->about) && ($portfolio->about->brief ?? null))
+                            @endisset
+                            @isset($portfolio->about->brief)
                                 <p class="t-large t-medium t-140 t-bright">{{ $portfolio->about->brief }}</p>
-                            @endif
+                            @endisset
                         </div>
                         <div class="hero-07-info__tags">
-                            @if (isset($portfolio->skills))
+                            @isset($portfolio->skills)
                                 @foreach ($portfolio->skills->where(fn($skill) => isset($skill->type) && ($skill->type->value ?? null) == 'technical')->values() as $index => $skill)
                                     <span class="tag tag-default tag-outline-medium">{{ $skill->title ?? '' }}</span>
                                 @endforeach
-                            @endif
+                            @endisset
 
                         </div>
                     </div>
                     <div class="hero-07-info__container">
                         <div class="hero-07-info__tags right-align-desktop">
-                            @if (isset($portfolio->skills))
+                            @isset($portfolio->skills)
                                 @foreach ($portfolio->skills->where(fn($skill) => isset($skill->type) && ($skill->type->value ?? null) == 'soft')->values() as $index => $skill)
                                     <span class="tag tag-default tag-outline-medium">{{ $skill->title ?? '' }}</span>
                                 @endforeach
-                            @endif
+                            @endisset
                         </div>
                     </div>
                 </div>
@@ -100,10 +100,10 @@
                         <div class="col-12 col-xl-8 mxd-grid-item no-margin">
                             <div class="mxd-block__content">
                                 <div class="mxd-block__manifest anim-uni-in-up">
-                                    @if (isset($portfolio->about) && ($portfolio->about->description ?? null))
+                                    @isset($portfolio->about->description )
                                         <p class="mxd-manifest mxd-manifest-l reveal-type">
                                             {{ $portfolio->about->description }}</p>
-                                    @endif
+                                    @endisset
                                     {{-- <div class="mxd-manifest__controls anim-uni-in-up">
                                               <div class="mxd-btngroup centered">
                                                   <a class="btn btn-anim btn-default btn-accent slide-right-up"

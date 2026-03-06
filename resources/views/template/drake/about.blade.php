@@ -8,12 +8,12 @@
                         <i class="las la-home"></i> Introduce
                     </h4>
                     <h1 class="scroll-animation" data-animation="fade_from_bottom">Hi from
-                        @if ($portfolio->about->name ?? null)
+                        @isset ($portfolio->about->name)
                             <span>{{ ucFirst($portfolio->about->name) }}</span>,
-                        @endif
-                        @if ($portfolio->about->brief ?? null)
+                        @endisset
+                        @isset ($portfolio->about->brief)
                             {{ formatText($portfolio->about->brief) }}
-                        @endif
+                        @endisset
                     </h1>
                 </div>
                 {{-- <p class="scroll-animation" data-animation="fade_from_bottom">I design and code beautifully simple things
@@ -24,18 +24,18 @@
                 </a>
 
                 <div class="facts d-flex">
-                    @if (($portfolio->about->years_of_experience ?? null) != null)
+                    @isset ($portfolio->about->years_of_experience)
                         <div class="left scroll-animation" data-animation="fade_from_left">
                             <h1>{{ $portfolio->about->years_of_experience }}+</h1>
                             <p>Years of <br>Experience</p>
                         </div>
-                    @endif
-                    @if (($portfolio->about->total_projects_done ?? null) != null)
+                    @endisset
+                    @isset ($portfolio->about->total_projects_done)
                         <div class="right scroll-animation" data-animation="fade_from_right">
                             <h1>{{ $portfolio->about->total_projects_done }}+</h1>
                             <p>Total Projects Done</p>
                         </div>
-                    @endif
+                    @endisset
                 </div>
             </div>
         </div>
@@ -51,11 +51,11 @@
                     {{-- <h1 class="scroll-animation" data-animation="fade_from_bottom">Every great design begin with<br>
                      an even <span>better story</span></h1> --}}
                 </div>
-                @if ($portfolio->about->description ?? null)
+                @isset ($portfolio->about->description)
                     <p class="scroll-animation" data-animation="fade_from_bottom">
                         {{ formatText($portfolio->about->description) }}
                     </p>
-                @endif
+                @endisset
             </div>
         </div>
     </section>
