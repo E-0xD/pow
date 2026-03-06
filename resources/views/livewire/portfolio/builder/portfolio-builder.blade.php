@@ -71,7 +71,8 @@
                             <span
                                 class="material-symbols-outlined text-4xl text-slate-400 dark:text-slate-600 mb-2">add_to_photos</span>
                             <p class="font-bold text-slate-600 dark:text-slate-400">Your portfolio is empty</p>
-                            <p class="text-sm text-slate-500 dark:text-slate-500">Click on (+) add sections here to start building.
+                            <p class="text-sm text-slate-500 dark:text-slate-500">Click on (+) add sections here to
+                                start building.
                             </p>
                         </div>
                     @endif
@@ -120,9 +121,9 @@
     @else
         <!-- Step 2: Content Editor -->
         <div>
-          
-             <x-layouts.app.page-heading title="Portfolio Content"
-            subtitle="Make changes to your portfolio sections. Add, update, or remove content to keep it fresh." />
+
+            <x-layouts.app.page-heading title="Portfolio Content"
+                subtitle="Make changes to your portfolio sections. Add, update, or remove content to keep it fresh." />
 
             @foreach ($selectedSections as $section)
                 <div wire:key="section-{{ $section['id'] }}" class="mb-8">
@@ -175,7 +176,14 @@
                 <span class="material-symbols-outlined">arrow_forward</span>
             </button>
         @else
-            <a href="{{ $portfolio->slug . '.' . parse_url(config('app.url'), PHP_URL_HOST) }}"
+            @php
+                $appUrl = config('app.url');
+                $scheme = parse_url($appUrl, PHP_URL_SCHEME) ?: 'http';
+                $host = parse_url($appUrl, PHP_URL_HOST);
+                $port = parse_url($appUrl, PHP_URL_PORT);
+                $portStr = $port ? ':' . $port : '';
+            @endphp
+            <a href="{{ $scheme . '://' . $portfolio->slug . '.' . $host . $portStr }}"
                 class="flex min-w-[84px] cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-10 px-5 bg-primary text-white text-sm font-bold leading-normal shadow-lg shadow-primary/30 hover:bg-primary/90">
                 <span class="truncate">view Portfolio</span>
                 <span class="material-symbols-outlined">check</span>
